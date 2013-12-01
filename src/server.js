@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var DEFAULT_PORT = 4000;
+var DEFAULT_PORT = 2727;
 
 var util = require('util'),
     fs = require('fs'),
@@ -55,4 +55,4 @@ app.get('*', function (req, res) {
 
 var server;
 server = app.listen(DEFAULT_PORT);
-console.log('Server running at http://127.0.0.1:4000/');  
+console.log('Server running at http://127.0.0.1:2727/');  
