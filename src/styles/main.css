@@ -7,4 +7,12 @@ body {
   padding: 0px;
   margin: 0px;
   background: #fafafa;
+  height: 100%;
+}
+.profit-home {
+  background: rgba(0,0,0,0.5);
+  margin: 5px;
+  border-radius: 5px;
+  height: 400px;
+  padding: 15px;
 }
