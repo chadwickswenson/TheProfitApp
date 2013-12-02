@@ -33,3 +33,17 @@ function normalizePhone(phone) {
 
     return {valid: false, phone: ""};
 }
+
+components.directive('homeItem', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        amount: '@'                       
+                },
+                templateUrl: 'views/partials/homeItem.html',
+                link: function(scope, elem, attrs) {
+
+                }
+        }
+});
