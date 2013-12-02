@@ -47,3 +47,18 @@ components.directive('homeItem', function($timeout) {
                 }
         }
 });
+
+components.directive('tagItem', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        amount: '@',
+                        color: '@'                    
+                },
+                templateUrl: 'views/partials/tagItem.html',
+                link: function(scope, elem, attrs) {
+
+                }
+        }
+});
