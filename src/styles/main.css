@@ -10,15 +10,13 @@ body {
   height: 100%;
 }
 .profit-home {
-  margin: 5px;
-  border-radius: 5px;
-  height: 400px;
-  padding: 8px;
+  padding: 10px;
 }
 .home-item {
   width: 100%;
   display: inline-block;
   position: relative;
+  font-weight: 500;
 }
 .item-name {
   float: left;
@@ -35,6 +33,7 @@ body {
   width: 100%;
   display: inline-block;
   position: relative;
+  font-weight: 100;
 }
 .left-indicator {
   -webkit-border-radius: 30px;
@@ -76,4 +75,19 @@ body {
 }
 .color-grey {
   background: #1f1f1f;
+}
+.nav-title {
+  display: block;
+  text-align: center;
+}
+.right-action {
+  float: right;
+  display: inline;
+}
+.left-action {
+  float: left;
+  display: inline-block;
+}
+.nav {
+  margin-bottom: 20px;
 }
