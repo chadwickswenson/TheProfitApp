@@ -17,7 +17,8 @@
 </head>
 <body>
 	<div class="main-content br grey-border bs main-view" ng-controller="AppCtrl">
-		<div ng-view></div>
+		<style ng-bind-html-unsafe="style"></style>
+		<ng-view ng-animate="{enter: 'enter', leave: 'leave'}"></ng-view>
 	</div>
 	<footer>
 	</footer>

@@ -38,8 +38,9 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
             config(function($routeProvider, $locationProvider) {
 				//$locationProvider.html5Mode(true);
 				$routeProvider.
-                    when('/', {templateUrl: 'views/home.html'}). //you need to create this one
-                    otherwise({redirectTo:'/'});
+                    when('/home', {templateUrl: 'views/home.html'}). //you need to create this one
+                    when('/add', {templateUrl: 'views/add.html'}). 
+                    otherwise({redirectTo:'/home.html'});
 			});
 
 app.run(['$location', '$rootScope', '$templateCache', "$http", function($location, $rootScope, $templateCache, $http) {	
@@ -53,3 +54,23 @@ app.run(['$location', '$rootScope', '$templateCache', "$http", function($locatio
     	
     });
 }]);
+
+app.controller('MainCtrl', function($scope, $rootScope, $location) {
+
+  var styles = {
+    // appear from right
+    front: '.enter-setup {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .enter-setup.enter-start {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .leave-setup {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(0,0,0)} .leave-setup.leave-start {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
+    // appear from left
+    back: '.enter-setup {   position:absolute;   -webkit-transition: 0.5s ease-out all; -webkit-transform:translate3d(-100%,0,0)}  .enter-setup.enter-start {   position:absolute;   -webkit-transform:translate3d(0,0,0) }  .leave-setup {   position:absolute;   -webkit-transition: 0.5s ease-out all;  -webkit-transform:translate3d(0,0,0)} .leave-setup.leave-start {   position:absolute;  -webkit-transform:translate3d(100%,0,0) };'
+  };
+  
+  $scope.direction = function(dir) {
+    // update the animations classes
+    $rootScope.style = styles[dir];
+  }
+
+  $scope.go = function(path) {
+    $location.path(path);
+  }
+  $scope.direction('front');
+});

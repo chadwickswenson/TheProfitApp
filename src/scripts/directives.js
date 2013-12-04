@@ -62,3 +62,4 @@ components.directive('tagItem', function($timeout) {
                 }
         }
 });
+
