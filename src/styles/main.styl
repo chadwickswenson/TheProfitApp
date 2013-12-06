@@ -20,6 +20,8 @@ brad()
   -o-transform: scale(arguments);
 
 colorGrey = #ccc
+colorLGrey = #f1f1f1
+colorGreyBorder = #cecece
 navBarHeight = 70px
 navBarPaddingTop = 10px
 
@@ -114,12 +116,18 @@ button
   margin-bottom:20px
   display:block
   position:fixed
-  border-bottom:1px solid #ccc
+  border-bottom:1px solid colorGreyBorde
   top:0px
   left:0px
   height:46px
   width:100%
   z-index:10
+  background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EFEFEF))
+  background-image: -webkit-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: linear-gradient(to bottom, #F4F4F4 0%, #EFEFEF 100%)
 
 .right-action
   display:inline-block
