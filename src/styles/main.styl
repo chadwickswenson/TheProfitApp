@@ -18,12 +18,28 @@ brad()
   -moz-transform: scale(arguments);
   -webkit-transform: scale(arguments);
   -o-transform: scale(arguments);
-.profit-add
-  background:#fafafa
+
+colorGrey = #ccc
+navBarHeight = 70px
+navBarPaddingTop = 10px
+
+button
+  border:0px solid #fff
+  background:transparent
+  padding:0px
+  margin:0px
+
 
 .view
   padding: 0px
   overflow:hidden
+  background:#fff
+  position:relative
+  display:inline-block
+  margin-top:70px
+
+.profit-add
+  background:#fafafa
 
 .home-item
   width:100%
@@ -87,32 +103,49 @@ brad()
 .nav-title
   display:block
   text-align:center
-  
-.right-action
-  float:right
-  display:inline
-
-.left-action
-  float:left
-  display:inline-block
+  position:fixed
+  width:100%
+  top:navBarPaddingTop
 
 .nav
   margin-bottom:20px
-  padding:10px
+  position:fixed
+  border-bottom:1px solid greyColor
+  top:0px
+  left:0px
+  height:navBarHeight
+  width:100%
+
+.right-action
+  display:inline-block
+  position:absolute
+  right:10px
+  top:navBarPaddingTop
+
+
+.left-action
+  position:absolute
+  left:10px
+  top:navBarPaddingTop
+
+
 
 .basic-input
-  width:101%
   margin-left:-3px
   padding-left:10px
   padding-right:20px
-  font-size:1.5em
+  font-size:1em
   background:#fff
   border-top:1px solid #ccc
   border-bottom:1px solid #ccc
   font-family: 'Arvo', serif
-  line-height:1.7em
+  line-height:1em
   margin-bottom:10px
   font-weight:100
+  brad(0px)
+  box-shadow:0px 0px 0px #fff !important
+  -webkit-appearance: none;
+  border-right:1px solid #fff
 
 .basic-input:focus
   outline:none
@@ -120,28 +153,32 @@ brad()
   border-bottom:1px solid #444
 
 .text-area-input
-  height:300px
+  height:120px
+  padding-top:5px
+  -webkit-appearance: none;
+
+.one-line-input
+  height:37px
 
 .full-width-input
-  height:50px
+  width:102%
 
 .styled select 
   background: transparent
   width: 150px
   padding: 5px
-  font-size: 16px
+  font-size: 1em
   background:#fff
   height: 34px
   -webkit-appearance: none
   brad(0px)
-  width:101%
+  width:103%
   margin-left:-3px
   padding-left:10px
   padding-right:20px
-  font-size:1.5em
   background:#fff
   font-family: 'Arvo', serif
-  line-height:1.7em
+  line-height:1em
   margin-bottom:10px
   font-weight:100
   height:auto
@@ -151,7 +188,39 @@ brad()
   outline:none
 
 .styled
-  width: 80%
-  height: 190px
+  width: 70%
   overflow: hidden
-   border: 1px solid #ccc
+  display:inline-block
+  position:relative
+
+.profit-home
+  z-index:1
+
+.profit-add
+  z-index:2
+  width:100%
+
+.items
+  padding:7px
+
+.button
+  brad(5px)
+  display:inline-block
+  position:relative
+  border:2px solid colorGrey
+  background:#fff
+
+.button-half
+  width: 40.1%
+  text-align:center
+  padding:10px 0px 12px 0px
+  margin:0px 4.5% 10px 4.5% 
+
+.button:active
+  background-color:colorGrey
+  outline:none
+
+.new-tag
+  position:relative
+  display:inline-block
+

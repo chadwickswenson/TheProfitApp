@@ -1,20 +1,10 @@
 <div class="profit-add view" >
-	<div class="home-nav nav">
-		<div class="left-action">
-			<button ng-click="direction('back');go('/home')">back</button>
-		</div><div class="right-action">
-			enter
-		</div>
-		<div class="nav-title">
-			Create Entry
-		</div>
-		
-	</div>
+	
 	<form>
-
-		<input class="full-width-input basic-input" placeholder="title"/>
-		<input class="full-width-input basic-input" placeholder="date"/>
-		<textarea class="basic-input text-area-input" placeholder="notes"></textarea>
+		<button class="button button-half">Upload</button> <button class="button button-half">Capture</button>
+		<input class="one-line-input full-width-input basic-input" placeholder="title"/>
+		<input class="one-line-input full-width-input basic-input" placeholder="date"/>
+		<textarea class="basic-input text-area-input full-width-input" placeholder="notes"></textarea>
 		<div class="styled">
 		   <select>
 		        <option>Apples</option>
@@ -23,6 +13,7 @@
 		        <option>Pancakes</option>
 		    </select>
 		</div>
+		<div class="new-tag">new tag</div>
 
 	</form>
 </div>
