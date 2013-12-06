@@ -31,9 +31,13 @@ button
   background:transparent
   padding:0px
   margin:0px
+  cursor:pointer
 
 button:focus
   outline:none
+
+button:active
+  background:#ccc
 
 .view
   padding: 0px
@@ -115,6 +119,7 @@ button:focus
   width:100%
   top:navBarPaddingTop
   font-weight:700
+  z-index:1
 
 .nav
   margin-bottom:20px
@@ -137,11 +142,13 @@ button:focus
   position:absolute
   right:10px
   top:navBarPaddingTop
+  z-index:2
 
 .left-action
   position:absolute
   left:10px
   top:navBarPaddingTop
+  z-index:2
 
 .basic-input
   margin-left:-3px
