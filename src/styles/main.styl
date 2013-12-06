@@ -1,12 +1,18 @@
 @import url(http://fonts.googleapis.com/css\?family=Open\+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 
+colorGrey = #ccc
+colorLGrey = #f1f1f1
+colorGreyBorder = #DBDBDB
+navBarHeight = 70px
+navBarPaddingTop = 10px
+
 html, body    
   font-family: 'Open Sans', sans-serif
   background-repeat: repeat  
   font-size: 100%
   padding:0px
   margin:0px
-  background:#FAFAFA
+  background:#fff
   height: 100%
   color:#444 !important
 
@@ -14,16 +20,11 @@ brad()
   -webkit-border-radius arguments
   -moz-border-radius arguments
   border-radius arguments
-
   -moz-transform: scale(arguments);
   -webkit-transform: scale(arguments);
   -o-transform: scale(arguments);
 
-colorGrey = #ccc
-colorLGrey = #f1f1f1
-colorGreyBorder = #cecece
-navBarHeight = 70px
-navBarPaddingTop = 10px
+
 
 button
   border:0px solid #fff
@@ -31,6 +32,8 @@ button
   padding:0px
   margin:0px
 
+button:focus
+  outline:none
 
 .view
   padding: 0px
@@ -38,6 +41,7 @@ button
   background:#fff
   position:relative
   display:inline-block
+  width:100%
  
 .profit-add
 
@@ -116,18 +120,17 @@ button
   margin-bottom:20px
   display:block
   position:fixed
-  border-bottom:1px solid colorGreyBorde
   top:0px
   left:0px
   height:46px
   width:100%
   z-index:10
-  background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  /*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EFEFEF))
   background-image: -webkit-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
-  background-image: linear-gradient(to bottom, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: linear-gradient(to bottom, #F4F4F4 0%, #EFEFEF 100%)*/
 
 .right-action
   display:inline-block

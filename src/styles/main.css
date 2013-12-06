@@ -6,7 +6,7 @@ body {
   font-size: 100%;
   padding: 0px;
   margin: 0px;
-  background: #fafafa;
+  background: #fff;
   height: 100%;
   color: #444 !important;
 }
@@ -16,12 +16,16 @@ button {
   padding: 0px;
   margin: 0px;
 }
+button:focus {
+  outline: none;
+}
 .view {
   padding: 0px;
   overflow: hidden;
   background: #fff;
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 .profit-add,
 .inline-view {
@@ -103,18 +107,17 @@ button {
   margin-bottom: 20px;
   display: block;
   position: fixed;
-  border-bottom: 1px solid #ccc;
   top: 0px;
   left: 0px;
   height: 46px;
   width: 100%;
   z-index: 10;
-  background-image: -ms-linear-gradient(top, #f4f4f4 0%, #efefef 100%);
-  background-image: -moz-linear-gradient(top, #f4f4f4 0%, #efefef 100%);
-  background-image: -o-linear-gradient(top, #f4f4f4 0%, #efefef 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f4f4f4), color-stop(1, #efefef));
-  background-image: -webkit-linear-gradient(top, #f4f4f4 0%, #efefef 100%);
-  background-image: linear-gradient(to bottom, #f4f4f4 0%, #efefef 100%);
+/*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EFEFEF))
+  background-image: -webkit-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
+  background-image: linear-gradient(to bottom, #F4F4F4 0%, #EFEFEF 100%)*/
 }
 .right-action {
   display: inline-block;
