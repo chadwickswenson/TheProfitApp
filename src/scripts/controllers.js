@@ -19,11 +19,29 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 		$rootScope.style = styles[dir];
 	}
 
-	$scope.go = function(path) {
+	$scope.direction('front');
+}]);
+
+ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', function($scope, $location, $rootScope, headerService) {
+	$scope.title = "Profit";
+	$scope.next = "add";
+
+	$scope.goForward = function(path) {
 		$location.path(path);
 	}
 
-	$scope.direction('front');
+	$scope.$on('handleTitleChange', function(){
+		$scope.title = headerService.title;
+		if($scope.title.toLowerCase() !== "profit") {
+			$(".left-action").show();
+		} else {
+			$(".left-action").hide();
+		}
+	});
+
+	$scope.goBack = function() {
+		window.history.back();
+	}
 }]);
 
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {

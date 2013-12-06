@@ -43,14 +43,15 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     otherwise({redirectTo:'/home'});
 			});
 
-app.run(['$location', '$rootScope', '$templateCache', "$http", function($location, $rootScope, $templateCache, $http) {	
+app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {
 	var routesThatDontRequireAuth = ['/login'];	  
 	  
 	$rootScope.$on('$routeChangeStart', function (event, next, current) {					
 
 	});
 
-  $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-
-  });
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        var route = ($location.path().indexOf("home") == -1) ? $location.path().split("/")[1] : "profit";
+        headerService.prepForBroadcastHeaderChange(route.charAt(0).toUpperCase() + route.slice(1));
+    });
 }]);

@@ -39,6 +39,31 @@ services.factory('loadingService', function($rootScope){
 	return loadingPanel;
 });
 
+services.factory('headerService', function($rootScope){
+	var header = {};
+	header.title = "";
+
+	header.prepForBroadcastHeaderChange = function(title) {
+		this.title = title;
+		this.broadcastTitleChange();
+	}
+
+	header.prepForBroadcastLoginChange = function(status) {
+		this.loggedIn = status;
+		this.broadcastLoginChange();
+	}
+
+	header.broadcastTitleChange = function() {
+		$rootScope.$broadcast('handleTitleChange');
+	}
+
+	header.broadcastLoginChange = function() {
+		$rootScope.$broadcast('handleLoginChange');
+	}
+
+	return header;
+});
+
 services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactory', function($resource, $http, $angularCacheFactory){
 
 	var profitCacheFactory = $angularCacheFactory('profitCache', {

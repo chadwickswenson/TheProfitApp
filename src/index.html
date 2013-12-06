@@ -16,19 +16,17 @@
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic' rel='stylesheet' type='text/css'>
 </head>
 <body ontouchstart="">
-	
-	<div class="home-nav nav">
-		<div class="left-action">
-			<button ng-click="direction('back');go('/home')">back</button>
-		</div><div class="right-action">
-			enter
+	<div class="home-nav nav" ng-controller="HeaderCtrl">
+		<div class="left-action" ng-show="hasBack">
+			<button ng-click="direction('back');goBack()">back</button>
+		</div>
+		<div class="right-action">
+			<button ng-click="direction('forward');goForward('/{{next}}')">{{next}}</button>
 		</div>
 		<div class="nav-title">
-			Create Entry
+			{{title}}
 		</div>
-		
 	</div>
-
 	<div class="main-content br grey-border bs main-view" ng-controller="AppCtrl">
 		<style ng-bind-html-unsafe="style"></style>
 		<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
