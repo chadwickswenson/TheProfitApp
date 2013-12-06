@@ -36,10 +36,12 @@ button
   background:#fff
   position:relative
   display:inline-block
-  margin-top:70px
-
+ 
 .profit-add
-  background:#fafafa
+
+.inline-view
+  margin-top:46px
+  padding-top:10px
 
 .home-item
   width:100%
@@ -47,11 +49,11 @@ button
   position:relative
   font-weight:500
 
+
 .item-name
   float:left
   position:relative
   display:inline-block
-  font-family: 'Arvo', serif
 
 .item-amount
   float:right
@@ -103,18 +105,21 @@ button
 .nav-title
   display:block
   text-align:center
-  position:fixed
+  position:absolute
   width:100%
   top:navBarPaddingTop
+  font-weight:700
 
 .nav
   margin-bottom:20px
+  display:block
   position:fixed
-  border-bottom:1px solid greyColor
+  border-bottom:1px solid #ccc
   top:0px
   left:0px
-  height:navBarHeight
+  height:46px
   width:100%
+  z-index:10
 
 .right-action
   display:inline-block
@@ -138,7 +143,6 @@ button
   background:#fff
   border-top:1px solid #ccc
   border-bottom:1px solid #ccc
-  font-family: 'Arvo', serif
   line-height:1em
   margin-bottom:10px
   font-weight:100
@@ -177,7 +181,6 @@ button
   padding-left:10px
   padding-right:20px
   background:#fff
-  font-family: 'Arvo', serif
   line-height:1em
   margin-bottom:10px
   font-weight:100
@@ -204,10 +207,9 @@ button
   padding:7px
 
 .button
-  brad(5px)
   display:inline-block
   position:relative
-  border:2px solid colorGrey
+  border:1px solid colorGrey
   background:#fff
 
 .button-half
