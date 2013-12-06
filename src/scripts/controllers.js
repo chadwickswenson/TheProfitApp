@@ -7,6 +7,12 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 	$scope.$on('loadingStopped', function(){
 		$(".loading-panel").hide();
 	});*/
+}]);
+
+ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', function($scope, $location, $rootScope, headerService) {
+	$scope.title = "Profit";
+	$scope.next = "add";
+
 	var styles = {
 	    // appear from right
 	    front: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
@@ -20,11 +26,6 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 	}
 
 	$scope.direction('front');
-}]);
-
-ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', function($scope, $location, $rootScope, headerService) {
-	$scope.title = "Profit";
-	$scope.next = "add";
 
 	$scope.goForward = function(path) {
 		$location.path(path);
@@ -34,8 +35,10 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 		$scope.title = headerService.title;
 		if($scope.title.toLowerCase() !== "profit") {
 			$(".left-action").show();
+			$(".right-action").hide();
 		} else {
 			$(".left-action").hide();
+			$(".right-action").show();
 		}
 	});
 
