@@ -24,7 +24,7 @@
 			<button ng-click="direction('front');goForward('/{{next}}')">{{next}}</button>
 		</div>
 		<div class="nav-title">
-			{{title}}
+			<span ng-bind="title"></span>
 		</div>
 	</div>
 	<div class="main-content br grey-border bs main-view" ng-controller="AppCtrl">
