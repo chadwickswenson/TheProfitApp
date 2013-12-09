@@ -9,6 +9,7 @@ body {
   background: #fff;
   height: 100%;
   color: #444 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 button {
   border: 0px solid #fff;
