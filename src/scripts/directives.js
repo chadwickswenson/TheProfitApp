@@ -63,3 +63,20 @@ components.directive('tagItem', function($timeout) {
         }
 });
 
+components.directive('listItem', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        value: '@',
+                        tag: '@',
+                        desc: '@',
+                        attachment: '@'                   
+                },
+                templateUrl: 'views/partials/listItem.html',
+                link: function(scope, elem, attrs) {
+
+                }
+        }
+});
+
