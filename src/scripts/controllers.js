@@ -54,3 +54,11 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
+
+ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);
+
+ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);

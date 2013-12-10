@@ -2,7 +2,9 @@
 
 colorGrey = #ccc
 colorLGrey = #f1f1f1
+colorFontGrey = #A6B1B3
 colorGreyBorder = #DBDBDB
+blueColor = #1A68C4
 navBarHeight = 70px
 navBarPaddingTop = 10px
 
@@ -26,6 +28,8 @@ brad()
   -o-transform: scale(arguments);
 
 
+a
+  color:inherit
 
 button
   border:0px solid #fff
@@ -75,7 +79,7 @@ button:active
   width:100%
   display:inline-block
   position:relative
-  font-weight:100
+  font-weight:300
 
 .left-indicator
   brad(30px)
@@ -111,7 +115,26 @@ button:active
   background:#1f1f1f
 
 .color-grey
-  background:#1f1f1f
+  background:#ccc
+
+.color-selected
+  border:4px solid #444
+
+.color-option
+  width:77px
+  height:77px
+  display:inline-block
+  position:relative
+  margin-top:20px
+  margin-left:20px
+  brad(40px)
+
+.create-tag-form
+  position:relative
+  display:block
+  margin:0px auto
+  width:320px
+  padding:0px
 
 .nav-title
   display:block
@@ -161,7 +184,7 @@ button:active
   border-bottom:1px solid #ccc
   line-height:1em
   margin-bottom:10px
-  font-weight:100
+  font-weight:300
   brad(0px)
   box-shadow:0px 0px 0px #fff !important
   -webkit-appearance: none;
@@ -242,3 +265,102 @@ button:active
   position:relative
   display:inline-block
 
+.entry-list
+  position:relative
+  display:inline-block
+  list-style:none
+  width:100%
+  margin:0px
+  padding:0px
+  color:#000
+
+.entry-list li
+  padding:5px 10px 8px 10px
+  display:inline-block
+  position:relative
+  border-bottom:1px solid colorGreyBorder
+  width:100%
+  margin:0px
+  height:54px
+
+.entry-list li:active
+  background:greyColor
+
+.entry-tag
+  display:inline-block
+  position:relative
+  top:-4px
+  brad(5px)
+  font-size:0.7em
+  line-height:1em
+  color:#fff
+  margin-right:6px
+  width:16px
+  height:16px
+  text-align:center
+
+.entry-list li .desc
+  display:inline-block
+  position:relative
+  font-size:0.8em
+  line-height:1em
+  top:2px
+  float:left
+  font-weight:300
+  width:90%
+
+.no-tag
+  border:1px solid #ccc
+  color:colorFontGrey
+  top:-3px
+
+.entry-title
+  display:inline-block
+  position:relative
+  font-size:1em
+  line-height:1.1em
+  float:left
+  font-weight:500
+  top:0px
+  height:20px
+
+.entry-value
+  display:inline-block
+  position:relative
+  font-size:1em
+  line-height:1.1em
+  float:right
+  font-weight:300
+  top:0px
+  height:20px
+
+.list-link
+  display:inline-block
+  position:relative
+  height:100%
+  width:100%
+
+.list-link:hover
+  color:#000
+  opacity:0.9
+
+.list-link:active
+  color:inherit
+  background:colorLGrey
+
+
+.info
+  display:inline-block
+  position:relative
+  font-size:0.8em
+  line-height:1em
+  color:colorFontGrey
+  float:right
+  text-align:right
+
+.attached
+  display:inline-block
+  position:relative
+  top:-3px
+  float:right
+  opacity:0.5

@@ -39,7 +39,9 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
 				//$locationProvider.html5Mode(true);
 				$routeProvider.
                     when('/home', {templateUrl: 'views/home.html', Controller: 'HomeCtrl'}). //you need to create this one
+                    when('/createtag', {templateUrl: 'views/createTag.html', Controller: 'TagCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', Controller: 'AddCtrl'}).
+                    when('/list', {templateUrl: 'views/list.html', Controller: 'ListCtrl'}).
                     otherwise({redirectTo:'/home'});
 			});
 
