@@ -80,3 +80,20 @@ components.directive('listItem', function($timeout) {
         }
 });
 
+components.directive('detailPart', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        value: '@',
+                        group: '@',
+                        desc: '@',
+                        attachment: '@'                   
+                },
+                templateUrl: 'views/partials/detailPart.html',
+                link: function(scope, elem, attrs) {
+
+                }
+        }
+});
+

@@ -104,9 +104,11 @@
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
     // Black base color for background matches the native apps
-    theWebView.backgroundColor = [UIColor blackColor];
-
+    theWebView.backgroundColor = [UIColor whiteColor];
+    theWebView.scrollView.scrollEnabled = NO;
+    theWebView.scrollView.bounces = NO;
     return [super webViewDidFinishLoad:theWebView];
+    
 }
 
 /* Comment out the block below to over-ride */
