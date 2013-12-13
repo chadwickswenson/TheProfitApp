@@ -42,7 +42,7 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     when('/createtag', {templateUrl: 'views/createTag.html', Controller: 'TagCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', Controller: 'AddCtrl'}).
                     when('/list', {templateUrl: 'views/list.html', Controller: 'ListCtrl'}).
-                    when('/detail', {templateUrl: 'views/detail.html', Controller: 'ListCtrl'}).
+                    when('/detail', {templateUrl: 'views/detail.html', Controller: 'DetailCtrl'}).
                     otherwise({redirectTo:'/home'});
 			});
 

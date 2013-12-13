@@ -63,6 +63,6 @@ ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 
 }]);
 
-ctrls.controller('detail', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
