@@ -62,3 +62,7 @@ ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
+
+ctrls.controller('detail', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);

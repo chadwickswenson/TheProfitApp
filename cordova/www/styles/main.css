@@ -68,6 +68,10 @@ button:active {
   position: relative;
   font-weight: 300;
 }
+.home-list-item {
+  padding: 7px 0px;
+  margin-bottom: 2px;
+}
 .left-indicator {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
@@ -141,7 +145,7 @@ button:active {
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 17px;
+  top: 20px;
   font-weight: 700;
   z-index: 1;
 }
@@ -168,13 +172,13 @@ button:active {
   display: inline-block;
   position: absolute;
   right: 10px;
-  top: 17px;
+  top: 20px;
   z-index: 2;
 }
 .left-action {
   position: absolute;
   left: 10px;
-  top: 17px;
+  top: 20px;
   z-index: 2;
 }
 .basic-input {
@@ -407,4 +411,34 @@ button:active {
   top: -3px;
   float: right;
   opacity: 0.5;
+}
+.section {
+  margin-bottom: 20px;
+  padding: 10px 10px 0px 10px;
+}
+.name {
+  font-size: 1em;
+  font-weight: 500;
+}
+.price {
+  font-size: 1em;
+  font-weight: 500;
+}
+.description {
+  font-size: 1em;
+  font-weight: 300;
+}
+.add-button {
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  font-weight: 200;
+  text-align: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -moz-transform: scale(20px);
+  -webkit-transform: scale(20px);
+  -o-transform: scale(20px);
+  display: inline-block;
 }
