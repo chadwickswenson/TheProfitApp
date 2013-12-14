@@ -14,14 +14,27 @@
 	<link href="styles/main.css" rel="stylesheet">
 	<link href="lib/angularjs/angular-table.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic' rel='stylesheet' type='text/css'>
+
 </head>
 <body ontouchstart="">
+	<div class="main-container">
 	<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
 		<div class="left-action" ng-show="hasBack">
 			<button ng-click="direction('back');goBack()">back</button>
 		</div>
 		<div class="right-action">
 			<button ng-click="direction('front');goForward('/{{next}}')">{{next}}</button>
+		</div>
+		<div class="nav-title">
+			<span ng-bind="title"></span>
+		</div>
+
+		<div class="left-action" ng-show="hasBack">
+			<button ng-click="direction('back');goBack()">back</button>
+		</div>
+		
+		<div class="right-action">
+			<button class="add-button" ng-click="direction('front');goForward('/{{next}}')"><div class="button-text">+</div></button>
 		</div>
 		<div class="nav-title">
 			<span ng-bind="title"></span>
@@ -59,5 +72,6 @@
     <script src="scripts/controllers.js"></script>
     <script src="scripts/filters.js"></script>
     <script src="scripts/directives.js"></script>
+</div>
 </body>
 </html>

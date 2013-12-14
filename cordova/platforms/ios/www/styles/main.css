@@ -10,7 +10,12 @@ body {
   height: 100%;
   color: #000 !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.main-container {
+  position: absolute;
+  width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 a {
   color: inherit;
