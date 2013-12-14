@@ -26,6 +26,17 @@
 		<div class="nav-title">
 			<span ng-bind="title"></span>
 		</div>
+
+		<div class="left-action" ng-show="hasBack">
+			<button ng-click="direction('back');goBack()">back</button>
+		</div>
+		
+		<div class="right-action">
+			<button class="add-button" ng-click="direction('front');goForward('/{{next}}')"><div class="button-text">+</div></button>
+		</div>
+		<div class="nav-title">
+			<span ng-bind="title"></span>
+		</div>
 	</div>
 	<div class="main-content br grey-border bs main-view" ng-controller="AppCtrl">
 		<style ng-bind-html-unsafe="style"></style>
