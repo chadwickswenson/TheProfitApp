@@ -190,7 +190,8 @@ button:active {
   display: inline-block;
   position: absolute;
   right: 10px;
-  top: 20px;
+  top: 0px;
+  padding: 15px;
   z-index: 2;
 }
 .left-action {
@@ -446,18 +447,27 @@ button:active {
   font-size: 1em;
   font-weight: 300;
 }
+.add-button-wrap {
+  padding: 15px;
+  position: relative;
+  display: inline-block;
+  top: -15px;
+  right: -20px;
+}
 .add-button {
   border: 1px solid #000;
   width: 25px;
   height: 25px;
   font-weight: 200;
   text-align: center;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  -moz-transform: scale(20px);
-  -webkit-transform: scale(20px);
-  -o-transform: scale(20px);
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  -moz-transform: scale(100px);
+  -webkit-transform: scale(100px);
+  -o-transform: scale(100px);
+  display: inline-block;
+  position: relative;
   display: inline-block;
 }
 .button-text {

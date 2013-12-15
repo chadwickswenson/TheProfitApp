@@ -35,11 +35,11 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 		$scope.title = headerService.title;
 		$timeout(function(){
 			if($scope.title.toLowerCase() !== "profit") {
-				$(".left-action").show();
-				$(".right-action").hide();
+				$(".left-action").fadeIn(300);
+				$(".right-action").fadeOut(300);
 			} else {
-				$(".left-action").hide();
-				$(".right-action").show();
+				$(".left-action").fadeOut(300);
+				$(".right-action").fadeIn(300);
 			};
 		}, 300);
 	});

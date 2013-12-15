@@ -26,13 +26,13 @@ components.directive('addClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                        $(elem).click(function(){
-                            $(this).animate({ width:70, height:70}, 500, 'easeOutElastic',
+                       /* $(elem).click(function(){
+                            $(this).animate({ width:50, height:50, top:-10}, 200,
                                 function(){
-                                    $(this).animate({ width:50, height:50}, 200, 'easeOutElastic');
+                                    $(this).animate({ width:25, height:25, top:0}, 100);
                                 }
                             )
-                        });
+                        });*/
                         
                 }
         }
