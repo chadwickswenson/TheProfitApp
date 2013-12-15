@@ -9,7 +9,7 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 	});*/
 }]);
 
-ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', function($scope, $location, $rootScope, headerService) {
+ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
 	$scope.title = "Profit";
 	$scope.next = "add";
 
@@ -33,13 +33,15 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 
 	$scope.$on('handleTitleChange', function(){
 		$scope.title = headerService.title;
-		if($scope.title.toLowerCase() !== "profit") {
-			$(".left-action").show();
-			$(".right-action").hide();
-		} else {
-			$(".left-action").hide();
-			$(".right-action").show();
-		}
+		$timeout(function(){
+			if($scope.title.toLowerCase() !== "profit") {
+				$(".left-action").show();
+				$(".right-action").hide();
+			} else {
+				$(".left-action").hide();
+				$(".right-action").show();
+			};
+		}, 300);
 	});
 
 	$scope.goBack = function() {

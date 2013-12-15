@@ -26,12 +26,10 @@ components.directive('addClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                       
-                        $(".add-button").click(function(){ 
-
-                            $(".add-button").animate({ width:70, height:70}, 500, 'easeOutElastic', 
+                        $(elem).click(function(){
+                            $(this).animate({ width:70, height:70}, 500, 'easeOutElastic',
                                 function(){
-                                    $(".add-button").animate({ width:50, height:50}, 200, 'easeOutElastic');
+                                    $(this).animate({ width:50, height:50}, 200, 'easeOutElastic');
                                 }
                             )
                         });
