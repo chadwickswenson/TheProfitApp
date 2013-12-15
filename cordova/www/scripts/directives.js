@@ -38,6 +38,24 @@ components.directive('addClick', function(){
         }
 
 });
+components.directive('yearsMenuClick', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(".nav-title").click(function(){
+                        if($(".years-menu").css('top') == '-510px'){
+                           
+                                $(".years-menu").animate({ top:'10px'}, 500, 'easeOutQuart');
+                        }
+                        else{
+                                $(".years-menu").animate({ top:'-510px'}, 500, 'easeOutQuart');
+                        }
+                    });
+                        
+                }
+        }
+
+});
 
 function normalizePhone(phone) {
     phone = phone.replace(/[^\d]/g, "");

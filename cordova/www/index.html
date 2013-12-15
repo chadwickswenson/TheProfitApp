@@ -19,16 +19,14 @@
 <body ontouchstart="">
 	<div class="main-container">
 	<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
-		<div class="left-action" ng-show="hasBack">
-			<button ng-click="direction('back');goBack()">back</button>
-		</div>
+		
 		
 		<div class="nav-title">
 			<span ng-bind="title"></span>
 		</div>
 
 		<div class="left-action" ng-show="hasBack">
-			<button ng-click="direction('back');goBack()">back</button>
+			<button class='back-button-wrap' ng-click="direction('back');goBack()"><img src="img/back-arrow.png" class="back-img" width="11px" /> Cancel</button>
 		</div>
 		
 		<div class="right-action">

@@ -163,7 +163,7 @@ button:active {
   text-align: center;
   position: absolute;
   width: 100%;
-  top: 20px;
+  top: 25px;
   font-weight: 700;
   z-index: 1;
 }
@@ -197,7 +197,7 @@ button:active {
 .left-action {
   position: absolute;
   left: 10px;
-  top: 20px;
+  top: 25px;
   z-index: 2;
 }
 .basic-input {
@@ -451,14 +451,25 @@ button:active {
   padding: 15px;
   position: relative;
   display: inline-block;
+  top: -11px;
+  right: -32px;
+}
+.back-button-wrap {
+  padding: 15px;
+  position: relative;
+  display: inline-block;
   top: -15px;
-  right: -20px;
+  left: -20px;
+}
+.back-img {
+  display: inline-block;
+  position: relative;
+  top: -2px;
 }
 .add-button {
-  border: 1px solid #000;
   width: 25px;
   height: 25px;
-  font-weight: 200;
+  font-weight: 400;
   text-align: center;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -473,9 +484,9 @@ button:active {
 .button-text {
   display: inline-block;
   position: relative;
-  top: -6px;
-  font-size: 1.3em;
-  font-weight: 300;
+  top: -4px;
+  font-size: 1.6em;
+  font-weight: 400;
 }
 .main-containe,
 div {
@@ -485,4 +496,24 @@ div {
 }
 .main-container {
   -webkit-backface-visibility: hidden;
+}
+.years-menu {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  display: inline-block;
+  background: #fff;
+  top: -510px;
+  z-index: 500;
+}
+.year-menu-option {
+  width: 100%;
+  border-bottom: 1px solid #dbdbdb;
+  display: inline-block;
+  color: #000;
+  font-weight: 500;
+  font-size: 1em;
+  z-index: 500;
+  text-align: center;
+  padding: 10px 0px;
 }

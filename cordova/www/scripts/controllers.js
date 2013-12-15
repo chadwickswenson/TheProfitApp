@@ -1,5 +1,5 @@
 var ctrls = angular.module('DatAppProfit.controllers', []);
-
+var fadeTime = 200
 ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 	/* $scope.$on('loadingStarted', function(){
 		$(".loading-panel").show();
@@ -35,13 +35,13 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 		$scope.title = headerService.title;
 		$timeout(function(){
 			if($scope.title.toLowerCase() !== "profit") {
-				$(".left-action").fadeIn(300);
-				$(".right-action").fadeOut(300);
+				$(".left-action").fadeIn(fadeTime);
+				$(".right-action").fadeOut(fadeTime);
 			} else {
-				$(".left-action").fadeOut(300);
-				$(".right-action").fadeIn(300);
+				$(".left-action").fadeOut(fadeTime);
+				$(".right-action").fadeIn(fadeTime);
 			};
-		}, 300);
+		}, 50);
 	});
 
 	$scope.goBack = function() {
