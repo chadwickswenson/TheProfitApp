@@ -32,7 +32,7 @@
 		</div>
 		
 		<div class="right-action">
-			<button class="add-button" ng-click="direction('front');goForward('/{{next}}')"><div class="button-text">+</div></button>
+			<button class="add-button" ng-click="direction('front');goForward('/{{next}}')" add-click><div class="button-text">+</div></button>
 		</div>
 		<div class="nav-title">
 			<span ng-bind="title"></span>
@@ -45,6 +45,8 @@
 	<footer>
 	</footer>
 	<loading-panel></loading-panel>
+	
+	
 	<script type="text/javascript" src="lib/jquery/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
 	<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
@@ -70,6 +72,8 @@
     <script src="scripts/controllers.js"></script>
     <script src="scripts/filters.js"></script>
     <script src="scripts/directives.js"></script>
+
+
 </div>
 </body>
 </html>
