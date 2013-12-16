@@ -48,7 +48,7 @@ components.directive('yearsMenuClick', function(){
                                 $(".years-menu").animate({ top:'10px'}, 500, 'easeOutQuart');
                         }
                         else{
-                                $(".years-menu").animate({ top:'-510px'}, 500, 'easeOutQuart');
+                                $(".years-menu").animate({ top:'-510px'}, 800, 'easeOutQuart');
                         }
                     });
                         
