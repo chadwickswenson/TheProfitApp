@@ -35,9 +35,6 @@ button {
 button:focus {
   outline: none;
 }
-button:active {
-  background: #f1f1f1;
-}
 .view {
   padding: 0px;
   overflow: hidden;
