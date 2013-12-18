@@ -1,4 +1,22 @@
 <a class="list-link" href="#/detail/{{id}}">
-			<div class="item-wrap"><div class="entry-title"><div class="entry-tag {{tag}}">+</div>{{name}}</div><div class="entry-value">{{value}}</div>
-			<div class="desc">{{desc}}</div><div class="info"><i class="fa fa-paperclip {{attachment}}"></i></div></div>
+  <div class="item-wrap">
+    <div class="entry-title">
+      <div class="entry-tag {{tag}}">
+        +
+      </div>
+      {{name}}
+      <!-- just move this somewhere appropriate, "title" attribute is important-->
+      <span class="entry-date" title="{{date}}" time-ago></span>
+    </div>
+    <div class="entry-value">
+      {{value}}
+    </div>
+    <div class="desc">
+      {{desc}}
+    </div>
+    <div class="info">
+      <i class="fa fa-paperclip {{attachment}}">
+      </i>
+    </div>
+  </div>
 </a>
