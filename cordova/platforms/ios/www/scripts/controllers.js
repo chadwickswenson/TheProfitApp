@@ -37,9 +37,11 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 			if($scope.title.toLowerCase() !== "profit") {
 				$(".left-action").fadeIn(fadeTime);
 				$(".right-action").fadeOut(fadeTime);
+				$(".years-dropdown-icon").fadeOut(fadeTime);
 			} else {
 				$(".left-action").fadeOut(fadeTime);
 				$(".right-action").fadeIn(fadeTime);
+				$(".years-dropdown-icon").fadeIn(fadeTime);
 			};
 		}, 50);
 	});

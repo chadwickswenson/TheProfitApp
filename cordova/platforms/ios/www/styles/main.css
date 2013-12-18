@@ -208,20 +208,6 @@ form {
   top: 12px;
   z-index: 2;
 }
-@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-  .nav {
-    height: 60px;
-  }
-  .left-action {
-    top: 29px;
-  }
-  .right-action {
-    top: 4px;
-  }
-  .nav-title {
-    top: 6px;
-  }
-}
 .basic-input {
   margin-left: -3px;
   padding-left: 10px;
@@ -288,7 +274,7 @@ form {
   outline: none;
 }
 .styled {
-  width: 67%;
+  width: 64%;
   overflow: hidden;
   display: inline-block;
   position: relative;
@@ -487,16 +473,16 @@ form {
   top: -2px;
 }
 .add-button {
-  width: 50px;
-  height: 30px;
+  width: 31px;
+  height: 31px;
   font-weight: 400;
   text-align: center;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  -moz-transform: scale(20px);
-  -webkit-transform: scale(20px);
-  -o-transform: scale(20px);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -moz-transform: scale(8px);
+  -webkit-transform: scale(8px);
+  -o-transform: scale(8px);
   display: inline-block;
   position: relative;
   display: inline-block;
@@ -504,19 +490,23 @@ form {
   background: #f23e2b;
   display: inline-block;
   color: #f1f1f1;
-  border-radius: 3px;
   border: 1px solid #cd3525;
-  top: -1px;
+  top: -6px;
   background-image: -o-linear-gradient(bottom, #db4b38 0%, #d14836 100%);
   background-image: -moz-linear-gradient(bottom, #db4b38 0%, #d14836 100%);
   background-image: -webkit-linear-gradient(bottom, #db4b38 0%, #d14836 100%);
   background-image: -ms-linear-gradient(bottom, #db4b38 0%, #d14836 100%);
   background-image: linear-gradient(to bottom, #db4b38 0%, #d14836 100%);
   color: #fff !important;
+  right: -5px;
 }
 .add-button:active {
-  box-shadow: inset 0px 4px 14px #85312d;
-  border: 1px solid #85312d;
+  box-shadow: inset 0px 4px 14px #612320;
+  border: 1px solid #612320;
+}
+.add-button:focus {
+  box-shadow: inset 0px 4px 14px #612320;
+  border: 1px solid #612320;
 }
 .add-icon {
   position: absolute;
@@ -527,7 +517,8 @@ form {
 .button-text {
   display: inline-block;
   position: relative;
-  top: -9px;
+  top: -8px;
+  left: -5px;
   font-size: 1.6em;
   font-weight: 400;
   color: #fff !important;
@@ -554,6 +545,13 @@ div {
   display: block;
   border: 1px solid #ccc;
   padding: 10px 0px 15px 0px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -moz-transform: scale(30px);
+  -webkit-transform: scale(30px);
+  -o-transform: scale(30px);
+  background: #fff;
 }
 .years-menu {
   width: 100%;
@@ -561,7 +559,7 @@ div {
   position: absolute;
   display: inline-block;
   background: #fff;
-  padding-top: 30px;
+  padding-top: 10px;
   top: -510px;
   z-index: 500;
 }
@@ -593,4 +591,33 @@ div {
   display: inline;
   right: 8px;
   top: 9px;
+}
+.years-dropdown-icon {
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  left: 0px;
+  text-align: center;
+  width: 100%;
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+  .nav {
+    height: 60px;
+  }
+  .left-action {
+    top: 29px;
+  }
+  .right-action {
+    top: 4px;
+  }
+  .nav-title {
+    top: 6px;
+  }
+  .add-button {
+    top: -1px;
+    right: -1px;
+  }
+  .years-menu {
+    padding-top: 30px;
+  }
 }

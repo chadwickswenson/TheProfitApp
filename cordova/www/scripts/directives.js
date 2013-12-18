@@ -58,7 +58,22 @@ components.directive('yearsMenuClick', function(){
         }
 
 });
-
+components.directive('entryTypeToggle', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(elem).click(function(){
+                        if($(elem).html() == 'expense'){
+                           $(elem).html('income');    
+                        }
+                        else{
+                           $(elem).html('expense');      
+                        }
+                    });
+                        
+                }
+        }
+});
 function normalizePhone(phone) {
     phone = phone.replace(/[^\d]/g, "");
     if (phone.length == 10) {
