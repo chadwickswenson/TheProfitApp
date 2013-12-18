@@ -14,6 +14,7 @@ subFontSize = 0.8
 topIndex = 1000
 navIndex = 700
 belowNavIndex = 500
+menuBgIndex = 400
 contentIndex = 200
 viewIndex = 100
 
@@ -25,8 +26,8 @@ html, body
   margin:0px
   background:#fff
   height: 100%
-  color:#000 !important
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif
+  color:#000
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important
   overflow:hidden !important
   width:100%
 
@@ -76,6 +77,7 @@ button:focus
   backface-visibility:hidden
   -webkit-backface-visibility:hidden
   -moz-backface-visibility:hidden
+  z-index:viewIndex
  
 .no
   display:none
@@ -96,7 +98,7 @@ button:focus
   float:left
   position:relative
   display:inline-block
-  font-family: 'Merriweather', serif;
+
 
 .item-amount
   float:right
@@ -184,7 +186,6 @@ form
   z-index:1
   padding-top:20px
   padding-bottom:10px
-  font-family: 'Merriweather', serif
 
 .nav
   margin-bottom:20px
@@ -194,7 +195,7 @@ form
   left:0px
   height:40px
   width:100%
-  z-index:10
+  z-index:navIndex
   background:rgba(255,255,255,0.98)
   background:colorLGrey
   border-bottom:1px solid colorGreyBorder
@@ -293,7 +294,7 @@ form
   outline:none
 
 .styled
-  width: 70%
+  width: 67%
   overflow: hidden
   display:inline-block
   position:relative
@@ -301,7 +302,6 @@ form
   height:32px
 
 .profit-home
-  z-index:1
 
 .profit-add
   z-index:2
@@ -392,10 +392,9 @@ form
   font-size:mainFontSize
   line-height:1.1em
   float:left
-  font-weight:700
+  font-weight:500
   top:0px
   height:20px
-  font-family: 'Merriweather', serif
 
 .entry-value
   display:inline-block
@@ -501,6 +500,11 @@ form
   background-image: -webkit-linear-gradient(bottom, #DB4B38 0%, #D14836 100%)
   background-image: -ms-linear-gradient(bottom, #DB4B38 0%, #D14836 100%)
   background-image: linear-gradient(to bottom, #DB4B38 0%, #D14836 100%)
+  color:#fff !important
+
+.add-button:active
+  box-shadow:inset 0px 4px 14px #85312D
+  border:1px solid #85312D
 
 .add-icon
   position:absolute
@@ -512,9 +516,9 @@ form
   display:inline-block
   position:relative
   top:-9px
-  right:-11px
   font-size:1.6em
   font-weight:400
+  color:#fff !important
 
 .main-containe, div
   backface-visibility:hidden
@@ -544,6 +548,7 @@ form
   position:absolute
   display:inline-block
   background:#fff
+  padding-top:30px
   top:-510px
   z-index:belowNavIndex
 
@@ -552,11 +557,23 @@ form
   border-bottom:1px solid colorGreyBorder
   display:inline-block
   color:#000
-  font-weight:500
-  font-size:1em
+  font-weight:300
+  font-size:1.3em
   z-index:500
   text-align:center
-  padding:10px 0px
+  padding:20px 0px
+
+.dark-bg
+  background:rgba(0,0,0,0.5)
+  display:inline-block
+  position:fixed
+  top:0px 0px
+  width:100%
+  height:100%
+  z-index: menuBgIndex
+
+.years-bg
+  display:none
 
 .input-icon
   position:absolute

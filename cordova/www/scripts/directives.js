@@ -45,10 +45,12 @@ components.directive('yearsMenuClick', function(){
                     $(".nav-title").click(function(){
                         if($(".years-menu").css('top') == '-510px'){
                            
-                                $(".years-menu").animate({ top:'10px'}, 500, 'easeOutQuart');
+                                $(".years-menu").animate({ top:'30px'}, 400, 'easeOutQuart');
+                                $(".years-bg").fadeIn(280);
                         }
                         else{
-                                $(".years-menu").animate({ top:'-510px'}, 500, 'easeInQuart');
+                                $(".years-menu").animate({ top:'-510px'}, 400, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
                         }
                     });
                         
