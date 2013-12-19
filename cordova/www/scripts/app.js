@@ -34,7 +34,7 @@ var _deviceInfo = function() {
 	return information;
 }
 
-var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngTable']).
+var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource']).
             config(function($routeProvider, $locationProvider) {
 				//$locationProvider.html5Mode(true);
 				$routeProvider.
