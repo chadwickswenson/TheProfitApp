@@ -22,6 +22,19 @@ components.directive('tooltip', function(){
         }
 
 });
+
+components.directive('timeAgo', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $timeout(function(){
+                        $(elem).timeago();
+                    });
+                }
+        }
+
+});
+
 components.directive('addClick', function(){
         return {
                 restrict: 'A',
@@ -44,7 +57,7 @@ components.directive('yearsMenuClick', function(){
                 link: function(scope, elem, attrs){
                     $(".nav-title").click(function(){
                         if($(".years-menu").css('top') == '-510px'){
-                           
+
                                 $(".years-menu").animate({ top:'30px'}, 400, 'easeOutQuart');
                                 $(".years-bg").fadeIn(280);
                         }
@@ -105,7 +118,8 @@ components.directive('tagItem', function($timeout) {
                 scope:{
                         name: '@',
                         amount: '@',
-                        color: '@'                    
+                        color: '@',
+                        click: '&'
                 },
                 templateUrl: 'views/partials/tagItem.html',
                 link: function(scope, elem, attrs) {
@@ -122,7 +136,9 @@ components.directive('listItem', function($timeout) {
                         value: '@',
                         tag: '@',
                         desc: '@',
-                        attachment: '@'                   
+                        date: '@',
+                        attachment: '@',
+                        id: '@'
                 },
                 templateUrl: 'views/partials/listItem.html',
                 link: function(scope, elem, attrs) {
@@ -139,6 +155,7 @@ components.directive('detailPart', function($timeout) {
                         value: '@',
                         group: '@',
                         desc: '@',
+                        date: '@',
                         attachment: '@'                   
                 },
                 templateUrl: 'views/partials/detailPart.html',

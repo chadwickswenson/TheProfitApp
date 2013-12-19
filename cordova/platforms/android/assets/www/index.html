@@ -2,73 +2,62 @@
 <html ng-app="DatAppProfit">
 <head>
 	<title>The Profit App</title>
-
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<!-- <link rel="icon" type="image/png" href="images/icon.png"> -->
 	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link href="lib/bootstrap/datepicker/css/datepicker.css" rel="stylesheet">
-	<link href="lib/bootstrap/timepicker/css/clockface.css" rel="stylesheet">
-	<link href="lib/select2/select2.css" rel="stylesheet">
 	<link href="styles/main.css" rel="stylesheet">
-	<link href="lib/angularjs/angular-table.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Kreon:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="//use.typekit.net/pxx4tuj.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body ontouchstart="">
-	<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
-		<div class="left-action" ng-show="hasBack">
-			<button ng-click="direction('back');goBack()">back</button>
+	<div class="main-container" ng-controller="AppCtrl">
+		<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
+			<div class="nav-title">
+				<span ng-bind="title"></span>
+				<i class="fa fa-angle-down years-dropdown-icon"></i>
+			</div>
+			<div class="left-action" ng-show="hasBack">
+				<button class='back-button-wrap' ng-click="goBack()"><img src="img/back-arrow.png" class="back-img" width="11px" /> Cancel</button>
+			</div>
+			<div class="right-action">
+				<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>
+			</div>
+			<div class="nav-title">
+				<span ng-bind="title"></span>
+			</div>
 		</div>
-		<div class="right-action">
-			<button ng-click="direction('front');goForward('/{{next}}')">{{next}}</button>
+		<div class="main-content br grey-border bs main-view">
+			<style ng-bind-html-unsafe="style"></style>
+			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
 		</div>
-		<div class="nav-title">
-			<span ng-bind="title"></span>
-		</div>
-
-		<div class="left-action" ng-show="hasBack">
-			<button ng-click="direction('back');goBack()">back</button>
-		</div>
-		
-		<div class="right-action">
-			<button class="add-button" ng-click="direction('front');goForward('/{{next}}')"><div class="button-text">+</div></button>
-		</div>
-		<div class="nav-title">
-			<span ng-bind="title"></span>
-		</div>
+		<footer>
+		</footer>
+		<!-- <loading-panel></loading-panel> -->
+		<script type="text/javascript" src="lib/jquery/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
+		<script type="text/javascript" src="lib/underscore/underscore.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/moment.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.timeago.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/additional-methods.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
+		<script type="text/javascript" src="lib/angularjs/angular-resource.min.js"></script>
+		<script type="text/javascript" src="lib/angularjs/angular-cache.js"></script>
+		<script type="text/javascript" src="lib/browser/UAParser.js"></script>
+		<!--Libs-->
+	    <script src="scripts/app.js"></script>
+	    <script src="scripts/services.js"></script>
+	    <script src="scripts/controllers.js"></script>
+	    <script src="scripts/filters.js"></script>
+	    <script src="scripts/directives.js"></script>
 	</div>
-	<div class="main-content br grey-border bs main-view" ng-controller="AppCtrl">
-		<style ng-bind-html-unsafe="style"></style>
-		<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
-	</div>
-	<footer>
-	</footer>
-	<loading-panel></loading-panel>
-	<script type="text/javascript" src="lib/jquery/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
-	<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
-	<script type="text/javascript" src="lib/underscore/underscore.min.js"></script>
-	<script type="text/javascript" src="lib/jquery/moment.js"></script>
-	<script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="lib/jquery/additional-methods.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="lib/bootstrap/timepicker/js/clockface.js"></script>
-	<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
-	<script type="text/javascript" src="lib/angularjs/angular-resource.min.js"></script>
-	<script type="text/javascript" src="lib/angularjs/angular-cache.js"></script>
-	<script type="text/javascript" src="lib/angularjs/angular-table.js"></script>
-	<script type="text/javascript" src="lib/noty/jquery.noty.js"></script>
-	<script type="text/javascript" src="lib/noty/layouts/bottomLeft.js"></script>
-	<script type="text/javascript" src="lib/noty/themes/default.js"></script>
-	<script type="text/javascript" src="lib/browser/UAParser.js"></script>
-	<script type="text/javascript" src="lib/select2/select2.min.js"></script>
-	<!--Libs-->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/services.js"></script>
-    <script src="scripts/controllers.js"></script>
-    <script src="scripts/filters.js"></script>
-    <script src="scripts/directives.js"></script>
 </body>
 </html>

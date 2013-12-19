@@ -1,23 +1,29 @@
 <div class="profit-home view inline-view" >
-	<div class="years-menu" years-menu-click>
-		<div class="year-menu-option">
-			2013
-		</div>
-		<div class="year-menu-option">
-			2012
-		</div>
-		<div class="year-menu-option">
-			2011
-		</div>
-	</div>
-	<div class="dark-bg years-bg">
-	</div>
-	<div class="items">
-		<home-item name="+ Income" amount="$3000.25"></home-item>
-		<tag-item name="design" amount="$3000.25" color="color-red"></tag-item>
-		<br/><br/>
-		<home-item name="- Expense" amount="$3000.25"></home-item>
-		<tag-item name="Hardware" amount="$2355.5" color="color-blue"></tag-item>
-		<tag-item name="Software" amount="$4563.5" color="color-purple"></tag-item>
-	</div>
+  <div class="years-menu" years-menu-click>
+    <div class="year-menu-option">
+      2013
+    </div>
+    <div class="year-menu-option">
+      2012
+    </div>
+    <div class="year-menu-option">
+      2011
+    </div>
+  </div>
+  <div class="dark-bg years-bg">
+  </div>
+  <div class="items">
+    <home-item name="+ Income" amount="$3000.25">
+    </home-item>
+    <tag-item name="design" amount="$3000.25" color="color-red" click="_go(path, direction)">
+    </tag-item>
+    <br/>
+    <br/>
+    <home-item name="- Expense" amount="$3000.25">
+    </home-item>
+    <tag-item name="Hardware" amount="$2355.5" color="color-blue" click="_go(path, direction)">
+    </tag-item>
+    <tag-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+    </tag-item>
+  </div>
 </div>

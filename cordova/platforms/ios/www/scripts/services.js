@@ -2,6 +2,108 @@
 
 var services = angular.module('DatAppProfit.services', ['jmdobry.angular-cache'])
 
+var costs = [
+	{
+		id: 1,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-18T12:24:17Z"
+	},
+	{
+		id: 2,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-14T09:24:17Z"
+	},
+	{
+		id: 3,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "no",
+		date: "2013-12-17T09:24:17Z"
+	},
+	{
+		id: 4,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-14T09:24:17Z"
+	},
+	{
+		id: 5,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-red",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-15T09:24:17Z"
+	},
+	{
+		id: 6,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-yellow",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-14T09:24:17Z"
+	},
+	{
+		id: 7,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-red",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-11-14T09:24:17Z"
+	},
+	{
+		id: 8,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-15T09:24:17Z"
+	},
+	{
+		id: 9,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-04T09:24:17Z"
+	},
+	{
+		id: 10,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-teal",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-11T09:24:17Z"
+	},
+	{
+		id: 11,
+		title: "Macbook Pro Late 2013",
+		value: "$2654.23",
+		tag: "color-blue",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-16T09:24:17Z"
+	}
+];
+
 
 services.factory('appVersion', function($rootScope){
 	var versionMgr = {};
@@ -96,6 +198,14 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
                                  }
                          });
         return innerAPI.authenticate(jsonData, callbackSuccess, callbackError);
+	}
+
+	profitAPI.getItemsList = function() {
+		return costs;
+	}
+
+	profitAPI.getItemById = function(id) {
+		return costs[parseInt(id)-1];
 	}
 
 	return profitAPI;

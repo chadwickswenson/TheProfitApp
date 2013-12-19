@@ -34,15 +34,46 @@ var _deviceInfo = function() {
 	return information;
 }
 
-var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngTable']).
+var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource']).
             config(function($routeProvider, $locationProvider) {
 				//$locationProvider.html5Mode(true);
 				$routeProvider.
-                    when('/home', {templateUrl: 'views/home.html', Controller: 'HomeCtrl'}). //you need to create this one
-                    when('/createtag', {templateUrl: 'views/createTag.html', Controller: 'TagCtrl'}).
-                    when('/add', {templateUrl: 'views/add.html', Controller: 'AddCtrl'}).
-                    when('/list', {templateUrl: 'views/list.html', Controller: 'ListCtrl'}).
-                    when('/detail', {templateUrl: 'views/detail.html', Controller: 'DetailCtrl'}).
+                    when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
+                    when('/createtag', {templateUrl: 'views/createTag.html', controller: 'TagCtrl'}).
+                    when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
+                    when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
+                        {
+                            items: ['$q', 'profitAppService', '$location', function($q, profitAppService, $location){
+                                var deferred = $q.defer();
+
+                                var data = profitAppService.getItemsList();
+                                if(data) {
+                                    deferred.resolve(data);
+                                } else {
+                                    deferred.reject;
+                                }
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }).
+                    when('/detail/:id', {templateUrl: 'views/detail.html', controller: 'DetailCtrl', resolve:
+                        {
+                            item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                                var deferred = $q.defer();
+                                var id = $route.current.params.id;
+
+                                var data = profitAppService.getItemById(id);
+                                if(data) {
+                                    deferred.resolve(data);
+                                } else {
+                                    deferred.reject;
+                                }
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }).
                     otherwise({redirectTo:'/home'});
 			});
 

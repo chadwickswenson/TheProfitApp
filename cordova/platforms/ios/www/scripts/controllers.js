@@ -7,15 +7,10 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 	$scope.$on('loadingStopped', function(){
 		$(".loading-panel").hide();
 	});*/
-}]);
-
-ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
-	$scope.title = "Profit";
-	$scope.next = "add";
 
 	var styles = {
 	    // appear from right
-	    front: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
+	    forward: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
 	    // appear from left
 	    back: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all; -webkit-transform:translate3d(-100%,0,0)}  .animate-enter.animate-enter-active {   position:absolute;   -webkit-transform:translate3d(0,0,0) }  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;  -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(100%,0,0) };'
 	};
@@ -25,10 +20,60 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 		$rootScope.style = styles[dir];
 	}
 
-	$scope.direction('front');
-
-	$scope.goForward = function(path) {
+	$scope._go = function(path, direction) {
+		if(direction){
+			$scope.direction('forward');
+		} else {
+			$scope.direction('back');
+		}
 		$location.path(path);
+	}
+}]);
+
+ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
+	$scope.title = "Profit";
+	var _getFutureRoute = function(route) {
+		var _futureRoute = {};
+		_futureRoute.back = null;
+		_futureRoute.forward = null;
+
+		switch(route) {
+			case 'home':
+				_futureRoute.forward = 'add';
+			break;
+			case 'add':
+				_futureRoute.back = 'home';
+				_futureRoute.forward = 'createtag';
+			break;
+			case 'createtag':
+				_futureRoute.back = 'add';
+			break;
+			case 'list':
+				_futureRoute.back = 'home';
+				_futureRoute.forward = 'detail';
+			break;
+			case 'detail':
+				_futureRoute.back = 'list';
+			break;
+			default:
+				_futureRoute.back = null;
+				_futureRoute.forward = null;
+			break;
+		}
+
+		return _futureRoute;
+	}
+
+	$scope.goForward = function() {
+		var route = $location.path().split("/")[1];
+		var path = _getFutureRoute(route).forward;
+		$scope.$parent._go(path, true);
+	}
+
+	$scope.goBack = function() {
+		var route = $location.path().split("/")[1];
+		var path = _getFutureRoute(route).back;
+		$scope.$parent._go(path, false);
 	}
 
 	$scope.$on('handleTitleChange', function(){
@@ -45,10 +90,6 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 			};
 		}, 50);
 	});
-
-	$scope.goBack = function() {
-		window.history.back();
-	}
 }]);
 
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
@@ -63,10 +104,11 @@ ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 
 }]);
 
-ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'items', function($scope, $location, $rootScope, loadingService, items) {
 
+	$scope.items = items;
 }]);
 
-ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-
+ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'item', function($scope, $location, $rootScope, loadingService, item) {
+	$scope.item = item;
 }]);
