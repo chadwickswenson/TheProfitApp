@@ -14,12 +14,9 @@ express.limit('10mb');
 app.configure(function() {  
   app.use(express.bodyParser());          
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'jimbo' }));
+  app.use(express.session({ secret: 'datapp' }));
   app.use(express.methodOverride());
-  app.use(require('stylus').middleware({
-    src: __dirname + '/public',
-    compress: true
-  }));
+  app.use(require('stylus').middleware(__dirname + '/styles'));
   app.use(express.static(__dirname + '/public'));
 });
 
