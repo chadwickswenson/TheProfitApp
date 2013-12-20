@@ -58,11 +58,11 @@ components.directive('yearsMenuClick', function(){
                     $(".nav-title").click(function(){
                         if($(".years-menu").css('top') == '-510px'){
 
-                                $(".years-menu").animate({ top:'30px'}, 400, 'easeOutQuart');
+                                $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
                                 $(".years-bg").fadeIn(280);
                         }
                         else{
-                                $(".years-menu").animate({ top:'-510px'}, 400, 'easeInQuart');
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
                                 $(".years-bg").fadeOut(280);
                         }
                     });
