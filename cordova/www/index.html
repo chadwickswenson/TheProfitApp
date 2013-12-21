@@ -22,10 +22,15 @@
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
 			</div>
 			<div class="left-action" ng-show="hasBack">
-				<button class='back-button-wrap' ng-click="goBack()"><img src="img/back-arrow.png" class="back-img" width="11px" /> Cancel</button>
+				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> cancel</button>
 			</div>
-			<div class="right-action">
-				<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>
+			<div class="right-action add-action">
+				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				<button class="primary-action right-text-action" ng-click="goForward()"><i class="fa fa-plus-square fa-inline"></i> new</button>
+			</div>
+			<div class="right-action enter-action">
+				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				<button class="primary-action right-text-action" ng-click="goForward()">enter</button>
 			</div>
 			<div class="nav-title">
 				<span ng-bind="title"></span>

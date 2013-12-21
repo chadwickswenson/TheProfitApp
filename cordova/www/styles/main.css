@@ -105,6 +105,24 @@ button:focus {
   margin: 6px 5px 0px 30px;
   position: relative;
 }
+.primary-action {
+  font-weight: 600;
+  color: #f3402a;
+  padding: 6px;
+  position: absolute;
+  right: 0px;
+  right: -9px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-transform: scale(5px);
+  -webkit-transform: scale(5px);
+  -o-transform: scale(5px);
+  letter-spacing: -1px !important;
+}
+.primary-action:active {
+  background: #ccc;
+}
 .color-red {
   background: #f3402a !important;
 }
@@ -204,12 +222,19 @@ form {
   top: -10px;
   padding: 15px;
   z-index: 2;
+  width: 100px;
 }
 .left-action {
   position: absolute;
   left: 10px;
   top: 12px;
   z-index: 2;
+  color: #f3402a;
+}
+.fa-inline {
+  position: relative;
+  display: inline-block;
+  top: 1px;
 }
 .basic-input {
   margin-left: -3px;
@@ -474,11 +499,20 @@ form {
   display: inline-block;
   top: -19px;
   left: -20px;
+  color: #f3402a;
+}
+.back-img2 {
+  top: 1px;
+  position: relative;
+  display: inline-block;
 }
 .back-img {
   display: inline-block;
   position: relative;
   top: -2px;
+}
+.back-button-wrap:active {
+  background: #ccc;
 }
 .add-button {
   width: 31px;

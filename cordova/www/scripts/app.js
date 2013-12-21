@@ -86,6 +86,7 @@ app.run(['$location', '$rootScope', '$templateCache', "headerService", function(
 
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         var route = ($location.path().indexOf("home") == -1) ? $location.path().split("/")[1] : "profit";
+
         headerService.prepForBroadcastHeaderChange(route.charAt(0).toUpperCase() + route.slice(1));
     });
 }]);
