@@ -21,16 +21,34 @@
 				<span ng-bind="title"></span>
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
 			</div>
-			<div class="left-action" ng-show="hasBack">
+			<div class="left-action cancel-action" ng-show="hasBack">
 				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> cancel</button>
+
+
 			</div>
-			<div class="right-action add-action">
+			<div class="left-action back-action" ng-show="hasBack">
+				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> home</button>
+			</div>
+
+			<div class="left-action menu-button" ng-show="hasBack">
+				<button class="action-left"><i class="fa fa-bars fa-inline larger-icon"></i></button>
+			</div>
+
+			<div class="right-action search-action">
 				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
-				<button class="primary-action right-text-action" ng-click="goForward()"><i class="fa fa-plus-square fa-inline"></i> new</button>
+				<button class="primary-action" ng-click="goForward()"><i class="fa fa-search fa-inline larger-icon"></i></button>
 			</div>
 			<div class="right-action enter-action">
 				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
 				<button class="primary-action right-text-action" ng-click="goForward()">enter</button>
+			</div>
+			<div class="right-action edit-action">
+				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				<button class="secondary-action" ng-click="goForward()">edit</button>
+			</div>
+			<div class="right-action add-action">
+				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				<button class="primary-action" ng-click="goForward()"><i class="fa fa-plus-circle fa-inline larger-icon"></i></button>
 			</div>
 			<div class="nav-title">
 				<span ng-bind="title"></span>
@@ -63,6 +81,6 @@
 	    <script src="scripts/controllers.js"></script>
 	    <script src="scripts/filters.js"></script>
 	    <script src="scripts/directives.js"></script>
-	</div>
+	</div>action
 </body>
 </html>

@@ -10,9 +10,9 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 
 	var styles = {
 	    // appear from right
-	    forward: '.animate-enter {   position:absolute;   -webkit-transition: 0.2s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.2s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
+	    forward: '.animate-enter {   position:absolute;   -webkit-transition: 0.3s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.8s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-50%,0,0) };',
 	    // appear from left
-	    back: '.animate-enter {   position:absolute;   -webkit-transition: 0.2s ease-out all; -webkit-transform:translate3d(-100%,0,0)}  .animate-enter.animate-enter-active {   position:absolute;   -webkit-transform:translate3d(0,0,0) }  .animate-leave {   position:absolute;   -webkit-transition: 0.2s ease-out all;  -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(100%,0,0) };'
+	    back: '.animate-enter {   position:absolute;   -webkit-transition: 0.4s ease-out all; -webkit-transform:translate3d(-50%,0,0)}  .animate-enter.animate-enter-active {   position:absolute;   -webkit-transform:translate3d(0,0,0) }  .animate-leave {   position:absolute;   -webkit-transition: 0.4s ease-out all;  -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(100%,0,0) };'
 	};
 
 	$scope.direction = function(dir) {
@@ -29,6 +29,17 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 		$location.path(path);
 	}
 }]);
+
+var fadeAllOut = function(){
+	$(".left-action").fadeOut(fadeTime);
+	$(".add-action").fadeOut(fadeTime);
+	$(".years-dropdown-icon").fadeOut(fadeTime);
+	$(".enter-action").fadeOut(fadeTime);
+	$(".edit-action").fadeOut(fadeTime);
+	$(".menu-button").fadeOut(fadeTime);
+	$(".search-action").fadeOut(fadeTime);
+	$(".back-action").fadeOut(fadeTime);
+}
 
 ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
 	$scope.title = "Profit";
@@ -79,15 +90,30 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 	$scope.$on('handleTitleChange', function(){
 		$scope.title = headerService.title;
 		$timeout(function(){
-			if($scope.title.toLowerCase() !== "profit") {
-				$(".left-action").fadeIn(fadeTime);
-				$(".right-action").fadeOut(fadeTime);
-				$(".years-dropdown-icon").fadeOut(fadeTime);
-			} else {
-				$(".left-action").fadeOut(fadeTime);
-				$(".right-action").fadeIn(fadeTime);
+
+			fadeAllOut();
+
+			if($scope.title.toLowerCase() == "add"){
+				$(".cancel-action").fadeIn(fadeTime);
+				$(".enter-action").fadeIn(fadeTime);
+			}
+			else if($scope.title.toLowerCase() == "list"){
+				$(".back-action").fadeIn(fadeTime);
+				$(".search-action").fadeIn(fadeTime);
+			} 
+			else if($scope.title.toLowerCase() !== "profit") {
+				$(".cancel-action").fadeIn(fadeTime);
+				$(".enter-action").fadeIn(fadeTime);
+			}
+			else if($scope.title.toLowerCase() == "profit"){
+				$(".add-action").fadeIn(fadeTime);
 				$(".years-dropdown-icon").fadeIn(fadeTime);
-			};
+				$(".menu-button").fadeIn(fadeTime);
+			}
+			else {
+				$(".enter-action").fadeIn(fadeTime);
+				$(".years-dropdown-icon").fadeIn(fadeTime);
+			}
 		}, 50);
 	});
 }]);

@@ -30,6 +30,17 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 	}
 }]);
 
+var fadeAllOut = function(){
+	$(".left-action").fadeOut(fadeTime);
+	$(".add-action").fadeOut(fadeTime);
+	$(".years-dropdown-icon").fadeOut(fadeTime);
+	$(".enter-action").fadeOut(fadeTime);
+	$(".edit-action").fadeOut(fadeTime);
+	$(".menu-button").fadeOut(fadeTime);
+	$(".search-action").fadeOut(fadeTime);
+	$(".back-action").fadeOut(fadeTime);
+}
+
 ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
 	$scope.title = "Profit";
 	var _getFutureRoute = function(route) {
@@ -79,28 +90,30 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 	$scope.$on('handleTitleChange', function(){
 		$scope.title = headerService.title;
 		$timeout(function(){
+
+			fadeAllOut();
+
 			if($scope.title.toLowerCase() == "add"){
-				$(".left-action").fadeIn(fadeTime);
+				$(".cancel-action").fadeIn(fadeTime);
 				$(".enter-action").fadeIn(fadeTime);
-				$(".years-dropdown-icon").fadeOut(fadeTime);
-				$(".add-action").fadeOut(fadeTime);
+			}
+			else if($scope.title.toLowerCase() == "list"){
+				$(".back-action").fadeIn(fadeTime);
+				$(".search-action").fadeIn(fadeTime);
 			} 
 			else if($scope.title.toLowerCase() !== "profit") {
-				$(".left-action").fadeIn(fadeTime);
-				$(".enter-action").fadeOut(fadeTime);
-				$(".years-dropdown-icon").fadeOut(fadeTime);
+				$(".cancel-action").fadeIn(fadeTime);
+				$(".enter-action").fadeIn(fadeTime);
 			}
 			else if($scope.title.toLowerCase() == "profit"){
-				$(".left-action").fadeOut(fadeTime);
 				$(".add-action").fadeIn(fadeTime);
 				$(".years-dropdown-icon").fadeIn(fadeTime);
-				$(".enter-action").fadeOut(fadeTime);
+				$(".menu-button").fadeIn(fadeTime);
 			}
 			else {
-				$(".left-action").fadeOut(fadeTime);
 				$(".enter-action").fadeIn(fadeTime);
 				$(".years-dropdown-icon").fadeIn(fadeTime);
-			};
+			}
 		}, 50);
 	});
 }]);
