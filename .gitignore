@@ -5,5 +5,3 @@ plugins/
 
 node_modules/
 *.swp
-
-cordova/www/index.html
