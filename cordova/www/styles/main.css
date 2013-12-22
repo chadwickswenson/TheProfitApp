@@ -144,7 +144,6 @@ button:focus {
   background: #ccc;
 }
 .primary-action {
-  font-weight: 600;
   color: #f3402a;
   padding: 3px 14px;
   position: absolute;
@@ -174,9 +173,6 @@ button:focus {
   -o-transform: scale(5px);
   letter-spacing: -1px !important;
   font-size: 1.2em;
-}
-.primary-action:active {
-  background: #ccc;
 }
 .color-red {
   background: #f3402a !important;
@@ -580,9 +576,6 @@ form {
   display: inline-block;
   position: relative;
   top: -2px;
-}
-.back-button-wrap:active {
-  background: #ccc;
 }
 .add-button {
   width: 31px;
