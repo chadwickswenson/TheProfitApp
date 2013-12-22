@@ -138,7 +138,8 @@ components.directive('listItem', function($timeout) {
                         desc: '@',
                         date: '@',
                         attachment: '@',
-                        id: '@'
+                        id: '@',
+                        click: '&'
                 },
                 templateUrl: 'views/partials/listItem.html',
                 link: function(scope, elem, attrs) {
