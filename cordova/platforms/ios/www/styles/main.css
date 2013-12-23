@@ -62,13 +62,6 @@ button:focus {
 .inline-view {
   padding-top: 66px;
 }
-.entry-list {
-  height: 100%;
-  overflow-y: scroll;
-  top: -10px;
-  padding-top: 60px;
-  z-index: 500 !important;
-}
 .home-item {
   width: 100%;
   display: inline-block;
@@ -179,6 +172,9 @@ button:focus {
   -o-transform: scale(5px);
   letter-spacing: -1px !important;
   font-size: 1.2em;
+}
+.primary-action:active {
+  background: #f1f1f1;
 }
 .color-red {
   background: #f3402a !important;
@@ -424,6 +420,11 @@ form {
   margin: 0px;
   padding: 0px;
   color: #000;
+  height: 100%;
+  overflow-y: scroll;
+  top: -45px;
+  padding-top: 32px;
+  z-index: 500 !important;
 }
 .entry-list li {
   display: inline-block;
@@ -583,6 +584,9 @@ form {
   position: relative;
   top: -2px;
 }
+.back-button-wrap:active {
+  background: #f1f1f1;
+}
 .add-button {
   width: 31px;
   height: 31px;
@@ -721,12 +725,15 @@ div {
 }
 .search-box-wrap {
   position: relative;
-  z-index: 1000 !important;
+  z-index: 1000;
 }
 .search-input {
   padding-left: 30px;
   opacity: 0.9;
   background: #fff;
+}
+.profit-list {
+  overflow: hidden !important;
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
   .nav {

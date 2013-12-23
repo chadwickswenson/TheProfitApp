@@ -173,6 +173,9 @@ button:focus {
   letter-spacing: -1px !important;
   font-size: 1.2em;
 }
+.primary-action:active {
+  background: #f1f1f1;
+}
 .color-red {
   background: #f3402a !important;
 }
@@ -580,6 +583,9 @@ form {
   display: inline-block;
   position: relative;
   top: -2px;
+}
+.back-button-wrap:active {
+  background: #f1f1f1;
 }
 .add-button {
   width: 31px;
