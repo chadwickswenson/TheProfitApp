@@ -68,6 +68,7 @@ button:focus {
   position: relative;
   font-weight: 700;
   background: #ededed;
+  border: 1px solid #dbdbdb;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -94,7 +95,7 @@ button:focus {
   display: inline-block;
   position: relative;
   font-weight: 300;
-  border-bottom: 1px solid #ededed;
+  border: 1px solid #dbdbdb;
   margin-left: 7%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -126,7 +127,7 @@ button:focus {
 }
 .action-left {
   font-weight: 600;
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   left: -9px;
@@ -140,10 +141,10 @@ button:focus {
   font-size: 1.2em;
 }
 .action-left:active {
-  background: #ccc;
+  background: #ededed;
 }
 .primary-action {
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -154,12 +155,13 @@ button:focus {
   -moz-transform: scale(5px);
   -webkit-transform: scale(5px);
   -o-transform: scale(5px);
-  letter-spacing: -1px !important;
+  letter-spacing: 0px !important;
   font-size: 1.2em;
+  font-weight: 500;
 }
 .secondary-action {
   font-weight: 300;
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -263,6 +265,7 @@ form {
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  border-bottom: 1px solid #dbdbdb;
 /*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
@@ -451,8 +454,8 @@ form {
   line-height: 1em;
   color: #fff;
   margin-right: 6px;
-  width: 16px;
-  height: 16px;
+  width: 36px;
+  height: 36px;
   text-align: center;
 }
 .entry-list li .desc {
@@ -464,6 +467,7 @@ form {
   float: left;
   font-weight: 300;
   width: 90%;
+  padding-left: 46px;
 }
 .no-tag {
   border: 1px solid #ccc;
@@ -558,7 +562,7 @@ form {
 }
 .back-button-wrap {
   font-weight: 300;
-  color: #f3402a;
+  color: #000;
   padding: 3px 6px;
   position: absolute;
   right: 0px;
@@ -734,11 +738,11 @@ div {
 }
 .listanimate-enter,
 .listanimate-leave {
-  -webkit-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  -moz-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  -ms-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  -o-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -webkit-transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) all;
+  -moz-transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) all;
+  -ms-transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) all;
+  -o-transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) all;
+  transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) all;
   position: relative;
   display: block;
   overflow: hidden;
@@ -754,8 +758,8 @@ div {
 .listanimate-enter.listanimate-enter-active,
 .listanimate-leave {
   opacity: 1;
-  width: 150px;
-  height: 30px;
+  height: 63px;
+  width: 100%;
 }
 .profit-list {
   overflow: hidden !important;

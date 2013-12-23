@@ -12,6 +12,8 @@ navBarPaddingTop = 29px
 mainFontSize = 1em
 subFontSize = 0.8
 
+primaryColor = #000
+
 topIndex = 1000
 navIndex = 700
 belowNavIndex = 500
@@ -96,6 +98,7 @@ button:focus
   position:relative
   font-weight:700
   background:colorLGrey
+  border:1px solid colorGreyBorder
   brad(4px)
   padding:10px 7px
 
@@ -117,7 +120,7 @@ button:focus
   display:inline-block
   position:relative
   font-weight:300
-  border-bottom:1px solid colorLGrey
+  border:1px solid colorGreyBorder
   margin-left:7%
   brad(4px)
   padding:7px 7px
@@ -139,7 +142,7 @@ button:focus
 
 .action-left
   font-weight:600
-  color:colorRed
+  color:primaryColor
   padding:3px 14px
   position:absolute
   left:-9px
@@ -148,21 +151,22 @@ button:focus
   font-size:1.2em
 
 .action-left:active
-  background:#ccc  
+  background:colorLGrey
 
 .primary-action
-  color:colorRed
+  color:primaryColor
   padding:3px 14px
   position:absolute
   right:0px
   right:-9px
   brad(5px)
-  letter-spacing:-1px !important
+  letter-spacing:0px !important
   font-size:1.2em
+  font-weight:500
 
 .secondary-action
   font-weight:300
-  color:colorRed
+  color:primaryColor
   padding:3px 14px
   position:absolute
   right:0px
@@ -255,6 +259,7 @@ form
   -khtml-user-select: none
   -webkit-user-select: none
   -o-user-select: none
+  border-bottom:1px solid colorGreyBorder
   /*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
@@ -420,8 +425,8 @@ form
   line-height:1em
   color:#fff
   margin-right:6px
-  width:16px
-  height:16px
+  width:36px
+  height:36px
   text-align:center
 
 .entry-list li .desc
@@ -433,6 +438,7 @@ form
   float:left
   font-weight:300
   width:90%
+  padding-left:46px
 
 
 .no-tag
@@ -528,7 +534,7 @@ form
 
 .back-button-wrap
   font-weight:300
-  color:colorRed
+  color:primaryColor
   padding:3px 6px
   position:absolute
   right:0px
@@ -690,11 +696,11 @@ form
 
 .listanimate-enter,
 .listanimate-leave
-  -webkit-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
-  -moz-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
-  -ms-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
-  -o-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
-  transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all
+  -webkit-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -moz-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -ms-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -o-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
   position: relative
   display: block
   overflow: hidden
@@ -710,8 +716,8 @@ form
 .listanimate-enter.listanimate-enter-active,
 .listanimate-leave
   opacity: 1
-  width: 150px
-  height: 30px
+  height: 63px
+  width: 100%
 
 .profit-list
   overflow:hidden !important
