@@ -126,7 +126,7 @@ button:focus {
 }
 .action-left {
   font-weight: 600;
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   left: -9px;
@@ -140,10 +140,10 @@ button:focus {
   font-size: 1.2em;
 }
 .action-left:active {
-  background: #ccc;
+  background: #ededed;
 }
 .primary-action {
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -159,7 +159,7 @@ button:focus {
 }
 .secondary-action {
   font-weight: 300;
-  color: #f3402a;
+  color: #000;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -451,8 +451,8 @@ form {
   line-height: 1em;
   color: #fff;
   margin-right: 6px;
-  width: 16px;
-  height: 16px;
+  width: 36px;
+  height: 36px;
   text-align: center;
 }
 .entry-list li .desc {
@@ -464,6 +464,7 @@ form {
   float: left;
   font-weight: 300;
   width: 90%;
+  padding-left: 46px;
 }
 .no-tag {
   border: 1px solid #ccc;
@@ -558,7 +559,7 @@ form {
 }
 .back-button-wrap {
   font-weight: 300;
-  color: #f3402a;
+  color: #000;
   padding: 3px 6px;
   position: absolute;
   right: 0px;
