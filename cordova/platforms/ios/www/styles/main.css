@@ -59,9 +59,15 @@ button:focus {
 .no {
   display: none;
 }
-.profit-add,
 .inline-view {
   padding-top: 66px;
+}
+.entry-list {
+  height: 100%;
+  overflow-y: scroll;
+  top: -10px;
+  padding-top: 60px;
+  z-index: 500 !important;
 }
 .home-item {
   width: 100%;
@@ -144,7 +150,6 @@ button:focus {
   background: #ccc;
 }
 .primary-action {
-  font-weight: 600;
   color: #f3402a;
   padding: 3px 14px;
   position: absolute;
@@ -174,9 +179,6 @@ button:focus {
   -o-transform: scale(5px);
   letter-spacing: -1px !important;
   font-size: 1.2em;
-}
-.primary-action:active {
-  background: #ccc;
 }
 .color-red {
   background: #f3402a !important;
@@ -581,9 +583,6 @@ form {
   position: relative;
   top: -2px;
 }
-.back-button-wrap:active {
-  background: #ccc;
-}
 .add-button {
   width: 31px;
   height: 31px;
@@ -705,6 +704,13 @@ div {
   right: 8px;
   top: 9px;
 }
+.left-input-icon {
+  position: absolute;
+  display: inline;
+  left: 8px;
+  top: 9px;
+  color: #ccc;
+}
 .years-dropdown-icon {
   position: absolute;
   bottom: 2px;
@@ -712,6 +718,15 @@ div {
   left: 0px;
   text-align: center;
   width: 100%;
+}
+.search-box-wrap {
+  position: relative;
+  z-index: 1000 !important;
+}
+.search-input {
+  padding-left: 30px;
+  opacity: 0.9;
+  background: #fff;
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
   .nav {
