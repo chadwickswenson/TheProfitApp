@@ -62,13 +62,6 @@ button:focus {
 .inline-view {
   padding-top: 66px;
 }
-.entry-list {
-  height: 100%;
-  overflow-y: scroll;
-  top: -10px;
-  padding-top: 60px;
-  z-index: 500 !important;
-}
 .home-item {
   width: 100%;
   display: inline-block;
@@ -424,6 +417,11 @@ form {
   margin: 0px;
   padding: 0px;
   color: #000;
+  height: 100%;
+  overflow-y: scroll;
+  top: -45px;
+  padding-top: 32px;
+  z-index: 500 !important;
 }
 .entry-list li {
   display: inline-block;
@@ -721,12 +719,15 @@ div {
 }
 .search-box-wrap {
   position: relative;
-  z-index: 1000 !important;
+  z-index: 1000;
 }
 .search-input {
   padding-left: 30px;
   opacity: 0.9;
   background: #fff;
+}
+.profit-list {
+  overflow: hidden !important;
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
   .nav {
