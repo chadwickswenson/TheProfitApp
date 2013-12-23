@@ -14,7 +14,7 @@ var costs = [
 	},
 	{
 		id: 2,
-		title: "Macbook Pro Late 2013",
+		title: "Chad Pro Late 2013",
 		value: "$2654.23",
 		tag: "color-teal",
 		description: "2 Weeks ago 7/11",
@@ -59,7 +59,7 @@ var costs = [
 	},
 	{
 		id: 7,
-		title: "Macbook Pro Late 2013",
+		title: "Soroush Pro Late 2013",
 		value: "$2654.23",
 		tag: "color-red",
 		description: "2 Weeks ago 7/11",
@@ -68,7 +68,7 @@ var costs = [
 	},
 	{
 		id: 8,
-		title: "Macbook Pro Late 2013",
+		title: "Macbook Air Late 2013",
 		value: "$2654.23",
 		tag: "color-teal",
 		description: "2 Weeks ago 7/11",
@@ -95,7 +95,7 @@ var costs = [
 	},
 	{
 		id: 11,
-		title: "Macbook Pro Late 2013",
+		title: "iPad Air Late 2013",
 		value: "$2654.23",
 		tag: "color-blue",
 		description: "2 Weeks ago 7/11",

@@ -728,9 +728,34 @@ div {
   z-index: 1000;
 }
 .search-input {
-  padding-left: 30px;
   opacity: 0.9;
   background: #fff;
+  font-family: 'FontAwesome';
+}
+.listanimate-enter,
+.listanimate-leave {
+  -webkit-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 250ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+.listanimate-leave.listanimate-leave-active,
+.listanimate-enter {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+.listanimate-enter.listanimate-enter-active,
+.listanimate-leave {
+  opacity: 1;
+  width: 150px;
+  height: 30px;
 }
 .profit-list {
   overflow: hidden !important;
