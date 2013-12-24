@@ -55,11 +55,12 @@ components.directive('yearsMenuClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
+                    $(".years-bg").hide();
                     $(".nav-title").click(function(){
-                        if($(".years-menu").css('top') == '-510px'){
-
+                        if($(".years-menu").css('top') != '30px'){
+                                $(".years-bg").hide().fadeIn(280);
                                 $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-                                $(".years-bg").fadeIn(280);
+                                
                         }
                         else{
                                 $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
@@ -76,16 +77,14 @@ components.directive('leftMenuClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
+                    $(".left-menu-bg").hide();
                     $(".menu-button").click(function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                $(".left-menu-bg").fadeIn(280);
+                                $(".left-menu-bg").hide().fadeIn(280);
                         }
-                        else{
-                                $(".left-menu").animate({ left:'100%'}, 300, 'easeInQuart');
-                                $(".left-menu-bg").fadeOut(280);
-                        }
+                    
                     });
                     $(".left-menu-bg").click(function(){
                         var w = $( window ).width();
