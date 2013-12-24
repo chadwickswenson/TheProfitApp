@@ -854,7 +854,7 @@ div {
   display: inline-block;
   position: fixed;
   width: 100%;
-  background: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.6);
   z-index: 19000;
   top: 0px;
   left: 0px;
