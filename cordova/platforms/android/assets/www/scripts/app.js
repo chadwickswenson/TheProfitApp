@@ -41,6 +41,7 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
                     when('/createtag', {templateUrl: 'views/createTag.html', controller: 'TagCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
+                    when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'}).
                     when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
                         {
                             items: ['$q', 'profitAppService', '$location', function($q, profitAppService, $location){
@@ -86,6 +87,7 @@ app.run(['$location', '$rootScope', '$templateCache', "headerService", function(
 
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         var route = ($location.path().indexOf("home") == -1) ? $location.path().split("/")[1] : "profit";
+
         headerService.prepForBroadcastHeaderChange(route.charAt(0).toUpperCase() + route.slice(1));
     });
 }]);

@@ -58,15 +58,40 @@ components.directive('yearsMenuClick', function(){
                     $(".nav-title").click(function(){
                         if($(".years-menu").css('top') == '-510px'){
 
-                                $(".years-menu").animate({ top:'30px'}, 400, 'easeOutQuart');
+                                $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
                                 $(".years-bg").fadeIn(280);
                         }
                         else{
-                                $(".years-menu").animate({ top:'-510px'}, 400, 'easeInQuart');
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
                                 $(".years-bg").fadeOut(280);
                         }
                     });
                         
+                }
+        }
+
+});
+
+components.directive('leftMenuClick', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(".menu-button").click(function(){
+                        var w = $( window ).width();
+                        if($(".left-menu").css('left') != '0px'){
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").fadeIn(280);
+                        }
+                        else{
+                                $(".left-menu").animate({ left:'100%'}, 300, 'easeInQuart');
+                                $(".left-menu-bg").fadeOut(280);
+                        }
+                    });
+                    $(".left-menu-bg").click(function(){
+                        var w = $( window ).width();
+                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        $(".left-menu-bg").fadeOut(280);
+                    });    
                 }
         }
 
@@ -138,7 +163,8 @@ components.directive('listItem', function($timeout) {
                         desc: '@',
                         date: '@',
                         attachment: '@',
-                        id: '@'
+                        id: '@',
+                        click: '&'
                 },
                 templateUrl: 'views/partials/listItem.html',
                 link: function(scope, elem, attrs) {

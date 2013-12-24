@@ -1,16 +1,23 @@
-@import url(http://fonts.googleapis.com/css\?family=Open\+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+@import url(http://fonts.googleapis.com/css\?family=Open\+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800)
 
 colorGrey = #ccc
-colorLGrey = #f1f1f1
+colorLGrey = #EDEDED
 colorLLGrey = #F7F7F7
 colorFontGrey = #A6B1B3
 colorGreyBorder = #DBDBDB
+colorRed = #f3402a
 blueColor = #1A68C4
 navBarHeight = 79px
 navBarPaddingTop = 29px
 mainFontSize = 1em
 subFontSize = 0.8
 
+primaryColor = #000
+navBg = #f9f9f9
+navBorder = #e4e4e6
+
+loginIndex = 1200
+menuIndex = 1300
 topIndex = 1000
 navIndex = 700
 belowNavIndex = 500
@@ -46,9 +53,10 @@ brad()
   -webkit-border-radius arguments
   -moz-border-radius arguments
   border-radius arguments
-  -moz-transform: scale(arguments);
-  -webkit-transform: scale(arguments);
-  -o-transform: scale(arguments);
+  -moz-transform: scale(arguments)
+  -webkit-transform: scale(arguments)
+  -o-transform: scale(arguments)
+
 
 a
   color:inherit
@@ -85,23 +93,27 @@ button:focus
 .no
   display:none
 
-.profit-add
-  background:colorLLGrey
-
 .inline-view
-  padding-top:56px
+  padding-top:66px
+
 
 .home-item
   width:100%
   display:inline-block
   position:relative
   font-weight:700
+  background:navBg
+  border:1px solid navBorder
+  brad(4px)
+  padding:10px 7px
+
+.home-item:active
+  background:#fff
 
 .item-name
   float:left
   position:relative
   display:inline-block
-
 
 .item-amount
   float:right
@@ -113,9 +125,15 @@ button:focus
   display:inline-block
   position:relative
   font-weight:300
+  border:1px solid navBorder
+  brad(4px)
+  padding:7px 7px
+  padding:10px 7px
 
-.home-list-item
-  padding:7px 0px
+.tag-item:active
+  background:colorLGrey
+
+.home-list-item 
   margin-bottom:2px
 
 .left-indicator
@@ -124,8 +142,46 @@ button:focus
   float:left
   height:10px
   width:10px
-  margin:6px 5px 0px 30px
+  margin:6px 5px 0px 0px
   position:relative
+
+.action-left
+  font-weight:600
+  color:primaryColor
+  padding:3px 14px
+  position:absolute
+  left:-9px
+  brad(5px)
+  letter-spacing:-1px !important
+  font-size:1.2em
+
+.action-left:active
+  background:colorLGrey
+
+.primary-action
+  color:primaryColor
+  padding:3px 14px
+  position:absolute
+  right:0px
+  right:-9px
+  brad(5px)
+  letter-spacing:0px !important
+  font-size:1.2em
+  font-weight:500
+
+.secondary-action
+  font-weight:300
+  color:primaryColor
+  padding:3px 14px
+  position:absolute
+  right:0px
+  right:-9px
+  brad(5px)
+  letter-spacing:-1px !important
+  font-size:1.2em
+
+.primary-action:active
+  background:colorLGrey
 
 .color-red
   background:#f3402a !important
@@ -164,7 +220,7 @@ button:focus
   brad(40px)
 
 .color-selected
-  border: 2px solid #444;
+  border: 2px solid #444
   border-radius: 100px
   box-shadow: inset 0 0 0 2px rgba(255,255,255,1),inset 0 0 0 4px rgba(70,70,70,1)
   display:inline-block
@@ -179,16 +235,20 @@ form
   width:320px
   padding:0px
 
+.larger-icon
+  font-size:1.1em
+
 .nav-title
   display:block
   text-align:center
   position:absolute
   width:100%
-  top:-10px
-  font-weight:700
+  top:-13px
+  font-weight:400
   z-index:1
   padding-top:20px
   padding-bottom:10px
+  font-size:1.2em
 
 .nav
   margin-bottom:20px
@@ -200,8 +260,8 @@ form
   width:100%
   z-index:navIndex
   background:rgba(255,255,255,0.98)
-  background:colorLGrey
-  border-bottom:1px solid colorGreyBorder
+  background:navBg
+  border:1px solid navBorder
   -moz-user-select: none
   -khtml-user-select: none
   -webkit-user-select: none
@@ -221,14 +281,22 @@ form
   top:-10px
   padding:15px
   z-index:2
+  width:100px
 
 .left-action
+  display:inline-block
   position:absolute
-  left:10px
-  top:12px
+  left:12px
+  top:-10px
+  padding:15px
   z-index:2
+  width:auto
+  text-align:left
 
-
+.fa-inline
+  position:relative
+  display:inline-block
+  top:1px
 
 .basic-input
   margin-left:-3px
@@ -243,7 +311,7 @@ form
   font-weight:300
   brad(0px)
   box-shadow:0px 0px 0px #fff !important
-  -webkit-appearance: none;
+  -webkit-appearance: none
   border-right:1px solid #fff
 
 .basic-input:focus
@@ -254,7 +322,7 @@ form
 .text-area-input
   height:120px
   padding-top:5px
-  -webkit-appearance: none;
+  -webkit-appearance: none
 
 .one-line-input
   height:37px
@@ -293,10 +361,8 @@ form
   border-right: 1px solid #ccc
   height:32px
 
-.profit-home
 
 .profit-add
-  z-index:2
   width:100%
 
 .items
@@ -337,6 +403,11 @@ form
   margin:0px
   padding:0px
   color:#000
+  height:100%
+  overflow-y:scroll
+  top:-45px
+  padding-top:32px
+  z-index:500 !important
 
 .entry-list li
   display:inline-block
@@ -358,8 +429,8 @@ form
   line-height:1em
   color:#fff
   margin-right:6px
-  width:16px
-  height:16px
+  width:36px
+  height:36px
   text-align:center
 
 .entry-list li .desc
@@ -371,6 +442,7 @@ form
   float:left
   font-weight:300
   width:90%
+  padding-left:46px
 
 
 .no-tag
@@ -465,16 +537,31 @@ form
   right:-32px
 
 .back-button-wrap
-  padding:15px  
+  font-weight:300
+  color:primaryColor
+  padding:3px 6px
+  position:absolute
+  right:0px
+  left:-9px
+  brad(5px)
+  letter-spacing:-1px !important
+  font-size:1.2em
+  width:100px
+  text-align:left
+
+
+.back-img2
+  top:1px
   position:relative
   display:inline-block
-  top:-19px
-  left:-20px
 
 .back-img
   display:inline-block
   position:relative
   top:-2px
+
+.back-button-wrap:active
+  background:colorLGrey
 
 .add-button
   width:31px
@@ -555,10 +642,11 @@ form
   padding-top:10px
   top:-510px
   z-index:belowNavIndex
+  border-bottom:1px solid colorGreyBorder
 
 .year-menu-option
   width:100%
-  border-bottom:1px solid colorGreyBorder
+  border-top:1px solid colorGreyBorder
   display:inline-block
   color:#000
   font-weight:300
@@ -585,26 +673,158 @@ form
   right:8px
   top:9px
 
+.left-input-icon
+  position:absolute
+  display:inline
+  left:8px
+  top:9px
+  color:colorGrey
+
+
 .years-dropdown-icon
   position:absolute
-  bottom:0px
+  bottom:2px
   display:block
   left:0px
   text-align:center
   width:100%
 
+.search-box-wrap
+  position:relative
+  z-index:1000
+
+.search-input
+  opacity:0.9
+  background:#fff
+  font-family: 'FontAwesome'
+
+.listanimate-enter,
+.listanimate-leave
+  -webkit-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -moz-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -ms-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -o-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  position: relative
+  display: block
+  overflow: hidden
+  text-overflow: clip
+  white-space:nowrap
+
+.listanimate-leave.listanimate-leave-active,
+.listanimate-enter
+  opacity: 0
+  width: 0px
+  height: 0px
+
+.listanimate-enter.listanimate-enter-active,
+.listanimate-leave
+  opacity: 1
+  height: 63px
+  width: 100%
+
+.profit-list
+  overflow:hidden !important
+
+.login-view
+  background:#fff
+  position:fixed
+  display:inline-block
+  z-index:loginIndex
+  width:100%
+  height:100%
+  top:0px
+  left:0px
+  margin:0px
+  padding:0px
+
+.login-header
+  text-align:center
+  font-size:2em
+  font-weight:300
+  margin-top:40px
+
+.login-form
+  margin-top:50px
+  position:relative
+  display:inline-block
+
+.login-button
+  text-align:center
+  background:colorLGrey
+  border:1px solid colorGreyBorder
+  padding:15px 30px
+  brad(8px)
+  position:relative
+  display:block
+  margin:20px auto
+  width:80%
+
+.facebook-login
+  text-align:center
+  background:#3b5999
+  border:1px solid #314C85
+  padding:15px 30px
+  brad(8px)
+  position:relative
+  display:block
+  margin:20px auto
+  width:80%
+  color:#fff
+
+.facebook-login:active
+  opacity:0.5
+  
+.login-button:active
+  background:#fff
+
+.left-menu
+  height:100%
+  display:inline-block
+  position:fixed
+  width:80%
+  background:#fff
+  z-index:20000 
+  top:0px
+  left:-4000px
+
+.left-menu-option
+  width:100%
+  border-top:1px solid colorGreyBorder
+  display:inline-block
+  color:#000
+  font-weight:300
+  font-size:1.3em
+  z-index:500
+  text-align:left
+  padding:12px 10px
+
+.left-menu-option:active
+  background:navBg
+  
+.left-menu-bg
+  height:100%
+  display:inline-block
+  position:fixed
+  width:100%
+  background:rgba(255,255,255,0.6)
+  z-index:19000 
+  top:0px
+  left:0px
+  display:none
+
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
   .nav
-    height:60px
+    height:66px
 
   .left-action
-    top:navBarPaddingTop
+    top:9px
 
   .right-action
-    top:4px
+    top:9px
 
   .nav-title 
-    top:6px
+    top:7px
 
   .add-button
     top:-1px
