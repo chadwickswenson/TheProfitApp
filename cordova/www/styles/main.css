@@ -833,7 +833,7 @@ div {
   background: #fff;
   z-index: 20000;
   top: 0px;
-  left: -600px;
+  left: -4000px;
 }
 .left-menu-option {
   width: 100%;
@@ -854,8 +854,7 @@ div {
   display: inline-block;
   position: fixed;
   width: 100%;
-  background: #000;
-  opacity: 0.6;
+  background: rgba(255,255,255,0.6);
   z-index: 19000;
   top: 0px;
   left: 0px;

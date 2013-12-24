@@ -77,20 +77,20 @@ components.directive('leftMenuClick', function(){
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     $(".menu-button").click(function(){
-                        if($(".left-menu").css('left') == '-600px'){
-
+                        var w = $( window ).width();
+                        if($(".left-menu").css('left') != '0px'){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                                 $(".left-menu-bg").fadeIn(280);
                         }
                         else{
-                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
+                                $(".left-menu").animate({ left:'100%'}, 300, 'easeInQuart');
                                 $(".left-menu-bg").fadeOut(280);
                         }
                     });
                     $(".left-menu-bg").click(function(){
-                       
-                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
-                                $(".left-menu-bg").fadeOut(280);
+                        var w = $( window ).width();
+                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        $(".left-menu-bg").fadeOut(280);
                     });    
                 }
         }
