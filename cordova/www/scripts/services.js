@@ -101,6 +101,24 @@ var costs = [
 		description: "2 Weeks ago 7/11",
 		attachment: "yes",
 		date: "2013-12-16T09:24:17Z"
+	},
+	{
+		id: 12,
+		title: "iPad Retina Late 2013",
+		value: "$2654.23",
+		tag: "color-blue",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-16T09:24:17Z"
+	},
+	{
+		id: 13,
+		title: "iPod Late 2012",
+		value: "$500.00",
+		tag: "color-blue",
+		description: "2 Weeks ago 7/11",
+		attachment: "yes",
+		date: "2013-12-16T09:24:17Z"
 	}
 ];
 
