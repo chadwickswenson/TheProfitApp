@@ -67,8 +67,8 @@ button:focus {
   display: inline-block;
   position: relative;
   font-weight: 700;
-  background: #ededed;
-  border: 1px solid #dbdbdb;
+  background: #f9f9f9;
+  border: 1px solid #e4e4e6;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -91,12 +91,11 @@ button:focus {
   display: inline-block;
 }
 .tag-item {
-  width: 93%;
+  width: 100%;
   display: inline-block;
   position: relative;
   font-weight: 300;
-  border: 1px solid #dbdbdb;
-  margin-left: 7%;
+  border: 1px solid #e4e4e6;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -104,6 +103,7 @@ button:focus {
   -webkit-transform: scale(4px);
   -o-transform: scale(4px);
   padding: 7px 7px;
+  padding: 10px 7px;
 }
 .tag-item:active {
   background: #ededed;
@@ -122,7 +122,7 @@ button:focus {
   float: left;
   height: 10px;
   width: 10px;
-  margin: 6px 5px 0px 5px;
+  margin: 6px 5px 0px 0px;
   position: relative;
 }
 .action-left {
@@ -237,7 +237,7 @@ form {
   padding: 0px;
 }
 .larger-icon {
-  font-size: 1.5em;
+  font-size: 1.1em;
 }
 .nav-title {
   display: block;
@@ -261,6 +261,8 @@ form {
   width: 100%;
   z-index: 700;
   background: rgba(255,255,255,0.98);
+  background: #f9f9f9;
+  border: 1px solid #e4e4e6;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -369,9 +371,7 @@ form {
   border-right: 1px solid #ccc;
   height: 32px;
 }
-.profit-home,
 .profit-add {
-  z-index: 2;
   width: 100%;
 }
 .items {
@@ -825,18 +825,54 @@ div {
 .login-button:active {
   background: #fff;
 }
+.left-menu {
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  width: 80%;
+  background: #fff;
+  z-index: 20000;
+  top: 0px;
+  left: -600px;
+}
+.left-menu-option {
+  width: 100%;
+  border-top: 1px solid #dbdbdb;
+  display: inline-block;
+  color: #000;
+  font-weight: 300;
+  font-size: 1.3em;
+  z-index: 500;
+  text-align: left;
+  padding: 12px 10px;
+}
+.left-menu-option:active {
+  background: #f9f9f9;
+}
+.left-menu-bg {
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  width: 100%;
+  background: #000;
+  opacity: 0.6;
+  z-index: 19000;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
   .nav {
-    height: 60px;
+    height: 66px;
   }
   .left-action {
-    top: 4px;
+    top: 9px;
   }
   .right-action {
-    top: 4px;
+    top: 9px;
   }
   .nav-title {
-    top: 3px;
+    top: 7px;
   }
   .add-button {
     top: -1px;

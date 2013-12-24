@@ -13,7 +13,11 @@ mainFontSize = 1em
 subFontSize = 0.8
 
 primaryColor = #000
+navBg = #f9f9f9
+navBorder = #e4e4e6
 
+loginIndex = 1200
+menuIndex = 1300
 topIndex = 1000
 navIndex = 700
 belowNavIndex = 500
@@ -52,6 +56,7 @@ brad()
   -moz-transform: scale(arguments)
   -webkit-transform: scale(arguments)
   -o-transform: scale(arguments)
+
 
 a
   color:inherit
@@ -97,8 +102,8 @@ button:focus
   display:inline-block
   position:relative
   font-weight:700
-  background:colorLGrey
-  border:1px solid colorGreyBorder
+  background:navBg
+  border:1px solid navBorder
   brad(4px)
   padding:10px 7px
 
@@ -116,14 +121,14 @@ button:focus
   display:inline-block
 
 .tag-item
-  width:93%
+  width:100%
   display:inline-block
   position:relative
   font-weight:300
-  border:1px solid colorGreyBorder
-  margin-left:7%
+  border:1px solid navBorder
   brad(4px)
   padding:7px 7px
+  padding:10px 7px
 
 .tag-item:active
   background:colorLGrey
@@ -137,7 +142,7 @@ button:focus
   float:left
   height:10px
   width:10px
-  margin:6px 5px 0px 5px
+  margin:6px 5px 0px 0px
   position:relative
 
 .action-left
@@ -231,7 +236,7 @@ form
   padding:0px
 
 .larger-icon
-  font-size:1.5em
+  font-size:1.1em
 
 .nav-title
   display:block
@@ -255,11 +260,12 @@ form
   width:100%
   z-index:navIndex
   background:rgba(255,255,255,0.98)
+  background:navBg
+  border:1px solid navBorder
   -moz-user-select: none
   -khtml-user-select: none
   -webkit-user-select: none
   -o-user-select: none
-  border-bottom:1px solid colorGreyBorder
   /*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
   background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
@@ -355,10 +361,8 @@ form
   border-right: 1px solid #ccc
   height:32px
 
-.profit-home
 
 .profit-add
-  z-index:2
   width:100%
 
 .items
@@ -696,11 +700,11 @@ form
 
 .listanimate-enter,
 .listanimate-leave
-  -webkit-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -moz-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -ms-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -o-transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  transition: 250ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -webkit-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -moz-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -ms-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  -o-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
+  transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
   position: relative
   display: block
   overflow: hidden
@@ -722,18 +726,106 @@ form
 .profit-list
   overflow:hidden !important
 
+.login-view
+  background:#fff
+  position:fixed
+  display:inline-block
+  z-index:loginIndex
+  width:100%
+  height:100%
+  top:0px
+  left:0px
+  margin:0px
+  padding:0px
+
+.login-header
+  text-align:center
+  font-size:2em
+  font-weight:300
+  margin-top:40px
+
+.login-form
+  margin-top:50px
+  position:relative
+  display:inline-block
+
+.login-button
+  text-align:center
+  background:colorLGrey
+  border:1px solid colorGreyBorder
+  padding:15px 30px
+  brad(8px)
+  position:relative
+  display:block
+  margin:20px auto
+  width:80%
+
+.facebook-login
+  text-align:center
+  background:#3b5999
+  border:1px solid #314C85
+  padding:15px 30px
+  brad(8px)
+  position:relative
+  display:block
+  margin:20px auto
+  width:80%
+  color:#fff
+
+.facebook-login:active
+  opacity:0.5
+  
+.login-button:active
+  background:#fff
+
+.left-menu
+  height:100%
+  display:inline-block
+  position:fixed
+  width:80%
+  background:#fff
+  z-index:20000 
+  top:0px
+  left:-600px
+
+.left-menu-option
+  width:100%
+  border-top:1px solid colorGreyBorder
+  display:inline-block
+  color:#000
+  font-weight:300
+  font-size:1.3em
+  z-index:500
+  text-align:left
+  padding:12px 10px
+
+.left-menu-option:active
+  background:navBg
+  
+.left-menu-bg
+  height:100%
+  display:inline-block
+  position:fixed
+  width:100%
+  background:#000
+  opacity:0.6
+  z-index:19000 
+  top:0px
+  left:0px
+  display:none
+
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
   .nav
-    height:60px
+    height:66px
 
   .left-action
-    top:4px
+    top:9px
 
   .right-action
-    top:4px
+    top:9px
 
   .nav-title 
-    top:3px
+    top:7px
 
   .add-button
     top:-1px

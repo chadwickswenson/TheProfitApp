@@ -71,6 +71,31 @@ components.directive('yearsMenuClick', function(){
         }
 
 });
+
+components.directive('leftMenuClick', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(".menu-button").click(function(){
+                        if($(".left-menu").css('left') == '-600px'){
+
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").fadeIn(280);
+                        }
+                        else{
+                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
+                                $(".left-menu-bg").fadeOut(280);
+                        }
+                    });
+                    $(".left-menu-bg").click(function(){
+                       
+                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
+                                $(".left-menu-bg").fadeOut(280);
+                    });    
+                }
+        }
+
+});
 components.directive('entryTypeToggle', function(){
         return {
                 restrict: 'A',

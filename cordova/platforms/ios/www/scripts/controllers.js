@@ -130,6 +130,10 @@ ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 
 }]);
 
+ctrls.controller('loginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);
+
 ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'items', function($scope, $location, $rootScope, loadingService, items) {
 
 	$scope.items = items;

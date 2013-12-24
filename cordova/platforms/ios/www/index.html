@@ -3,7 +3,7 @@
 <head>
 	<title>The Profit App</title>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link href="lib/bootstrap/datepicker/css/datepicker.css" rel="stylesheet">
@@ -11,12 +11,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Kreon:300,400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="//use.typekit.net/pxx4tuj.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 </head>
 <body ontouchstart="">
 	<div class="main-container" ng-controller="AppCtrl">
+		<div class="left-menu"><div class="left-menu-option">Export</div><div class="left-menu-option">Help</div><div class="left-menu-option">Settings</div><div class="left-menu-option">Logout</div></div>
+		<div class="left-menu-bg"></div>
 		<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
+
 			<div class="nav-title">
 				<span ng-bind="title"></span>
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
@@ -30,7 +32,7 @@
 				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> home</button>
 			</div>
 
-			<div class="left-action menu-button" ng-show="hasBack">
+			<div class="left-action menu-button" ng-show="hasBack" left-menu-click>
 				<button class="action-left"><i class="fa fa-bars fa-inline larger-icon"></i></button>
 			</div>
 
@@ -56,7 +58,9 @@
 		<div class="main-content br grey-border bs main-view">
 			<style ng-bind-html-unsafe="style"></style>
 			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
+
 		</div>
+
 		<footer>
 		</footer>
 		<!-- <loading-panel></loading-panel> -->
