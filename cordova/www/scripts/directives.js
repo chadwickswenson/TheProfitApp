@@ -9,7 +9,7 @@ components.directive('loadingPanel', function(){
 		link: function(scope, elem, attrs) {			
 		}		
 	};
-});
+}); 
 
 components.directive('tooltip', function(){
         return {
@@ -58,13 +58,17 @@ components.directive('yearsMenuClick', function(){
                     $(".years-bg").hide();
                     $(".nav-title").click(function(){
                         if($(".years-menu").css('top') != '30px'){
-                                $(".years-bg").hide().fadeIn(280);
-                                $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
+                                //$(".years-bg").hide().fadeIn(280);
+                                //$(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
+                                $(".years-menu").css('top', 30);
+                                $(".years-bg").css('display', 'inline-block');
                                 
                         }
                         else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                $(".years-bg").fadeOut(280);
+                                //$(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                //$(".years-bg").fadeOut(280);
+                                $(".years-menu").css('top', -510);
+                                $(".years-bg").css('display', 'none');
                         }
                     });
                         
@@ -81,15 +85,19 @@ components.directive('leftMenuClick', function(){
                     $(".menu-button").click(function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
-                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                $(".left-menu-bg").hide().fadeIn(280);
+                                //$(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                //$(".left-menu-bg").hide().fadeIn(280);
+                                $(".left-menu").css('left', 0);
+                                $(".left-menu-bg").css('display', 'inline-block');
                         }
                     
                     });
                     $(".left-menu-bg").click(function(){
                         var w = $( window ).width();
-                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
-                        $(".left-menu-bg").fadeOut(280);
+                        //$(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        //$(".left-menu-bg").fadeOut(280);
+                        $(".left-menu").css('left', -800);
+                        $(".left-menu-bg").css('display', 'none');
                     });    
                 }
         }
