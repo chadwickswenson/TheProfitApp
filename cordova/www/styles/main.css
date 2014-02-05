@@ -823,7 +823,7 @@ form {
 }
 .left-menu {
   height: 100%;
-  display: inline-block;
+  display: none;
   position: fixed;
   width: 80%;
   background: #fff;

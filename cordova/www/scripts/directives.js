@@ -114,7 +114,7 @@ components.directive('homeItem', function($timeout) {
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
-                    $(".left-menu").css("left", 0 - $(window).width());
+                    $(".left-menu").css({"left": 0 - $(window).width(), "display": "inline-block"});
                     $(".years-bg").hide();
                     $timeout(function(){
                         if($(".top-title").html().toLowerCase() == "profit"){
