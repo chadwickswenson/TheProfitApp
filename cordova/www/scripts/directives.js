@@ -60,17 +60,13 @@ components.directive('yearsMenuClick', function($timeout){
                         if($(".top-title").html().toLowerCase() == "profit"){
                             $(elem).click(function(){
                                 if($(".years-menu").css('top') != '30px'){
-                                        //$(".years-bg").hide().fadeIn(280);
+                                        $(".years-bg").hide().fadeIn(280);
                                         $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-                                        //$(".years-menu").css('top', 30);
-                                        //$(".years-bg").css('display', 'inline-block');
 
                                 }
                                 else{
                                         $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                        //$(".years-bg").fadeOut(280);
-                                        //$(".years-menu").css('top', -510);
-                                        //$(".years-bg").css('display', 'none');
+                                        $(".years-bg").fadeOut(280);
                                 }
                             });
                         }
