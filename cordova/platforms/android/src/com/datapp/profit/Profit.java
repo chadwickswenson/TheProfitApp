@@ -21,17 +21,23 @@ package com.datapp.profit;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
+import android.webkit.CookieManager;
+import android.webkit.WebView;
+import android.os.Build;
 
 public class Profit extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        CookieManager.setAcceptFileSchemeCookies(true);
         super.onCreate(savedInstanceState);
         super.init();
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
         this.appView.setOverScrollMode(appView.OVER_SCROLL_NEVER);
+        // if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        WebView.setWebContentsDebuggingEnabled(true);
         //super.loadUrl("file:///android_asset/www/index.html")
     }
 }

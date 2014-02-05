@@ -19,8 +19,8 @@
 		<div class="left-menu-bg dark-bg"></div>
 		<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
 
-			<div class="nav-title">
-				<span ng-bind="title"></span>
+			<div class="nav-title" years-menu-click>
+				<span ng-bind="title" class="top-title"></span>
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
 			</div>
 			<div class="left-action cancel-action" ng-show="hasBack">
@@ -51,9 +51,7 @@
 				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
 				<button class="primary-action" ng-click="goForward()"><i class="fa fa-plus-circle fa-inline larger-icon"></i></button>
 			</div>
-			<div class="nav-title">
-				<span ng-bind="title"></span>
-			</div>
+			
 		</div>
 		<div class="main-content br grey-border bs main-view">
 			<style ng-bind-html-unsafe="style"></style>
