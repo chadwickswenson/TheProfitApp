@@ -56,21 +56,28 @@ components.directive('yearsMenuClick', function(){
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     $(".years-bg").hide();
-                    $(".nav-title").click(function(){
-                        if($(".years-menu").css('top') != '30px'){
-                                //$(".years-bg").hide().fadeIn(280);
-                                //$(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-                                $(".years-menu").css('top', 30);
-                                $(".years-bg").css('display', 'inline-block');
-                                
-                        }
-                        else{
-                                //$(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                //$(".years-bg").fadeOut(280);
-                                $(".years-menu").css('top', -510);
-                                $(".years-bg").css('display', 'none');
-                        }
-                    });
+                    
+                    if($(".top-title").html().toLowerCase() == "profit"){
+                        $(elem).click(function(){
+                            if($(".years-menu").css('top') != '30px'){
+                                    $(".years-bg").hide().fadeIn(280);
+                                    $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
+                                    //$(".years-menu").css('top', 30);
+                                    //$(".years-bg").css('display', 'inline-block');
+                                    
+                            }
+                            else{
+                                    //$(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                    //$(".years-bg").fadeOut(280);
+                                    //$(".years-menu").css('top', -510);
+                                    //$(".years-bg").css('display', 'none');
+                            }
+                        });
+                    }
+                    else {
+                           
+                    }
+                    
                         
                 }
         }
@@ -85,10 +92,10 @@ components.directive('leftMenuClick', function(){
                     $(".menu-button").click(function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
-                                //$(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                //$(".left-menu-bg").hide().fadeIn(280);
-                                $(".left-menu").css('left', 0);
-                                $(".left-menu-bg").css('display', 'inline-block');
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").hide().fadeIn(280);
+                                //$(".left-menu").css('left', 0);
+                                //$(".left-menu-bg").css('display', 'inline-block');
                         }
                     
                     });
