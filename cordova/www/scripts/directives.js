@@ -51,61 +51,6 @@ components.directive('addClick', function(){
         }
 
 });
-components.directive('yearsMenuClick', function($timeout){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    $(".years-bg").hide();
-                    $timeout(function(){
-                        if($(".top-title").html().toLowerCase() == "profit"){
-                            $(elem).click(function(){
-                                if($(".years-menu").css('top') != '30px'){
-                                        $(".years-bg").hide().fadeIn(280);
-                                        $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-
-                                }
-                                else{
-                                        $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                        $(".years-bg").fadeOut(280);
-                                }
-                            });
-                        }
-                        else {
-                            $(elem).off();
-                        }
-                    });
-                }
-        }
-
-});
-
-components.directive('yearsBg', function(){
-    return {
-        restrict: 'A',
-        link: function(scope, elem, attrs) {
-            $(".left-menu").css("left", 0 - $(window).width());
-            $(elem).click(function(){
-                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                $(".years-bg").fadeOut(280);
-            });
-        }
-    }
-});
-
-components.directive('swipeLeftMenu', function(){
-    return {
-        restrict: 'A',
-        link: function(scope, elem, attrs) {
-            $(elem).swipe({
-                swipeRight: function(event, direction, distance, duration, fingerCount){
-                    $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                    $(".left-menu-bg").fadeIn(280);
-                },
-                threshold: 50
-            })
-        }
-    }
-});
 
 components.directive('leftMenuClick', function(){
         return {
@@ -169,7 +114,59 @@ components.directive('homeItem', function($timeout) {
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
+                    $(".left-menu").css("left", 0 - $(window).width());
+                    $(".years-bg").hide();
+                    $timeout(function(){
+                        if($(".top-title").html().toLowerCase() == "profit"){
+                            $(".nav-title").click(function(){
+                                if($(".years-menu").css('top') != '30px'){
+                                    $(".years-bg").fadeIn(280);
+                                    $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
 
+                                }
+                                else{
+                                    $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                    $(".years-bg").fadeOut(280);
+                                }
+                            });
+                        }
+                        else {
+                            $(".nav-title").off();
+                        }
+
+                        //home view swipe
+                        $(".profit-home").swipe({
+                            swipeRight: function(event, direction, distance, duration, fingerCount){
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").fadeIn(280);
+                            },
+                            threshold: 50
+                        });
+
+                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                            e.swipe({
+                                swipeLeft: function(event, direction, distance, duration, fingerCount){
+                                    var w = $(window).width();
+                                    $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
+                                    $(".left-menu-bg").fadeOut(280);
+                                },
+                                threshold: 50
+                            });
+                        });
+
+                        $(".years-bg").click(function(){
+                            $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                            $(".years-bg").fadeOut(280);
+                        });
+
+                        $(".years-bg").swipe({
+                            swipeUp: function(event, direction, distance, duration, fingerCount){
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
+                            },
+                            threshold: 50
+                        });
+                    });
                 }
         }
 });

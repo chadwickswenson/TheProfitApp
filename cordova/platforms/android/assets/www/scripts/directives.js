@@ -51,37 +51,6 @@ components.directive('addClick', function(){
         }
 
 });
-components.directive('yearsMenuClick', function($timeout){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    $(".years-bg").hide();
-                    $timeout(function(){
-                        if($(".top-title").html().toLowerCase() == "profit"){
-                            $(elem).click(function(){
-                                if($(".years-menu").css('top') != '30px'){
-                                        //$(".years-bg").hide().fadeIn(280);
-                                        $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-                                        //$(".years-menu").css('top', 30);
-                                        //$(".years-bg").css('display', 'inline-block');
-
-                                }
-                                else{
-                                        $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                        //$(".years-bg").fadeOut(280);
-                                        //$(".years-menu").css('top', -510);
-                                        //$(".years-bg").css('display', 'none');
-                                }
-                            });
-                        }
-                        else {
-                            $(elem).off();
-                        }
-                    });
-                }
-        }
-
-});
 
 components.directive('leftMenuClick', function(){
         return {
@@ -92,7 +61,7 @@ components.directive('leftMenuClick', function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                $(".left-menu-bg").hide().fadeIn(280);
+                                $(".left-menu-bg").fadeIn(280);
                                 //$(".left-menu").css('left', 0);
                                 //$(".left-menu-bg").css('display', 'inline-block');
                         }
@@ -100,10 +69,10 @@ components.directive('leftMenuClick', function(){
                     });
                     $(".left-menu-bg").click(function(){
                         var w = $( window ).width();
-                        //$(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
-                        //$(".left-menu-bg").fadeOut(280);
-                        $(".left-menu").css('left', -800);
-                        $(".left-menu-bg").css('display', 'none');
+                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        $(".left-menu-bg").fadeOut(280);
+                        // $(".left-menu").css('left', -800);
+                        // $(".left-menu-bg").css('display', 'none');
                     });    
                 }
         }
@@ -145,7 +114,59 @@ components.directive('homeItem', function($timeout) {
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
+                    $(".left-menu").css("left", 0 - $(window).width());
+                    $(".years-bg").hide();
+                    $timeout(function(){
+                        if($(".top-title").html().toLowerCase() == "profit"){
+                            $(".nav-title").click(function(){
+                                if($(".years-menu").css('top') != '30px'){
+                                    $(".years-bg").fadeIn(280);
+                                    $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
 
+                                }
+                                else{
+                                    $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                    $(".years-bg").fadeOut(280);
+                                }
+                            });
+                        }
+                        else {
+                            $(".nav-title").off();
+                        }
+
+                        //home view swipe
+                        $(".profit-home").swipe({
+                            swipeRight: function(event, direction, distance, duration, fingerCount){
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").fadeIn(280);
+                            },
+                            threshold: 50
+                        });
+
+                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                            e.swipe({
+                                swipeLeft: function(event, direction, distance, duration, fingerCount){
+                                    var w = $(window).width();
+                                    $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
+                                    $(".left-menu-bg").fadeOut(280);
+                                },
+                                threshold: 50
+                            });
+                        });
+
+                        $(".years-bg").click(function(){
+                            $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                            $(".years-bg").fadeOut(280);
+                        });
+
+                        $(".years-bg").swipe({
+                            swipeUp: function(event, direction, distance, duration, fingerCount){
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
+                            },
+                            threshold: 50
+                        });
+                    });
                 }
         }
 });

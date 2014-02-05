@@ -15,11 +15,27 @@
 </head>
 <body ontouchstart="">
 	<div class="main-container" ng-controller="AppCtrl">
-		<div class="left-menu"><div class="left-menu-option">Export</div><div class="left-menu-option">Help</div><div class="left-menu-option">Settings</div><div class="left-menu-option">Logout</div></div>
+		<div class="left-menu">
+			<div class="left-menu-profile">
+				<div class="profile-pic-bg">
+					<div class="vertically-middle">
+						<div class="name">Soroush Hat</div>
+						<div class="email">hatpick@gmail.com</div>
+					</div>
+				</div>
+				<div class="profile-pic">
+					<img src="img/profile.jpg" alt="Profile Picture">
+				</div>
+			</div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-external-link-square"></i><span>Export</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-question-circle"></i><span>Help</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-gear"></i><span>Settings</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-sign-out"></i><span>Logout</span></div>
+		</div>
 		<div class="left-menu-bg dark-bg"></div>
 		<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
 
-			<div class="nav-title" years-menu-click>
+			<div class="nav-title">
 				<span ng-bind="title" class="top-title"></span>
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
 			</div>
@@ -53,7 +69,7 @@
 			</div>
 			
 		</div>
-		<div class="main-content br grey-border bs main-view" swipe-left-menu>
+		<div class="main-content br grey-border bs main-view">
 			<style ng-bind-html-unsafe="style"></style>
 			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
 

@@ -15,6 +15,14 @@ body {
 }
 * {
   -webkit-tap-highlight-color: rgba(255,255,255,0);
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  outline: none !important;
+}
+.vertically-middle {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
 }
 .main-container {
   position: fixed;
@@ -51,9 +59,6 @@ button:focus {
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   overflow-x: hidden;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   z-index: 100;
 }
 .no {
@@ -641,20 +646,11 @@ form {
   font-weight: 400;
   color: #fff !important;
 }
-.main-containe,
-div {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-}
 .entry-area {
   display: inline-block;
   position: relative;
   width: 100%;
   overflow: hidden;
-}
-.main-container {
-  -webkit-backface-visibility: hidden;
 }
 .full-button {
   text-align: center;
@@ -833,7 +829,6 @@ div {
   background: #fff;
   z-index: 20000;
   top: 0px;
-  left: -4000px;
 }
 .left-menu-option {
   width: 100%;
@@ -845,6 +840,53 @@ div {
   z-index: 500;
   text-align: left;
   padding: 12px 10px;
+}
+.left-menu-option span {
+  padding-left: 15px;
+}
+.left-menu-profile {
+  width: 100%;
+  display: inline-block;
+  z-index: 500;
+  height: 150px;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.left-menu-profile .profile-pic {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: 95px;
+  left: 5px;
+}
+.profile-pic-bg {
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.65)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+  background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+  position: absolute;
+  height: 55px;
+  left: 0;
+  width: 100%;
+  top: 95px;
+  padding-left: 70px;
+  color: #fff;
+  font-size: 1em;
+  letter-spacing: 0.1;
+}
+.profile-pic-bg div.name {
+  font-weight: 800;
+}
+.profile-pic-bg div.email {
+  font-weight: 200;
+}
+.left-menu-profile .profile-pic img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
 }
 .left-menu-option:active {
   background: #f9f9f9;
