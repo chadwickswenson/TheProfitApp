@@ -186,7 +186,21 @@ components.directive('tagItem', function($timeout) {
                 }
         }
 });
+components.directive('calcItem', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        amount: '@',
+                        color: '@',
+                        click: '&'
+                },
+                templateUrl: 'views/partials/calcItem.html',
+                link: function(scope, elem, attrs) {
 
+                }
+        }
+});
 components.directive('listItem', function($timeout) {
         return {
                 restrict: 'E',
