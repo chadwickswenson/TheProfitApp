@@ -1,32 +1,34 @@
-<div class="view inline-view profit-list" >
+<div class="view">
+  <div class="top-view inline-view" >
 
 
-  <div class="nav">
+    <div class="nav">
 
-     <div class="left-action">
-        <button class='back-button-wrap' ng-click="goBack()">
-        <i class="fa fa-chevron-left back-img2"></i> Back</button>
+       <div class="left-action">
+          <button class='back-button-wrap' ng-click="_go('home', false)">
+          <i class="fa fa-chevron-left back-img2"></i> Back</button>
+        </div>
+
+      <div class="nav-title">
+
+        <span class="">Group Name</span>
+
       </div>
-
-    <div class="nav-title">
-
-      <span class="">Group Name</span>
 
     </div>
 
+  	<div class="search-box-wrap">
+  		<form>
+  			<div class='entry-area'>
+          <input class="one-line-input full-width-input basic-input search-input" placeholder="&#xF002; Search" ng-model="search.$"/>
+        </div>
+  		</form>
+  	</div>
+    <ul class="entry-list">
+      <li ng-repeat="item in items | filter:search" ng-animate="'listanimate'">
+        <list-item name="{{item.title}}" id="{{item.id}}" value="{{item.value}}" tag="{{item.tag}}" desc="{{item.description}}" attachment="{{item.attachment}}" date="{{item.date}}" click="_go(path, direction)">
+        </list-item>
+      </li>
+    </ul>
   </div>
-
-	<div class="search-box-wrap">
-		<form>
-			<div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input search-input" placeholder="&#xF002; Search" ng-model="search.$"/>
-      </div>
-		</form>
-	</div>
-  <ul class="entry-list">
-    <li ng-repeat="item in items | filter:search" ng-animate="'listanimate'">
-      <list-item name="{{item.title}}" id="{{item.id}}" value="{{item.value}}" tag="{{item.tag}}" desc="{{item.description}}" attachment="{{item.attachment}}" date="{{item.date}}" click="_go(path, direction)">
-      </list-item>
-    </li>
-  </ul>
 </div>

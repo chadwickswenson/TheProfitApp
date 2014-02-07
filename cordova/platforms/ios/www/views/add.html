@@ -1,55 +1,79 @@
-<div class="profit-add inline-view view" >
-  <form>
-    <button class="button button-half">
-      <i class="fa fa-cloud-upload">
-      </i>
-      Upload
-    </button>
-    <button class="button button-half">
-      <i class="fa fa-camera">
-      </i>
-      Capture
-    </button>
-    <div class='entry-area'>
-      <input class="one-line-input full-width-input basic-input" placeholder="title"/>
+<div class="view">
+  <div class="top-view inline-view" >
+
+    <div class="nav">
+
+       <div class="left-action">
+          <button class='back-button-wrap' ng-click="_go('home', false)">
+          <i class="fa fa-chevron-left back-img2"></i> Cancel</button>
+        </div>
+
+      <div class="nav-title">
+
+        <span class="">Create Group</span>
+
+      </div>
+
     </div>
-    <div class='entry-area'>
-      <input class="one-line-input full-width-input basic-input" placeholder="date"/>
-      <i class="fa fa-calendar input-icon">
-      </i>
-    </div>
-    <div class='entry-area'>
-      <input class="one-line-input full-width-input basic-input" placeholder="value"/>
-      <i class="fa fa-usd input-icon">
-      </i>
-    </div>
-    <div class='entry-area'>
-      <textarea class="basic-input text-area-input full-width-input" placeholder="notes">
-      </textarea>
-      <i class="fa fa-tags input-icon">
-      </i>
-    </div>
-    <div class="styled">
-      <select>
-        <option>
-          assign group (optional)
-        </option>
-        <option>
-          tech
-        </option>
-        <option>
-          software
-        </option>
-        <option>
-          transportation
-        </option>
-      </select>
-    </div>
-    <a class="new-tag" href="#/createtag">
-      new group
-    </a>
-    <div class="full-button" entry-type-toggle>
-      expense
-    </div>
-  </form>
+
+    <form class="view-content"> 
+      <button class="button button-half">
+        <i class="fa fa-cloud-upload">
+        </i>
+        Upload
+      </button>
+      <button class="button button-half">
+        <i class="fa fa-camera">
+        </i>
+        Capture
+      </button>
+      <div class='entry-area'>
+        <input class="one-line-input full-width-input basic-input" placeholder="title"/>
+      </div>
+      <div class='entry-area'>
+        <input class="one-line-input full-width-input basic-input" placeholder="date"/>
+        <i class="fa fa-calendar input-icon">
+        </i>
+      </div>
+      <div class='entry-area'>
+        <input class="one-line-input full-width-input basic-input" placeholder="value"/>
+        <i class="fa fa-usd input-icon">
+        </i>
+      </div>
+      <div class='entry-area'>
+        <textarea class="basic-input text-area-input full-width-input" placeholder="notes">
+        </textarea>
+        <i class="fa fa-tags input-icon">
+        </i>
+      </div>
+      <div class="styled">
+        <select>
+          <option>
+            assign group (optional)
+          </option>
+          <option>
+            tech
+          </option>
+          <option>
+            software
+          </option>
+          <option>
+            transportation
+          </option>
+        </select>
+      </div>
+      <a class="new-tag" href="#/createtag">
+        new group
+      </a>
+      <div class="full-button" entry-type-toggle>
+        expense
+      </div>
+    </form>
+
+
+  </div>
+  <a href="#" class="bottom-button">
+      Submit
+  </a>
+
 </div>

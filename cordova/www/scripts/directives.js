@@ -85,14 +85,15 @@ components.directive('sizeViews', function(){
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     
-                    var is_safari = navigator.userAgent.indexOf("Safari") > -1;
                     var topPadding = '0px';
 
-                    if(is_safari){
-                        topPadding = '30px';
+                    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+                        topPadding = '24px';
                     }
                     
                     var w = $(window).height();
+
+                    $(elem).css('padding-top', topPadding);
                 }
         }
 
