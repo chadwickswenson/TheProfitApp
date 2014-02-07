@@ -117,30 +117,30 @@ components.directive('homeItem', function($timeout) {
                     $(".left-menu").css({"left": 0 - $(window).width(), "display": "inline-block"});
                     $(".years-bg").hide();
                     $timeout(function(){
-                        if($(".top-title").html().toLowerCase() == "profit"){
-                            $(".nav-title").click(function(){
-                                if($(".years-menu").css('top') != '30px'){
-                                    $(".years-bg").fadeIn(280);
-                                    $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
+                        $(".nav-title").click(function(){
+                            if($(".years-menu").css('top') != '72px'){
+                                $(".years-bg").fadeIn(280);
+                                $(".years-menu").animate({ top:'72px'}, 300, 'easeOutQuart');
 
-                                }
-                                else{
-                                    $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                    $(".years-bg").fadeOut(280);
-                                }
-                            });
-                        }
-                        else {
-                            $(".nav-title").off();
-                        }
+                            }
+                            else{
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
+                            }
+                        });
 
                         //home view swipe
-                        $(".profit-home").swipe({
+                        $(elem).swipe({
                             swipeRight: function(event, direction, distance, duration, fingerCount){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                                 $(".left-menu-bg").fadeIn(280);
                             },
                             threshold: 50
+                        });
+
+                        $(".left-menu-bg").click(function(){
+                            $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
+                            $(".left-menu-bg").fadeOut(280);
                         });
 
                         $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){

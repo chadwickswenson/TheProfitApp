@@ -682,9 +682,8 @@ form {
   width: 100%;
   height: auto;
   position: absolute;
-  display: inline-block;
+  display: inline-table;
   background: #fff;
-  padding-top: 10px;
   top: -510px;
   z-index: 500;
   border-bottom: 1px solid #dbdbdb;
@@ -703,11 +702,13 @@ form {
 .dark-bg {
   background: rgba(0,0,0,0.5);
   display: inline-block;
-  position: fixed;
-  top: 0px 0px;
-  width: 100%;
+  position: absolute;
   height: 100%;
+  top: 0px;
+  left: 0px;
+  width: 100%;
   z-index: 400;
+  border-radius: 6px;
 }
 .years-bg {
   display: none;
