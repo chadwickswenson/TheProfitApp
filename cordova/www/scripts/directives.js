@@ -96,11 +96,17 @@ components.directive('sizeViews', function(){
                     var bH = 18;
                     var pad = 5;
                     var c = 35;
+                    var c2 = 38;
 
                     var cH = w - bH*2 - pad*3 - topPadding - c;
+                    var pathname = $(location).attr('href');
+
+                    if(pathname.indexOf('list') >= 0){
+                        cH += bH*2 + c2;
+                    }
 
                     $(elem).css('padding-top', topPadding);
-                    $('.top-view').css('height', cH);
+                    $(elem).find('.top-view').css('height', cH);
 
                 }
         }
