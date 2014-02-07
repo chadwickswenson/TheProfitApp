@@ -1,65 +1,89 @@
-<div class="view inline-view calc-view" >
- 
-  <div class="years-menu">
-    <div class="year-menu-option">
-      2013
-    </div>
-    <div class="year-menu-option">
-      2012
-    </div>
-    <div class="year-menu-option">
-      2011
-    </div>
-  </div>
-  <div class="dark-bg years-bg">
-  </div>
-  <div class="items">
-    <home-item name="+ Income" amount="$3000.25">
-    </home-item>
-    <calc-item name="design" amount="$3000.25" color="color-red" click="_go(path, direction)">
-    </calc-item>
-    <br/>
-    <br/>
-    <home-item name="- Expense" amount="$3000.25">
-    </home-item>
-    <calc-item name="Hardware" amount="$2355.5" color="color-blue" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-    <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
-    </calc-item>
-  </div>
-
-  <div class="bottom-container">
-    <div class="box" style="display:none">
-      <span class="teal">53460</span> - <span class="redish">30495</span>
-    </div>
-    <div class="box box2">
-      total profit: <span class="teal">23045</span>
+<div class="view">
+  <div class="top-view inline-view" >
     
-    <div class="line-div">
-    </div>
-    <div class="export-link">
-       <span class="redish">Export to PDF</span>
-    </div>
-    </div>
-    
-  </div>
+    <div class="nav">
 
+      
+
+      <div class="left-action">
+        <button class='back-button-wrap' ng-click="_go('home', false)">
+        <i class="fa fa-chevron-left back-img2"></i> Cancel</button>
+      </div>
+
+      <div class="nav-title">
+
+        <span class="">2014</span>
+        <i class="fa fa-angle-down years-dropdown-icon"></i>
+
+      </div>
+
+    </div>
+
+    <div class="years-menu">
+      <div class="year-menu-option">
+        2013
+      </div>
+      <div class="year-menu-option">
+        2012
+      </div>
+      <div class="year-menu-option">
+        2011
+      </div>
+    </div>
+    <div class="dark-bg years-bg">
+    </div>
+    <div class="items">
+      <home-item name="+ Income" amount="$3000.25">
+      </home-item>
+      <calc-item name="design" amount="$3000.25" color="color-red" click="_go(path, direction)">
+      </calc-item>
+      <br/>
+      <br/>
+      <home-item name="- Expense" amount="$3000.25">
+      </home-item>
+      <calc-item name="Hardware" amount="$2355.5" color="color-blue" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+      <calc-item name="Software" amount="$4563.5" color="color-purple" click="_go(path, direction)">
+      </calc-item>
+    </div>
+
+   <!-- <div class="bottom-container">
+      <div class="box" style="display:none">
+        <span class="teal">53460</span> - <span class="redish">30495</span>
+      </div>
+      <div class="box box2">
+        total profit: <span class="teal">23045</span>
+      
+      <div class="line-div">
+      </div>
+      <div class="export-link">
+         <span class="redish">Export to PDF</span>
+      </div>
+      </div>
+      
+    </div>-->
+    
+
+  </div>
+   <a href="" ng-click="_go('calc', true)" class="bottom-button">
+    Export PDF
+  </a>
 </div>
