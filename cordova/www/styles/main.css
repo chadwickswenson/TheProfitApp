@@ -958,13 +958,13 @@ form {
   -moz-transform: scale(5px);
   -webkit-transform: scale(5px);
   -o-transform: scale(5px);
-  color: #b45653;
+  color: #8abbab;
 }
 .bottom-button:active,
 .bottom-button:hover {
   text-decoration: none;
   box-shadow: inset 0px 2px 15px #000;
-  color: #b45653;
+  color: #8abbab;
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
 }
