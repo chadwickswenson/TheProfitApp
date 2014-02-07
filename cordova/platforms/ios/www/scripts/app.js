@@ -42,6 +42,9 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     when('/createtag', {templateUrl: 'views/createTag.html', controller: 'TagCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
                     when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'}).
+                    when('/calc', {templateUrl: 'views/calc.html', controller: 'calcCtrl'}).
+                    when('/export', {templateUrl: 'views/export.html', controller: 'exportCtrl'}).
+                    when('/settings', {templateUrl: 'views/settings.html', controller: 'settingsCtrl'}).
                     when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
                         {
                             items: ['$q', 'profitAppService', '$location', function($q, profitAppService, $location){

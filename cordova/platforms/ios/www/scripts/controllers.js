@@ -142,3 +142,13 @@ ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'item', function($scope, $location, $rootScope, loadingService, item) {
 	$scope.item = item;
 }]);
+
+ctrls.controller('calcCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);
+ctrls.controller('settingsCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);
+ctrls.controller('exportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);

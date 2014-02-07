@@ -9,7 +9,7 @@ components.directive('loadingPanel', function(){
 		link: function(scope, elem, attrs) {			
 		}		
 	};
-});
+}); 
 
 components.directive('tooltip', function(){
         return {
@@ -51,46 +51,28 @@ components.directive('addClick', function(){
         }
 
 });
-components.directive('yearsMenuClick', function(){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    $(".nav-title").click(function(){
-                        if($(".years-menu").css('top') == '-510px'){
-
-                                $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
-                                $(".years-bg").fadeIn(280);
-                        }
-                        else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                $(".years-bg").fadeOut(280);
-                        }
-                    });
-                        
-                }
-        }
-
-});
 
 components.directive('leftMenuClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
+                    $(".left-menu-bg").hide();
                     $(".menu-button").click(function(){
-                        if($(".left-menu").css('left') == '-600px'){
-
+                        var w = $( window ).width();
+                        if($(".left-menu").css('left') != '0px'){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                                 $(".left-menu-bg").fadeIn(280);
+                                //$(".left-menu").css('left', 0);
+                                //$(".left-menu-bg").css('display', 'inline-block');
                         }
-                        else{
-                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
-                                $(".left-menu-bg").fadeOut(280);
-                        }
+                    
                     });
                     $(".left-menu-bg").click(function(){
-                       
-                                $(".left-menu").animate({ left:'-600px'}, 300, 'easeInQuart');
-                                $(".left-menu-bg").fadeOut(280);
+                        var w = $( window ).width();
+                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        $(".left-menu-bg").fadeOut(280);
+                        // $(".left-menu").css('left', -800);
+                        // $(".left-menu-bg").css('display', 'none');
                     });    
                 }
         }
@@ -132,7 +114,59 @@ components.directive('homeItem', function($timeout) {
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
+                    $(".left-menu").css({"left": 0 - $(window).width(), "display": "inline-block"});
+                    $(".years-bg").hide();
+                    $timeout(function(){
+                        if($(".top-title").html().toLowerCase() == "profit"){
+                            $(".nav-title").click(function(){
+                                if($(".years-menu").css('top') != '30px'){
+                                    $(".years-bg").fadeIn(280);
+                                    $(".years-menu").animate({ top:'30px'}, 300, 'easeOutQuart');
 
+                                }
+                                else{
+                                    $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                    $(".years-bg").fadeOut(280);
+                                }
+                            });
+                        }
+                        else {
+                            $(".nav-title").off();
+                        }
+
+                        //home view swipe
+                        $(".profit-home").swipe({
+                            swipeRight: function(event, direction, distance, duration, fingerCount){
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
+                                $(".left-menu-bg").fadeIn(280);
+                            },
+                            threshold: 50
+                        });
+
+                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                            e.swipe({
+                                swipeLeft: function(event, direction, distance, duration, fingerCount){
+                                    var w = $(window).width();
+                                    $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
+                                    $(".left-menu-bg").fadeOut(280);
+                                },
+                                threshold: 50
+                            });
+                        });
+
+                        $(".years-bg").click(function(){
+                            $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                            $(".years-bg").fadeOut(280);
+                        });
+
+                        $(".years-bg").swipe({
+                            swipeUp: function(event, direction, distance, duration, fingerCount){
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
+                            },
+                            threshold: 50
+                        });
+                    });
                 }
         }
 });
@@ -152,7 +186,21 @@ components.directive('tagItem', function($timeout) {
                 }
         }
 });
+components.directive('calcItem', function($timeout) {
+        return {
+                restrict: 'E',
+                scope:{
+                        name: '@',
+                        amount: '@',
+                        color: '@',
+                        click: '&'
+                },
+                templateUrl: 'views/partials/calcItem.html',
+                link: function(scope, elem, attrs) {
 
+                }
+        }
+});
 components.directive('listItem', function($timeout) {
         return {
                 restrict: 'E',

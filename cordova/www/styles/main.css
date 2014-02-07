@@ -4,9 +4,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-repeat: repeat;
   font-size: 100%;
-  padding: 0px;
-  margin: 0px;
-  background: #fff;
+  background: #ebebeb;
   height: 100%;
   color: #000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -32,9 +30,11 @@ body {
 }
 .main-container {
   position: fixed;
+  display: inline-block;
   width: 100%;
   height: 100%;
   overflow: hidden !important;
+  padding: 21px 5px 5px 5px;
   top: 0px;
   left: 0px;
 }
@@ -54,24 +54,46 @@ button {
 button:focus {
   outline: none;
 }
+.height-setter {
+  position: absolute;
+  height: 100%;
+  width: 51px;
+  backgroiund: #000;
+  display: inline-block;
+}
 .view {
   padding: 0px;
   overflow: hidden;
   background: #fff;
-  position: absolute;
   display: inline-block;
+  position: inline;
   width: 100%;
+  height: 467px;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  z-index: 100;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-transform: scale(5px);
+  -webkit-transform: scale(5px);
+  -o-transform: scale(5px);
+  box-shadow: 0px 1px 2px #9e9e9e;
+}
+.view-content {
   height: 100%;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 100;
+  padding: 0px;
+  padding-bottom: 40px;
+}
+body {
+  padding: 5px !important;
 }
 .no {
   display: none;
-}
-.inline-view {
-  padding-top: 66px;
 }
 .home-item {
   width: 100%;
@@ -79,13 +101,7 @@ button:focus {
   position: relative;
   font-weight: 700;
   background: #f9f9f9;
-  border: 1px solid #e4e4e6;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -moz-transform: scale(4px);
-  -webkit-transform: scale(4px);
-  -o-transform: scale(4px);
+  border-bottom: 1px solid #e4e4e6;
   padding: 10px 7px;
 }
 .home-item:active {
@@ -106,21 +122,12 @@ button:focus {
   display: inline-block;
   position: relative;
   font-weight: 300;
-  border: 1px solid #e4e4e6;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -moz-transform: scale(4px);
-  -webkit-transform: scale(4px);
-  -o-transform: scale(4px);
+  border-bottom: 1px solid #e4e4e6;
   padding: 7px 7px;
   padding: 10px 7px;
 }
 .tag-item:active {
   background: #ededed;
-}
-.home-list-item {
-  margin-bottom: 2px;
 }
 .left-indicator {
   -webkit-border-radius: 30px;
@@ -264,27 +271,20 @@ form {
   margin-left: 25%;
 }
 .nav {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   display: block;
-  position: fixed;
+  position: relative;
   top: 0px;
   left: 0px;
-  height: 40px;
+  height: 45px;
   width: 100%;
   z-index: 700;
-  background: rgba(255,255,255,0.98);
   background: #f9f9f9;
-  border: 1px solid #e4e4e6;
+  border-bottom: 1px solid #ccc;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
-/*background-image: -ms-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
-  background-image: -moz-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
-  background-image: -o-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F4F4F4), color-stop(1, #EFEFEF))
-  background-image: -webkit-linear-gradient(top, #F4F4F4 0%, #EFEFEF 100%)
-  background-image: linear-gradient(to bottom, #F4F4F4 0%, #EFEFEF 100%)*/
 }
 .right-action {
   display: inline-block;
@@ -385,9 +385,6 @@ form {
 }
 .profit-add {
   width: 100%;
-}
-.items {
-  padding: 7px;
 }
 .button {
   display: inline-block;
@@ -719,7 +716,7 @@ form {
   display: inline;
   left: 8px;
   top: 9px;
-  color: #ccc;
+  color: #ebebeb;
 }
 .years-dropdown-icon {
   position: absolute;
@@ -908,6 +905,7 @@ form {
   left: 0px;
   background: #000;
   opacity: 0.6;
+  display: none;
 }
 .bottom-container {
   display: inline-block;
@@ -947,24 +945,26 @@ form {
 .calc-view {
   padding-bottom: 250px;
 }
+.bottom-button {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  background: #263038;
+  padding: 24px 0px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-transform: scale(5px);
+  -webkit-transform: scale(5px);
+  -o-transform: scale(5px);
+  color: #b45653;
+}
+.bottom-button:active,
+.bottom-button:hover {
+  text-decoration: none;
+  box-shadow: inset 0px 2px 15px #000;
+  color: #b45653;
+}
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
-  .nav {
-    height: 66px;
-  }
-  .left-action {
-    top: 9px;
-  }
-  .right-action {
-    top: 9px;
-  }
-  .nav-title {
-    top: 7px;
-  }
-  .add-button {
-    top: -1px;
-    right: -1px;
-  }
-  .years-menu {
-    padding-top: 30px;
-  }
 }

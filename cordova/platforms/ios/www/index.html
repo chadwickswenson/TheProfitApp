@@ -14,51 +14,68 @@
 
 </head>
 <body ontouchstart="">
+
 	<div class="main-container" ng-controller="AppCtrl">
-		<div class="left-menu"><div class="left-menu-option">Export</div><div class="left-menu-option">Help</div><div class="left-menu-option">Settings</div><div class="left-menu-option">Logout</div></div>
-		<div class="left-menu-bg"></div>
-		<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
+		<div class="height-setter">
+	</div>
+		<div class="left-menu">
+			<div class="left-menu-profile">
+				<div class="profile-pic-bg">
+					<div class="vertically-middle">
+						<div class="name">Soroush Hat</div>
+						<div class="email">hatpick@gmail.com</div>
+					</div>
+				</div>
+				<div class="profile-pic">
+					<img src="img/profile.jpg" alt="Profile Picture">
+				</div>
+			</div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-external-link-square"></i><span>Export</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-question-circle"></i><span>Help</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-gear"></i><span>Settings</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-file-text"></i><span>Calculate/Export</span></div>
+			<div class="left-menu-option"><i class="fa fa-lg fa-sign-out"></i><span>Logout</span></div>
+		</div>
+		<div class="left-menu-bg dark-bg"></div>
+		<!--<div class="home-nav nav" ng-controller="HeaderCtrl" ng-cloak>
 
 			<div class="nav-title">
-				<span ng-bind="title"></span>
+				<span ng-bind="title" class="top-title"></span>
 				<i class="fa fa-angle-down years-dropdown-icon"></i>
 			</div>
 			<div class="left-action cancel-action" ng-show="hasBack">
-				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> cancel</button>
+				<button class='back-button-wrap' ng-click="goBack()">
+					<i class="fa fa-chevron-left back-img2"></i> cancel</button>
 
 
 			</div>
 			<div class="left-action back-action" ng-show="hasBack">
-				<button class='back-button-wrap' ng-click="goBack()"><!--<img src="img/back-arrow.png" class="back-img" width="11px" />--> <i class="fa fa-chevron-left back-img2"></i> home</button>
+				<button class='back-button-wrap' ng-click="goBack()">
+				<i class="fa fa-chevron-left back-img2"></i> home</button>
 			</div>
 
 			<div class="left-action menu-button" ng-show="hasBack" left-menu-click>
 				<button class="action-left"><i class="fa fa-bars fa-inline larger-icon"></i></button>
 			</div>
 
-			<!--<div class="right-action search-action">
-				<button class="primary-action" ng-click="goForward()"><i class="fa fa-search fa-inline larger-icon"></i></button>
-			</div>-->
+			
 			<div class="right-action enter-action">
-				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				
 				<button class="primary-action right-text-action" ng-click="goForward()">enter</button>
 			</div>
 			<div class="right-action edit-action">
-				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				
 				<button class="secondary-action" ng-click="goForward()">edit</button>
 			</div>
 			<div class="right-action add-action">
-				<!--<div class="add-button-wrap"  add-click><div class="add-button"><button ng-click="goForward()" class="button-text">+</div><i class="fa fa-money add-icon"></i></button></div>-->
+				
 				<button class="primary-action" ng-click="goForward()"><i class="fa fa-plus-circle fa-inline larger-icon"></i></button>
 			</div>
-			<div class="nav-title">
-				<span ng-bind="title"></span>
-			</div>
-		</div>
+			
+		</div>-->
 		<div class="main-content br grey-border bs main-view">
 			<style ng-bind-html-unsafe="style"></style>
 			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
-
 		</div>
 
 		<footer>
@@ -69,6 +86,7 @@
 		<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
 		<script type="text/javascript" src="lib/underscore/underscore.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/moment.js"></script>
+		<script type="text/javascript" src="lib/jquery/touch.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery.timeago.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/additional-methods.min.js"></script>
@@ -84,6 +102,6 @@
 	    <script src="scripts/controllers.js"></script>
 	    <script src="scripts/filters.js"></script>
 	    <script src="scripts/directives.js"></script>
-	</div>action
+	</div>
 </body>
 </html>
