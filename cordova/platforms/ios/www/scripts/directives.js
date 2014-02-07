@@ -85,15 +85,23 @@ components.directive('sizeViews', function(){
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     
-                    var topPadding = '0px';
+                    var topPadding = 0;
 
                     if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-                        topPadding = '24px';
+                        topPadding = 20;
                     }
                     
                     var w = $(window).height();
 
+                    var bH = 18;
+                    var pad = 5;
+                    var c = 35;
+
+                    var cH = w - bH*2 - pad*3 - topPadding - c;
+
                     $(elem).css('padding-top', topPadding);
+                    $('.top-view').css('height', cH);
+
                 }
         }
 
