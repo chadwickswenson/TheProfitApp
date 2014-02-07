@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css\?family=Open\+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800)
 
-colorGrey = #ccc
+colorGrey = #EBEBEB
 colorLGrey = #EDEDED
 colorLLGrey = #F7F7F7
 colorFontGrey = #A6B1B3
@@ -30,14 +30,13 @@ belowNavIndex = 500
 menuBgIndex = 400
 contentIndex = 200
 viewIndex = 100
+br = 5px
 
 html, body    
   font-family: 'Open Sans', sans-serif
   background-repeat: repeat  
   font-size: 100%
-  padding:0px
-  margin:0px
-  background:#fff
+  background:colorGrey
   height: 100%
   color:#000
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important
@@ -63,11 +62,13 @@ html, body
 
 .main-container
   position: fixed
+  display:inline-block
   width: 100%
   height: 100%
   overflow:hidden !important
+  padding:21px 5px 5px 5px
   top:0px
-  left:0px
+  left:0px 
 
 brad()
   -webkit-border-radius arguments
@@ -93,24 +94,42 @@ button
 button:focus
   outline:none
 
+.height-setter
+  position:absolute
+  height:100%
+  width:51px
+  backgroiund:#000
+  display:inline-block
+
 .view
   padding: 0px
   overflow:hidden
   background:#fff
-  position:absolute
   display:inline-block
+  position:inline
   width:100%
+  height:467px
+  -webkit-overflow-scrolling: touch
+  overflow-y:hidden
+  overflow-x:hidden
+  z-index:viewIndex
+  brad(br)
+  box-shadow:0px 1px 2px #9E9E9E
+ 
+.view-content
   height:100%
   -webkit-overflow-scrolling: touch
   overflow-y:auto
   overflow-x:hidden
-  z-index:viewIndex
- 
+  padding:0px
+  padding-bottom:40px
+
+ body
+    padding:5px !important
+
 .no
   display:none
 
-.inline-view
-  padding-top:66px
 
 
 .home-item
@@ -119,8 +138,7 @@ button:focus
   position:relative
   font-weight:700
   background:navBg
-  border:1px solid navBorder
-  brad(4px)
+  border-bottom:1px solid navBorder
   padding:10px 7px
 
 .home-item:active
@@ -141,16 +159,12 @@ button:focus
   display:inline-block
   position:relative
   font-weight:300
-  border:1px solid navBorder
-  brad(4px)
+  border-bottom:1px solid navBorder
   padding:7px 7px
   padding:10px 7px
 
 .tag-item:active
   background:colorLGrey
-
-.home-list-item 
-  margin-bottom:2px
 
 .left-indicator
   brad(30px)
@@ -268,17 +282,16 @@ form
   margin-left:25%
 
 .nav
-  margin-bottom:20px
+  margin-bottom:0px
   display:block
-  position:fixed
+  position:relative
   top:0px
   left:0px
-  height:40px
+  height:45px
   width:100%
   z-index:navIndex
-  background:rgba(255,255,255,0.98)
   background:navBg
-  border:1px solid navBorder
+  border-bottom:1px solid #ccc
   -moz-user-select: none
   -khtml-user-select: none
   -webkit-user-select: none
@@ -375,8 +388,6 @@ form
 .profit-add
   width:100%
 
-.items
-  padding:7px
 
 .button
   display:inline-block
@@ -861,6 +872,7 @@ form
   left:0px
   background:#000000
   opacity:0.6
+  display:none
 
 .bottom-container
   display:inline-block
@@ -899,11 +911,27 @@ form
 
 .calc-view
   padding-bottom:250px
-@media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
-  .nav
-    height:66px
 
-  .left-action
+
+.bottom-button
+  display:inline-block
+  position:relative
+  width:100%
+  text-align:center
+  background:colorDarkBg
+  padding:24px 0px
+  brad(br)
+  color:colorRedish
+
+.bottom-button:active, .bottom-button:hover
+  text-decoration:none
+  box-shadow:inset 0px 2px 15px #000
+  color:colorRedish
+
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
+
+ /* .left-action
     top:9px
 
   .right-action
@@ -917,4 +945,41 @@ form
     right:-1px
 
   .years-menu
-    padding-top:30px
+    padding-top:30px*/
+
+//BUTTONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
