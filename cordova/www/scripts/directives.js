@@ -79,16 +79,17 @@ components.directive('leftMenuClick', function(){
 
 });
 
+
 components.directive('sizeViews', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     
                     var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-                    var topPadding = 0px;
+                    var topPadding = '0px';
 
                     if(is_safari){
-                        topPadding = 30px;
+                        topPadding = '30px';
                     }
                     
                     var w = $(window).height();
