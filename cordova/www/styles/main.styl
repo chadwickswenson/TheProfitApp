@@ -12,15 +12,17 @@ navBarPaddingTop = 29px
 mainFontSize = 1em
 subFontSize = 0.8
 
-colorDarkBg = #263038
+colorDarkBg = #C7CCD6
 colorDarkerBg = #1c1f26
 colorTeal = #8abbab
 colorRedish = #b45653
 colorPurple = #918db5
 
-primaryColor = #000
+primaryColor = #E65535
 navBg = #f9f9f9
 navBorder = #e4e4e6
+
+colorPrimaryButton = #E65535
 
 loginIndex = 1200
 menuIndex = 1300
@@ -30,13 +32,13 @@ belowNavIndex = 500
 menuBgIndex = 400
 contentIndex = 200
 viewIndex = 100
-br = 5px
+br = 6px
 
 html, body    
   font-family: 'Open Sans', sans-serif
   background-repeat: repeat  
   font-size: 100%
-  background:colorGrey
+  background:colorDarkBg
   height: 100%
   color:#000
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important
@@ -66,7 +68,7 @@ html, body
   width: 100%
   height: 100%
   overflow:hidden !important
-  padding:21px 5px 5px 5px
+  padding:24px 7px 7px 7px
   top:0px
   left:0px 
 
@@ -102,19 +104,19 @@ button:focus
   display:inline-block
 
 .top-view
-  padding: 0px
+  padding: 4px
   overflow:hidden
   background:#fff
   display:inline-block
   position:inline
   width:100%
-  height:467px
+  height:456px
   -webkit-overflow-scrolling: touch
   overflow-y:hidden
   overflow-x:hidden
   z-index:viewIndex
   brad(br)
-  box-shadow:0px 1px 2px #9E9E9E
+  box-shadow:0px 1px 2px #6C7280
 
 .view
   height:100%
@@ -319,6 +321,7 @@ form
   z-index:2
   width:auto
   text-align:left
+  color:colorPrimaryButton !important
 
 .fa-inline
   position:relative
@@ -922,15 +925,17 @@ form
   position:relative
   width:100%
   text-align:center
-  background:colorDarkBg
+  background:colorPrimaryButton 
   padding:24px 0px
   brad(br)
-  color:colorTeal
+  color:#fff
+  margin-top:3px
+  box-shadow:0px 1px 2px #6C7280
 
 .bottom-button:active, .bottom-button:hover
   text-decoration:none
-  box-shadow:inset 0px 2px 15px #000
-  color:colorTeal
+  box-shadow:inset 0px 2px 5px #8C331F
+  color:#fff
 
 
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
