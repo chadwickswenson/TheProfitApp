@@ -18,11 +18,11 @@ colorTeal = #8abbab
 colorRedish = #b45653
 colorPurple = #918db5
 
-primaryColor = #E65535
+primaryColor = #E63B2C
 navBg = #f9f9f9
 navBorder = #e4e4e6
 
-colorPrimaryButton = #E65535
+colorPrimaryButton = #E63B2C
 
 loginIndex = 1200
 menuIndex = 1300
@@ -32,7 +32,7 @@ belowNavIndex = 500
 menuBgIndex = 400
 contentIndex = 200
 viewIndex = 100
-br = 6px
+br = 3px
 
 html, body    
   font-family: 'Open Sans', sans-serif
@@ -57,6 +57,11 @@ html, body
   -webkit-user-select: none !important
   outline: none !important
 
+input
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+  user-select: text !important
+  -webkit-user-select: text !important
+
 .vertically-middle
   position: relative
   top: 50%
@@ -68,7 +73,7 @@ html, body
   width: 100%
   height: 100%
   overflow:hidden !important
-  padding:24px 7px 7px 7px
+  padding:5px 5px 5px 5px
   top:0px
   left:0px 
 
@@ -110,7 +115,7 @@ button:focus
   display:inline-block
   position:inline
   width:100%
-  height:456px
+  height:430px
   -webkit-overflow-scrolling: touch
   overflow-y:hidden
   overflow-x:hidden
@@ -436,6 +441,7 @@ form
   top:-45px
   padding-top:32px
   z-index:500 !important
+  padding-bottom:75px
 
 .entry-list li
   display:inline-block
@@ -452,7 +458,7 @@ form
   display:inline-block
   position:relative
   top:-4px
-  brad(5px)
+  brad(35px)
   font-size:0.7em
   line-height:1em
   color:#fff
@@ -685,7 +691,6 @@ form
   left: 0px
   width:100%
   z-index: menuBgIndex
-  border-radius: 6px
 
 .years-bg
   display:none
@@ -920,18 +925,17 @@ form
 .calc-view
   padding-bottom:250px
 
-
 .bottom-button
   display:inline-block
   position:relative
   width:100%
   text-align:center
   background:colorPrimaryButton 
-  padding:24px 0px
+  padding:18px 0px
   brad(br)
   color:#fff
-  margin-top:3px
   box-shadow:0px 1px 2px #6C7280
+  font-size:1.5em
 
 .bottom-button:active, .bottom-button:hover
   text-decoration:none
