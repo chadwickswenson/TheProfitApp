@@ -4,7 +4,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-repeat: repeat;
   font-size: 100%;
-  background: #c7ccd6;
+  background: #e3e3e3;
   height: 100%;
   color: #000;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -84,7 +84,8 @@ button:focus {
   -moz-transform: scale(3px);
   -webkit-transform: scale(3px);
   -o-transform: scale(3px);
-  box-shadow: 0px 1px 2px #6c7280;
+  box-shadow: 0px 1px 1px #e3e3e3;
+  border: 1px solid #bdbdbd;
 }
 .view {
   height: 100%;
@@ -99,6 +100,9 @@ button:focus {
   overflow-x: hidden;
   padding: 0px;
   padding-bottom: 40px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
 }
 body {
   padding: 5px !important;
@@ -156,7 +160,7 @@ body {
 }
 .action-left {
   font-weight: 600;
-  color: #e63b2c;
+  color: #47c95d;
   padding: 3px 14px;
   position: absolute;
   left: -9px;
@@ -173,7 +177,7 @@ body {
   background: #ededed;
 }
 .primary-action {
-  color: #e63b2c;
+  color: #47c95d;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -190,7 +194,7 @@ body {
 }
 .secondary-action {
   font-weight: 300;
-  color: #e63b2c;
+  color: #47c95d;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -315,7 +319,7 @@ form {
   z-index: 2;
   width: auto;
   text-align: left;
-  color: #e63b2c !important;
+  color: #47c95d !important;
 }
 .fa-inline {
   position: relative;
@@ -583,7 +587,7 @@ form {
 }
 .back-button-wrap {
   font-weight: 300;
-  color: #e63b2c;
+  color: #47c95d;
   padding: 3px 6px;
   position: absolute;
   right: 0px;
@@ -687,18 +691,30 @@ form {
 .years-menu {
   width: 100%;
   height: auto;
-  position: absolute;
+  position: fixed;
   display: inline-table;
   background: #fff;
-  top: -510px;
-  z-index: 500;
+  top: -1510px;
+  z-index: 30000;
   border-bottom: 1px solid #dbdbdb;
+  left: 0px;
 }
 .year-menu-option {
   width: 100%;
   border-top: 1px solid #dbdbdb;
   display: inline-block;
   color: #000;
+  font-weight: 300;
+  font-size: 1.3em;
+  z-index: 500;
+  text-align: center;
+  padding: 20px 0px;
+}
+.year-menu-controls {
+  width: 100%;
+  border-top: 1px solid #dbdbdb;
+  display: inline-block;
+  color: #47c95d;
   font-weight: 300;
   font-size: 1.3em;
   z-index: 500;
@@ -842,10 +858,26 @@ form {
   height: 100%;
   display: none;
   position: fixed;
-  width: 80%;
-  background: #fff;
+  width: 100%;
   z-index: 20000;
   top: 0px;
+}
+.close-menu {
+  z-index: 20000;
+  border: 1px solid #fff;
+  margin: 8px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: scale(3px);
+  -webkit-transform: scale(3px);
+  -o-transform: scale(3px);
+  cursor: pointer;
+  top: -44px;
+  float: right;
+  padding: 7px 10px 7px 10px;
+  display: inline-block;
+  position: relative;
 }
 .left-menu-option {
   width: 100%;
@@ -880,6 +912,13 @@ form {
 .calc-check {
   float: left;
   width: 40px;
+}
+.float-right {
+  float: right;
+  display: inline-block;
+  position: relative;
+  top: -30px;
+  padding: 10px;
 }
 .profile-pic-bg {
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
@@ -916,8 +955,12 @@ form {
   z-index: 19000;
   top: 0px;
   left: 0px;
-  background: #000;
-  opacity: 0.6;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  filter: blur(2px);
+  background: rgba(255,255,255,0.9);
   display: none;
 }
 .bottom-container {
@@ -963,23 +1006,31 @@ form {
   position: relative;
   width: 100%;
   text-align: center;
-  background: #e63b2c;
-  padding: 18px 0px;
+  background: #47c95d;
+  padding: 16px 0px 20px 0px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   -moz-transform: scale(3px);
   -webkit-transform: scale(3px);
   -o-transform: scale(3px);
-  color: #fff;
-  box-shadow: 0px 1px 2px #6c7280;
+  color: #ecf0f1;
+  box-shadow: 0px 1px 2px #e3e3e3;
   font-size: 1.5em;
+  border: 1px solid #c7c7c7;
 }
 .bottom-button:active,
 .bottom-button:hover {
   text-decoration: none;
-  box-shadow: inset 0px 2px 5px #8c331f;
+  box-shadow: inset 0px 2px 5px #47c95d;
   color: #fff;
+}
+.button-submit {
+  background: #47c95d;
+}
+.button-submit:active,
+.button-submit:hover {
+  box-shadow: inset 0px 2px 5px #309c43;
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
 }
