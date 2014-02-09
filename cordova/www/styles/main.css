@@ -363,7 +363,7 @@ form {
   border-bottom: 1px solid #444;
 }
 .text-area-input {
-  height: 120px;
+  height: 60px;
   padding-top: 5px;
   -webkit-appearance: none;
 }
@@ -387,7 +387,7 @@ form {
   -moz-transform: scale(0px);
   -webkit-transform: scale(0px);
   -o-transform: scale(0px);
-  width: 103%;
+  width: 90%;
   margin-left: -3px;
   padding-left: 10px;
   padding-right: 20px;
@@ -402,7 +402,7 @@ form {
   outline: none;
 }
 .styled {
-  width: 64%;
+  width: 50%;
   overflow: hidden;
   display: inline-block;
   position: relative;
@@ -445,6 +445,8 @@ form {
   -moz-transform: scale(3px);
   -webkit-transform: scale(3px);
   -o-transform: scale(3px);
+  color: #47c95d;
+  top: -10px;
 }
 .new-tag:active {
   background: #fff;
@@ -753,6 +755,7 @@ form {
   display: inline;
   right: 8px;
   top: 9px;
+  color: #a3a3a3;
 }
 .left-input-icon {
   position: absolute;
@@ -1126,4 +1129,7 @@ form {
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
+}
+a:hover {
+  text-decoration: none !important;
 }

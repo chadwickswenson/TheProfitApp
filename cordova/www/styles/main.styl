@@ -8,9 +8,11 @@ colorGreyBorder = #DBDBDB
 colorRed = #f3402a
 blueColor = #1A68C4
 navBarHeight = 79px
-navBarPaddingTop = 29px
+navBarPaddingTop = 29px 
 mainFontSize = 1em
 subFontSize = 0.8
+
+colorInputIcon = #A3A3A3
 
 colorDarkBg = #C7CCD6
 colorDarkerBg = #1c1f26
@@ -384,7 +386,7 @@ form
   border-bottom:1px solid #444
 
 .text-area-input
-  height:120px
+  height:60px
   padding-top:5px
   -webkit-appearance: none
 
@@ -403,7 +405,7 @@ form
   height: 40px
   -webkit-appearance: none
   brad(0px)
-  width:103%
+  width:90%
   margin-left:-3px
   padding-left:10px
   padding-right:20px
@@ -418,7 +420,7 @@ form
   outline:none
 
 .styled
-  width: 64%
+  width: 50%
   overflow: hidden
   display:inline-block
   position:relative
@@ -453,6 +455,8 @@ form
   padding:4px 14px 5px 14px
   border:1px solid colorGreyBorder
   brad(3px)
+  color:colorPrimaryButton
+  top:-10px
 
 .new-tag:active
   background:#fff
@@ -745,6 +749,7 @@ form
   display:inline
   right:8px
   top:9px
+  color:colorInputIcon
 
 .left-input-icon
   position:absolute
@@ -1122,7 +1127,8 @@ form
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch
     right: 0px
 
-
+a:hover
+  text-decoration:none !important
 
 
 
