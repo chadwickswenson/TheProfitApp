@@ -178,27 +178,13 @@ components.directive('homeItem', function($timeout) {
                     $(".years-bg").hide();
                     $timeout(function(){
                         $(".nav-title").click(function(){
-                            if($(".years-menu").css('top') != '0px'){
-                                $(".years-bg").fadeIn(280);
-                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutQuart');
-
-                            }
-                            else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                $(".years-bg").fadeOut(280);
-                            }
+                            
+                            $(".years-menu").removeClass().addClass("years-menu-active");
+                            
                         });
 
                          $(".year-menu-controls").click(function(){
-                            if($(".years-menu").css('top') != '0px'){
-                                $(".years-bg").fadeIn(280);
-                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutQuart');
-
-                            }
-                            else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                $(".years-bg").fadeOut(280);
-                            }
+                            $(".years-menu-active").removeClass().addClass("years-menu");
                         });
 
                         //home view swipe

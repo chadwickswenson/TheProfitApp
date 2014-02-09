@@ -107,8 +107,6 @@ a
 a:hover
   color:inherit
 
-  
-
 button
   border:0px solid #fff
   background:transparent
@@ -130,8 +128,8 @@ button:focus
   padding: 4px
   overflow:hidden
   background:#fff
-  display:inline-block
-  position:inline
+  display:block
+  position:relative
   width:100%
   height:430px
   -webkit-overflow-scrolling: touch
@@ -141,6 +139,7 @@ button:focus
   brad(br)
   box-shadow:0px 1px 1px colorMainShadow
   border:1px solid colorBGB
+  margin-bottom:4px
 
 .view
   height:100%
@@ -158,7 +157,7 @@ button:focus
   padding-bottom:40px
   height:100%
   display:inline-block
-  position:relative
+  width:100%
 
  body
     padding:5px !important
@@ -690,10 +689,23 @@ form
   position:fixed
   display: inline-table
   background:#fff
-  top:-1510px
+  top:-100%
   z-index:30000
   border-bottom:1px solid colorGreyBorder
   left:0px
+  -webkit-transition: all 0.5s ease-in-out
+
+.years-menu-active
+  width:100%
+  height:auto
+  position:fixed
+  display: inline-table
+  background:#fff
+  top:0px
+  z-index:30000
+  border-bottom:1px solid colorGreyBorder
+  left:0px
+  -webkit-transition: all 0.5s ease-in-out
 
 .year-menu-option
   width:100%
@@ -939,7 +951,7 @@ form
   top:0px
   left:0px
   frostIt(2px)
-  background:rgba(255,255,255,0.9)
+  background:rgba(255,255,255,1)
   display:none
 
 
@@ -1031,6 +1043,84 @@ form
 
 
 
+.onoffswitch 
+    position: relative
+    width: 130px
+    -webkit-user-select:none 
+    -moz-user-select:none
+    -ms-user-select: none
+    display:block
+    margin:10px auto
+
+
+.onoffswitch-checkbox 
+    display: none;
+
+
+.onoffswitch-label 
+    display: block 
+    overflow: hidden
+    cursor: pointer
+    border: 2px solid #999999 
+    border-radius: 20px
+
+.onoffswitch-inner
+    width: 200%
+    margin-left: -100%
+    -moz-transition: margin 0.3s ease-in 0s
+    -webkit-transition: margin 0.3s ease-in 0s
+    -o-transition: margin 0.3s ease-in 0s 
+    transition: margin 0.3s ease-in 0s
+
+.onoffswitch-inner:before, .onoffswitch-inner:after
+    float: left 
+    width: 50% 
+    height: 30px 
+    padding: 0 
+    line-height: 30px
+    font-size: 16px 
+    color: white 
+    font-family: Trebuchet, Arial, sans-serif
+    font-weight: bold
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box 
+    box-sizing: border-box
+
+.onoffswitch-inner:before 
+    content: "Expense"
+    padding-left: 10px
+    background-color: #47C95D; color: #FFFFFF
+
+.onoffswitch-inner:after
+    content: "Income"
+    padding-left: 33px
+    background-color: #EEEEEE
+    color: #999999
+    text-align: left
+
+.onoffswitch-switch 
+    width: 22px
+    height:22px
+    margin: 6px
+    background: #FFFFFF
+    border: 2px solid #999999 
+    border-radius: 20px
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 94px
+    -moz-transition: all 0.3s ease-in 0s
+    -webkit-transition: all 0.3s ease-in 0s
+    -o-transition: all 0.3s ease-in 0s
+    transition: all 0.3s ease-in 0s
+
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner
+    margin-left: 0
+
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch
+    right: 0px
 
 
 
