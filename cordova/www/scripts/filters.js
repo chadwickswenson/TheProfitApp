@@ -10,7 +10,7 @@ filters.filter('dbDateConvert', [function() {
 
 filters.filter('truncateTitle', [function() {
 	return function(title) {
-		return title.sunstring(0, 18);
+		return title.sunstring(0, 18) + "...";
 	}
 }]);
 
