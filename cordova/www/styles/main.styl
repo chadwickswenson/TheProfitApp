@@ -66,6 +66,13 @@ html, body
   -webkit-user-select: none !important
   outline: none !important
 
+a
+  text-decoration: none
+  &hover
+    text-decoration: none !important
+  &active
+    text-decoration: none !important
+
 input
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
   user-select: text !important
@@ -696,16 +703,7 @@ form
   -webkit-transition: all 0.5s ease-in-out
 
 .years-menu-active
-  width:100%
-  height:auto
-  position:fixed
-  display: inline-table
-  background:#fff
   top:0px
-  z-index:30000
-  border-bottom:1px solid colorGreyBorder
-  left:0px
-  -webkit-transition: all 0.5s ease-in-out
 
 .year-menu-option
   width:100%
@@ -860,6 +858,7 @@ form
   width:100%
   z-index:20000 
   top:0px
+  background: #fff
   
 .close-menu
   z-index:20000
@@ -872,6 +871,7 @@ form
   padding:7px 10px 7px 10px
   display:inline-block
   position:relative
+  text-decoration: none
 
 .left-menu-option
   width:100%

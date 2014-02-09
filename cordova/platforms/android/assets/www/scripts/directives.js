@@ -60,7 +60,7 @@ components.directive('leftMenuClick', function(){
                     $(".menu-button").click(function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
-                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutBounce');
+                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                                 $(".left-menu-bg").fadeIn(280);
                                 //$(".left-menu").css('left', 0);
                                 //$(".left-menu-bg").css('display', 'inline-block');
@@ -69,7 +69,7 @@ components.directive('leftMenuClick', function(){
                     });
                     $(".close-menu").click(function(){
                         var w = $( window ).width();
-                        $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInBounce');
+                        $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInQuart');
                         $(".left-menu-bg").fadeOut(280);
                         // $(".left-menu").css('left', -800);
                         // $(".left-menu-bg").css('display', 'none');
@@ -178,27 +178,13 @@ components.directive('homeItem', function($timeout) {
                     $(".years-bg").hide();
                     $timeout(function(){
                         $(".nav-title").click(function(){
-                            if($(".years-menu").css('top') != '0px'){
-                                $(".years-bg").fadeIn(280);
-                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutQuart');
-
-                            }
-                            else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                                $(".years-bg").fadeOut(280);
-                            }
+                            
+                            $(".years-menu").removeClass().addClass("years-menu years-menu-active");
+                            
                         });
 
                          $(".year-menu-controls").click(function(){
-                            if($(".years-menu").css('top') != '0px'){
-                                $(".years-bg").fadeIn(280);
-                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutBounce');
-
-                            }
-                            else{
-                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInBounce');
-                                $(".years-bg").fadeOut(280);
-                            }
+                            $(".years-menu-active").removeClass().addClass("years-menu");
                         });
 
                         //home view swipe

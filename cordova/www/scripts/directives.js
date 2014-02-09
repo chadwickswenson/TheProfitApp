@@ -61,7 +61,7 @@ components.directive('leftMenuClick', function(){
                         var w = $( window ).width();
                         if($(".left-menu").css('left') != '0px'){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                $(".left-menu-bg").fadeIn(280);
+                                //$(".left-menu").fadeIn(280);
                                 //$(".left-menu").css('left', 0);
                                 //$(".left-menu-bg").css('display', 'inline-block');
                         }
@@ -70,7 +70,7 @@ components.directive('leftMenuClick', function(){
                     $(".close-menu").click(function(){
                         var w = $( window ).width();
                         $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInQuart');
-                        $(".left-menu-bg").fadeOut(280);
+                        //$(".left-menu").fadeOut(280);
                         // $(".left-menu").css('left', -800);
                         // $(".left-menu-bg").css('display', 'none');
                     });    
@@ -179,7 +179,7 @@ components.directive('homeItem', function($timeout) {
                     $timeout(function(){
                         $(".nav-title").click(function(){
                             
-                            $(".years-menu").removeClass().addClass("years-menu-active");
+                            $(".years-menu").removeClass().addClass("years-menu years-menu-active");
                             
                         });
 
@@ -191,14 +191,12 @@ components.directive('homeItem', function($timeout) {
                         $(elem).swipe({
                             swipeRight: function(event, direction, distance, duration, fingerCount){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                $(".left-menu-bg").fadeIn(280);
                             },
                             threshold: 50
                         });
 
                         $(".left-menu-bg").click(function(){
                             $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
-                            $(".left-menu-bg").fadeOut(280);
                         });
 
                         $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
@@ -206,15 +204,9 @@ components.directive('homeItem', function($timeout) {
                                 swipeLeft: function(event, direction, distance, duration, fingerCount){
                                     var w = $(window).width();
                                     $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
-                                    $(".left-menu-bg").fadeOut(280);
                                 },
                                 threshold: 50
                             });
-                        });
-
-                        $(".close-menu").click(function(){
-                            $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
-                            $(".years-bg").fadeOut(280);
                         });
 
                         $(".years-bg").swipe({
