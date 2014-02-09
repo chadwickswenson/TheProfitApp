@@ -67,9 +67,9 @@ components.directive('leftMenuClick', function(){
                         }
                     
                     });
-                    $(".left-menu-bg").click(function(){
+                    $(".close-menu").click(function(){
                         var w = $( window ).width();
-                        $(".left-menu").animate({ left:'-'+w}, 300, 'easeInQuart');
+                        $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInQuart');
                         $(".left-menu-bg").fadeOut(280);
                         // $(".left-menu").css('left', -800);
                         // $(".left-menu-bg").css('display', 'none');
@@ -107,6 +107,31 @@ components.directive('sizeViews', function(){
 
                     $(elem).css('padding-top', topPadding);
                     $(elem).find('.top-view').css('height', cH);
+
+                    $( window ).resize(function() {
+                        var topPadding = 0;
+
+                        if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+                            topPadding = 20;
+                        }
+                        
+                        var w = $(window).height();
+
+                        var bH = 18;
+                        var pad = 5;
+                        var c = 35;
+                        var c2 = 38;
+
+                        var cH = w - bH*2 - pad*3 - topPadding - c;
+                        var pathname = $(location).attr('href');
+
+                        if(pathname.indexOf('list') >= 0){
+                            cH += bH*2 + c2;
+                        }
+
+                        $(elem).css('padding-top', topPadding);
+                        $(elem).find('.top-view').css('height', cH);
+                    });
 
                 }
         }
@@ -189,7 +214,7 @@ components.directive('homeItem', function($timeout) {
                             });
                         });
 
-                        $(".years-bg").click(function(){
+                        $(".close-menu").click(function(){
                             $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
                             $(".years-bg").fadeOut(280);
                         });

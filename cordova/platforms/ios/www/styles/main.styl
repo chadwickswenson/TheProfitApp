@@ -18,11 +18,20 @@ colorTeal = #8abbab
 colorRedish = #b45653
 colorPurple = #918db5
 
-primaryColor = #E63B2C
+primaryColor = #47c95d
 navBg = #f9f9f9
 navBorder = #e4e4e6
 
-colorPrimaryButton = #E63B2C
+colorPrimaryButton = #47c95d
+
+colorMainBackground = #E3E3E3
+colorP = #47c95d
+colorSubmit = #47c95d
+colorPC = #ecf0f1
+colorPB = #C7C7C7
+colorBGB = #BDBDBD
+colorMainShadow = #E3E3E3
+colorActive = #47c95d
 
 loginIndex = 1200
 menuIndex = 1300
@@ -38,7 +47,7 @@ html, body
   font-family: 'Open Sans', sans-serif
   background-repeat: repeat  
   font-size: 100%
-  background:colorDarkBg
+  background:colorMainBackground
   height: 100%
   color:#000
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important
@@ -56,6 +65,11 @@ html, body
   user-select: none !important
   -webkit-user-select: none !important
   outline: none !important
+
+input
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+  user-select: text !important
+  -webkit-user-select: text !important
 
 .vertically-middle
   position: relative
@@ -80,11 +94,20 @@ brad()
   -webkit-transform: scale(arguments)
   -o-transform: scale(arguments)
 
+frostIt()
+  -webkit-filter: blur(arguments);
+  -moz-filter   : blur(arguments);
+  -ms-filter    : blur(arguments);
+  -o-filter     : blur(arguments);
+  filter        : blur(arguments);
+
 a
   color:inherit
 
 a:hover
   color:inherit
+
+  
 
 button
   border:0px solid #fff
@@ -116,13 +139,15 @@ button:focus
   overflow-x:hidden
   z-index:viewIndex
   brad(br)
-  box-shadow:0px 1px 2px #6C7280
+  box-shadow:0px 1px 1px colorMainShadow
+  border:1px solid colorBGB
 
 .view
   height:100%
   display:inline-block
   position:relative
   width:100%
+
 
 .view-content
   height:100%
@@ -131,6 +156,9 @@ button:focus
   overflow-x:hidden
   padding:0px
   padding-bottom:40px
+  height:100%
+  display:inline-block
+  position:relative
 
  body
     padding:5px !important
@@ -659,18 +687,30 @@ form
 .years-menu
   width:100%
   height:auto
-  position:absolute
+  position:fixed
   display: inline-table
   background:#fff
-  top:-510px
-  z-index:belowNavIndex
+  top:-1510px
+  z-index:30000
   border-bottom:1px solid colorGreyBorder
+  left:0px
 
 .year-menu-option
   width:100%
   border-top:1px solid colorGreyBorder
   display:inline-block
   color:#000
+  font-weight:300
+  font-size:1.3em
+  z-index:500
+  text-align:center
+  padding:20px 0px
+
+.year-menu-controls
+  width:100%
+  border-top:1px solid colorGreyBorder
+  display:inline-block
+  color:colorPrimaryButton
   font-weight:300
   font-size:1.3em
   z-index:500
@@ -805,10 +845,21 @@ form
   height:100%
   display:none
   position:fixed
-  width:80%
-  background:#fff
+  width:100%
   z-index:20000 
   top:0px
+  
+.close-menu
+  z-index:20000
+  border:1px solid #fff
+  margin:8px
+  brad(3px)
+  cursor:pointer
+  top:-44px
+  float:right
+  padding:7px 10px 7px 10px
+  display:inline-block
+  position:relative
 
 .left-menu-option
   width:100%
@@ -820,6 +871,7 @@ form
   z-index:500
   text-align:left
   padding:12px 10px
+
 
 .left-menu-option span
   padding-left: 15px
@@ -839,9 +891,17 @@ form
   position: relative
   top: 95px
   left: 5px
+
 .calc-check
   float:left
   width:40px
+
+.float-right
+  float:right
+  display:inline-block
+  position:relative
+  top:-30px
+  padding:10px
 
 .profile-pic-bg
   background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%)
@@ -878,9 +938,10 @@ form
   z-index:19000 
   top:0px
   left:0px
-  background:#000000
-  opacity:0.6
+  frostIt(2px)
+  background:rgba(255,255,255,0.9)
   display:none
+
 
 .bottom-container
   display:inline-block
@@ -925,17 +986,24 @@ form
   position:relative
   width:100%
   text-align:center
-  background:colorPrimaryButton 
-  padding:18px 0px
+  background:colorP
+  padding:16px 0px 20px 0px
   brad(br)
-  color:#fff
-  box-shadow:0px 1px 2px #6C7280
+  color:colorPC
+  box-shadow:0px 1px 2px colorMainShadow
   font-size:1.5em
+  border:1px solid colorPB
 
 .bottom-button:active, .bottom-button:hover
   text-decoration:none
-  box-shadow:inset 0px 2px 5px #8C331F
+  box-shadow:inset 0px 2px 5px colorActive
   color:#fff
+
+.button-submit
+  background:colorSubmit
+
+.button-submit:active, .button-submit:hover
+  box-shadow:inset 0px 2px 5px #309c43
 
 
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)

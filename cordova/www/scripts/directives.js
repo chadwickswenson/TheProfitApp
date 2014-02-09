@@ -67,7 +67,7 @@ components.directive('leftMenuClick', function(){
                         }
                     
                     });
-                    $(".left-menu-bg").click(function(){
+                    $(".close-menu").click(function(){
                         var w = $( window ).width();
                         $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInQuart');
                         $(".left-menu-bg").fadeOut(280);
@@ -178,9 +178,21 @@ components.directive('homeItem', function($timeout) {
                     $(".years-bg").hide();
                     $timeout(function(){
                         $(".nav-title").click(function(){
-                            if($(".years-menu").css('top') != '72px'){
+                            if($(".years-menu").css('top') != '0px'){
                                 $(".years-bg").fadeIn(280);
-                                $(".years-menu").animate({ top:'72px'}, 300, 'easeOutQuart');
+                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutQuart');
+
+                            }
+                            else{
+                                $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
+                                $(".years-bg").fadeOut(280);
+                            }
+                        });
+
+                         $(".year-menu-controls").click(function(){
+                            if($(".years-menu").css('top') != '0px'){
+                                $(".years-bg").fadeIn(280);
+                                $(".years-menu").animate({ top:'0px'}, 300, 'easeOutQuart');
 
                             }
                             else{
@@ -214,7 +226,7 @@ components.directive('homeItem', function($timeout) {
                             });
                         });
 
-                        $(".years-bg").click(function(){
+                        $(".close-menu").click(function(){
                             $(".years-menu").animate({ top:'-510px'}, 300, 'easeInQuart');
                             $(".years-bg").fadeOut(280);
                         });
