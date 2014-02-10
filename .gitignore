@@ -1,7 +1,6 @@
 .DS_Store
 merges/
 platforms/
-plugins/
-
 node_modules/
 *.swp
+*.log
