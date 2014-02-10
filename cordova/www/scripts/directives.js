@@ -137,10 +137,10 @@ components.directive('sizeViews', function(){
                                 cH += bH*2 + c2;
                             }
 
-                            $(elem).css('width', wid-10)
-                            $(elem).css('padding-top', topPadding);
-                            $(elem).find('.top-view').css('height', cH);
-                            
+
+                            $(".view").css('width', wid-10)
+                            $(".view").css('padding-top', topPadding);
+                            $(".view").find('.top-view').css('height', cH);
                         }
                     });
 
