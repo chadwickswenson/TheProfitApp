@@ -1095,14 +1095,14 @@ form {
 .onoffswitch-inner:before {
   content: "Expense";
   padding-left: 10px;
-  background-color: #47c95d;
+  background-color: #d66c42;
   color: #fff;
 }
 .onoffswitch-inner:after {
   content: "Income";
   padding-left: 33px;
-  background-color: #eee;
-  color: #999;
+  background-color: #47c95d;
+  color: #fff;
   text-align: left;
 }
 .onoffswitch-switch {
