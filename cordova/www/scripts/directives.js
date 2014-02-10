@@ -140,6 +140,7 @@ components.directive('sizeViews', function(){
                             $(elem).css('width', wid-10)
                             $(elem).css('padding-top', topPadding);
                             $(elem).find('.top-view').css('height', cH);
+                            
                         }
                     });
 
