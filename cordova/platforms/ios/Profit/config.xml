@@ -19,6 +19,13 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <name>Profit</name>
+    <description>
+        DatApp - The Profit App
+    </description>
     <name>Profit</name>
     <description>
         DatApp - The Profit App
@@ -28,7 +35,4 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <feature name="Camera">
-        <param name="ios-package" value="CDVCamera" />
-    </feature>
 </widget>
