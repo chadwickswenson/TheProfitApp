@@ -7,10 +7,3 @@ filters.filter('dbDateConvert', [function() {
 		return moment(0).seconds(parseInt(date, 10)).format("MM/D/YYYY");
 	}
 }]);
-
-filters.filter('truncateTitle', [function() {
-	return function(title) {
-		return title.substring(0, 18) + "...";
-	}
-}]);
-
