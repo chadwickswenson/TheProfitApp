@@ -1,6 +1,8 @@
 'use strict';
 
 var components = angular.module('DatAppProfit.directives', [])
+var height = 0;
+var width = 0;
 
 components.directive('loadingPanel', function(){	
 	return {		
@@ -87,6 +89,10 @@ components.directive('sizeViews', function(){
                     
                     var w = $(window).height();
                     var wid = $(window).width();
+
+                    width = wid;
+                    height = w;
+
                     var bH = 18;
                     var pad = 5;
                     var c = 35;
@@ -105,6 +111,7 @@ components.directive('sizeViews', function(){
                     $(elem).find('.top-view').css('height', cH);
 
                     $( window ).resize(function() {
+
                         var topPadding = 0;
 
                         if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
@@ -112,21 +119,28 @@ components.directive('sizeViews', function(){
                         }
                         
                         var w = $(window).height();
+                        var wid = $(window).width();
 
-                        var bH = 18;
-                        var pad = 5;
-                        var c = 35;
-                        var c2 = 38;
+                        if(wid != width){
+                            
+                            width = wid;
 
-                        var cH = w - bH*2 - pad*3 - topPadding - c;
-                        var pathname = $(location).attr('href');
+                            var bH = 18;
+                            var pad = 5;
+                            var c = 35;
+                            var c2 = 38;
 
-                        if(pathname.indexOf('list') >= 0){
-                            cH += bH*2 + c2;
+                            var cH = w - bH*2 - pad*3 - topPadding - c;
+                            var pathname = $(location).attr('href');
+
+                            if(pathname.indexOf('list') >= 0){
+                                cH += bH*2 + c2;
+                            }
+
+                            $(elem).css('width', wid-10)
+                            $(elem).css('padding-top', topPadding);
+                            $(elem).find('.top-view').css('height', cH);
                         }
-
-                        $(elem).css('padding-top', topPadding);
-                        $(elem).find('.top-view').css('height', cH);
                     });
 
                 }
