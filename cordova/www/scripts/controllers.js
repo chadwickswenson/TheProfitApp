@@ -123,7 +123,37 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 }]);
 
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+	var pictureSource = navigator.camera.PictureSourceType;
+    var destinationType = navigator.camera.DestinationType;
 
+    $scope.capturePhoto = function() {
+      	// Take picture using device camera and retrieve image as base64-encoded string
+      	navigator.camera.getPicture(
+      	function(img){
+      		console.log(img);
+      	}, function(error) {
+      		console.log(error);
+      	},
+      	{
+      		quality: 50,
+        	destinationType: destinationType.DATA_URL
+    	});
+    }
+
+    $scope.getLibrary = function() {
+      	// Take picture using device camera and retrieve image as base64-encoded string
+      	navigator.camera.getPicture(
+      	function(uri){
+      		console.log(uri);
+      	}, function(error) {
+      		console.log(error);
+      	},
+      	{
+      		quality: 50,
+        	destinationType: destinationType.FILE_URI,
+        	sourceType: pictureSource.PHOTOLIBRARY
+    	});
+    }
 }]);
 
 ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
