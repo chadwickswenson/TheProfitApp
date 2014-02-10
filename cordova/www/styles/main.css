@@ -65,6 +65,7 @@ button {
   padding: 0px;
   margin: 0px;
   cursor: pointer;
+  color: #838d8f;
 }
 button:focus {
   outline: none;
@@ -418,7 +419,7 @@ form {
   display: inline-block;
   position: relative;
   background: #fff;
-  color: #47c95d;
+  color: #838d8f;
   border: 1px solid #47c95d;
 }
 .button-half {
@@ -448,7 +449,7 @@ form {
   -moz-transform: scale(3px);
   -webkit-transform: scale(3px);
   -o-transform: scale(3px);
-  color: #47c95d;
+  color: #838d8f;
   width: 100%;
   text-align: center;
 }
@@ -512,7 +513,7 @@ form {
 }
 .no-tag {
   border: 1px solid #ccc;
-  color: #a6b1b3;
+  color: #838d8f;
   top: -3px;
 }
 .entry-title {
@@ -567,7 +568,7 @@ form {
   position: relative;
   font-size: 0.8;
   line-height: 1em;
-  color: #a6b1b3;
+  color: #838d8f;
   float: right;
   text-align: right;
 }
@@ -877,12 +878,16 @@ form {
 }
 .left-menu {
   height: 100%;
-  display: none;
   position: fixed;
   width: 100%;
   z-index: 20000;
   top: 0px;
+  left: -100%;
   background: #fff;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+.left-menu-active {
+  left: 0px;
 }
 .close-menu {
   z-index: 20000;
@@ -973,18 +978,6 @@ form {
 }
 .left-menu-option:active {
   background: #f9f9f9;
-}
-.left-menu-bg {
-  z-index: 19000;
-  top: 0px;
-  left: 0px;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -ms-filter: blur(2px);
-  -o-filter: blur(2px);
-  filter: blur(2px);
-  background: #fff;
-  display: none;
 }
 .bottom-container {
   display: inline-block;

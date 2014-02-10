@@ -56,24 +56,18 @@ components.directive('leftMenuClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                    $(".left-menu-bg").hide();
+                   
                     $(".menu-button").click(function(){
-                        var w = $( window ).width();
-                        if($(".left-menu").css('left') != '0px'){
-                                $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
-                                //$(".left-menu").fadeIn(280);
-                                //$(".left-menu").css('left', 0);
-                                //$(".left-menu-bg").css('display', 'inline-block');
-                        }
-                    
+                            
+                        $(".left-menu").removeClass().addClass("left-menu left-menu-active");
+                        
                     });
+
                     $(".close-menu").click(function(){
-                        var w = $( window ).width();
-                        $(".left-menu").animate({ left:'-'+w*3}, 300, 'easeInQuart');
-                        //$(".left-menu").fadeOut(280);
-                        // $(".left-menu").css('left', -800);
-                        // $(".left-menu-bg").css('display', 'none');
-                    });    
+
+                        $(".left-menu").removeClass().addClass("left-menu");
+
+                    });  
                 }
         }
 
@@ -174,8 +168,8 @@ components.directive('homeItem', function($timeout) {
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
-                    $(".left-menu").css({"left": 0 - $(window).width(), "display": "inline-block"});
-                    $(".years-bg").hide();
+                    //$(".left-menu").css({"left": 0 - $(window).width(), "display": "inline-block"});
+                    //$(".years-bg").hide();
                     $timeout(function(){
                         $(".nav-title").click(function(){
                             
@@ -195,11 +189,9 @@ components.directive('homeItem', function($timeout) {
                             threshold: 50
                         });
 
-                        $(".left-menu-bg").click(function(){
-                            $(".left-menu").animate({ left:'-' + w + 'px'}, 300, 'easeOutQuart');
-                        });
+                       
 
-                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                        /*$.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
                             e.swipe({
                                 swipeLeft: function(event, direction, distance, duration, fingerCount){
                                     var w = $(window).width();
@@ -215,7 +207,7 @@ components.directive('homeItem', function($timeout) {
                                 $(".years-bg").fadeOut(280);
                             },
                             threshold: 50
-                        });
+                        });*/
                     });
                 }
         }

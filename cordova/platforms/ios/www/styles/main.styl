@@ -3,7 +3,7 @@
 colorGrey = #EBEBEB
 colorLGrey = #EDEDED
 colorLLGrey = #F7F7F7
-colorFontGrey = #A6B1B3
+colorFontGrey = #838D8F
 colorGreyBorder = #DBDBDB
 colorRed = #f3402a
 blueColor = #1A68C4
@@ -122,6 +122,7 @@ button
   padding:0px
   margin:0px
   cursor:pointer
+  color:colorFontGrey
 
 button:focus
   outline:none
@@ -437,7 +438,7 @@ form
   display:inline-block
   position:relative
   background:#fff
-  color:colorPrimaryButton
+  color:colorFontGrey
   border:1px solid colorPrimaryButton
 
 .button-half
@@ -457,7 +458,7 @@ form
   padding:6px 14px 8px 14px
   border:1px solid colorPrimaryButton
   brad(3px)
-  color:colorPrimaryButton
+  color:colorFontGrey
   width:100%
   text-align:center
 
@@ -861,13 +862,18 @@ form
 
 .left-menu
   height:100%
-  display:none
   position:fixed
   width:100%
   z-index:20000 
   top:0px
+  left:-100%
   background: #fff
-  
+  -webkit-transition: all 0.5s ease-in-out
+
+.left-menu-active
+  left:0px
+
+
 .close-menu
   z-index:20000
   border:1px solid #fff
@@ -953,15 +959,6 @@ form
 
 .left-menu-option:active
   background:navBg
-  
-.left-menu-bg
-  z-index:19000 
-  top:0px
-  left:0px
-  frostIt(2px)
-  background:rgba(255,255,255,1)
-  display:none
-
 
 .bottom-container
   display:inline-block
