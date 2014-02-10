@@ -3,14 +3,16 @@
 colorGrey = #EBEBEB
 colorLGrey = #EDEDED
 colorLLGrey = #F7F7F7
-colorFontGrey = #A6B1B3
+colorFontGrey = #838D8F
 colorGreyBorder = #DBDBDB
 colorRed = #f3402a
 blueColor = #1A68C4
 navBarHeight = 79px
-navBarPaddingTop = 29px
+navBarPaddingTop = 29px 
 mainFontSize = 1em
 subFontSize = 0.8
+
+colorInputIcon = #A3A3A3
 
 colorDarkBg = #C7CCD6
 colorDarkerBg = #1c1f26
@@ -66,7 +68,14 @@ html, body
   -webkit-user-select: none !important
   outline: none !important
 
-input
+a
+  text-decoration: none
+  &hover
+    text-decoration: none !important
+  &active
+    text-decoration: none !important
+
+input, textarea
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
   user-select: text !important
   -webkit-user-select: text !important
@@ -113,6 +122,7 @@ button
   padding:0px
   margin:0px
   cursor:pointer
+  color:colorFontGrey
 
 button:focus
   outline:none
@@ -154,7 +164,7 @@ button:focus
   overflow-y:auto
   overflow-x:hidden
   padding:0px
-  padding-bottom:40px
+  padding-bottom:60px
   height:100%
   display:inline-block
   width:100%
@@ -274,8 +284,8 @@ button:focus
   background:#ccc
 
 .color-option
-  width:77px
-  height:77px
+  width:70px
+  height:70px
   display:inline-block
   position:relative
   margin-top:20px
@@ -377,7 +387,7 @@ form
   border-bottom:1px solid #444
 
 .text-area-input
-  height:120px
+  height:60px
   padding-top:5px
   -webkit-appearance: none
 
@@ -393,30 +403,31 @@ form
   padding: 5px
   font-size: mainFontSize
   background:#fff
-  height: 40px
+  height: 46px
   -webkit-appearance: none
   brad(0px)
-  width:103%
+  width:90%
   margin-left:-3px
   padding-left:10px
   padding-right:20px
   background:#fff
-  line-height:1.3em
+  line-height:1.4em
   margin-bottom:10px
   font-weight:300
-  height:auto
-  border: 1px solid #ccc
+  color:colorPrimaryButton
+  text-align:center
 
 .styled select:focus
   outline:none
 
 .styled
-  width: 64%
+  width: 100%
   overflow: hidden
   display:inline-block
   position:relative
-  border-right: 1px solid #ccc
   height:32px
+  color:colorPrimaryButton
+  text-align:center
 
 
 .profit-add
@@ -427,12 +438,14 @@ form
   display:inline-block
   position:relative
   background:#fff
+  color:colorFontGrey
+  border:1px solid colorPrimaryButton
 
 .button-half
   width: 40.1%
   text-align:center
   padding:10px 0px 12px 0px
-  margin:10px 4.5% 10px 4.5%
+  margin:3px 4.5% 10px 4.5%
   brad(3px)
 
 .button:active
@@ -442,10 +455,12 @@ form
 .new-tag
   position:relative
   display:inline-block
-  background:colorLGrey
-  padding:4px 14px 5px 14px
-  border:1px solid colorGreyBorder
+  padding:6px 14px 8px 14px
+  border:1px solid colorPrimaryButton
   brad(3px)
+  color:colorFontGrey
+  width:100%
+  text-align:center
 
 .new-tag:active
   background:#fff
@@ -696,16 +711,7 @@ form
   -webkit-transition: all 0.5s ease-in-out
 
 .years-menu-active
-  width:100%
-  height:auto
-  position:fixed
-  display: inline-table
-  background:#fff
   top:0px
-  z-index:30000
-  border-bottom:1px solid colorGreyBorder
-  left:0px
-  -webkit-transition: all 0.5s ease-in-out
 
 .year-menu-option
   width:100%
@@ -747,6 +753,7 @@ form
   display:inline
   right:8px
   top:9px
+  color:colorFontGrey
 
 .left-input-icon
   position:absolute
@@ -855,12 +862,18 @@ form
 
 .left-menu
   height:100%
-  display:none
   position:fixed
   width:100%
   z-index:20000 
   top:0px
-  
+  left:-100%
+  background: #fff
+  -webkit-transition: all 0.5s ease-in-out
+
+.left-menu-active
+  left:0px
+
+
 .close-menu
   z-index:20000
   border:1px solid #fff
@@ -872,6 +885,7 @@ form
   padding:7px 10px 7px 10px
   display:inline-block
   position:relative
+  text-decoration: none
 
 .left-menu-option
   width:100%
@@ -945,15 +959,6 @@ form
 
 .left-menu-option:active
   background:navBg
-  
-.left-menu-bg
-  z-index:19000 
-  top:0px
-  left:0px
-  frostIt(2px)
-  background:rgba(255,255,255,1)
-  display:none
-
 
 .bottom-container
   display:inline-block
@@ -1089,13 +1094,14 @@ form
 .onoffswitch-inner:before 
     content: "Expense"
     padding-left: 10px
-    background-color: #47C95D; color: #FFFFFF
+    background-color: #D66C42
+    color: #FFFFFF
 
 .onoffswitch-inner:after
     content: "Income"
     padding-left: 33px
-    background-color: #EEEEEE
-    color: #999999
+    background-color: #47C95D
+    color: #FFF
     text-align: left
 
 .onoffswitch-switch 
@@ -1122,7 +1128,8 @@ form
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch
     right: 0px
 
-
+a:hover
+  text-decoration:none !important
 
 
 

@@ -10,7 +10,7 @@
 
       <div class="nav-title">
 
-        <span class="">Create Group</span>
+        <span class="">Create Entry</span>
 
       </div>
 
@@ -50,33 +50,25 @@
         </i>
       </div>
       <div class='entry-area'>
-        <textarea class="basic-input text-area-input full-width-input" placeholder="notes">
-        </textarea>
-        <i class="fa fa-tags input-icon">
+        <textarea class="basic-input text-area-input full-width-input" placeholder="notes"></textarea>
+        <i class="fa fa-align-left input-icon">
         </i>
       </div>
-      <div class="styled">
-        <select>
-          <option>
-            assign group (optional)
-          </option>
-          <option>
-            tech
-          </option>
-          <option>
-            software
-          </option>
-          <option>
-            transportation
-          </option>
-        </select>
-      </div>
-      <a class="new-tag" href="#/createtag">
-        new group
+
+      <select class="basic-input styled">
+        <option>Add to Group (optional)</option>
+        <option>Stuff</option>
+        <option>Stuff</option>
+      </select>
+
+      <a class="new-tag" href="" ng-click="_go('createtag', true)">
+        <i class="fa fa-plus-circle"></i> Create a New Group
       </a>
+
+      
      
     </form>
-
+    <br/><br/><br/><br/>
 
   </div>
   <a href="#" class="bottom-button button-submit">

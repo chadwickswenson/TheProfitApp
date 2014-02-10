@@ -23,7 +23,17 @@ body {
   -webkit-user-select: none !important;
   outline: none !important;
 }
-input {
+a {
+  text-decoration: none;
+}
+ahover {
+  text-decoration: none !important;
+}
+aactive {
+  text-decoration: none !important;
+}
+input,
+textarea {
   -webkit-tap-highlight-color: rgba(255,255,255,0);
   user-select: text !important;
   -webkit-user-select: text !important;
@@ -55,6 +65,7 @@ button {
   padding: 0px;
   margin: 0px;
   cursor: pointer;
+  color: #838d8f;
 }
 button:focus {
   outline: none;
@@ -100,7 +111,7 @@ button:focus {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   height: 100%;
   display: inline-block;
   width: 100%;
@@ -240,8 +251,8 @@ body {
   background: #ccc;
 }
 .color-option {
-  width: 77px;
-  height: 77px;
+  width: 70px;
+  height: 70px;
   display: inline-block;
   position: relative;
   margin-top: 20px;
@@ -354,7 +365,7 @@ form {
   border-bottom: 1px solid #444;
 }
 .text-area-input {
-  height: 120px;
+  height: 60px;
   padding-top: 5px;
   -webkit-appearance: none;
 }
@@ -370,7 +381,7 @@ form {
   padding: 5px;
   font-size: 1em;
   background: #fff;
-  height: 40px;
+  height: 46px;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -378,27 +389,28 @@ form {
   -moz-transform: scale(0px);
   -webkit-transform: scale(0px);
   -o-transform: scale(0px);
-  width: 103%;
+  width: 90%;
   margin-left: -3px;
   padding-left: 10px;
   padding-right: 20px;
   background: #fff;
-  line-height: 1.3em;
+  line-height: 1.4em;
   margin-bottom: 10px;
   font-weight: 300;
-  height: auto;
-  border: 1px solid #ccc;
+  color: #47c95d;
+  text-align: center;
 }
 .styled select:focus {
   outline: none;
 }
 .styled {
-  width: 64%;
+  width: 100%;
   overflow: hidden;
   display: inline-block;
   position: relative;
-  border-right: 1px solid #ccc;
   height: 32px;
+  color: #47c95d;
+  text-align: center;
 }
 .profit-add {
   width: 100%;
@@ -407,12 +419,14 @@ form {
   display: inline-block;
   position: relative;
   background: #fff;
+  color: #838d8f;
+  border: 1px solid #47c95d;
 }
 .button-half {
   width: 40.1%;
   text-align: center;
   padding: 10px 0px 12px 0px;
-  margin: 10px 4.5% 10px 4.5%;
+  margin: 3px 4.5% 10px 4.5%;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -427,15 +441,17 @@ form {
 .new-tag {
   position: relative;
   display: inline-block;
-  background: #ededed;
-  padding: 4px 14px 5px 14px;
-  border: 1px solid #dbdbdb;
+  padding: 6px 14px 8px 14px;
+  border: 1px solid #47c95d;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   -moz-transform: scale(3px);
   -webkit-transform: scale(3px);
   -o-transform: scale(3px);
+  color: #838d8f;
+  width: 100%;
+  text-align: center;
 }
 .new-tag:active {
   background: #fff;
@@ -497,7 +513,7 @@ form {
 }
 .no-tag {
   border: 1px solid #ccc;
-  color: #a6b1b3;
+  color: #838d8f;
   top: -3px;
 }
 .entry-title {
@@ -552,7 +568,7 @@ form {
   position: relative;
   font-size: 0.8;
   line-height: 1em;
-  color: #a6b1b3;
+  color: #838d8f;
   float: right;
   text-align: right;
 }
@@ -702,16 +718,7 @@ form {
   -webkit-transition: all 0.5s ease-in-out;
 }
 .years-menu-active {
-  width: 100%;
-  height: auto;
-  position: fixed;
-  display: inline-table;
-  background: #fff;
   top: 0px;
-  z-index: 30000;
-  border-bottom: 1px solid #dbdbdb;
-  left: 0px;
-  -webkit-transition: all 0.5s ease-in-out;
 }
 .year-menu-option {
   width: 100%;
@@ -753,6 +760,7 @@ form {
   display: inline;
   right: 8px;
   top: 9px;
+  color: #838d8f;
 }
 .left-input-icon {
   position: absolute;
@@ -870,11 +878,16 @@ form {
 }
 .left-menu {
   height: 100%;
-  display: none;
   position: fixed;
   width: 100%;
   z-index: 20000;
   top: 0px;
+  left: -100%;
+  background: #fff;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+.left-menu-active {
+  left: 0px;
 }
 .close-menu {
   z-index: 20000;
@@ -892,6 +905,7 @@ form {
   padding: 7px 10px 7px 10px;
   display: inline-block;
   position: relative;
+  text-decoration: none;
 }
 .left-menu-option {
   width: 100%;
@@ -964,18 +978,6 @@ form {
 }
 .left-menu-option:active {
   background: #f9f9f9;
-}
-.left-menu-bg {
-  z-index: 19000;
-  top: 0px;
-  left: 0px;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -ms-filter: blur(2px);
-  -o-filter: blur(2px);
-  filter: blur(2px);
-  background: #fff;
-  display: none;
 }
 .bottom-container {
   display: inline-block;
@@ -1093,14 +1095,14 @@ form {
 .onoffswitch-inner:before {
   content: "Expense";
   padding-left: 10px;
-  background-color: #47c95d;
+  background-color: #d66c42;
   color: #fff;
 }
 .onoffswitch-inner:after {
   content: "Income";
   padding-left: 33px;
-  background-color: #eee;
-  color: #999;
+  background-color: #47c95d;
+  color: #fff;
   text-align: left;
 }
 .onoffswitch-switch {
@@ -1124,4 +1126,7 @@ form {
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
+}
+a:hover {
+  text-decoration: none !important;
 }
