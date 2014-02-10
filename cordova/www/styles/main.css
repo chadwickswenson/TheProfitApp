@@ -830,17 +830,15 @@ form {
   text-align: center;
   font-size: 2em;
   font-weight: 300;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .login-form {
-  margin-top: 50px;
+  margin-top: 30px;
   position: relative;
   display: inline-block;
 }
-.login-button {
+.login-page-button {
   text-align: center;
-  background: #ededed;
-  border: 1px solid #dbdbdb;
   padding: 15px 30px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -850,27 +848,25 @@ form {
   -o-transform: scale(8px);
   position: relative;
   display: block;
-  margin: 20px auto;
-  width: 80%;
-}
-.facebook-login {
-  text-align: center;
-  background: #3b5999;
-  border: 1px solid #314c85;
-  padding: 15px 30px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -moz-transform: scale(8px);
-  -webkit-transform: scale(8px);
-  -o-transform: scale(8px);
-  position: relative;
-  display: block;
-  margin: 20px auto;
+  margin: 10px auto;
   width: 80%;
   color: #fff;
 }
-.facebook-login:active {
+.login-button {
+  background: #ededed;
+  border: 1px solid #dbdbdb;
+  color: #838d8f;
+}
+.facebook-login {
+  background: #3b5999;
+  border: 1px solid #314c85;
+}
+.twitter-login {
+  background: #4099ff;
+  border: 1px solid #296dba;
+}
+.facebook-login:active,
+.twitter-login:active {
   opacity: 0.5;
 }
 .login-button:active {
