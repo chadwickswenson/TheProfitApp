@@ -75,7 +75,7 @@ a
   &active
     text-decoration: none !important
 
-input
+input, textarea
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
   user-select: text !important
   -webkit-user-select: text !important
@@ -163,7 +163,7 @@ button:focus
   overflow-y:auto
   overflow-x:hidden
   padding:0px
-  padding-bottom:40px
+  padding-bottom:60px
   height:100%
   display:inline-block
   width:100%
@@ -283,8 +283,8 @@ button:focus
   background:#ccc
 
 .color-option
-  width:77px
-  height:77px
+  width:70px
+  height:70px
   display:inline-block
   position:relative
   margin-top:20px
@@ -402,7 +402,7 @@ form
   padding: 5px
   font-size: mainFontSize
   background:#fff
-  height: 40px
+  height: 46px
   -webkit-appearance: none
   brad(0px)
   width:90%
@@ -410,22 +410,23 @@ form
   padding-left:10px
   padding-right:20px
   background:#fff
-  line-height:1.3em
+  line-height:1.4em
   margin-bottom:10px
   font-weight:300
-  height:auto
-  border: 1px solid #ccc
+  color:colorPrimaryButton
+  text-align:center
 
 .styled select:focus
   outline:none
 
 .styled
-  width: 50%
+  width: 100%
   overflow: hidden
   display:inline-block
   position:relative
-  border-right: 1px solid #ccc
   height:32px
+  color:colorPrimaryButton
+  text-align:center
 
 
 .profit-add
@@ -436,12 +437,14 @@ form
   display:inline-block
   position:relative
   background:#fff
+  color:colorPrimaryButton
+  border:1px solid colorPrimaryButton
 
 .button-half
   width: 40.1%
   text-align:center
   padding:10px 0px 12px 0px
-  margin:10px 4.5% 10px 4.5%
+  margin:3px 4.5% 10px 4.5%
   brad(3px)
 
 .button:active
@@ -451,12 +454,12 @@ form
 .new-tag
   position:relative
   display:inline-block
-  background:colorLGrey
-  padding:4px 14px 5px 14px
-  border:1px solid colorGreyBorder
+  padding:6px 14px 8px 14px
+  border:1px solid colorPrimaryButton
   brad(3px)
   color:colorPrimaryButton
-  top:-10px
+  width:100%
+  text-align:center
 
 .new-tag:active
   background:#fff
