@@ -135,7 +135,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
       		console.log(error);
       	},
       	{
-      		quality: 50,
+      		quality: 100,
         	destinationType: destinationType.DATA_URL
     	});
     }
@@ -149,7 +149,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
       		console.log(error);
       	},
       	{
-      		quality: 50,
+      		quality: 100,
         	destinationType: destinationType.FILE_URI,
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
