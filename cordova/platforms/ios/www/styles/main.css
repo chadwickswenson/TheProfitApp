@@ -760,7 +760,7 @@ form {
   display: inline;
   right: 8px;
   top: 9px;
-  color: #a3a3a3;
+  color: #838d8f;
 }
 .left-input-icon {
   position: absolute;
@@ -1095,14 +1095,14 @@ form {
 .onoffswitch-inner:before {
   content: "Expense";
   padding-left: 10px;
-  background-color: #47c95d;
+  background-color: #d66c42;
   color: #fff;
 }
 .onoffswitch-inner:after {
   content: "Income";
   padding-left: 33px;
-  background-color: #eee;
-  color: #999;
+  background-color: #47c95d;
+  color: #fff;
   text-align: left;
 }
 .onoffswitch-switch {

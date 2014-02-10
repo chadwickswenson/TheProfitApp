@@ -60,7 +60,7 @@ components.directive('leftMenuClick', function(){
                     $(".menu-button").click(function(){
                             
                         $(".left-menu").removeClass().addClass("left-menu left-menu-active");
-                        
+
                     });
 
                     $(".close-menu").click(function(){
@@ -86,7 +86,7 @@ components.directive('sizeViews', function(){
                     }
                     
                     var w = $(window).height();
-
+                    var wid = $(window).width();
                     var bH = 18;
                     var pad = 5;
                     var c = 35;
@@ -100,6 +100,8 @@ components.directive('sizeViews', function(){
                     }
 
                     $(elem).css('padding-top', topPadding);
+                    $(elem).css('width', wid-10)
+
                     $(elem).find('.top-view').css('height', cH);
 
                     $( window ).resize(function() {
