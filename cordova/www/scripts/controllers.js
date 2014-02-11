@@ -182,3 +182,6 @@ ctrls.controller('settingsCtrl', ['$scope', '$location', '$rootScope', 'loadingS
 ctrls.controller('exportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
+ctrls.controller('editCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+
+}]);

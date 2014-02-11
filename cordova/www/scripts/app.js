@@ -41,6 +41,7 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
                     when('/createtag', {templateUrl: 'views/createTag.html', controller: 'TagCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
+                    when('/edit/:id', {templateUrl: 'views/add.html', controller: 'editCtrl'}).
                     when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'}).
                     when('/calc', {templateUrl: 'views/calc.html', controller: 'calcCtrl'}).
                     when('/export', {templateUrl: 'views/export.html', controller: 'exportCtrl'}).
