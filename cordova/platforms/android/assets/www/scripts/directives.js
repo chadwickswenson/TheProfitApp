@@ -137,6 +137,7 @@ components.directive('sizeViews', function(){
                                 cH += bH*2 + c2;
                             }
 
+
                             $(".view").css('width', wid-10)
                             $(".view").css('padding-top', topPadding);
                             $(".view").find('.top-view').css('height', cH);
