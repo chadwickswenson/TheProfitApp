@@ -16,13 +16,9 @@
       <dict>
         <key>CFBundleIconFiles</key>
         <array>
-          <string>dark-120</string>
-          <string>ios-120</string>
-          <string>my3-120</string>
-          <string>my-40</string>
-          <string>my2-120</string>
-          <string>my120</string>
-          <string>ico-60</string>
+          <string>benj2-120</string>
+          <string>benj</string>
+          <string>m-120</string>
           <string>icon-40</string>
           <string>icon-small</string>
           <string>icon-60</string>

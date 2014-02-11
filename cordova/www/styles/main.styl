@@ -151,6 +151,34 @@ button:focus
   border:1px solid colorBGB
   margin-bottom:4px
 
+.image-view
+  position:fixed
+  width:100%
+  height:100%
+  background:#000
+  display:block
+  z-index:30000
+  left:0px
+  top:100%
+  -webkit-transition: all 0.3s ease-in-out
+
+.image-view-active
+  top:0px
+
+.thumbnail
+  width:100%
+  height:40px
+  background:#000
+  display:none
+
+.close-preview
+  position:absolute
+  top:30px
+  left:30px
+  opacity:0.8
+  font-size:1.5em
+  color:#fff
+
 .view
   height:100%
   display:inline-block

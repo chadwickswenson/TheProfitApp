@@ -123,8 +123,8 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 }]);
 
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-	var pictureSource = navigator.camera.PictureSourceType;
-    var destinationType = navigator.camera.DestinationType;
+	//var pictureSource = navigator.camera.PictureSourceType;
+    //var destinationType = navigator.camera.DestinationType;
 
     $scope.capturePhoto = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string

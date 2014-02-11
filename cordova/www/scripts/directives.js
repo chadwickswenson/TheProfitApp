@@ -75,6 +75,26 @@ components.directive('leftMenuClick', function(){
 
 });
 
+components.directive('imagePreviewClick', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                   
+                    $(".thumbnail").click(function(){
+                            
+                        $(".image-view").removeClass().addClass("image-view image-view-active");
+
+                    });
+
+                    $(".close-preview").click(function(){
+
+                        $(".image-view").removeClass().addClass("image-view");
+
+                    });  
+                }
+        }
+
+});
 
 components.directive('sizeViews', function(){
         return {
