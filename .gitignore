@@ -1,6 +1,8 @@
 .DS_Store
 merges/
 platforms/
+android/
+ios/
 node_modules/
 *.swp
 *.log
