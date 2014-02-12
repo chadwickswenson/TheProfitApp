@@ -201,7 +201,7 @@ body {
 }
 .action-left {
   font-weight: 600;
-  color: #74d572;
+  color: #56c754;
   padding: 3px 14px;
   position: absolute;
   left: -9px;
@@ -218,7 +218,7 @@ body {
   background: #ededed;
 }
 .primary-action {
-  color: #74d572;
+  color: #56c754;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -235,7 +235,7 @@ body {
 }
 .secondary-action {
   font-weight: 300;
-  color: #74d572;
+  color: #56c754;
   padding: 3px 14px;
   position: absolute;
   right: 0px;
@@ -360,7 +360,7 @@ form {
   z-index: 2;
   width: auto;
   text-align: left;
-  color: #74d572 !important;
+  color: #56c754 !important;
 }
 .fa-inline {
   position: relative;
@@ -426,7 +426,7 @@ form {
   line-height: 1.4em;
   margin-bottom: 10px;
   font-weight: 300;
-  color: #74d572;
+  color: #56c754;
   text-align: center;
 }
 .styled select:focus {
@@ -449,7 +449,7 @@ form {
   position: relative;
   background: #fff;
   color: #838d8f;
-  border: 1px solid #74d572;
+  border: 1px solid #56c754;
 }
 .button-half {
   width: 40.1%;
@@ -471,7 +471,7 @@ form {
   position: relative;
   display: inline-block;
   padding: 6px 14px 8px 14px;
-  border: 1px solid #74d572;
+  border: 1px solid #56c754;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -633,7 +633,7 @@ form {
 }
 .back-button-wrap {
   font-weight: 300;
-  color: #74d572;
+  color: #56c754;
   padding: 3px 6px;
   position: absolute;
   right: 0px;
@@ -764,7 +764,7 @@ form {
   width: 100%;
   border-top: 1px solid #dbdbdb;
   display: inline-block;
-  color: #74d572;
+  color: #56c754;
   font-weight: 300;
   font-size: 1.3em;
   z-index: 500;
@@ -1047,7 +1047,7 @@ form {
   position: relative;
   width: 100%;
   text-align: center;
-  background: #74d572;
+  background: #56c754;
   padding: 16px 0px 20px 0px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -1063,14 +1063,14 @@ form {
   text-shadow: 0 1px rgba(255,255,255,0.3);
   font-weight: 200;
   background: #fff;
-  color: #74d572;
+  color: #56c754;
   border: 1px solid #bdbdbd;
 }
 .bottom-button:active,
 .bottom-button:hover {
   -webkit-box-shadow: inset 0 4px 0px rgba(0,0,0,0.1);
   -mox-box-shadow: inset 0 4px 0px rgba(0,0,0,0.1);
-  color: #74d572;
+  color: #56c754;
 }
 .button-submit {
   background: #47c95d;
