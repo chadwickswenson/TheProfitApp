@@ -20,14 +20,14 @@ colorTeal = #8abbab
 colorRedish = #b45653
 colorPurple = #918db5
 
-primaryColor = #74d572
-navBg = #f9f9f9
+primaryColor = #444
+navBg = #FEFEFE
 navBorder = #e4e4e6
 
-colorPrimaryButton = #47c95d
+colorPrimaryButton = #444
 
 colorMainBackground = #E3E3E3
-colorP = #74d572
+colorP = #56C754
 colorSubmit = #47c95d
 colorPC = #ecf0f1
 colorPB = #C7C7C7
@@ -211,6 +211,7 @@ button:focus
   background:navBg
   border-bottom:1px solid navBorder
   padding:10px 7px
+  text-transform:uppercase
 
 .home-item:active
   background:#fff
@@ -248,7 +249,7 @@ button:focus
 
 .action-left
   font-weight:600
-  color:primaryColor
+  color:colorP
   padding:3px 14px
   position:absolute
   left:-9px
@@ -260,7 +261,7 @@ button:focus
   background:colorLGrey
 
 .primary-action
-  color:primaryColor
+  color:colorP
   padding:3px 14px
   position:absolute
   right:0px
@@ -272,7 +273,7 @@ button:focus
 
 .secondary-action
   font-weight:300
-  color:primaryColor
+  color:colorP
   padding:3px 14px
   position:absolute
   right:0px
@@ -386,7 +387,7 @@ form
   z-index:2
   width:auto
   text-align:left
-  color:colorPrimaryButton !important
+  color:colorP !important
 
 .fa-inline
   position:relative
@@ -442,7 +443,7 @@ form
   line-height:1.4em
   margin-bottom:10px
   font-weight:300
-  color:colorPrimaryButton
+  color:colorP
   text-align:center
 
 .styled select:focus
@@ -467,7 +468,7 @@ form
   position:relative
   background:#fff
   color:colorFontGrey
-  border:1px solid colorPrimaryButton
+  border:1px solid colorP
 
 .button-half
   width: 40.1%
@@ -484,7 +485,7 @@ form
   position:relative
   display:inline-block
   padding:6px 14px 8px 14px
-  border:1px solid colorPrimaryButton
+  border:1px solid colorP
   brad(3px)
   color:colorFontGrey
   width:100%
@@ -637,7 +638,7 @@ form
 
 .back-button-wrap
   font-weight:300
-  color:primaryColor
+  color:colorP
   padding:3px 6px
   position:absolute
   right:0px
@@ -756,7 +757,7 @@ form
   width:100%
   border-top:1px solid colorGreyBorder
   display:inline-block
-  color:colorPrimaryButton
+  color:colorP
   font-weight:300
   font-size:1.3em
   z-index:500
@@ -1037,12 +1038,18 @@ form
   color:colorPC
   box-shadow:0px 1px 2px colorMainShadow
   font-size:1.5em
-  border:1px solid colorPB
+  -webkit-box-shadow: inset 0 -4px 0px rgba(0,0,0,.1)
+  -mox-box-shadow: inset 0 -4px 0px rgba(0,0,0,.1)
+  text-shadow: 0 1px rgba(255,255,255,.3)
+  font-weight:200
+  background:#fff
+  color:colorP
+  border:1px solid colorBGB
 
 .bottom-button:active, .bottom-button:hover
-  text-decoration:none
-  box-shadow:inset 0px 2px 5px colorActive
-  color:#fff
+  -webkit-box-shadow: inset 0 4px 0px rgba(0,0,0,.1)
+  -mox-box-shadow: inset 0 4px 0px rgba(0,0,0,.1)
+  color:colorP
 
 .button-submit
   background:colorSubmit

@@ -219,7 +219,7 @@ components.directive('homeItem', function($timeout) {
                         });
 
                         //home view swipe
-                        $(elem).swipe({
+                        /*$(elem).swipe({
                             swipeRight: function(event, direction, distance, duration, fingerCount){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                             },
@@ -228,7 +228,7 @@ components.directive('homeItem', function($timeout) {
 
                        
 
-                        /*$.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
                             e.swipe({
                                 swipeLeft: function(event, direction, distance, duration, fingerCount){
                                     var w = $(window).width();
