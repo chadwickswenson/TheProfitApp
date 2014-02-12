@@ -1,4 +1,7 @@
-<div class="view" size-views>
+<div class="view" size-views image-preview-click>
+   <div class="image-view">
+    <div class="close-preview"><i class="fa fa-times-circle"></i></div>
+  </div>
   <div class="top-view inline-view" >
 
     <div class="nav">
@@ -25,7 +28,7 @@
             <div class="onoffswitch-switch"></div>
         </label>
       </div>
-
+      <div class="thumbnail"></div>
       <button class="button button-half" ng-click="getLibrary()">
         <i class="fa fa-cloud-upload">
         </i>
@@ -68,11 +71,14 @@
       
      
     </form>
+
     <br/><br/><br/><br/>
 
   </div>
-  <a href="#" class="bottom-button button-submit">
-      Submit
+
+
+  <a href="#" class="bottom-button">
+      <i class="fa fa-check-circle"></i> Submit
   </a>
 
 </div>

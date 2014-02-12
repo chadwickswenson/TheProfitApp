@@ -75,6 +75,26 @@ components.directive('leftMenuClick', function(){
 
 });
 
+components.directive('imagePreviewClick', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                   
+                    $(".thumbnail").click(function(){
+                            
+                        $(".image-view").removeClass().addClass("image-view image-view-active");
+
+                    });
+
+                    $(".close-preview").click(function(){
+
+                        $(".image-view").removeClass().addClass("image-view");
+
+                    });  
+                }
+        }
+
+});
 
 components.directive('sizeViews', function(){
         return {
@@ -199,7 +219,7 @@ components.directive('homeItem', function($timeout) {
                         });
 
                         //home view swipe
-                        $(elem).swipe({
+                        /*$(elem).swipe({
                             swipeRight: function(event, direction, distance, duration, fingerCount){
                                 $(".left-menu").animate({ left:'0px'}, 300, 'easeOutQuart');
                             },
@@ -208,7 +228,7 @@ components.directive('homeItem', function($timeout) {
 
                        
 
-                        /*$.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
+                        $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
                             e.swipe({
                                 swipeLeft: function(event, direction, distance, duration, fingerCount){
                                     var w = $(window).width();
