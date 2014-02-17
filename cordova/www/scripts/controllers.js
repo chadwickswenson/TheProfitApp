@@ -122,9 +122,20 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 
 }]);
 
-ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-	var pictureSource = navigator.camera.PictureSourceType;
-    var destinationType = navigator.camera.DestinationType;
+ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', function($scope, $location, $rootScope, loadingService, profitAppService) {
+	// var pictureSource = navigator.camera.PictureSourceType;
+ 	// var destinationType = navigator.camera.DestinationType;
+ 	$scope.getGroups = function(){
+ 		profitAppService.listGroups(function(data){
+ 			//success
+ 			$scope.$apply(function() {
+ 				$scope.groups = data;
+ 			});
+ 		}, function(error){
+ 			//error
+ 			console.log(error);
+ 		})
+ 	};
 
     $scope.capturePhoto = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string
@@ -154,13 +165,30 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
     }
+
+    $scope.getGroups();
 }]);
 
-ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', function($scope, $location, $timeout, loadingService, profitAppService) {
 
+	$scope.createGroup = function() {
+		var group = {};
+		group.title = $scope.group.title;
+		group.color = $(".color-selected").css("background");
+		profitAppService.newGroup(group, function(result){
+			//success
+			console.log(result);
+			$timeout(function(){
+				$scope._go("add", false);
+			}, 200);
+		}, function(error){
+			//error
+			console.log(error);
+		});
+	}
 }]);
 
-ctrls.controller('loginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
 
@@ -173,15 +201,12 @@ ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingSer
 	$scope.item = item;
 }]);
 
-ctrls.controller('calcCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('SettingsCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('settingsCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('ExportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('exportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-
-}]);
-ctrls.controller('editCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);

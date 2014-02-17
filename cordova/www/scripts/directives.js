@@ -37,6 +37,19 @@ components.directive('timeAgo', function($timeout){
 
 });
 
+components.directive('groupClick', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(".color-option").click(function(){
+                        $(this).addClass("color-selected");
+                        $(".color-option").not(this).removeClass("color-selected");
+                    });
+                }
+        }
+
+});
+
 components.directive('addClick', function(){
         return {
                 restrict: 'A',

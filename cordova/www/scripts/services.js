@@ -185,7 +185,6 @@ services.factory('headerService', function($rootScope){
 });
 
 services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactory', function($resource, $http, $angularCacheFactory){
-
 	var profitCacheFactory = $angularCacheFactory('profitCache', {
         capacity: 1000,
         maxAge: 30000,
@@ -194,10 +193,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
      });
 
 	var profitAPI = {};
-	profitAPI.url = "http://parse.com";
-	profitAPI.actions = {
-	};
-	profitAPI.method = 'POST';
+	Parse.initialize("c6qu6vYBQBR8FMLKKxx8H6aR2I17562koAEQUgXY", "0YRo0iYzzupFk46JcQYWgMNjInQdHKG0bhLXxjDi");
 
 	profitAPI.getCache = function() {
         return profitCacheFactory;
@@ -224,6 +220,38 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 
 	profitAPI.getItemById = function(id) {
 		return costs[parseInt(id)-1];
+	}
+
+	profitAPI.newGroup = function(g, callbackSuccess, callbackError) {
+		var Group = Parse.Object.extend("Group");
+		var group = new Group();
+
+		group.set("title", g.title);
+		group.set("color", g.color);
+
+		group.save(null, {
+			success: function(result){
+				callbackSuccess(result);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
+	}
+
+	profitAPI.listGroups = function(callbackSuccess, callbackError) {
+		var Group = Parse.Object.extend("Group");
+		var query = new Parse.Query(Group);
+		query.ascending("title");
+
+		query.find({
+			success: function(results){
+				callbackSuccess(results);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
 	}
 
 	return profitAPI;

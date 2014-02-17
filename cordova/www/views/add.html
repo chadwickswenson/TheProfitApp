@@ -57,26 +57,15 @@
         <i class="fa fa-align-left input-icon">
         </i>
       </div>
-
       <select class="basic-input styled">
-        <option>Add to Group (optional)</option>
-        <option>Stuff</option>
-        <option>Stuff</option>
+        <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
       </select>
-
-      <a class="new-tag" href="" ng-click="_go('createtag', true)">
+      <a class="new-tag" href="" ng-click="_go('newgroup', true)">
         <i class="fa fa-plus-circle"></i> Create a New Group
       </a>
-
-      
-     
     </form>
-
     <br/><br/><br/><br/>
-
   </div>
-
-
   <a href="#" class="bottom-button">
       <i class="fa fa-check-circle"></i> Submit
   </a>

@@ -284,8 +284,6 @@ body {
   height: 70px;
   display: inline-block;
   position: relative;
-  margin-top: 20px;
-  margin-left: 20px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   border-radius: 40px;
@@ -307,8 +305,16 @@ form {
   position: relative;
   display: block;
   margin: 0px auto;
-  width: 320px;
   padding: 0px;
+  width: 100%;
+}
+.create-tag-form .row {
+  margin: 15px;
+}
+.create-tag-form .col-xs-4 {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
 }
 .larger-icon {
   font-size: 1.1em;

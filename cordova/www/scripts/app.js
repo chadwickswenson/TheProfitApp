@@ -39,13 +39,12 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
 				//$locationProvider.html5Mode(true);
 				$routeProvider.
                     when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
-                    when('/createtag', {templateUrl: 'views/createTag.html', controller: 'TagCtrl'}).
+                    when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
-                    when('/edit/:id', {templateUrl: 'views/add.html', controller: 'editCtrl'}).
-                    when('/login', {templateUrl: 'views/login.html', controller: 'loginCtrl'}).
-                    when('/calc', {templateUrl: 'views/calc.html', controller: 'calcCtrl'}).
-                    when('/export', {templateUrl: 'views/export.html', controller: 'exportCtrl'}).
-                    when('/settings', {templateUrl: 'views/settings.html', controller: 'settingsCtrl'}).
+                    when('/edit/:id', {templateUrl: 'views/add.html', controller: 'EditCtrl'}).
+                    when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl'}).
+                    when('/export', {templateUrl: 'views/export.html', controller: 'ExportCtrl'}).
+                    when('/settings', {templateUrl: 'views/settings.html', controller: 'SettingsCtrl'}).
                     when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
                         {
                             items: ['$q', 'profitAppService', '$location', function($q, profitAppService, $location){
@@ -79,7 +78,7 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                             }]
                         }
                     }).
-                    otherwise({redirectTo:'/home'});
+                    otherwise({redirectTo:'/login'});
 			});
 
 app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {
