@@ -1,6 +1,7 @@
 var ctrls = angular.module('DatAppProfit.controllers', []);
 var fadeTime = 200
-ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', function($scope, $location, $rootScope, ngProgress) {
+	ngProgress.color("#56c754");
 	/* $scope.$on('loadingStarted', function(){
 		$(".loading-panel").show();
 	});
@@ -122,7 +123,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 
 }]);
 
-ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', function($scope, $location, $rootScope, loadingService, profitAppService) {
+ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
 	var pictureSource = navigator.camera.PictureSourceType;
  	var destinationType = navigator.camera.DestinationType;
 
@@ -130,6 +131,8 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
  	$scope.picInProgress = false;
 
  	$scope.createEntry = function(){
+ 		ngProgress.start();
+ 		if($scope.picInProgress) return;
  		var newEntry = {};
  		newEntry.category = $scope.entry.type? "income" : "expense";
 		newEntry.title = $scope.entry.title;
@@ -141,6 +144,10 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 
 		profitAppService.newEntry(newEntry, function(entry){
 			console.log(entry);
+			ngProgress.complete();
+			$timeout(function(){
+				$scope._go("home", false);
+			}, 500);
 		}, function(error){
 			console.log(error);
 		})
@@ -158,29 +165,28 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
  		})
  	};
 
- 	$scope.$watch("picInProgress", function(){
- 		if($scope.picInProgress)
-            $(".bottom-button").prop('disabled', true);
-        else
-            $("bottom-button").prop('disabled', false);
- 	});
+ 	var handlePhotoUpload = function(imgData) {
+ 		ngProgress.start();
+ 		$(".thumbnail").fadeIn();
+  		$(".image-view img").remove();
+  		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData);
+  		$(".image-view").append(image);
+		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
+		file.save().then(function() {
+			$scope.picInProgress = false;
+			ngProgress.complete();
+		}, function(error) {
+			console.log(error)
+		});
+		$scope.file = file;
+ 	}
 
     $scope.capturePhoto = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string
       	$scope.picInProgress = true;
       	navigator.camera.getPicture(
       	function(imgData){
-      		$(".thumbnail").fadeIn();
-      		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).height("100%").width("100%");
-      		$(".image-view").append(image);
-			var file = new Parse.File("receipt.png", imgData, "image/png");
-			file.save().then(function() {
-				$scope.picInProgress = false;
-			}, function(error) {
-				console.log(error)
-			});
-			$scope.file = file;
-			console.log("sucess");
+      		handlePhotoUpload(imgData);
       	}, function(error) {
       		console.log(error);
       	},
@@ -192,15 +198,16 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
 
     $scope.getLibrary = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string
+      	$scope.picInProgress = true;
       	navigator.camera.getPicture(
-      	function(uri){
-      		console.log(uri);
+      	function(imgData){
+      		handlePhotoUpload(imgData);
       	}, function(error) {
       		console.log(error);
       	},
       	{
       		quality: 50,
-        	destinationType: destinationType.FILE_URI,
+        	destinationType: destinationType.DATA_URL,
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
     }
@@ -219,7 +226,7 @@ ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingServic
 			console.log(result);
 			$timeout(function(){
 				$scope._go("add", false);
-			}, 200);
+			}, 100);
 		}, function(error){
 			//error
 			console.log(error);

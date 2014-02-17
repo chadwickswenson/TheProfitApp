@@ -34,9 +34,9 @@ var _deviceInfo = function() {
 	return information;
 }
 
-var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource']).
+var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngProgress']).
             config(function($routeProvider, $locationProvider) {
-				//$locationProvider.html5Mode(true);
+                //$locationProvider.html5Mode(true);
 				$routeProvider.
                     when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
                     when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'}).

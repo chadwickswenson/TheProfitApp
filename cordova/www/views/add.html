@@ -43,12 +43,12 @@
         <input class="one-line-input full-width-input basic-input" placeholder="title" ng-model="entry.title" required>
       </div>
       <div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input" placeholder="date" ng-model="entry.date" required>
+        <input class="one-line-input full-width-input basic-input" placeholder="date" ng-model="entry.date" required readonly datepicker>
         <i class="fa fa-calendar input-icon">
         </i>
       </div>
       <div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input" placeholder="value" ng-model="entry.value" required>
+        <input type="number" class="one-line-input full-width-input basic-input" placeholder="value" ng-model="entry.value" required>
         <i class="fa fa-usd input-icon">
         </i>
       </div>
@@ -58,6 +58,7 @@
         </i>
       </div>
       <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
+        <option value="-1">select group</option>
         <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
       </select>
       <a class="new-tag" href="" ng-click="_go('newgroup', true)">

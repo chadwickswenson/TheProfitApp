@@ -25,6 +25,19 @@ components.directive('tooltip', function(){
 
 });
 
+components.directive('datepicker', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(elem).datepicker();
+                    $(elem).focus(function(event) {
+                        $(this).datepicker('show');
+                    });
+                }
+        }
+
+});
+
 components.directive('timeAgo', function($timeout){
         return {
                 restrict: 'A',

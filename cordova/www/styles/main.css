@@ -53,6 +53,33 @@ textarea {
   top: 0px;
   left: 0px;
 }
+/* Styling for the ngProgress itself */
+#ngProgress {
+  margin: 0;
+  padding: 0;
+  z-index: 99998;
+  background-color: #008000;
+  color: #008000;
+  box-shadow: 0 0 10px 0;
+/* Inherits the font color */
+  height: 2px;
+  opacity: 0;
+/* Add CSS3 styles for transition smoothing */
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+/* Styling for the ngProgress-container */
+#ngProgress-container {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
 a {
   color: inherit;
 }
@@ -110,6 +137,15 @@ button:focus {
   top: 100%;
   -webkit-transition: all 0.3s ease-in-out;
 }
+.image-view img {
+  top: 50%;
+  width: 100%;
+  position: relative;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .image-view-active {
   top: 0px;
 }
@@ -122,8 +158,8 @@ button:focus {
 }
 .close-preview {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 10px;
+  left: 15px;
   opacity: 0.8;
   font-size: 1.5em;
   color: #fff;
