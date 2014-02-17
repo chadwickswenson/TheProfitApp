@@ -173,8 +173,14 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
       		$(".thumbnail").fadeIn();
       		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).height("100%").width("100%");
       		$(".image-view").append(image);
-			$scope.file = new Parse.File("receipt.png", imgData, "image/png");
-			$scope.picInProgress = false;
+			var file = new Parse.File("receipt.png", imgData, "image/png");
+			file.save().then(function() {
+				$scope.picInProgress = false;
+			}, function(error) {
+				console.log(error)
+			});
+			$scope.file = file;
+			console.log("sucess");
       	}, function(error) {
       		console.log(error);
       	},
