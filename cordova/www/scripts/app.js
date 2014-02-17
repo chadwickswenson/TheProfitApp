@@ -78,7 +78,7 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                             }]
                         }
                     }).
-                    otherwise({redirectTo:'/login'});
+                    otherwise({redirectTo:'/home'});
 			});
 
 app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {

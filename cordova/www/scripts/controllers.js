@@ -123,13 +123,27 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 }]);
 
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', function($scope, $location, $rootScope, loadingService, profitAppService) {
-	// var pictureSource = navigator.camera.PictureSourceType;
- 	// var destinationType = navigator.camera.DestinationType;
+	var pictureSource = navigator.camera.PictureSourceType;
+ 	var destinationType = navigator.camera.DestinationType;
+
+ 	$scope.file = null;
+ 	$scope.picInProgress = false;
+
  	$scope.createEntry = function(){
- 		$(".view-content").submit(function(e){
- 			console.log(e);
- 		});
- 		console.log($scope.entry);
+ 		var newEntry = {};
+ 		newEntry.category = $scope.entry.type? "income" : "expense";
+		newEntry.title = $scope.entry.title;
+		newEntry.date = $scope.entry.date;
+		newEntry.value = $scope.entry.value;
+		newEntry.notes = $scope.entry.notes;
+		newEntry.group = $scope.entry.group;
+		newEntry.receiptFile = $scope.file;
+
+		profitAppService.newEntry(newEntry, function(entry){
+			console.log(entry);
+		}, function(error){
+			console.log(error);
+		})
  	};
 
  	$scope.getGroups = function(){
@@ -144,11 +158,23 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
  		})
  	};
 
+ 	$scope.$watch("picInProgress", function(){
+ 		if($scope.picInProgress)
+            $(".bottom-button").prop('disabled', true);
+        else
+            $("bottom-button").prop('disabled', false);
+ 	});
+
     $scope.capturePhoto = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string
+      	$scope.picInProgress = true;
       	navigator.camera.getPicture(
-      	function(img){
-      		console.log(img);
+      	function(imgData){
+      		$(".thumbnail").fadeIn();
+      		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).height("100%").width("100%");
+      		$(".image-view").append(image);
+			$scope.file = new Parse.File("receipt.png", imgData, "image/png");
+			$scope.picInProgress = false;
       	}, function(error) {
       		console.log(error);
       	},

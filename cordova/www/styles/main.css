@@ -118,6 +118,7 @@ button:focus {
   height: 40px;
   background: #000;
   display: none;
+  color: #fff;
 }
 .close-preview {
   position: absolute;
@@ -253,7 +254,7 @@ body {
   background: #ededed;
 }
 .color-red {
-  background: #f3402a !important;
+  background: #f3402a;
 }
 .color-orange {
   background: #ffae25;

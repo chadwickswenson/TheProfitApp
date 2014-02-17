@@ -222,6 +222,29 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 		return costs[parseInt(id)-1];
 	}
 
+	profitAPI.newEntry = function(newEntry, callbackSuccess, callbackError) {
+		var Entry = Parse.Object.extend("Entry");
+		var entry = new Entry();
+
+		entry.set("category", newEntry.category);
+		entry.set("title", newEntry.title);
+		entry.set("date", newEntry.date);
+		entry.set("value", newEntry.value);
+		entry.set("notes", newEntry.notes);
+		entry.set("group", newEntry.group);
+		entry.set("attachment", newEntry.receiptFile);
+		//entry.set("user", user);
+
+		entry.save(null, {
+			success: function(result){
+				callbackSuccess(result);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
+	}
+
 	profitAPI.newGroup = function(g, callbackSuccess, callbackError) {
 		var Group = Parse.Object.extend("Group");
 		var group = new Group();

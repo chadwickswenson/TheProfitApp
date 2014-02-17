@@ -122,15 +122,59 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 
 }]);
 
-ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', function($scope, $location, $rootScope, loadingService, profitAppService) {
 	var pictureSource = navigator.camera.PictureSourceType;
-    var destinationType = navigator.camera.DestinationType;
+ 	var destinationType = navigator.camera.DestinationType;
+
+ 	$scope.file = null;
+ 	$scope.picInProgress = false;
+
+ 	$scope.createEntry = function(){
+ 		var newEntry = {};
+ 		newEntry.category = $scope.entry.type? "income" : "expense";
+		newEntry.title = $scope.entry.title;
+		newEntry.date = $scope.entry.date;
+		newEntry.value = $scope.entry.value;
+		newEntry.notes = $scope.entry.notes;
+		newEntry.group = $scope.entry.group;
+		newEntry.receiptFile = $scope.file;
+
+		profitAppService.newEntry(newEntry, function(entry){
+			console.log(entry);
+		}, function(error){
+			console.log(error);
+		})
+ 	};
+
+ 	$scope.getGroups = function(){
+ 		profitAppService.listGroups(function(data){
+ 			//success
+ 			$scope.$apply(function() {
+ 				$scope.groups = data;
+ 			});
+ 		}, function(error){
+ 			//error
+ 			console.log(error);
+ 		})
+ 	};
+
+ 	$scope.$watch("picInProgress", function(){
+ 		if($scope.picInProgress)
+            $(".bottom-button").prop('disabled', true);
+        else
+            $("bottom-button").prop('disabled', false);
+ 	});
 
     $scope.capturePhoto = function() {
       	// Take picture using device camera and retrieve image as base64-encoded string
+      	$scope.picInProgress = true;
       	navigator.camera.getPicture(
-      	function(img){
-      		console.log(img);
+      	function(imgData){
+      		$(".thumbnail").fadeIn();
+      		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).height("100%").width("100%");
+      		$(".image-view").append(image);
+			$scope.file = new Parse.File("receipt.png", imgData, "image/png");
+			$scope.picInProgress = false;
       	}, function(error) {
       		console.log(error);
       	},
@@ -154,13 +198,30 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingServic
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
     }
+
+    $scope.getGroups();
 }]);
 
-ctrls.controller('TagCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', function($scope, $location, $timeout, loadingService, profitAppService) {
 
+	$scope.createGroup = function() {
+		var group = {};
+		group.title = $scope.group.title;
+		group.color = $(".color-selected").css("background");
+		profitAppService.newGroup(group, function(result){
+			//success
+			console.log(result);
+			$timeout(function(){
+				$scope._go("add", false);
+			}, 200);
+		}, function(error){
+			//error
+			console.log(error);
+		});
+	}
 }]);
 
-ctrls.controller('loginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
 
@@ -173,15 +234,12 @@ ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingSer
 	$scope.item = item;
 }]);
 
-ctrls.controller('calcCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('SettingsCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('settingsCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('ExportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('exportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-
-}]);
-ctrls.controller('editCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);

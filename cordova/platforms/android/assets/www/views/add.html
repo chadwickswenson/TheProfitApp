@@ -22,13 +22,13 @@
     <form class="view-content">
 
       <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="entry.type" required>
         <label class="onoffswitch-label" for="myonoffswitch">
             <div class="onoffswitch-inner"></div>
             <div class="onoffswitch-switch"></div>
         </label>
       </div>
-      <div class="thumbnail"></div>
+      <div class="thumbnail text-center">Tap to see the attachment.</div>
       <button class="button button-half" ng-click="getLibrary()">
         <i class="fa fa-cloud-upload">
         </i>
@@ -40,45 +40,34 @@
         Capture
       </button>
       <div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input" placeholder="title"/>
+        <input class="one-line-input full-width-input basic-input" placeholder="title" ng-model="entry.title" required>
       </div>
       <div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input" placeholder="date"/>
+        <input class="one-line-input full-width-input basic-input" placeholder="date" ng-model="entry.date" required>
         <i class="fa fa-calendar input-icon">
         </i>
       </div>
       <div class='entry-area'>
-        <input class="one-line-input full-width-input basic-input" placeholder="value"/>
+        <input class="one-line-input full-width-input basic-input" placeholder="value" ng-model="entry.value" required>
         <i class="fa fa-usd input-icon">
         </i>
       </div>
       <div class='entry-area'>
-        <textarea class="basic-input text-area-input full-width-input" placeholder="notes"></textarea>
+        <textarea class="basic-input text-area-input full-width-input" placeholder="notes" ng-model="entry.notes" required></textarea>
         <i class="fa fa-align-left input-icon">
         </i>
       </div>
-
-      <select class="basic-input styled">
-        <option>Add to Group (optional)</option>
-        <option>Stuff</option>
-        <option>Stuff</option>
+      <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
+        <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
       </select>
-
-      <a class="new-tag" href="" ng-click="_go('createtag', true)">
+      <a class="new-tag" href="" ng-click="_go('newgroup', true)">
         <i class="fa fa-plus-circle"></i> Create a New Group
       </a>
-
-      
-     
     </form>
-
     <br/><br/><br/><br/>
-
   </div>
-
-
-  <a href="#" class="bottom-button">
+  <button class="bottom-button" ng-click="createEntry()">
       <i class="fa fa-check-circle"></i> Submit
-  </a>
+  </button>
 
 </div>
