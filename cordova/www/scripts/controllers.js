@@ -125,6 +125,13 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', function($scope, $location, $rootScope, loadingService, profitAppService) {
 	// var pictureSource = navigator.camera.PictureSourceType;
  	// var destinationType = navigator.camera.DestinationType;
+ 	$scope.createEntry = function(){
+ 		$(".view-content").submit(function(e){
+ 			console.log(e);
+ 		});
+ 		console.log($scope.entry);
+ 	};
+
  	$scope.getGroups = function(){
  		profitAppService.listGroups(function(data){
  			//success
