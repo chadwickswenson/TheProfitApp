@@ -146,15 +146,14 @@ var resizeHandler = function(elem){
     $(elem).find('.top-view').css('height', cH);
 }
 
-$(window).resize(function() {
-    resizeHandler(".view");
-});
-
 components.directive('sizeViews', function(){
     return {
         restrict: 'A',
         link: function(scope, elem, attrs){
             resizeHandler(elem);
+            $(window).resize(function() {
+                resizeHandler($(".view"));
+            });
         }
     }
 
