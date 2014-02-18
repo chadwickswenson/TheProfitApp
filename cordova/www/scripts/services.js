@@ -193,6 +193,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
      });
 
 	var profitAPI = {};
+	profitAPI.groups = {};
 	Parse.initialize("c6qu6vYBQBR8FMLKKxx8H6aR2I17562koAEQUgXY", "0YRo0iYzzupFk46JcQYWgMNjInQdHKG0bhLXxjDi");
 
 	profitAPI.getCache = function() {
@@ -269,7 +270,46 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 
 		query.find({
 			success: function(results){
+	 			for(var i=0; i < results.length; i++){
+	 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
+	 			}
 				callbackSuccess(results);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
+	}
+
+	profitAPI.listGroupsItems = function(callbackSuccess, callbackError) {
+		var Entry = Parse.Object.extend("Entry");
+		var query = new Parse.Query(Entry);
+		query.ascending("date");
+
+		query.find({
+			success: function(results){
+				var groupedData = {};
+				var income = [];
+				var expense = [];
+				for(var i=0;i<results.length;i++){
+					var entry = {};
+					entry.title = results[i].get("title");
+					entry.date = results[i].get("date");
+					entry.value = results[i].get("value");
+					entry.notes = results[i].get("notes");
+					entry.category = results[i].get("category");
+					entry.group = results[i].get("group");
+					entry.color = profitAPI.groups[results[i].get("group")];
+					entry.createdAt = results[i].createdAt;
+					entry.updatedAt = results[i].updatedAt;
+					if(entry.category == "income")
+						income.push(entry);
+					else
+						expense.push(entry);
+				}
+				groupedData.income = _.groupBy(income, "group");
+				groupedData.expense = _.groupBy(expense, "group");
+				callbackSuccess(groupedData);
 			},
 			error: function(error){
 				callbackError(error);

@@ -107,15 +107,13 @@ components.directive('imagePreviewClick', function(){
                 link: function(scope, elem, attrs){
                    
                     $(".thumbnail").click(function(){
-                            
                         $(".image-view").removeClass().addClass("image-view image-view-active");
-
+                        $(".image-view img").css("display","block");
                     });
 
                     $(".close-preview").click(function(){
-
                         $(".image-view").removeClass().addClass("image-view");
-
+                        $(".image-view img").css("display","none");
                     });  
                 }
         }

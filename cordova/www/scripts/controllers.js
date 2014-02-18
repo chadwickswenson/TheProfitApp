@@ -119,8 +119,29 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 	});
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
-
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', function($scope, $location, $rootScope, ngProgress, profitAppService) {
+	$scope.getGroupsItems = function(groups) {
+		profitAppService.listGroupsItems(function(data){
+			$scope.$apply(function() {
+				$scope.income = data.income;
+				$scope.expense = data.expense;
+				ngProgress.complete();
+			});
+		}, function(error){
+			console.log(error);
+		})
+	}
+	$scope.getGroups = function(){
+		ngProgress.start();
+ 		profitAppService.listGroups(function(data){
+ 			//success
+ 			$scope.getGroupsItems();
+ 		}, function(error){
+ 			//error
+ 			console.log(error);
+ 		})
+ 	};
+	$scope.getGroups();
 }]);
 
 ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
@@ -169,7 +190,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
  		ngProgress.start();
  		$(".thumbnail").fadeIn();
   		$(".image-view img").remove();
-  		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData);
+  		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).css("display","none");
   		$(".image-view").append(image);
 		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
 		file.save().then(function() {
