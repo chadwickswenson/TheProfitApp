@@ -156,6 +156,9 @@ button:focus {
   display: none;
   color: #fff;
 }
+.edit-thumbnail {
+  display: block;
+}
 .close-preview {
   position: absolute;
   top: 10px;

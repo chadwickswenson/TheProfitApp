@@ -1,32 +1,20 @@
 <div class="view" size-views>
   <div class="top-view inline-view" >
-
   	<div class="nav">
-
        <div class="left-action">
-
           <button class='back-button-wrap' ng-click="_go('list', false)">
           <i class="fa fa-chevron-left back-img2"></i> Back</button>
-
         </div>
-
       <div class="nav-title">
-
         <span class="">Detail</span>
-
       </div>
-
     </div>
-
     <div class="view-content">
-      <detail-part date="{{item.date}}" desc="{{item.notes}}" name="{{item.title}}" value="{{item.value | currency:'$'}}" group="{{item.group}}" color="{{item.color}}" attachment="{{item.attachment._url}}">
+      <detail-part date="{{item.date}}" notes="{{item.notes}}" name="{{item.title}}" value="{{item.value}}" group="{{item.group}}" color="{{item.color}}" attachment="{{item.attachment._url}}">
       </detail-part>
     </div>
-
   </div>
-
- <a href="#edit/{{item.id}}" class="bottom-button">
+ <a href="" ng-click="_go('edit/{{item.id}}', true)" class="bottom-button">
       <i class="fa fa-pencil-square-o"></i> Edit This Thing
   </a>
-
 </div>

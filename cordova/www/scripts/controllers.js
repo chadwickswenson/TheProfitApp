@@ -129,6 +129,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 				$scope.expense = data.expense;
 				$scope.totalIncome = data.totalIncome;
 				$scope.totalExpense = data.totalExpense;
+				$scope.total = data.totalIncome - data.totalExpense;
 			});
 		}, function(error){
 			console.log(error);
@@ -286,7 +287,6 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
  	$scope.attachmentChanged = false;
 
 	$scope.entry = item;
-	$scope.hasAttachment = (item.attachment != null);
 
 	$scope.updateEntry = function(){
  		ngProgress.start();
@@ -296,9 +296,7 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
  	$scope.getGroups = function(){
  		profitAppService.listGroups(function(data){
  			//success
- 			$scope.$apply(function() {
- 				$scope.groups = data;
- 			});
+			$scope.groups = data;
  		}, function(error){
  			//error
  			console.log(error);

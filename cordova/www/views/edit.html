@@ -27,7 +27,7 @@
             <div class="onoffswitch-switch"></div>
         </label>
       </div>
-      <div class="thumbnail text-center" ng-show="entry.attachment._url">Tap to see the attachment.</div>
+      <div class="thumbnail text-center edit-thumbnail" ng-show="entry.attachment._url">Tap to see the attachment.</div>
       <button class="button button-half" ng-click="getLibrary()">
         <i class="fa fa-cloud-upload">
         </i>
@@ -57,7 +57,6 @@
         </i>
       </div>
       <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
-        <option value="-1">select group</option>
         <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
       </select>
       <a class="new-tag" href="" ng-click="_go('newgroup', true)">

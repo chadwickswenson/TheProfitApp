@@ -74,6 +74,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	var profitAPI = {};
 	profitAPI.items =[];
 	profitAPI.groups = {};
+	profitAPI.groupList = [];
 	profitAPI.incomeGroup = {};
 	profitAPI.expenseGroup = {};
 
@@ -158,21 +159,26 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	}
 
 	profitAPI.listGroups = function(callbackSuccess, callbackError) {
-		var Group = Parse.Object.extend("Group");
-		var query = new Parse.Query(Group);
-		query.ascending("title");
+		if(profitAPI.groupList.length > 0){
+			callbackSuccess(profitAPI.groupList);
+		} else {
+			var Group = Parse.Object.extend("Group");
+			var query = new Parse.Query(Group);
+			query.ascending("title");
 
-		query.find({
-			success: function(results){
-	 			for(var i=0; i < results.length; i++){
-	 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
-	 			}
-				callbackSuccess(results);
-			},
-			error: function(error){
-				callbackError(error);
-			}
-		});
+			query.find({
+				success: function(results){
+		 			for(var i=0; i < results.length; i++){
+		 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
+		 			}
+		 			profitAPI.groupList = results;
+					callbackSuccess(results);
+				},
+				error: function(error){
+					callbackError(error);
+				}
+			});
+		}
 	}
 
 	profitAPI.listItemsByGroup = function(type, group, callbackSuccess, callbackError) {

@@ -18,6 +18,7 @@ filters.filter('truncateTitle', [function() {
 
 filters.filter('calculateSum', ["$filter", function($filter) {
 	return function(items) {
+		if(!items) return 0;
 		var sum = 0;
 		for(var i = 0; i<items.length; i++)
 			sum += items[i].value;
