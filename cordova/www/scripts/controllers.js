@@ -181,9 +181,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
  	$scope.getGroups = function(){
  		profitAppService.listGroups(function(data){
  			//success
- 			$scope.$apply(function() {
- 				$scope.groups = data;
- 			});
+			$scope.groups = data;
  		}, function(error){
  			//error
  			console.log(error);
@@ -289,8 +287,9 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 	$scope.entry = item;
 
 	$scope.updateEntry = function(){
- 		ngProgress.start();
- 		if($scope.picInProgress) return;
+ 		// ngProgress.start();
+ 		// if($scope.picInProgress) return;
+ 		alert("TODO");
  	};
 
  	$scope.getGroups = function(){

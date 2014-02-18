@@ -18,7 +18,7 @@
 
     </div>
 
-    <form class="view-content">
+    <form class="view-content" name="editForm">
 
       <div class="onoffswitch">
         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="entry.category" ng-checked="entry.category == 'expense'" required>
@@ -65,7 +65,7 @@
     </form>
     <br/><br/><br/><br/>
   </div>
-  <button class="bottom-button" ng-click="editEntry()">
+  <button class="bottom-button" ng-click="updateEntry()">
       <i class="fa fa-edit"></i> Update
   </button>
 
