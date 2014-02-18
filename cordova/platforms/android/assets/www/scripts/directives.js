@@ -181,7 +181,6 @@ components.directive('sizeViews', function(){
                                 cH += bH*2 + c2;
                             }
 
-
                             $(".view").css('width', wid-10)
                             $(".view").css('padding-top', topPadding);
                             $(".view").find('.top-view').css('height', cH);
@@ -282,7 +281,8 @@ components.directive('tagItem', function($timeout) {
                         amount: '@',
                         color: '@',
                         click: '&',
-                        count: '@'
+                        count: '@',
+                        type: '@'
                 },
                 templateUrl: 'views/partials/tagItem.html',
                 link: function(scope, elem, attrs) {
@@ -316,6 +316,7 @@ components.directive('listItem', function($timeout) {
                         date: '@',
                         attachment: '@',
                         id: '@',
+                        color: '@',
                         click: '&'
                 },
                 templateUrl: 'views/partials/listItem.html',
@@ -332,9 +333,10 @@ components.directive('detailPart', function($timeout) {
                         name: '@',
                         value: '@',
                         group: '@',
-                        desc: '@',
+                        notes: '@',
                         date: '@',
-                        attachment: '@'                   
+                        id: '@',
+                        attachment: '@'
                 },
                 templateUrl: 'views/partials/detailPart.html',
                 link: function(scope, elem, attrs) {

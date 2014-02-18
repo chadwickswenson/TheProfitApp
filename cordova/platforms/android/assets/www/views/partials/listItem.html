@@ -1,27 +1,18 @@
 <a class="list-link" href="" ng-click="click({path:'detail/{{id}}', direction: true})">
-
   <div class="item-wrap">
-
     <div class="entry-title">
-
-      <div class="entry-tag {{tag}}">
-         +
-      </div>
-
+      <div class="entry-tag" style="background: {{color}}">&nbsp;</div>
       {{name | truncateTitle}}
-      <!-- just move this somewhere appropriate, "title" attribute is important-->
-      
     </div>
     <div class="entry-value">
-      {{value}}
+      {{value | currency:'$'}}
     </div>
     <div class="desc">
       <span class="entry-date" title="{{date}}" time-ago></span>
     </div>
-    <div class="info">
-      <i class="fa fa-paperclip {{attachment}}">
+    <div class="info" ng-show="{{attachment}}">
+      <i class="fa fa-paperclip">
       </i>
     </div>
   </div>
-
 </a>

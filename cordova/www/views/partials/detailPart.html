@@ -3,7 +3,7 @@
     {{name}}
   </div>
   <div class="value">
-    {{value}}
+    {{value | currency:'$'}}
   </div>
 </div>
 <div class="section">
@@ -13,8 +13,9 @@
 </div>
 <div class="section">
   <div class="description">
-    {{desc}}
+    {{notes}}
   </div>
 </div>
 <div class="file-preview">
+  <img ng-src="{{attachment}}" alt="{{name}}">
 </div>

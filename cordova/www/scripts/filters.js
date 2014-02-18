@@ -10,18 +10,19 @@ filters.filter('dbDateConvert', [function() {
 
 filters.filter('truncateTitle', [function() {
 	return function(title) {
-		return title.substring(0, 15) + "...";
+		if(title.length > 15)
+			return title.substring(0, 15) + "...";
+		return title;
 	}
 }]);
 
-
-filters.filter('calculateSum', [function() {
+filters.filter('calculateSum', ["$filter", function($filter) {
 	return function(items) {
 		var sum = 0;
 		for(var i = 0; i<items.length; i++)
 			sum += items[i].value;
 
-		return sum;
+		return $filter('currency')(sum, '$');
 	}
 }]);
 

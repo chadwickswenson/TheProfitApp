@@ -22,6 +22,7 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 	}
 
 	$scope._go = function(path, direction) {
+		$(".main-container").css("padding", "5px");
 		if(direction){
 			$scope.direction('forward');
 		} else {
@@ -276,6 +277,81 @@ ctrls.controller('SettingsCtrl', ['$scope', '$location', '$rootScope', 'loadingS
 ctrls.controller('ExportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'item', 'profitAppService', function($scope, $location, $rootScope, loadingService, item, profitAppService) {
+	var pictureSource = navigator.camera.PictureSourceType;
+ 	var destinationType = navigator.camera.DestinationType;
 
+ 	$scope.file = null;
+ 	$scope.picInProgress = false;
+ 	$scope.attachmentChanged = false;
+
+	$scope.entry = item;
+	$scope.hasAttachment = (item.attachment != null);
+
+	$scope.updateEntry = function(){
+ 		ngProgress.start();
+ 		if($scope.picInProgress) return;
+ 	};
+
+ 	$scope.getGroups = function(){
+ 		profitAppService.listGroups(function(data){
+ 			//success
+ 			$scope.$apply(function() {
+ 				$scope.groups = data;
+ 			});
+ 		}, function(error){
+ 			//error
+ 			console.log(error);
+ 		})
+ 	};
+
+ 	var handlePhotoUpload = function(imgData) {
+ 		ngProgress.start();
+ 		$(".thumbnail").fadeIn();
+  		$(".image-view img").remove();
+  		var image = $("<img>").attr("src", "data:image/jpeg;base64," + imgData).css("display","none");
+  		$(".image-view").append(image);
+		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
+		file.save().then(function() {
+			$scope.picInProgress = false;
+			ngProgress.complete();
+		}, function(error) {
+			console.log(error)
+		});
+		$scope.file = file;
+		$scope.attachmentChanged = true;
+ 	}
+
+    $scope.capturePhoto = function() {
+      	// Take picture using device camera and retrieve image as base64-encoded string
+      	$scope.picInProgress = true;
+      	navigator.camera.getPicture(
+      	function(imgData){
+      		handlePhotoUpload(imgData);
+      	}, function(error) {
+      		console.log(error);
+      	},
+      	{
+      		quality: 50,
+        	destinationType: destinationType.DATA_URL
+    	});
+    }
+
+    $scope.getLibrary = function() {
+      	// Take picture using device camera and retrieve image as base64-encoded string
+      	$scope.picInProgress = true;
+      	navigator.camera.getPicture(
+      	function(imgData){
+      		handlePhotoUpload(imgData);
+      	}, function(error) {
+      		console.log(error);
+      	},
+      	{
+      		quality: 50,
+        	destinationType: destinationType.DATA_URL,
+        	sourceType: pictureSource.PHOTOLIBRARY
+    	});
+    }
+
+    $scope.getGroups();
 }]);

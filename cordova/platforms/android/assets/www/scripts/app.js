@@ -41,21 +41,37 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
                     when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
-                    when('/edit/:id', {templateUrl: 'views/add.html', controller: 'EditCtrl'}).
+                    when('/edit/:id', {templateUrl: 'views/edit.html', controller: 'EditCtrl', resolve:
+                        {
+                            item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                                var deferred = $q.defer();
+                                var id = $route.current.params.id;
+
+                                var data = profitAppService.getItemById(id, function(data){
+                                    deferred.resolve(data);
+                                }, function(error){
+                                    console.log(error);
+                                    deferred.reject;
+                                });
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }).
                     when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl'}).
                     when('/export', {templateUrl: 'views/export.html', controller: 'ExportCtrl'}).
                     when('/settings', {templateUrl: 'views/settings.html', controller: 'SettingsCtrl'}).
-                    when('/list', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
+                    when('/list/:type/:group', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
                         {
-                            items: ['$q', 'profitAppService', '$location', function($q, profitAppService, $location){
+                            items: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
                                 var deferred = $q.defer();
 
-                                var data = profitAppService.getItemsList();
-                                if(data) {
+                                var data = profitAppService.listItemsByGroup($route.current.params.type, $route.current.params.group, function(data){
                                     deferred.resolve(data);
-                                } else {
+                                }, function(error){
+                                    console.log(error);
                                     deferred.reject;
-                                }
+                                });
 
                                 return deferred.promise;
                             }]
@@ -67,12 +83,12 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                                 var deferred = $q.defer();
                                 var id = $route.current.params.id;
 
-                                var data = profitAppService.getItemById(id);
-                                if(data) {
+                                var data = profitAppService.getItemById(id, function(data){
                                     deferred.resolve(data);
-                                } else {
+                                }, function(error){
+                                    console.log(error);
                                     deferred.reject;
-                                }
+                                });
 
                                 return deferred.promise;
                             }]

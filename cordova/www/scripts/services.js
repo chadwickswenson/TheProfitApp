@@ -2,127 +2,6 @@
 
 var services = angular.module('DatAppProfit.services', ['jmdobry.angular-cache'])
 
-var costs = [
-	{
-		id: 1,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-18T12:24:17Z"
-	},
-	{
-		id: 2,
-		title: "Chad Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-14T09:24:17Z"
-	},
-	{
-		id: 3,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "no",
-		date: "2013-12-17T09:24:17Z"
-	},
-	{
-		id: 4,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-14T09:24:17Z"
-	},
-	{
-		id: 5,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-red",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-15T09:24:17Z"
-	},
-	{
-		id: 6,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-yellow",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-14T09:24:17Z"
-	},
-	{
-		id: 7,
-		title: "Soroush Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-red",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-11-14T09:24:17Z"
-	},
-	{
-		id: 8,
-		title: "Macbook Air Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-15T09:24:17Z"
-	},
-	{
-		id: 9,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-04T09:24:17Z"
-	},
-	{
-		id: 10,
-		title: "Macbook Pro Late 2013",
-		value: "$2654.23",
-		tag: "color-teal",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-11T09:24:17Z"
-	},
-	{
-		id: 11,
-		title: "iPad Air Late 2013",
-		value: "$2654.23",
-		tag: "color-blue",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-16T09:24:17Z"
-	},
-	{
-		id: 12,
-		title: "iPad Retina Late 2013",
-		value: "$2654.23",
-		tag: "color-blue",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-16T09:24:17Z"
-	},
-	{
-		id: 13,
-		title: "iPod Late 2012",
-		value: "$500.00",
-		tag: "color-blue",
-		description: "2 Weeks ago 7/11",
-		attachment: "yes",
-		date: "2013-12-16T09:24:17Z"
-	}
-];
-
-
 services.factory('appVersion', function($rootScope){
 	var versionMgr = {};
 	var version = "2.0 (WAC)";
@@ -193,7 +72,11 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
      });
 
 	var profitAPI = {};
+	profitAPI.items =[];
 	profitAPI.groups = {};
+	profitAPI.incomeGroup = {};
+	profitAPI.expenseGroup = {};
+
 	Parse.initialize("c6qu6vYBQBR8FMLKKxx8H6aR2I17562koAEQUgXY", "0YRo0iYzzupFk46JcQYWgMNjInQdHKG0bhLXxjDi");
 
 	profitAPI.getCache = function() {
@@ -219,8 +102,19 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 		return costs;
 	}
 
-	profitAPI.getItemById = function(id) {
-		return costs[parseInt(id)-1];
+	profitAPI.getItemById = function(id, callbackSuccess, callbackError) {
+		if(profitAPI.items.length > 0){
+			for(var i = 0; i< profitAPI.items.length; i++)
+				if(id == profitAPI.items[i].id){
+					callbackSuccess(profitAPI.items[i]);
+					return;
+				}
+			callbackError("invalid id");
+		}
+		else {
+			//query server
+			callbackError("empty array");
+		}
 	}
 
 	profitAPI.newEntry = function(newEntry, callbackSuccess, callbackError) {
@@ -281,6 +175,15 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 		});
 	}
 
+	profitAPI.listItemsByGroup = function(type, group, callbackSuccess, callbackError) {
+		if(profitAPI[type + "Group"] != undefined){
+			callbackSuccess(profitAPI[type + "Group"][group]);
+		} else {
+			//query server
+			callbackError("No data");
+		}
+	}
+
 	profitAPI.listGroupsItems = function(callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var query = new Parse.Query(Entry);
@@ -304,6 +207,9 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 					entry.color = profitAPI.groups[results[i].get("group")];
 					entry.createdAt = results[i].createdAt;
 					entry.updatedAt = results[i].updatedAt;
+					entry.id = results[i].id;
+					entry.attachment = results[i].get("attachment");
+					profitAPI.items.push(entry);
 					if(entry.category == "income"){
 						groupedData.totalIncome += entry.value;
 						income.push(entry);
@@ -315,7 +221,9 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 				}
 
 				groupedData.income = _.groupBy(income, "group");
+				profitAPI.incomeGroup = groupedData.income;
 				groupedData.expense = _.groupBy(expense, "group");
+				profitAPI.expenseGroup = groupedData.expense;
 
 				callbackSuccess(groupedData);
 			},
