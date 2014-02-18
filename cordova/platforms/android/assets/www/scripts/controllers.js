@@ -125,6 +125,8 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 			$scope.$apply(function() {
 				$scope.income = data.income;
 				$scope.expense = data.expense;
+				$scope.totalIncome = data.totalIncome;
+				$scope.totalExpense = data.totalExpense;
 			});
 			ngProgress.complete();
 		}, function(error){

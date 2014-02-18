@@ -122,11 +122,13 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', function($scope, $location, $rootScope, ngProgress, profitAppService) {
 	$scope.getGroupsItems = function(groups) {
 		profitAppService.listGroupsItems(function(data){
+			ngProgress.complete();
 			$scope.$apply(function() {
 				$scope.income = data.income;
 				$scope.expense = data.expense;
+				$scope.totalIncome = data.totalIncome;
+				$scope.totalExpense = data.totalExpense;
 			});
-			ngProgress.complete();
 		}, function(error){
 			console.log(error);
 		})

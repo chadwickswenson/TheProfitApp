@@ -291,6 +291,8 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 				var groupedData = {};
 				var income = [];
 				var expense = [];
+				groupedData.totalIncome = 0;
+				groupedData.totalExpense = 0;
 				for(var i=0;i<results.length;i++){
 					var entry = {};
 					entry.title = results[i].get("title");
@@ -302,13 +304,19 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 					entry.color = profitAPI.groups[results[i].get("group")];
 					entry.createdAt = results[i].createdAt;
 					entry.updatedAt = results[i].updatedAt;
-					if(entry.category == "income")
+					if(entry.category == "income"){
+						groupedData.totalIncome += entry.value;
 						income.push(entry);
-					else
+					}
+					else{
+						groupedData.totalExpense += entry.value;
 						expense.push(entry);
+					}
 				}
+
 				groupedData.income = _.groupBy(income, "group");
 				groupedData.expense = _.groupBy(expense, "group");
+
 				callbackSuccess(groupedData);
 			},
 			error: function(error){

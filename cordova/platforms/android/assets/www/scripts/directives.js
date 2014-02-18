@@ -281,7 +281,8 @@ components.directive('tagItem', function($timeout) {
                         name: '@',
                         amount: '@',
                         color: '@',
-                        click: '&'
+                        click: '&',
+                        count: '@'
                 },
                 templateUrl: 'views/partials/tagItem.html',
                 link: function(scope, elem, attrs) {

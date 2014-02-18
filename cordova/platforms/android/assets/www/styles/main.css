@@ -223,6 +223,11 @@ body {
   background: #ededed;
 }
 .left-indicator {
+  text-align: center;
+  color: #0a0a0a;
+  font-weight: 100;
+  font-size: 12px;
+  padding-top: 1px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -231,8 +236,8 @@ body {
   -o-transform: scale(30px);
   display: inline-block;
   float: left;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   margin: 6px 5px 0px 0px;
   position: relative;
 }
