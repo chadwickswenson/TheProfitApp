@@ -1,5 +1,6 @@
 var ctrls = angular.module('DatAppProfit.controllers', []);
-var fadeTime = 200
+var fadeTime = 200;
+var notifications = [];
 ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', function($scope, $location, $rootScope, ngProgress) {
 	ngProgress.color("#56c754");
 	/* $scope.$on('loadingStarted', function(){
@@ -21,6 +22,10 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		$rootScope.style = styles[dir];
 	}
 
+	function alertDismissed() {
+        // do something
+    }
+
 	$scope._go = function(path, direction) {
 		$(".main-container").css("padding", "5px");
 		if(direction){
@@ -28,6 +33,22 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		} else {
 			$scope.direction('back');
 		}
+		window.plugin.notification.local.onclick = function (id, state, json) {
+			console.log(id);
+			console.log(state);
+			console.log(json);
+	    }
+		setTimeout(function(){
+			var notif = {
+					id: Math.floor(Math.random() * 111 % 13),
+					sound: "/www/audio/Titan.mp3",
+					title: 'DatApp - The Profit',
+					message: 'Soroush is the best!',
+					icon: 'icon'
+				};
+			notifications.push(notif);
+			window.plugin.notification.local.add(notif);
+		}, 5000);
 		$location.path(path);
 	}
 }]);
