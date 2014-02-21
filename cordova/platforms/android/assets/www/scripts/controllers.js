@@ -219,6 +219,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		file.save().then(function() {
 			$scope.picInProgress = false;
 			ngProgress.complete();
+			_go("home", false);
 		}, function(error) {
 			console.log(error)
 		});
@@ -308,9 +309,17 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 	$scope.entry = item;
 
 	$scope.updateEntry = function(){
- 		// ngProgress.start();
- 		// if($scope.picInProgress) return;
- 		alert("TODO");
+ 		ngProgress.start();
+ 		if($scope.picInProgress) return;
+ 		if($scope.attachmentChanged){
+ 			entry.attachment = file;
+ 		}
+		profitAppService.updateEntry(entry, function(data){
+			ngProgress.complete();
+			_go("home", false);
+		}, function(error){
+			console.log(error);
+		})
  	};
 
  	$scope.getGroups = function(){
