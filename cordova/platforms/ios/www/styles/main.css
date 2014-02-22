@@ -53,6 +53,33 @@ textarea {
   top: 0px;
   left: 0px;
 }
+/* Styling for the ngProgress itself */
+#ngProgress {
+  margin: 0;
+  padding: 0;
+  z-index: 99998;
+  background-color: #008000;
+  color: #008000;
+  box-shadow: 0 0 10px 0;
+/* Inherits the font color */
+  height: 2px;
+  opacity: 0;
+/* Add CSS3 styles for transition smoothing */
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+/* Styling for the ngProgress-container */
+#ngProgress-container {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
 a {
   color: inherit;
 }
@@ -107,8 +134,17 @@ button:focus {
   display: block;
   z-index: 30000;
   left: 0px;
-  top: 100%;
+  top: 200%;
   -webkit-transition: all 0.3s ease-in-out;
+}
+.image-view img {
+  top: 50%;
+  width: 100%;
+  position: relative;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .image-view-active {
   top: 0px;
@@ -118,14 +154,19 @@ button:focus {
   height: 40px;
   background: #000;
   display: none;
+  color: #fff;
+}
+.edit-thumbnail {
+  display: block;
 }
 .close-preview {
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 10px;
+  left: 15px;
   opacity: 0.8;
   font-size: 1.5em;
   color: #fff;
+  z-index: 1000;
 }
 .view {
   height: 100%;
@@ -186,6 +227,11 @@ body {
   background: #ededed;
 }
 .left-indicator {
+  text-align: center;
+  color: #0a0a0a;
+  font-weight: 100;
+  font-size: 12px;
+  padding-top: 1px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
@@ -194,8 +240,8 @@ body {
   -o-transform: scale(30px);
   display: inline-block;
   float: left;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   margin: 6px 5px 0px 0px;
   position: relative;
 }
@@ -253,7 +299,7 @@ body {
   background: #ededed;
 }
 .color-red {
-  background: #f3402a !important;
+  background: #f3402a;
 }
 .color-orange {
   background: #ffae25;
@@ -284,8 +330,6 @@ body {
   height: 70px;
   display: inline-block;
   position: relative;
-  margin-top: 20px;
-  margin-left: 20px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
   border-radius: 40px;
@@ -307,8 +351,16 @@ form {
   position: relative;
   display: block;
   margin: 0px auto;
-  width: 320px;
   padding: 0px;
+  width: 100%;
+}
+.create-tag-form .row {
+  margin: 15px;
+}
+.create-tag-form .col-xs-4 {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
 }
 .larger-icon {
   font-size: 1.1em;
@@ -345,6 +397,7 @@ form {
 .right-action {
   display: inline-block;
   position: absolute;
+  color: #56c754;
   right: 10px;
   top: -10px;
   padding: 15px;
@@ -494,7 +547,7 @@ form {
   padding: 0px;
   color: #000;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   top: -45px;
   padding-top: 32px;
   z-index: 500 !important;
@@ -506,7 +559,7 @@ form {
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
   margin: 0px;
-  height: 64px;
+  height: 96px;
 }
 .entry-list li:active {
   background: greyColor;
@@ -514,49 +567,45 @@ form {
 .entry-tag {
   display: inline-block;
   position: relative;
-  top: -4px;
+  top: 20px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   -moz-transform: scale(35px);
   -webkit-transform: scale(35px);
   -o-transform: scale(35px);
-  font-size: 0.7em;
-  line-height: 1em;
   color: #fff;
-  margin-right: 6px;
+  margin-right: 8px;
   width: 36px;
   height: 36px;
   text-align: center;
-}
-.entry-list li .desc {
-  display: inline-block;
-  position: relative;
-  font-size: 0.8;
-  line-height: 1em;
-  top: 2px;
   float: left;
-  font-weight: 300;
-  width: 90%;
-  padding-left: 46px;
 }
 .no-tag {
   border: 1px solid #ccc;
   color: #838d8f;
   top: -3px;
 }
-.entry-title {
+.item-more {
   display: inline-block;
-  position: relative;
-  font-size: 1em;
-  line-height: 1.1em;
+  float: right;
+}
+.item-content {
+  display: inline-block;
   float: left;
+  width: 60%;
+}
+.entry-title {
+  font-size: 1em;
   font-weight: 500;
-  top: 0px;
-  height: 20px;
+}
+.entry-notes {
+  font-size: 13px;
+  font-weight: 200;
+  color: #9d9d9d;
+  height: 36px;
 }
 .entry-date {
-  display: inline-block;
   font-size: 12px;
   font-weight: 200;
 }
@@ -576,13 +625,34 @@ form {
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 5px 10px 8px 10px;
+  padding: 8px;
+}
+.icon-group {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 5px;
 }
 .item-wrap {
   display: inline-block;
   position: relative;
-  margin-top: 8px;
   width: 100%;
+}
+.item-actions {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: rgba(0,0,0,0.75);
+  padding-top: 30px;
+  color: #fff;
+  z-index: 5;
+  transition: 0.2s all linear;
+  display: none;
+}
+.item-actions a {
+  margin: 0 5px;
 }
 .list-link:hover {
   color: #000;
@@ -593,12 +663,7 @@ form {
   background: #ededed;
 }
 .info {
-  display: inline-block;
-  position: relative;
-  font-size: 0.8;
-  line-height: 1em;
   color: #838d8f;
-  float: right;
   text-align: right;
 }
 .attached {
@@ -961,6 +1026,14 @@ form {
   position: relative;
   top: 95px;
   left: 5px;
+}
+.file-preview {
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+}
+.file-preview img {
+  width: 100%;
 }
 .calc-check {
   float: left;

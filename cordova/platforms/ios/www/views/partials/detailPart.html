@@ -1,0 +1,21 @@
+<div class="section">
+  <div class="name">
+    {{name}}
+  </div>
+  <div class="value">
+    {{value | currency:'$'}}
+  </div>
+</div>
+<div class="section">
+  <div class="group">
+    {{group}}
+  </div>
+</div>
+<div class="section">
+  <div class="description">
+    {{notes}}
+  </div>
+</div>
+<div class="file-preview" ng-show="attachment">
+  <img ng-src="{{attachment}}" alt="{{name}}">
+</div>

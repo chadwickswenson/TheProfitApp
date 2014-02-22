@@ -25,6 +25,19 @@ components.directive('tooltip', function(){
 
 });
 
+components.directive('datepicker', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(elem).datepicker();
+                    $(elem).focus(function(event) {
+                        $(this).datepicker('show');
+                    });
+                }
+        }
+
+});
+
 components.directive('timeAgo', function($timeout){
         return {
                 restrict: 'A',
@@ -37,18 +50,38 @@ components.directive('timeAgo', function($timeout){
 
 });
 
-components.directive('addClick', function(){
+components.directive('groupClick', function($timeout){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                       /* $(elem).click(function(){
-                            $(this).animate({ width:50, height:50, top:-10}, 200,
-                                function(){
-                                    $(this).animate({ width:25, height:25, top:0}, 100);
-                                }
-                            )
-                        });*/
-                        
+                    $(".color-option").click(function(){
+                        $(this).addClass("color-selected");
+                        $(".color-option").not(this).removeClass("color-selected");
+                    });
+                }
+        }
+
+});
+
+components.directive('swipeActions', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    new Hammer($(elem).siblings(".list-link")[0]).on("drag swipeleft swiperight", function(ev){
+                        ev.gesture.preventDefault();
+                        $(elem).show();
+                        $(elem).css("opacity", 1);
+                        $(".item-actions").not(elem).css("opacity", 0);
+                        $timeout(function(){
+                            $(".item-actions").not(elem).hide();
+                        }, 200);
+                        ev.gesture.stopDetect();
+                    });
+
+                    $(elem).find(".btn-close").click(function(){
+                        $(this).parent().css("opacity", 0);
+                        $(this).hide();
+                    })
                 }
         }
 
@@ -81,91 +114,55 @@ components.directive('imagePreviewClick', function(){
                 link: function(scope, elem, attrs){
                    
                     $(".thumbnail").click(function(){
-                            
                         $(".image-view").removeClass().addClass("image-view image-view-active");
-
+                        $(".image-view img").css("display","block");
                     });
 
                     $(".close-preview").click(function(){
-
                         $(".image-view").removeClass().addClass("image-view");
-
+                        $(".image-view img").css("display","none");
                     });  
                 }
         }
 
 });
 
+var resizeHandler = function(elem){
+    var topPadding = 0;
+    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+        topPadding = 20;
+    }
+
+    var height = $(window).height();
+    var width = $(window).width();
+
+    var bH = 18;
+    var pad = 5;
+    var c = 35;
+    var c2 = 38;
+
+    var cH = height - bH * 2 - pad * 3 - topPadding - c;
+    var url = window.location.hash;
+
+    if(url.indexOf('list') > 0) {
+        cH += bH * 2 + c2;
+    }
+
+    $(elem).css('padding-top', topPadding);
+    $(elem).css('width', width - 10)
+    $(elem).find('.top-view').css('height', cH);
+}
+
 components.directive('sizeViews', function(){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    
-                    var topPadding = 0;
-
-                    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-                        topPadding = 20;
-                    }
-                    
-                    var w = $(window).height();
-                    var wid = $(window).width();
-
-                    width = wid;
-                    height = w;
-
-                    var bH = 18;
-                    var pad = 5;
-                    var c = 35;
-                    var c2 = 38;
-
-                    var cH = w - bH*2 - pad*3 - topPadding - c;
-                    var pathname = $(location).attr('href');
-
-                    if(pathname.indexOf('list') >= 0){
-                        cH += bH*2 + c2;
-                    }
-
-                    $(elem).css('padding-top', topPadding);
-                    $(elem).css('width', wid-10)
-
-                    $(elem).find('.top-view').css('height', cH);
-
-                    $( window ).resize(function() {
-
-                        var topPadding = 0;
-
-                        if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-                            topPadding = 20;
-                        }
-                        
-                        var w = $(window).height();
-                        var wid = $(window).width();
-
-                        if(wid != width){
-                            
-                            width = wid;
-
-                            var bH = 18;
-                            var pad = 5;
-                            var c = 35;
-                            var c2 = 38;
-
-                            var cH = w - bH*2 - pad*3 - topPadding - c;
-                            var pathname = $(location).attr('href');
-
-                            if(pathname.indexOf('list') >= 0){
-                                cH += bH*2 + c2;
-                            }
-
-
-                            $(".view").css('width', wid-10)
-                            $(".view").css('padding-top', topPadding);
-                            $(".view").find('.top-view').css('height', cH);
-                        }
-                    });
-
-                }
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            resizeHandler(elem);
+            $(window).resize(function() {
+                resizeHandler($(".view"));
+            });
         }
+    }
 
 });
 
@@ -257,7 +254,9 @@ components.directive('tagItem', function($timeout) {
                         name: '@',
                         amount: '@',
                         color: '@',
-                        click: '&'
+                        click: '&',
+                        count: '@',
+                        type: '@'
                 },
                 templateUrl: 'views/partials/tagItem.html',
                 link: function(scope, elem, attrs) {
@@ -287,11 +286,15 @@ components.directive('listItem', function($timeout) {
                         name: '@',
                         value: '@',
                         tag: '@',
-                        desc: '@',
+                        notes: '@',
                         date: '@',
                         attachment: '@',
                         id: '@',
-                        click: '&'
+                        color: '@',
+                        group: '@',
+                        click: '&',
+                        edit: '&',
+                        remove: '&'
                 },
                 templateUrl: 'views/partials/listItem.html',
                 link: function(scope, elem, attrs) {
@@ -307,9 +310,10 @@ components.directive('detailPart', function($timeout) {
                         name: '@',
                         value: '@',
                         group: '@',
-                        desc: '@',
+                        notes: '@',
                         date: '@',
-                        attachment: '@'                   
+                        id: '@',
+                        attachment: '@'
                 },
                 templateUrl: 'views/partials/detailPart.html',
                 link: function(scope, elem, attrs) {
