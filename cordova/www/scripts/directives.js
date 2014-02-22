@@ -75,7 +75,7 @@ components.directive('swipeActions', function(){
                     });
 
                     $(elem).find(".btn-close").click(function(){
-                        $($(this).parents()[1]).hide();
+                        $(this).parent().hide();
                     })
                 }
         }

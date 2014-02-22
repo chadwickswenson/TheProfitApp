@@ -141,15 +141,17 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 	});
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', function($scope, $location, $rootScope, ngProgress, profitAppService) {
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
 	$scope.getGroupsItems = function(groups) {
 		profitAppService.listGroupsItems(function(data){
 			$scope.$apply(function() {
 				$scope.income = data.income;
 				$scope.expense = data.expense;
-				$scope.totalIncome = data.totalIncome;
-				$scope.totalExpense = data.totalExpense;
-				$scope.total = data.totalIncome - data.totalExpense;
+				$timeout(function(){
+					$scope.totalIncome = data.totalIncome;
+					$scope.totalExpense = data.totalExpense;
+					$scope.total = data.totalIncome - data.totalExpense;
+				});
 			});
 			ngProgress.complete();
 		}, function(error){

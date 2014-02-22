@@ -650,6 +650,9 @@ form {
   z-index: 5;
   transition: 0.2 all linear;
 }
+.item-actions a {
+  margin: 0 5px;
+}
 .list-link:hover {
   color: #000;
   opacity: 0.9;
