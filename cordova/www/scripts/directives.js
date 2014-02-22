@@ -80,6 +80,7 @@ components.directive('swipeActions', function($timeout){
 
                     $(elem).find(".btn-close").click(function(){
                         $(this).parent().css("opacity", 0);
+                        $(this).hide();
                     })
                 }
         }
