@@ -63,18 +63,20 @@ components.directive('groupClick', function($timeout){
 
 });
 
-components.directive('addClick', function(){
+components.directive('swipeActions', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                       /* $(elem).click(function(){
-                            $(this).animate({ width:50, height:50, top:-10}, 200,
-                                function(){
-                                    $(this).animate({ width:25, height:25, top:0}, 100);
-                                }
-                            )
-                        });*/
-                        
+                    new Hammer($(elem).siblings('.list-link')[0]).on("swipeleft swiperight", function(ev){
+                        ev.gesture.preventDefault();
+                        $(".item-actions").not(elem).hide();
+                        $(elem).show();
+                        ev.gesture.stopDetect();
+                    });
+
+                    $(elem).find(".btn-close").click(function(){
+                        $($(this).parents()[1]).hide();
+                    })
                 }
         }
 
@@ -279,12 +281,15 @@ components.directive('listItem', function($timeout) {
                         name: '@',
                         value: '@',
                         tag: '@',
-                        desc: '@',
+                        notes: '@',
                         date: '@',
                         attachment: '@',
                         id: '@',
                         color: '@',
-                        click: '&'
+                        group: '@',
+                        click: '&',
+                        edit: '&',
+                        remove: '&'
                 },
                 templateUrl: 'views/partials/listItem.html',
                 link: function(scope, elem, attrs) {

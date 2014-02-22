@@ -141,18 +141,19 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 		});
 	}
 
-	profitAPI.updateEntry = function(updatedEntry, callbackSuccess, callbackError) {
+	profitAPI.updateEntry = function(updatedEntry, hasAttachmentChanged, callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var query = new Parse.Query(Entry);
 		query.get(updatedEntry.id, {
 		  	success: function(data) {
-		  		data.set("category", (updatedEntry.category)? "income" : "expense");
+		  		data.set("category", updatedEntry.category);
 				data.set("title", updatedEntry.title);
 				data.set("date", updatedEntry.date);
 				data.set("value", updatedEntry.value);
 				data.set("notes", updatedEntry.notes);
 				data.set("group", updatedEntry.group);
-				data.set("attachment", updatedEntry.attachment);
+				if(hasAttachmentChanged)
+					data.set("attachment", updatedEntry.attachment);
 				data.save();
 		    	callbackSuccess(data);
 		  	},

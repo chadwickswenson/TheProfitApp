@@ -1,18 +1,37 @@
+<div class="item-actions" swipe-actions>
+  <div class="col-xs-4 text-center">
+    <a href="" ng-click="click({path:'edit/{{id}}', direction: true})" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+  </div>
+  <div class="col-xs-4 text-center">
+    <a href="" ng-click="click({path:'remove/{{id}}', direction: true})" class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
+  </div>
+  <div class="col-xs-4 text-center">
+    <a href="" class="btn btn-default btn-close"><i class="fa fa-times"></i> Cancel</a>
+  </div>
+</div>
 <a class="list-link" href="" ng-click="click({path:'detail/{{id}}', direction: true})">
   <div class="item-wrap">
-    <div class="entry-title">
-      <div class="entry-tag" style="background: {{color}}">&nbsp;</div>
-      {{name | truncateTitle}}
+    <div class="entry-tag" style="background: {{color}}">
+      <span class="icon-group">{{group}}</span>
     </div>
-    <div class="entry-value">
-      {{value | currency:'$'}}
+    <div class="item-more">
+      <div class="entry-value">
+        {{value | currency:'$'}}
+      </div>
+      <div class="info" ng-show="{{attachment}}">
+        <i class="fa fa-paperclip">
+        </i>
+      </div>
     </div>
-    <div class="desc">
-      <span class="entry-date" title="{{date}}" time-ago></span>
-    </div>
-    <div class="info" ng-show="{{attachment}}">
-      <i class="fa fa-paperclip">
-      </i>
+    <div class="item-content">
+      <div class="entry-title">
+        {{name | truncateTitle}}
+      </div>
+      <div class="entry-notes">
+        {{notes | truncateNotes}}
+      </div>
+      <div class="entry-date" title="{{date}}" time-ago></div>
+      </div>
     </div>
   </div>
 </a>

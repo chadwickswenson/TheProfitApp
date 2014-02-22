@@ -33,22 +33,22 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		} else {
 			$scope.direction('back');
 		}
-		window.plugin.notification.local.onclick = function (id, state, json) {
-			console.log(id);
-			console.log(state);
-			console.log(json);
-	    }
-		setTimeout(function(){
-			var notif = {
-					id: Math.floor(Math.random() * 111 % 13),
-					sound: "/www/audio/Titan.mp3",
-					title: 'DatApp - The Profit',
-					message: 'Soroush is the best!',
-					icon: 'icon'
-				};
-			notifications.push(notif);
-			window.plugin.notification.local.add(notif);
-		}, 5000);
+		// window.plugin.notification.local.onclick = function (id, state, json) {
+		// 	console.log(id);
+		// 	console.log(state);
+		// 	console.log(json);
+	 //    }
+		// setTimeout(function(){
+		// 	var notif = {
+		// 			id: Math.floor(Math.random() * 111 % 13),
+		// 			sound: "/www/audio/Titan.mp3",
+		// 			title: 'DatApp - The Profit',
+		// 			message: 'Soroush is the best!',
+		// 			icon: 'icon'
+		// 		};
+		// 	notifications.push(notif);
+		// 	window.plugin.notification.local.add(notif);
+		// }, 5000);
 		$location.path(path);
 	}
 }]);
@@ -144,7 +144,6 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', function($scope, $location, $rootScope, ngProgress, profitAppService) {
 	$scope.getGroupsItems = function(groups) {
 		profitAppService.listGroupsItems(function(data){
-			ngProgress.complete();
 			$scope.$apply(function() {
 				$scope.income = data.income;
 				$scope.expense = data.expense;
@@ -152,9 +151,10 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 				$scope.totalExpense = data.totalExpense;
 				$scope.total = data.totalIncome - data.totalExpense;
 			});
+			ngProgress.complete();
 		}, function(error){
 			console.log(error);
-		})
+		});
 	}
 	$scope.getGroups = function(){
 		ngProgress.start();
@@ -218,12 +218,12 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
 		file.save().then(function() {
 			$scope.picInProgress = false;
-			ngProgress.complete();
 			_go("home", false);
 		}, function(error) {
 			console.log(error)
 		});
 		$scope.file = file;
+		ngProgress.complete();
  	}
 
     $scope.capturePhoto = function() {
@@ -263,6 +263,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', function($scope, $location, $timeout, loadingService, profitAppService) {
 
 	$scope.createGroup = function() {
+		ngProgress.start();
 		var group = {};
 		group.title = $scope.group.title;
 		group.color = $(".color-selected").css("background");
@@ -271,6 +272,7 @@ ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingServic
 			console.log(result);
 			$timeout(function(){
 				$scope._go("add", false);
+				ngProgress.complete();
 			}, 100);
 		}, function(error){
 			//error
@@ -298,7 +300,7 @@ ctrls.controller('SettingsCtrl', ['$scope', '$location', '$rootScope', 'loadingS
 ctrls.controller('ExportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'item', 'profitAppService', function($scope, $location, $rootScope, loadingService, item, profitAppService) {
+ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'item', 'profitAppService', function($scope, $location, $rootScope, ngProgress, item, profitAppService) {
 	var pictureSource = navigator.camera.PictureSourceType;
  	var destinationType = navigator.camera.DestinationType;
 
@@ -312,11 +314,11 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
  		ngProgress.start();
  		if($scope.picInProgress) return;
  		if($scope.attachmentChanged){
- 			entry.attachment = file;
+ 			$scope.entry.attachment = $scope.file;
  		}
-		profitAppService.updateEntry(entry, function(data){
+		profitAppService.updateEntry($scope.entry, $scope.attachmentChanged, function(data){
+			$scope._go("home", false);
 			ngProgress.complete();
-			_go("home", false);
 		}, function(error){
 			console.log(error);
 		})
@@ -341,12 +343,12 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'loadingServi
 		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
 		file.save().then(function() {
 			$scope.picInProgress = false;
-			ngProgress.complete();
 		}, function(error) {
 			console.log(error)
 		});
 		$scope.file = file;
 		$scope.attachmentChanged = true;
+		ngProgress.complete();
  	}
 
     $scope.capturePhoto = function() {

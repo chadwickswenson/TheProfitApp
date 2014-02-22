@@ -26,7 +26,7 @@
   	</div>
     <ul class="entry-list">
       <li ng-repeat="item in items | filter:search" ng-animate="'listanimate'">
-        <list-item name="{{item.title}}" id="{{item.id}}" value="{{item.value}}" tag="{{item.group}}" desc="{{item.description}}" attachment="{{item.attachment}}" date="{{item.date}}" click="_go(path, direction)" color="{{item.color}}">
+        <list-item name="{{item.title}}" id="{{item.id}}" value="{{item.value}}" tag="{{item.group}}" notes="{{item.notes}}" attachment="{{item.attachment}}" date="{{item.date}}" click="_go(path, direction)" color="{{item.color}}" group="{{item.group[0].toUpperCase()}}" edit="_go(path, direction)" remove="_go(path, direction)">
         </list-item>
       </li>
     </ul>

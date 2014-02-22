@@ -397,6 +397,7 @@ form {
 .right-action {
   display: inline-block;
   position: absolute;
+  color: #56c754;
   right: 10px;
   top: -10px;
   padding: 15px;
@@ -558,7 +559,7 @@ form {
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
   margin: 0px;
-  height: 64px;
+  height: 96px;
 }
 .entry-list li:active {
   background: greyColor;
@@ -566,49 +567,45 @@ form {
 .entry-tag {
   display: inline-block;
   position: relative;
-  top: -4px;
+  top: 20px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   -moz-transform: scale(35px);
   -webkit-transform: scale(35px);
   -o-transform: scale(35px);
-  font-size: 0.7em;
-  line-height: 1em;
   color: #fff;
-  margin-right: 6px;
+  margin-right: 8px;
   width: 36px;
   height: 36px;
   text-align: center;
-}
-.entry-list li .desc {
-  display: inline-block;
-  position: relative;
-  font-size: 0.8;
-  line-height: 1em;
-  top: 2px;
   float: left;
-  font-weight: 300;
-  width: 90%;
-  padding-left: 46px;
 }
 .no-tag {
   border: 1px solid #ccc;
   color: #838d8f;
   top: -3px;
 }
-.entry-title {
+.item-more {
   display: inline-block;
-  position: relative;
-  font-size: 1em;
-  line-height: 1.1em;
+  float: right;
+}
+.item-content {
+  display: inline-block;
   float: left;
+  width: 60%;
+}
+.entry-title {
+  font-size: 1em;
   font-weight: 500;
-  top: 0px;
-  height: 20px;
+}
+.entry-notes {
+  font-size: 13px;
+  font-weight: 200;
+  color: #9d9d9d;
+  height: 36px;
 }
 .entry-date {
-  display: inline-block;
   font-size: 12px;
   font-weight: 200;
 }
@@ -628,13 +625,30 @@ form {
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 5px 10px 8px 10px;
+  padding: 8px;
+}
+.icon-group {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: 5px;
 }
 .item-wrap {
   display: inline-block;
   position: relative;
-  margin-top: 8px;
   width: 100%;
+}
+.item-actions {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0,0,0,0.75);
+  padding-top: 30px;
+  color: #fff;
+  z-index: 5;
+  transition: 0.2 all linear;
 }
 .list-link:hover {
   color: #000;
@@ -645,12 +659,7 @@ form {
   background: #ededed;
 }
 .info {
-  display: inline-block;
-  position: relative;
-  font-size: 0.8;
-  line-height: 1em;
   color: #838d8f;
-  float: right;
   text-align: right;
 }
 .attached {
