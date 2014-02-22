@@ -63,19 +63,23 @@ components.directive('groupClick', function($timeout){
 
 });
 
-components.directive('swipeActions', function(){
+components.directive('swipeActions', function($timeout){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                    new Hammer($(elem).siblings('.list-link')[0]).on("swipeleft swiperight", function(ev){
+                    new Hammer($(elem).siblings(".list-link")[0]).on("drag swipeleft swiperight", function(ev){
                         ev.gesture.preventDefault();
-                        $(".item-actions").not(elem).hide();
                         $(elem).show();
+                        $(elem).css("opacity", 1);
+                        $(".item-actions").not(elem).css("opacity", 0);
+                        $timeout(function(){
+                            $(".item-actions").not(elem).hide();
+                        }, 200);
                         ev.gesture.stopDetect();
                     });
 
                     $(elem).find(".btn-close").click(function(){
-                        $(this).parent().hide();
+                        $(this).parent().css("opacity", 0);
                     })
                 }
         }
