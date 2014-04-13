@@ -48,10 +48,10 @@
     </div>
     <div class="view-content">
       <div class="items">
-        <home-item name="+ Income" amount="{{totalIncome | currency:'$'}}">
+        <home-item name="Income" amount="{{totalIncome | currency:'$'}}">
         </home-item>
         <tag-item ng-repeat="(group, items) in income" type="income" name="{{group}}" amount="{{items | calculateSum}}" click="_go(path, direction)" color="{{items[0].color}}" count="{{items.length}}"></tag-item>
-        <home-item name="- Expense" amount="{{totalExpense | currency:'$'}}">
+        <home-item name="Expense" amount="{{totalExpense | currency:'$'}}">
         </home-item>
         <tag-item ng-repeat="(group, items) in expense" type="expense" name="{{group}}" amount="{{items | calculateSum}}" click="_go(path, direction)" color="{{items[0].color}}" count="{{items.length}}"></tag-item>
       </div>
