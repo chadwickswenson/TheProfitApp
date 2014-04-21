@@ -1,5 +1,16 @@
 'use strict';
 
+Parse.initialize("c6qu6vYBQBR8FMLKKxx8H6aR2I17562koAEQUgXY", "0YRo0iYzzupFk46JcQYWgMNjInQdHKG0bhLXxjDi");
+
+if(Parse.User.current())
+        $.cookie("current", true, { expires: 14});
+    else
+        $.cookie("current", false, { expires: 14});
+
+var parseBoolean = function(val) {
+    return val == "true";
+}
+
 $.fn.usedWidth = function() {
     return $(this).width() + parseInt($(this).css("margin-left"), 10) + parseInt($(this).css("margin-right"), 10);
 };
@@ -38,7 +49,23 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
             config(function($routeProvider, $locationProvider) {
                 //$locationProvider.html5Mode(true);
 				$routeProvider.
-                    when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'}). //you need to create this one
+                    when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl', resolve:
+                        {
+                            session: ['$q', '$location', function($q, $location){
+                                var _user = parseBoolean($.cookie("current"));
+                                var deferred = $q.defer();
+
+                                if(_user)
+                                    deferred.resolve();
+                                else {
+                                    deferred.reject();
+                                    $location.path("/login");
+                                }
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }). //you need to create this one
                     when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'}).
                     when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
                     when('/edit/:id', {templateUrl: 'views/edit.html', controller: 'EditCtrl', resolve:
@@ -58,7 +85,49 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                             }]
                         }
                     }).
-                    when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl'}).
+                    when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl', resolve:
+                        {
+                            session: ['$q', '$location', function($q, $location){
+                                var _user = parseBoolean($.cookie("current"));
+                                var deferred = $q.defer();
+
+                                if(_user) {
+                                    deferred.reject();
+                                    $location.path("/home");
+                                }
+                                else {
+                                    deferred.resolve();
+                                }
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }).
+                    when('/signup', {templateUrl: 'views/signup.html', controller: 'SignUpCtrl', resolve:
+                        {
+                            futureUser: ['$q', '$location', function($q, $location){
+                                var _user = parseBoolean($.cookie("current"));
+                                var deferred = $q.defer();
+                                var futureUser;
+                                try {
+                                    futureUser = JSON.parse(sessionStorage.getItem("user"));
+                                } catch(err) {
+                                    futureUser = new Object();
+                                }
+
+
+                                if(_user) {
+                                    deferred.reject();
+                                    $location.path("/home");
+                                }
+                                else {
+                                    deferred.resolve(futureUser);
+                                }
+
+                                return deferred.promise;
+                            }]
+                        }
+                    }).
                     when('/export', {templateUrl: 'views/export.html', controller: 'ExportCtrl'}).
                     when('/settings', {templateUrl: 'views/settings.html', controller: 'SettingsCtrl'}).
                     when('/list/:type/:group', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
@@ -94,14 +163,11 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                             }]
                         }
                     }).
-                    otherwise({redirectTo:'/home'});
+                    otherwise({redirectTo:'/login'});
 			});
 
 app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {
-	var routesThatDontRequireAuth = ['/login'];	  
-	  
-	$rootScope.$on('$routeChangeStart', function (event, next, current) {					
-
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
 	});
 
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {

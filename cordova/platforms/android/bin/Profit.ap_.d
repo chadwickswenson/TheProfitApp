@@ -15,6 +15,7 @@
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/bin/res/drawable-xxxhdpi/icon.png \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/audio \
+/Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/channel.html \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/config.xml \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/cordova.js \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/cordova_plugins.js \
@@ -46,6 +47,7 @@
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/img/bg.jpg \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/img/file.png \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/img/profile.jpg \
+/Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/img/profile.png \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/angularjs \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/browser \
@@ -65,6 +67,7 @@
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/fonts \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/js \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/timepicker \
+/Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/css/bootstrap-social.css \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/css/bootstrap-theme.css \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/css/bootstrap-theme.min.css \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/bootstrap/css/bootstrap.css \
@@ -88,6 +91,7 @@
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/browser/UAParser.js \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/additional-methods.min.js \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/hammer.min.js \
+/Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/hammer.min.map \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/jquery-2.0.3.min.js \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/jquery-2.0.3.min.map \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/lib/jquery/jquery.cookie.js \
@@ -869,6 +873,7 @@
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/login.html \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/partials \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/settings.html \
+/Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/signup.html \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/partials/calcItem.html \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/partials/detailPart.html \
 /Users/hat/Desktop/datapp/TheProfitApp/cordova/platforms/android/assets/www/views/partials/homeItem.html \

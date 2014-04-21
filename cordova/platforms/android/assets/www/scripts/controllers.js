@@ -3,6 +3,7 @@ var fadeTime = 200;
 var notifications = [];
 ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', function($scope, $location, $rootScope, ngProgress) {
 	ngProgress.color("#56c754");
+	$rootScope.currentUser = Parse.User.current();
 	/* $scope.$on('loadingStarted', function(){
 		$(".loading-panel").show();
 	});
@@ -143,6 +144,7 @@ ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerServ
 
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
 	$scope.getGroupsItems = function(groups) {
+		ngProgress.start();
 		profitAppService.listGroupsItems(function(data){
 			$scope.$apply(function() {
 				$scope.income = data.income;
@@ -159,7 +161,6 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 		});
 	}
 	$scope.getGroups = function(){
-		ngProgress.start();
  		profitAppService.listGroups(function(data){
  			//success
  			$scope.getGroupsItems();
@@ -179,7 +180,6 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
  	$scope.picInProgress = false;
 
  	$scope.createEntry = function(){
- 		ngProgress.start();
  		if($scope.picInProgress) return;
  		var newEntry = {};
  		newEntry.category = $scope.entry.type? "income" : "expense";
@@ -192,7 +192,6 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 
 		profitAppService.newEntry(newEntry, function(entry){
 			console.log(entry);
-			ngProgress.complete();
 			$timeout(function(){
 				$scope._go("home", false);
 			}, 500);
@@ -262,10 +261,9 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
     $scope.getGroups();
 }]);
 
-ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', function($scope, $location, $timeout, loadingService, profitAppService) {
+ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', 'ngProgress', function($scope, $location, $timeout, loadingService, profitAppService, ngProgress) {
 
 	$scope.createGroup = function() {
-		ngProgress.start();
 		var group = {};
 		group.title = $scope.group.title;
 		group.color = $(".color-selected").css("background");
@@ -274,7 +272,6 @@ ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingServic
 			console.log(result);
 			$timeout(function(){
 				$scope._go("add", false);
-				ngProgress.complete();
 			}, 100);
 		}, function(error){
 			//error
@@ -283,8 +280,54 @@ ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingServic
 	}
 }]);
 
-ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
+ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', '$timeout', function($scope, $location, $rootScope, loadingService, profitAppService, $timeout) {
+	$scope.user = {username:"", password:""};
+	var signUp = function() {
+	}
 
+	$scope.loginOrSignup = function() {
+		profitAppService.authenticate($scope.user, function(user){
+			$.cookie("current", true, { expires: 14});
+			$rootScope.currentUser = user;
+			$timeout(function(){
+				$location.path("/home");
+			}, 10);
+		}, function(user, error){
+			$.cookie("current", false, { expires: 14});
+			sessionStorage.setItem("user", JSON.stringify($scope.user));
+			$timeout(function(){
+				$location.path("/signup")
+			}, 10);
+		});
+	}
+
+	$scope.connectFacebook = function() {
+
+	}
+
+	$scope.connectTwitter = function() {
+
+	}
+}]);
+
+ctrls.controller('SignUpCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', 'futureUser', '$timeout', function($scope, $location, $rootScope, loadingService, profitAppService, futureUser, $timeout) {
+	$scope.user = futureUser;
+
+	var signUp = function() {
+	}
+
+	$scope.createAccount = function() {
+		profitAppService.signUp($scope.user, function(user){
+			$rootScope.currentUser = user;
+			$.cookie("current", true, { expires: 14});
+			sessionStorage.removeItem("user");
+			$timeout(function(){
+				$location.path("/home");
+			}, 10);
+		}, function(user, error){
+			console.log("Error: " + error.code + " " + error.message);
+		})
+	}
 }]);
 
 ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'items', function($scope, $location, $rootScope, loadingService, items) {
@@ -313,14 +356,12 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$scope.entry = item;
 
 	$scope.updateEntry = function(){
- 		ngProgress.start();
  		if($scope.picInProgress) return;
  		if($scope.attachmentChanged){
  			$scope.entry.attachment = $scope.file;
  		}
 		profitAppService.updateEntry($scope.entry, $scope.attachmentChanged, function(data){
 			$scope._go("home", false);
-			ngProgress.complete();
 		}, function(error){
 			console.log(error);
 		})

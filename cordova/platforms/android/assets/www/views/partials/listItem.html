@@ -6,7 +6,7 @@
 <a class="list-link" href="" ng-click="click({path:'detail/{{id}}', direction: true})">
   <div class="item-wrap">
     <div class="entry-tag" style="background: {{color}}">
-      <span class="icon-group">{{group}}</span>
+      <span class="icon-group"></span>
     </div>
     <div class="item-more">
       <div class="entry-value">
@@ -21,7 +21,7 @@
       <div class="entry-title">
         {{name | truncateTitle}}
       </div>
-      <div class="entry-notes">
+      <div class="entry-notes" style="display:none;">
         {{notes | truncateNotes}}
       </div>
       <div class="entry-date" title="{{date}}" time-ago></div>

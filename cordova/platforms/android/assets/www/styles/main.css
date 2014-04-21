@@ -199,7 +199,6 @@ body {
   background: #fefefe;
   border-bottom: 1px solid #e4e4e6;
   padding: 10px 7px;
-  text-transform: uppercase;
 }
 .home-item:active {
   background: #fff;
@@ -228,8 +227,8 @@ body {
 }
 .left-indicator {
   text-align: center;
-  color: #0a0a0a;
-  font-weight: 100;
+  color: #fff;
+  font-weight: 500;
   font-size: 12px;
   padding-top: 1px;
   -webkit-border-radius: 30px;
@@ -242,8 +241,9 @@ body {
   float: left;
   height: 20px;
   width: 20px;
-  margin: 6px 5px 0px 0px;
+  margin: 2px 5px 0px 0px;
   position: relative;
+  text-shadow: 0px 1px 0px #000;
 }
 .action-left {
   font-weight: 600;
@@ -559,7 +559,7 @@ form {
   border-bottom: 1px solid #dbdbdb;
   width: 100%;
   margin: 0px;
-  height: 96px;
+  height: 60px;
 }
 .entry-list li:active {
   background: greyColor;
@@ -567,7 +567,7 @@ form {
 .entry-tag {
   display: inline-block;
   position: relative;
-  top: 20px;
+  top: 3px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
@@ -593,7 +593,7 @@ form {
 .item-content {
   display: inline-block;
   float: left;
-  width: 60%;
+  width: auto;
 }
 .entry-title {
   font-size: 1em;
@@ -623,7 +623,6 @@ form {
 .list-link {
   display: inline-block;
   position: relative;
-  height: 100%;
   width: 100%;
   padding: 8px;
 }
@@ -908,7 +907,8 @@ form {
 .profit-list {
   overflow: hidden !important;
 }
-.login-view {
+.login-view,
+.signup-view {
   background: #fff;
   position: fixed;
   display: inline-block;
@@ -920,13 +920,15 @@ form {
   margin: 0px;
   padding: 0px;
 }
-.login-header {
+.login-header,
+.signup-header {
   text-align: center;
   font-size: 2em;
   font-weight: 300;
   margin-top: 20px;
 }
-.login-form {
+.login-form,
+.signup-form {
   margin-top: 30px;
   position: relative;
   display: inline-block;
@@ -1131,7 +1133,7 @@ form {
   color: #ecf0f1;
   box-shadow: 0px 1px 2px #e3e3e3;
   font-size: 1.5em;
-  font-weight: 200;
+  font-weight: 500;
   background: #fff;
   color: #56c754;
   border: 1px solid #bdbdbd;

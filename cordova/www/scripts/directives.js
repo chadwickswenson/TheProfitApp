@@ -87,6 +87,24 @@ components.directive('swipeActions', function($timeout){
 
 });
 
+components.directive('logoutClick', function($timeout, $location, profitAppService){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(elem).click(function(){
+                        $.cookie("current", false, { expires: 14});
+                        profitAppService.clearCache();
+                        Parse.User.logOut();
+
+                        $timeout(function(){
+                            $location.path("/login");
+                        });
+                    })
+                }
+        }
+});
+
+
 components.directive('leftMenuClick', function(){
         return {
                 restrict: 'A',

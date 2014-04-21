@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, target-densityDpi=device-dpi, user-scalable=no">
 	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="lib/bootstrap/css/bootstrap-social.css" rel="stylesheet">
 	<link href="lib/bootstrap/datepicker/css/datepicker.css" rel="stylesheet">
 	<link href="styles/main.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
@@ -16,12 +17,10 @@
 
 </head>
 
-<body ontouchstart="">
-
+<body>
+	<div id="fb-root"></div>
 	<div class="main-container" ng-controller="AppCtrl">
-		<div class="height-setter">
-	</div>
-	
+		<div class="height-setter"></div>
 		<div class="main-content br grey-border bs main-view">
 			<style ng-bind-html-unsafe="style"></style>
 			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
@@ -48,8 +47,7 @@
 		<script type="text/javascript" src="lib/angularjs/ngProgress.min.js"></script>
 		<script type="text/javascript" src="lib/browser/UAParser.js"></script>
 		<script src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
-		
-		<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<!--Libs-->
 		<script src="scripts/device.js"></script>
 	    <script src="scripts/app.js"></script>

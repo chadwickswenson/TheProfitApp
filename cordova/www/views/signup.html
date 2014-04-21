@@ -1,0 +1,25 @@
+<div class="view inline-view signup-view" ng-cloak>
+  <div class="signup-header">
+    Sign Up
+  </div>
+  <form class="signup-form" novalidate>
+    <div class='entry-area'>
+      <input class="one-line-input full-width-input basic-input" placeholder="first name" ng-model="user.firstname" type="text" required/>
+    </div>
+    <div class='entry-area'>
+      <input class="one-line-input full-width-input basic-input" placeholder="last name" ng-model="user.lastname" type="text" required/>
+    </div>
+    <div class='entry-area'>
+      <input class="one-line-input full-width-input basic-input" placeholder="email" ng-model="user.email" type="email" required/>
+    </div>
+    <div class='entry-area'>
+      <input class="one-line-input full-width-input basic-input" placeholder="username" ng-model="user.username" type="text" required/>
+    </div>
+    <div class='entry-area'>
+      <input class="one-line-input full-width-input basic-input" placeholder="password" ng-model="user.password" type="password" required/>
+    </div>
+    <button class="login-page-button login-button" ng-click="createAccount()">
+      Create Account
+    </button>
+  </form>
+</div>
