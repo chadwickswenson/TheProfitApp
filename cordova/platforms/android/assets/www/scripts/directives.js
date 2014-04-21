@@ -176,9 +176,9 @@ components.directive('sizeViews', function(){
         restrict: 'A',
         link: function(scope, elem, attrs){
             resizeHandler(elem);
-            $(window).resize(function() {
-                resizeHandler($(".view"));
-            });
+            // $(window).resize(function() {
+            //     resizeHandler($(".view"));
+            // });
         }
     }
 
