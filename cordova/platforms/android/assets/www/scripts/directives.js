@@ -159,7 +159,8 @@ var resizeHandler = function(elem){
     var c = 35;
     var c2 = 38;
 
-    var cH = height - bH * 2 - pad * 3 - topPadding - c;
+    //var cH = height - bH * 2 - pad * 3 - topPadding - c;
+    var cH = height - pad * 2 - topPadding;
     var url = window.location.hash;
 
     if(url.indexOf('list') > 0) {

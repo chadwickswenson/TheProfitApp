@@ -20,8 +20,8 @@
 <body>
 	<div id="fb-root"></div>
 	<div class="main-container" ng-controller="AppCtrl">
-		<div class="height-setter"></div>
-		<div class="main-content br grey-border bs main-view">
+		<!-- <div class="height-setter"></div> -->
+		<div class="main-content br grey-border bs main-view" style="height:100%">
 			<style ng-bind-html-unsafe="style"></style>
 			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
 		</div>

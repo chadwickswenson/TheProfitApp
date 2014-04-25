@@ -12,15 +12,14 @@
         </div>
 
       <div class="nav-title">
-
         <span class="">Create Entry</span>
-
       </div>
-
+      <div class="right-action">
+          <button class="back-button-wrap" ng-click="createEntry()">Add</button>
+      </div>
     </div>
 
-    <form class="view-content">
-
+    <form class="new-entry-form view-content">
       <div class="onoffswitch">
         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="entry.type" required>
         <label class="onoffswitch-label" for="myonoffswitch">
@@ -67,8 +66,7 @@
     </form>
     <br/><br/><br/><br/>
   </div>
-  <button class="bottom-button" ng-click="createEntry()">
+  <!-- <button class="bottom-button" ng-click="createEntry()">
       <i class="fa fa-check-circle"></i> Submit
-  </button>
-
+  </button> -->
 </div>

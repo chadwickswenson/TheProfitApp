@@ -8,13 +8,16 @@
       <div class="nav-title">
         <span class="">Detail</span>
       </div>
+      <div class="right-action">
+          <button class="back-button-wrap" ng-click="_go('edit/{{item.id}}', true)">Edit</button>
+      </div>
     </div>
     <div class="view-content">
       <detail-part date="{{item.date}}" notes="{{item.notes}}" name="{{item.title}}" value="{{item.value}}" group="{{item.group}}" color="{{item.color}}" attachment="{{item.attachment._url}}">
       </detail-part>
     </div>
   </div>
- <a href="" ng-click="_go('edit/{{item.id}}', true)" class="bottom-button">
+ <!-- <a href=""  class="bottom-button">
       <i class="fa fa-pencil-square-o"></i> Edit This Thing
-  </a>
+  </a> -->
 </div>

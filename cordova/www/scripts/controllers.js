@@ -182,7 +182,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
  	$scope.createEntry = function(){
  		if($scope.picInProgress) return;
  		var newEntry = {};
- 		newEntry.category = $scope.entry.type? "income" : "expense";
+ 		newEntry.category = (!$scope.entry.type || $scope.entry.type == undefined)? "income" : "expense";
 		newEntry.title = $scope.entry.title;
 		newEntry.date = $scope.entry.date;
 		newEntry.value = $scope.entry.value;
@@ -219,7 +219,6 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		var file = new Parse.File("receipt.png", {base64: imgData}, "image/png");
 		file.save().then(function() {
 			$scope.picInProgress = false;
-			_go("home", false);
 		}, function(error) {
 			console.log(error)
 		});

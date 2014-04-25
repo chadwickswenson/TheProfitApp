@@ -15,7 +15,9 @@
         <span class="">Edit Entry</span>
 
       </div>
-
+      <div class="right-action">
+          <button class="back-button-wrap" ng-click="updateEntry()">Update</button>
+      </div>
     </div>
 
     <form class="view-content" name="editForm">
@@ -56,17 +58,17 @@
         <i class="fa fa-align-left input-icon">
         </i>
       </div>
-      <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
+      <!-- <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
         <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
-      </select>
+      </select> -->
       <a class="new-tag" href="" ng-click="_go('newgroup', true)">
         <i class="fa fa-plus-circle"></i> Create a New Group
       </a>
     </form>
     <br/><br/><br/><br/>
   </div>
-  <button class="bottom-button" ng-click="updateEntry()">
+  <!-- <button class="bottom-button" ng-click="updateEntry()">
       <i class="fa fa-edit"></i> Update
-  </button>
+  </button> -->
 
 </div>
