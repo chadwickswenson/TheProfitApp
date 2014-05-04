@@ -46,15 +46,13 @@ components.directive('setActive', function(){
     }
 });
 
-components.directive('profitTabs', function($timeout){
+components.directive('profitTabs', function($timeout, tabService){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     $(".profit-color").css("background", "#bbb none");
                     $(elem).click(function(){
-                        scope.$apply(function(){
-                            scope.$parent.currentIndex = $(elem).index();
-                        });
+                        tabService.prepForBroadcastTabChange($(elem).index());
                     });
                 }
         }
@@ -196,16 +194,12 @@ components.directive('leftMenuClick', function($timeout){
                     $(elem).click(function(){
                         var status = $(this).attr("data-status");
                         if(status == "closed" || status == undefined) {
-                            $(this).css("margin-left", "-17px");
+                            $("i.logo-icon").css("margin-left", "-25px");
                             $(this).attr("data-status", "opened");
                             $(".left-menu").addClass("left-menu-active");
                             $(".black-drop").addClass('active');
-                            $(".profit-feeds").css("display","none");
-                            $timeout(function(){
-                                $(".profit-feeds").css("display","block");
-                            }, 1);
                         } else {
-                            $(this).css("margin-left", "-22px");
+                            $(".logo-icon").css("margin-left", "-15px");
                             $(this).attr("data-status", "closed");
                             $(".left-menu").removeClass("left-menu-active");
                             $(".black-drop").removeClass('active');

@@ -43,13 +43,17 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 	}
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
-	$scope.currentIndex = 0;
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService) {
+	$scope.currentIndex = tabService.cIndex;
+
 	$scope.switchGroup = function(group) {
 		$scope.currentIndex = $(".profit-items-feed[data-target='" + group + "']").index() - 1;
+		tabService.prepForBroadcastTabChange($scope.currentIndex);
 	}
 
-	$scope.$watch('currentIndex', function(newVal, oldVal) {
+	$rootScope.$on('handleTabChange', function() {
+		var oldVal = $scope.currentIndex;
+		$scope.currentIndex = tabService.cIndex, newVal = tabService.cIndex;
 		$(".profit-add").removeClass("invis");
 		$(".profit-group-tab").removeClass("active");
 		$($(".profit-group-tab")[newVal]).addClass("active");
@@ -79,10 +83,12 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$scope.goNext = function() {
 		if($scope.currentIndex == $scope.groups.length) return;
 		$scope.currentIndex++;
+		tabService.prepForBroadcastTabChange($scope.currentIndex);
 	}
 
 	$scope.goPrevious = function() {
 		$scope.currentIndex--;
+		tabService.prepForBroadcastTabChange($scope.currentIndex);
 	}
 
 	$scope.getGroupsItems = function(groups) {
@@ -120,13 +126,14 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$scope.getGroups();
 }]);
 
-ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'groups', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, groups) {
+ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'groups', 'tabService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, groups, tabService) {
 	var pictureSource = navigator.camera.PictureSourceType;
  	var destinationType = navigator.camera.DestinationType;
 
  	$scope.file = null;
  	$scope.picInProgress = false;
  	$scope.groups = groups;
+ 	$scope.selected = tabService.cIndex - 1;
 
  	$scope.createEntry = function(){
  		if($scope.picInProgress) return;

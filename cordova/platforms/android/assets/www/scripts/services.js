@@ -80,6 +80,22 @@ services.factory('headerService', function($rootScope){
 	return header;
 });
 
+services.factory('tabService', function($rootScope){
+	var tabs = {};
+	tabs.cIndex = 0;
+
+	tabs.prepForBroadcastTabChange = function(index) {
+		this.cIndex = index;
+		this.broadcastTabChange();
+	}
+
+	tabs.broadcastTabChange = function() {
+		$rootScope.$broadcast('handleTabChange');
+	}
+
+	return tabs;
+});
+
 services.factory('profitAppService', ['$resource', '$http', function($resource, $http){
 	var profitAPI = {};
 	profitAPI.items =[];
