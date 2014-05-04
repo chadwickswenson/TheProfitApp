@@ -4,7 +4,7 @@ var filters = angular.module('DatAppProfit.filters', []);
 
 filters.filter('dbDateConvert', [function() {
 	return function(date) {
-		return moment(0).seconds(parseInt(date, 10)).format("MM/D/YYYY");
+		return moment.unix(parseInt(date, 10)).format("MM/D/YYYY");
 	}
 }]);
 
@@ -18,8 +18,8 @@ filters.filter('truncateTitle', [function() {
 
 filters.filter('truncateNotes', [function() {
 	return function(title) {
-		if(title.length > 60)
-			return title.substring(0, 60) + "...";
+		if(title.length > 200)
+			return title.substring(0, 200) + "...";
 		return title;
 	}
 }]);
@@ -34,5 +34,20 @@ filters.filter('calculateSum', ["$filter", function($filter) {
 		return $filter('currency')(sum, '$');
 	}
 }]);
+
+filters.filter('styleTotal', [function() {
+	return function(total) {
+		if(total > 0) return "text-success";
+		else if(total < 0) return "text-danger";
+		else return "text-warning";
+	}
+}]);
+
+filters.filter('truncateNegative', [function() {
+	return function(total) {
+		return Math.abs(total);
+	}
+}]);
+
 
 

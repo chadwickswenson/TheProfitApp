@@ -20,41 +20,41 @@
 <body>
 	<div id="fb-root"></div>
 	<div class="main-container" ng-controller="AppCtrl">
-		<!-- <div class="height-setter"></div> -->
-		<div class="main-content br grey-border bs main-view" style="height:100%">
-			<style ng-bind-html-unsafe="style"></style>
-			<ng-view ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}"></ng-view>
-		</div>
-
-		<footer>
-		</footer>
-		<!-- <loading-panel></loading-panel> -->
-		<script type="text/javascript" src="lib/jquery/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
-		<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
-		<script type="text/javascript" src="lib/underscore/underscore.min.js"></script>
-		<script type="text/javascript" src="lib/jquery/moment.js"></script>
-		<script type="text/javascript" src="lib/jquery/touch.min.js"></script>
-		<script type="text/javascript" src="lib/jquery/jquery.timeago.js"></script>
-		<script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
-		<script type="text/javascript" src="lib/jquery/additional-methods.min.js"></script>
-		<script type="text/javascript" src="lib/jquery/hammer.min.js"></script>
-		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="lib/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
-		<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
-		<script type="text/javascript" src="lib/angularjs/angular-resource.min.js"></script>
-		<script type="text/javascript" src="lib/angularjs/angular-cache.js"></script>
-		<script type="text/javascript" src="lib/angularjs/ngProgress.min.js"></script>
-		<script type="text/javascript" src="lib/browser/UAParser.js"></script>
-		<script src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-		<!--Libs-->
-		<script src="scripts/device.js"></script>
-	    <script src="scripts/app.js"></script>
-	    <script src="scripts/services.js"></script>
-	    <script src="scripts/controllers.js"></script>
-	    <script src="scripts/filters.js"></script>
-	    <script src="scripts/directives.js"></script>
+		<div class="black-drop"></div>
+		<ng-view ng-class="style"></ng-view>
 	</div>
+	<!-- <loading-panel></loading-panel> -->
+	<script type="text/javascript" src="lib/jquery/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.cookie.js"></script>
+	<script type="text/javascript" src="lib/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.visible.js"></script>
+	<script type="text/javascript" src="lib/underscore/underscore.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/moment.js"></script>
+	<script type="text/javascript" src="lib/jquery/touch.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.timeago.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/additional-methods.min.js"></script>
+	<script type="text/javascript" src="lib/jquery/hammer.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular-resource.min.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular-route.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular-touch.js"></script>
+	<script type="text/javascript" src="lib/angularjs/angular-animate.js"></script>
+	<script type="text/javascript" src="lib/angularjs/bindonce.min.js"></script>
+	<script type="text/javascript" src="lib/angularjs/fastclick.js"></script>
+	<script type="text/javascript" src="lib/angularjs/ngProgress.min.js"></script>
+	<script type="text/javascript" src="lib/browser/UAParser.js"></script>
+	<script src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<!--Libs-->
+	<script src="scripts/device.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/filters.js"></script>
+    <script src="scripts/directives.js"></script>
 </body>
 </html>

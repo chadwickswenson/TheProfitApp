@@ -45,126 +45,149 @@ var _deviceInfo = function() {
 	return information;
 }
 
-var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngProgress']).
-            config(function($routeProvider, $locationProvider) {
-                //$locationProvider.html5Mode(true);
-				$routeProvider.
-                    when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl', resolve:
-                        {
-                            session: ['$q', '$location', function($q, $location){
-                                var _user = parseBoolean($.cookie("current"));
-                                var deferred = $q.defer();
+var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngProgress', 'ngRoute', 'ngTouch', 'ngAnimate'],
+    function($routeProvider, $locationProvider) {
+        $routeProvider.when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl', resolve:
+            {
+                session: ['$q', '$location', function($q, $location){
+                    var _user = parseBoolean($.cookie("current"));
+                    var deferred = $q.defer();
 
-                                if(_user)
-                                    deferred.resolve();
-                                else {
-                                    deferred.reject();
-                                    $location.path("/login");
-                                }
+                    if(_user)
+                        deferred.resolve();
+                    else {
+                        deferred.reject();
+                        $location.path("/login");
+                    }
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }). //you need to create this one
-                    when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'}).
-                    when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl'}).
-                    when('/edit/:id', {templateUrl: 'views/edit.html', controller: 'EditCtrl', resolve:
-                        {
-                            item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
-                                var deferred = $q.defer();
-                                var id = $route.current.params.id;
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.when('/newgroup', {templateUrl: 'views/createGroup.html', controller: 'GroupCtrl'});
+        $routeProvider.when('/add', {templateUrl: 'views/add.html', controller: 'AddCtrl', resolve:
+            {
+                groups: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                    var deferred = $q.defer();
+                    var data = profitAppService.listGroups(function(data){
+                        deferred.resolve(data);
+                    }, function(error){
+                        console.log(error);
+                        deferred.reject;
+                    });
 
-                                var data = profitAppService.getItemById(id, function(data){
-                                    deferred.resolve(data);
-                                }, function(error){
-                                    console.log(error);
-                                    deferred.reject;
-                                });
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.when('/edit/:id', {templateUrl: 'views/edit.html', controller: 'EditCtrl', resolve:
+            {
+                item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                    var deferred = $q.defer();
+                    var id = $route.current.params.id;
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }).
-                    when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl', resolve:
-                        {
-                            session: ['$q', '$location', function($q, $location){
-                                var _user = parseBoolean($.cookie("current"));
-                                var deferred = $q.defer();
+                    var data = profitAppService.getItemById(id, function(data){
+                        deferred.resolve(data);
+                    }, function(error){
+                        console.log(error);
+                        deferred.reject;
+                    });
 
-                                if(_user) {
-                                    deferred.reject();
-                                    $location.path("/home");
-                                }
-                                else {
-                                    deferred.resolve();
-                                }
+                    return deferred.promise;
+                }],
+                groups: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                    var deferred = $q.defer();
+                    var data = profitAppService.listGroups(function(data){
+                        deferred.resolve(data);
+                    }, function(error){
+                        console.log(error);
+                        deferred.reject;
+                    });
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }).
-                    when('/signup', {templateUrl: 'views/signup.html', controller: 'SignUpCtrl', resolve:
-                        {
-                            futureUser: ['$q', '$location', function($q, $location){
-                                var _user = parseBoolean($.cookie("current"));
-                                var deferred = $q.defer();
-                                var futureUser;
-                                try {
-                                    futureUser = JSON.parse(sessionStorage.getItem("user"));
-                                } catch(err) {
-                                    futureUser = new Object();
-                                }
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl', resolve:
+            {
+                session: ['$q', '$location', function($q, $location){
+                    var _user = parseBoolean($.cookie("current"));
+                    var deferred = $q.defer();
+
+                    if(_user) {
+                        deferred.reject();
+                        $location.path("/home");
+                    }
+                    else {
+                        deferred.resolve();
+                    }
+
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.when('/signup', {templateUrl: 'views/signup.html', controller: 'SignUpCtrl', resolve:
+            {
+                futureUser: ['$q', '$location', function($q, $location){
+                    var _user = parseBoolean($.cookie("current"));
+                    var deferred = $q.defer();
+                    var futureUser;
+                    try {
+                        futureUser = JSON.parse(sessionStorage.getItem("user"));
+                    } catch(err) {
+                        futureUser = new Object();
+                    }
 
 
-                                if(_user) {
-                                    deferred.reject();
-                                    $location.path("/home");
-                                }
-                                else {
-                                    deferred.resolve(futureUser);
-                                }
+                    if(_user) {
+                        deferred.reject();
+                        $location.path("/home");
+                    }
+                    else {
+                        deferred.resolve(futureUser);
+                    }
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }).
-                    when('/export', {templateUrl: 'views/export.html', controller: 'ExportCtrl'}).
-                    when('/settings', {templateUrl: 'views/settings.html', controller: 'SettingsCtrl'}).
-                    when('/list/:type/:group', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
-                        {
-                            items: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
-                                var deferred = $q.defer();
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.when('/export', {templateUrl: 'views/export.html', controller: 'ExportCtrl'});
+        $routeProvider.when('/settings', {templateUrl: 'views/settings.html', controller: 'SettingsCtrl'});
+                    // when('/list/:type/:group', {templateUrl: 'views/list.html', controller: 'ListCtrl', resolve:
+                    //     {
+                    //         items: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                    //             var deferred = $q.defer();
 
-                                var data = profitAppService.listItemsByGroup($route.current.params.type, $route.current.params.group, function(data){
-                                    deferred.resolve(data);
-                                }, function(error){
-                                    console.log(error);
-                                    deferred.reject;
-                                });
+                    //             var data = profitAppService.listItemsByGroup($route.current.params.type, $route.current.params.group, function(data){
+                    //                 deferred.resolve(data);
+                    //             }, function(error){
+                    //                 console.log(error);
+                    //                 deferred.reject;
+                    //             });
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }).
-                    when('/detail/:id', {templateUrl: 'views/detail.html', controller: 'DetailCtrl', resolve:
-                        {
-                            item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
-                                var deferred = $q.defer();
-                                var id = $route.current.params.id;
+                    //             return deferred.promise;
+                    //         }]
+                    //     }
+                    // }).
+        $routeProvider.when('/detail/:id', {templateUrl: 'views/detail.html', controller: 'DetailCtrl', resolve:
+            {
+                item: ['$q', 'profitAppService', '$location', '$route', function($q, profitAppService, $location, $route){
+                    var deferred = $q.defer();
+                    var id = $route.current.params.id;
 
-                                var data = profitAppService.getItemById(id, function(data){
-                                    deferred.resolve(data);
-                                }, function(error){
-                                    console.log(error);
-                                    deferred.reject;
-                                });
+                    var data = profitAppService.getItemById(id, function(data){
+                        deferred.resolve(data);
+                    }, function(error){
+                        console.log(error);
+                        deferred.reject;
+                    });
 
-                                return deferred.promise;
-                            }]
-                        }
-                    }).
-                    otherwise({redirectTo:'/login'});
-			});
+                    return deferred.promise;
+                }]
+            }
+        });
+        $routeProvider.otherwise({redirectTo:'/login'});
+    });
 
 app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {

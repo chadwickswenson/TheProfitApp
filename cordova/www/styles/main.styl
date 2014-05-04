@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css\?family=Open\+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800)
-
 colorGrey = #EBEBEB
 colorLGrey = #EDEDED
 colorLLGrey = #F7F7F7
@@ -45,16 +43,10 @@ contentIndex = 200
 viewIndex = 100
 br = 3px
 
-html, body    
-  font-family: 'Open Sans', sans-serif
-  background-repeat: repeat  
-  font-size: 100%
-  background:colorMainBackground
-  height: 100%
-  color:#000
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important
-  overflow:hidden !important
-  width:100%
+html, body
+  user-select: none
+  -webkit-user-select: none
+  background: #f2f2f2
 
 .redish
   color:colorRedish
@@ -79,21 +71,12 @@ input, textarea
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
   user-select: text !important
   -webkit-user-select: text !important
+  resize: none
 
 .vertically-middle
   position: relative
   top: 50%
   -webkit-transform: translateY(-50%)
-
-.main-container
-  position: fixed
-  display:inline-block
-  width: 100%
-  height: 100%
-  overflow-x: hidden
-  padding:5px 5px 5px 5px
-  top:0px
-  left:0px 
 
 brad()
   -webkit-border-radius arguments
@@ -121,11 +104,8 @@ frostIt()
   height: 2px
   opacity: 0
 
-  /* Add CSS3 styles for transition smoothing */
-  -webkit-transition: all 0.5s ease-in-out
-  -moz-transition: all 0.5s ease-in-out
-  -o-transition: all 0.5s ease-in-out
-  transition: all 0.5s ease-in-out
+  -webkit-transition: all 0.2s ease-in-out
+  transition: all 0.2s ease-in-out
 
 /* Styling for the ngProgress-container */
 #ngProgress-container
@@ -138,10 +118,15 @@ frostIt()
   z-index: 99999
 
 a
+  text-decoration: none
   color:inherit
 
 a:hover
+  text-decoration: none
   color:inherit
+
+a:active
+  text-decoration: none
 
 button
   border:0px solid #fff
@@ -154,13 +139,368 @@ button
 button:focus
   outline:none
 
-.height-setter
-  position:absolute
-  height:100%
-  width:51px
-  backgroiund:#000
-  display:inline-block
+ul
+  padding: 0!important
 
+.profit-color
+  background-color: transparent
+  -webkit-transition: background linear 0.2s
+  transition: background linear 0.2s
+
+.profit-navbar
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index:1001
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(10, 10, 10, 0.9)
+  box-shadow: 0px 1px 5px 0px rgba(10, 10, 10, 0.9)
+
+.profit-navbar-bar
+  height: 2px
+  width: 100%
+  z-index:1000
+  background: rgba(0,0,0,0.45)
+
+.profit-navbar>span
+  position: relative
+  top:5px
+
+.profit-navbar-inner
+  padding: 5px 5px
+  font-size: 16px
+
+.profit-logo
+  font-weight: 600
+  padding: 5px 10px
+  float: left
+  margin-left:-22px
+  transition: margin linear 0.2s
+
+.profit-add
+  position: fixed
+  width: 100%
+  text-align: center
+  bottom: 0
+  padding: 10px
+  left: 0
+  z-index: 2000
+  color: #000
+  -webkit-transition: all ease 0.2s
+  transition: all ease 0.2s
+  background: #bbb
+  -webkit-box-shadow: 0px -1px 5px 0px rgba(10, 10, 10, 0.9)
+  box-shadow: 0px -1px 5px 0px rgba(10, 10, 10, 0.9)
+
+.profit-add.invis
+  bottom: -50px
+
+.profit-logo:active
+  background: #9C9C9C
+  brad(4px)
+
+.profit-group-navbar
+  width: 100%
+  overflow-x: auto
+  overflow-y: hidden !important
+  -webkit-overflow-scrolling: touch
+  z-index:500
+
+.profit-group-navbar ul
+  overflow-y: hiden !important
+
+.profit-group-tab
+  padding: 2.5px 7.5px 2.5px 7.5px
+  margin: 0 5px
+  display: inline-block
+  letter-spacing:-0.5px
+  -webkit-transition: all linear 0.2s
+  transition: all linear 0.2s
+  float:left
+
+.profit-group-tab:first-child
+  margin-left: 0 !important
+
+.profit-groups-tabs
+  width: 1000px
+
+::-webkit-scrollbar
+    width: 0px
+    height:0
+
+
+.profit-groups-tabs::-webkit-scrollbar-track
+    border-radius: 0px
+    width:0
+
+.profit-groups-tabs::-webkit-scrollbar-thumb
+    border-radius: 0px
+    width:0
+    height:0
+
+.profit-group-tab:active
+  background: colorLLGrey
+
+.profit-group-tab.active
+  color: #fff
+  border-bottom:6px solid #fff
+  border-radius: 0
+  font-weight:bold
+
+.main-container
+  position: relative
+  padding:5px
+
+.black-drop
+  background: rgba(0, 0, 0, 0.75)
+  position: fixed
+  left: 0
+  top: 40px
+  height: 100%
+  width: 100%
+  opacity: 0
+  transition: opacity ease-in-out 0.3s
+  -webkit-transition: opacity ease-in-out 0.3s
+
+.black-drop.active
+  opacity: 1
+  z-index: 2001
+
+.profit-feeds
+  position: relative
+  margin-top: 70px
+  overflow-x: hidden
+  overflow-y: auto
+  -webkit-overflow-scrolling: touch
+  padding-bottom: 40px
+
+.profit-all-item:not(:last-child)
+  margin-bottom: 15px
+
+.profit-all-item>div:last-child
+  margin-bottom: 0
+
+.profit-items-feed
+  display: none
+  opacity: 0
+  padding:10px 5px 10px 5px
+  -webkit-transition: opacity linear 0.2s
+  transition: opacity linear 0.2s
+
+.profit-noitem
+  text-align: center
+  font-size: 1.2em
+  font-weight: 100
+  color: #1A1A1A
+  position: fixed
+  width: 100%
+  height: 100%
+  left: 0
+  z-index: 100
+  background: #f2f2f2
+
+.profit-items-feed.active
+  opacity: 1
+  display: block
+
+.profit-item, .profit-item-detail
+  brad(4px)
+  margin: 0
+  box-shadow: 0 2px 2px 0px #ccc
+  margin-bottom: 15px
+  background: #fff
+
+.profit-items-feed>.profit-item:not(.profit-short-report).active
+  background: rgba(0,0,0,0.1)
+
+.profit-item:last-child, .profit-item-detail:last-child
+  margin-bottom: 5px
+
+
+.profit-item.attachment
+  min-height:350px
+
+.profit-item>div, .profit-item-detail>div
+  padding:10px
+
+
+.profit-item>div:not(:first-child), .profit-item-detail>div:not(:first-child)
+  padding-top: 0px
+
+
+.profit-item-title
+  font-weight: 300
+  letter-spacing: -0.5px
+  font-size: 24px
+  text-overflow: ellipsis
+  white-space: nowrap
+  overflow: hidden
+
+.profit-item-attachment
+  height: 150px
+  padding-left: 0 !important
+  padding-right: 0 !important
+
+.profit-item-description
+  padding: 10px
+  max-height: 100px
+  width: 100%
+  color: #444
+  font-weight: 300
+
+.profit-item-description p
+  line-height: 1.3em
+  overflow: hidden
+  max-height:100px
+  width: 100%
+
+.profit-item-timestamp
+  font-weight: 400
+  font-size: 80%
+  color: #000
+
+.profit-item-cost
+  margin: 0 -2.5px
+  color: #fff
+  font-weight: 600
+  padding: 5px 10px 5px 10px !important
+  margin-bottom: 10px
+
+.profit-item-cost.income
+  background: #97EEAF
+  border-right: 5px solid #28B951
+  border-left: 5px solid #28B951
+
+.profit-item-cost.expense
+  background: #FF9494
+  border-right: 5px solid #F11414
+  border-left: 5px solid #F11414
+
+.profit-item-cost .profit-item-category
+  text-transform: uppercase
+  font-weight: bold
+
+.profit-item-group
+  font-weight: 600
+  font-size: 80%
+  color: #000
+  position: absolute
+  right: 2.5px
+  float: right
+  padding: 5px !important
+  margin-top: -25px
+  border-top-left-radius: 4px
+  border-bottom-left-radius: 4px
+  text-transform: uppercase
+  font-weight: bold
+  color: #fff
+  border-right: 5px solid rgba(0,0,0,0.3)
+  //text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,0px 1px 0 #000,1px 0px 0 #000,0px -1px 0 #000,-1px 0px 0 #000
+
+.profit-item-actions
+  color: #0077AF
+  text-align:center
+
+.profit-item-action
+  padding: 5px 10px
+  font-size: 14px
+  brad(4px)
+
+.profit-item-action:active
+  background: colorLGrey
+  brad(4px)
+
+.left-menu
+  height:100%
+  position:fixed
+  width:100%
+  padding-left: 20%
+  z-index:3000
+  top: 40px
+  left:-100%
+  background: #fff
+  -webkit-transition: left ease-in-out 0.3s
+  transition: left ease-in-out 0.3s
+  display: block
+
+.left-menu-active
+  left: -20%
+  opacity: 1
+  display: block
+
+.profile-pic-bg
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65)))
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
+  position: relative
+  height: 55px
+  left: 0
+  width: 100%
+  top: 95px
+  padding-left: 60px
+  color: #fff
+  font-size: 1em
+  letter-spacing: 0.1px
+
+.profile-pic-bg div.name
+  font-weight: 800
+
+.profile-pic-bg div.email
+  font-weight: 200
+
+.left-menu-profile .profile-pic img
+  width: 40px
+  height: 40px
+  border-radius: 40px
+
+.left-menu-option:active
+  background:navBg
+
+.close-menu
+  border:1px solid #fff
+  margin:8px
+  brad(3px)
+  cursor:pointer
+  top:-44px
+  float:right
+  padding:7px 10px 7px 10px
+  display:inline-block
+  position:relative
+  text-decoration: none
+
+.left-menu-option
+  width:100%
+  border-top:1px solid colorGreyBorder
+  display:inline-block
+  color:#000
+  font-weight:300
+  font-size:1.3em
+  text-align:left
+  padding:12px 10px
+
+
+.left-menu-option span
+  padding-left: 15px
+
+.left-menu-profile
+  width:100%
+  display:inline-block
+  height: 150px
+  background-image: url('../img/bg.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+
+.left-menu-profile .profile-pic
+  width: 40px
+  height: 40px
+  position: relative
+  top: 48px
+  left: 10px
+
+  //OLD
 .top-view
   padding: 4px
   overflow:hidden
@@ -186,7 +526,8 @@ button:focus
   z-index:30000
   left:0px
   top:200%
-  -webkit-transition: all 0.3s ease-in-out
+  -webkit-transition: top ease-in-out 0.5s
+  transition: top ease-in-out 0.5s
 
 .image-view img
   top: 50%
@@ -238,9 +579,6 @@ button:focus
   height:100%
   display:inline-block
   width:100%
-
- body
-    padding:5px !important
 
 .no
   display:none
@@ -352,7 +690,7 @@ button:focus
   background:#74c632
 
 .color-yellow
-  background:#ffea39
+  background:#E6B800
 
 .color-teal
   background:#36d2c7
@@ -458,7 +796,7 @@ form
   position:relative
   display:inline-block
   top:1px
- 
+
 .basic-input
   margin-left:-3px
   padding-left:10px
@@ -491,7 +829,7 @@ form
 .full-width-input
   width:102%
 
-.styled select 
+.styled select
   background: transparent
   width: 150px
   padding: 5px
@@ -522,11 +860,6 @@ form
   height:32px
   color:colorPrimaryButton
   text-align:center
-
-
-.profit-add
-  width:100%
-
 
 .button
   display:inline-block
@@ -663,7 +996,6 @@ form
   padding-top: 30px
   color: #fff
   z-index: 5
-  transition: 0.2s all linear
   display: none
 
 .item-actions a
@@ -704,12 +1036,20 @@ form
   font-size:1em
   font-weight:300
 
-.add-button-wrap
-  padding:15px  
+.right-button-wrap
+  padding:15px
   position:relative
   display:inline-block
   top:-11px
   right:-32px
+  font-weight:300
+  color:colorP
+  font-size:1.2em
+  brad(5px)
+  font-weight:300
+  letter-spacing:-1px !important
+  &active
+    background:colorLGrey
 
 .back-button-wrap
   font-weight:300
@@ -809,10 +1149,8 @@ form
   display: inline-table
   background:#fff
   top:-100%
-  z-index:30000
   border-bottom:1px solid colorGreyBorder
   left:0px
-  -webkit-transition: all 0.5s ease-in-out
 
 .years-menu-active
   top:0px
@@ -824,7 +1162,6 @@ form
   color:#000
   font-weight:300
   font-size:1.3em
-  z-index:500
   text-align:center
   padding:20px 0px
 
@@ -884,31 +1221,6 @@ form
   background:#fff
   font-family: 'FontAwesome'
 
-.listanimate-enter,
-.listanimate-leave
-  -webkit-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -moz-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -ms-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  -o-transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  transition: 400ms cubic-bezier(0.250, 0.460, 0.450, 0.940) all
-  position: relative
-  display: block
-  overflow: hidden
-  text-overflow: clip
-  white-space:nowrap
-
-.listanimate-leave.listanimate-leave-active,
-.listanimate-enter
-  opacity: 0
-  width: 0px
-  height: 0px
-
-.listanimate-enter.listanimate-enter-active,
-.listanimate-leave
-  opacity: 1
-  height: 63px
-  width: 100%
-
 .profit-list
   overflow:hidden !important
 
@@ -960,67 +1272,9 @@ form
 
 .facebook-login:active, .twitter-login:active
   opacity:0.5
-  
+
 .login-button:active
   background:#fff
-
-.left-menu
-  height:100%
-  position:fixed
-  width:100%
-  z-index:20000 
-  top:0px
-  left:-100%
-  background: #fff
-  -webkit-transition: all 0.5s ease-in-out
-
-.left-menu-active
-  left:0px
-
-
-.close-menu
-  z-index:20000
-  border:1px solid #fff
-  margin:8px
-  brad(3px)
-  cursor:pointer
-  top:-44px
-  float:right
-  padding:7px 10px 7px 10px
-  display:inline-block
-  position:relative
-  text-decoration: none
-
-.left-menu-option
-  width:100%
-  border-top:1px solid colorGreyBorder
-  display:inline-block
-  color:#000
-  font-weight:300
-  font-size:1.3em
-  z-index:500
-  text-align:left
-  padding:12px 10px
-
-
-.left-menu-option span
-  padding-left: 15px
-
-.left-menu-profile
-  width:100%
-  display:inline-block
-  z-index:500
-  height: 150px
-  background-image: url('../img/bg.jpg')
-  background-repeat: no-repeat
-  background-size: cover
-
-.left-menu-profile .profile-pic
-  width: 50px
-  height: 50px
-  position: relative
-  top: 95px
-  left: 5px
 
 .file-preview
   text-align: center
@@ -1040,37 +1294,6 @@ form
   position:relative
   top:-30px
   padding:10px
-
-.profile-pic-bg
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%)
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65)))
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
-  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
-  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
-  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%)
-  position: absolute
-  height: 55px
-  left: 0
-  width: 100%
-  top: 95px
-  padding-left: 70px
-  color: #fff
-  font-size: 1em
-  letter-spacing: 0.1
-
-.profile-pic-bg div.name
-  font-weight: 800
-
-.profile-pic-bg div.email
-  font-weight: 200
-
-.left-menu-profile .profile-pic img
-  width: 50px
-  height: 50px
-  border-radius: 50px
-
-.left-menu-option:active
-  background:navBg
 
 .bottom-container
   display:inline-block
@@ -1145,7 +1368,7 @@ form
   .right-action
     top:9px
 
-  .nav-title 
+  .nav-title
     top:7px
 
   .add-button
@@ -1162,50 +1385,48 @@ form
 
 
 
-.onoffswitch 
+.onoffswitch
     position: relative
     width: 130px
-    -webkit-user-select:none 
+    -webkit-user-select:none
     -moz-user-select:none
     -ms-user-select: none
     display:block
     margin:10px auto
 
 
-.onoffswitch-checkbox 
+.onoffswitch-checkbox
     display: none
 
 
-.onoffswitch-label 
-    display: block 
+.onoffswitch-label
+    display: block
     overflow: hidden
     cursor: pointer
-    border: 2px solid #999999 
+    border: 2px solid #999999
     border-radius: 20px
 
 .onoffswitch-inner
     width: 200%
     margin-left: -100%
-    -moz-transition: margin 0.3s ease-in 0s
-    -webkit-transition: margin 0.3s ease-in 0s
-    -o-transition: margin 0.3s ease-in 0s 
-    transition: margin 0.3s ease-in 0s
+    -webkit-transition: margin ease-in 0.3s
+    transition: margin ease-in 0.3s
 
 .onoffswitch-inner:before, .onoffswitch-inner:after
-    float: left 
-    width: 50% 
-    height: 30px 
-    padding: 0 
+    float: left
+    width: 50%
+    height: 30px
+    padding: 0
     line-height: 30px
-    font-size: 16px 
-    color: white 
+    font-size: 16px
+    color: white
     font-family: Trebuchet, Arial, sans-serif
     font-weight: bold
     -moz-box-sizing: border-box
-    -webkit-box-sizing: border-box 
+    -webkit-box-sizing: border-box
     box-sizing: border-box
 
-.onoffswitch-inner:before 
+.onoffswitch-inner:before
     content: "Expense"
     padding-left: 10px
     background-color: #D66C42
@@ -1218,21 +1439,19 @@ form
     color: #FFF
     text-align: left
 
-.onoffswitch-switch 
+.onoffswitch-switch
     width: 22px
     height:22px
     margin: 6px
     background: #FFFFFF
-    border: 2px solid #999999 
+    border: 2px solid #999999
     border-radius: 20px
     position: absolute
     top: 0
     bottom: 0
     right: 94px
-    -moz-transition: all 0.3s ease-in 0s
-    -webkit-transition: all 0.3s ease-in 0s
-    -o-transition: all 0.3s ease-in 0s
-    transition: all 0.3s ease-in 0s
+    -webkit-transition: right ease-in 0.3s, margin ease-in 0.3s
+    transition: right ease-in  0.3s, margin ease-in 0.3s
 
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner
@@ -1245,29 +1464,43 @@ form
 a:hover
   text-decoration:none !important
 
+.slide-left.ng-enter,
+.slide-left.ng-leave,
+.slide-right.ng-enter,
+.slide-right.ng-leave
+  -webkit-transition: 0.5s ease-in-out
+  -moz-transition: 0.5s ease-in-out
+  -o-transition: 0.5s ease-in-out
+  transition: 0.5s ease-in-out
+  position: absolute
+  width: 100%
+
+.slide-left.ng-enter
+  z-index: 100
+  left: 100%
+
+.slide-left.ng-enter.ng-enter-active
+  left: 0
+  right: 0
+
+.slide-left.ng-leave
+  z-index: 101
+  left: 0
+
+.slide-left.ng-leave.ng-leave-active
+  left: -100%
 
 
+.slide-right.ng-enter
+  z-index: 100
+  left: -100%
 
+.slide-right.ng-enter.ng-enter-active
+  left: 0
 
+.slide-right.ng-leave
+  z-index: 101
+  left: 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.slide-right.ng-leave.ng-leave-active
+  left: 100%

@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('DatAppProfit.services', ['jmdobry.angular-cache'])
+var services = angular.module('DatAppProfit.services', [])
 
 window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
@@ -21,7 +21,7 @@ window.fbAsyncInit = function() {
 
 services.factory('appVersion', function($rootScope){
 	var versionMgr = {};
-	var version = "2.0 (WAC)";
+	var version = "1.0 (DATAPP)";
 	
 	versionMgr.getVersion = function() {
 		return version;
@@ -80,14 +80,7 @@ services.factory('headerService', function($rootScope){
 	return header;
 });
 
-services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactory', function($resource, $http, $angularCacheFactory){
-	var profitCacheFactory = $angularCacheFactory('profitCache', {
-        capacity: 1000,
-        maxAge: 30000,
-        aggressiveDelete: true,
-        cacheFlushInterval: 60000
-     });
-
+services.factory('profitAppService', ['$resource', '$http', function($resource, $http){
 	var profitAPI = {};
 	profitAPI.items =[];
 	profitAPI.groups = {};
@@ -95,14 +88,6 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	profitAPI.incomeGroup = {};
 	profitAPI.expenseGroup = {};
 
-	profitAPI.getCache = function() {
-        return profitCacheFactory;
-    }
-
-	profitAPI.clearCache = function() {
-		profitAPI.groupList = [];
-		profitAPI.items = [];
-	}
 
 	profitAPI.getItemById = function(id, callbackSuccess, callbackError) {
 		if(profitAPI.items.length > 0){
@@ -145,9 +130,16 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	profitAPI.updateEntry = function(updatedEntry, hasAttachmentChanged, callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var query = new Parse.Query(Entry);
+		var category;
+		if(typeof updatedEntry.category == "boolean"){
+			category = (updatedEntry.category)? "expense" : "income";
+		}
+		else {
+			category = updatedEntry.category;
+		}
 		query.get(updatedEntry.id, {
 		  	success: function(data) {
-		  		data.set("category", updatedEntry.category);
+		  		data.set("category", category);
 				data.set("title", updatedEntry.title);
 				data.set("date", updatedEntry.date);
 				data.set("value", updatedEntry.value);
@@ -156,6 +148,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 				if(hasAttachmentChanged)
 					data.set("attachment", updatedEntry.attachment);
 				data.save();
+				profitAPI.listGroupsItems();
 		    	callbackSuccess(data);
 		  	},
 		  	error: function(object, error) {
@@ -183,26 +176,22 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	}
 
 	profitAPI.listGroups = function(callbackSuccess, callbackError) {
-		if(profitAPI.groupList.length > 0){
-			callbackSuccess(profitAPI.groupList);
-		} else {
-			var Group = Parse.Object.extend("Group");
-			var query = new Parse.Query(Group);
-			query.ascending("title");
+		var Group = Parse.Object.extend("Group");
+		var query = new Parse.Query(Group);
+		query.ascending("title");
 
-			query.find({
-				success: function(results){
-		 			for(var i=0; i < results.length; i++){
-		 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
-		 			}
-		 			profitAPI.groupList = results;
-					callbackSuccess(results);
-				},
-				error: function(error){
-					callbackError(error);
-				}
-			});
-		}
+		query.find({
+			success: function(results){
+	 			for(var i=0; i < results.length; i++){
+	 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
+	 			}
+	 			profitAPI.groupList = results;
+				callbackSuccess(results);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
 	}
 
 	profitAPI.listItemsByGroup = function(type, group, callbackSuccess, callbackError) {
@@ -287,7 +276,8 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 				groupedData.expense = _.groupBy(expense, "group");
 				profitAPI.expenseGroup = groupedData.expense;
 
-				callbackSuccess(groupedData);
+				if(callbackSuccess)
+					callbackSuccess(groupedData);
 			},
 			error: function(error){
 				callbackError(error);

@@ -12,15 +12,14 @@
         </div>
 
       <div class="nav-title">
-
         <span class="">Create Entry</span>
-
       </div>
-
+      <div class="right-action">
+          <button class="right-button-wrap" ng-click="createEntry()">Add</button>
+      </div>
     </div>
 
-    <form class="view-content">
-
+    <form class="new-entry-form view-content">
       <div class="onoffswitch">
         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" ng-model="entry.type" required>
         <label class="onoffswitch-label" for="myonoffswitch">
@@ -57,9 +56,9 @@
         <i class="fa fa-align-left input-icon">
         </i>
       </div>
-      <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group">
-        <option value="-1">select group</option>
-        <option value="{{g.get('title')}}" ng-repeat="g in groups">{{g.get('title')}}</option>
+      <select class="basic-input styled" ng-model="entry.group" required placeholder="Select group"
+      ng-options="g.get('title') as g.get('title') for g in groups">
+        <option value="">Select Group</option>
       </select>
       <a class="new-tag" href="" ng-click="_go('newgroup', true)">
         <i class="fa fa-plus-circle"></i> Create a New Group
@@ -67,8 +66,7 @@
     </form>
     <br/><br/><br/><br/>
   </div>
-  <button class="bottom-button" ng-click="createEntry()">
+  <!-- <button class="bottom-button" ng-click="createEntry()">
       <i class="fa fa-check-circle"></i> Submit
-  </button>
-
+  </button> -->
 </div>

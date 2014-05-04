@@ -14,12 +14,83 @@ components.directive('loadingPanel', function(){
 }); 
 
 components.directive('tooltip', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).tooltip({
+                template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
+            });
+        }
+    }
+
+});
+
+components.directive('scrollListener', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+        }
+    }
+});
+
+components.directive('setActive', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).click(function(){
+                $(elem).addClass("active");
+                var id = attrs.oid;
+                scope._go('detail/' + id, true);
+            })
+        }
+    }
+});
+
+components.directive('profitTabs', function($timeout){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                        $(elem).tooltip({
-                            template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
+                    $(".profit-color").css("background", "#bbb none");
+                    $(elem).click(function(){
+                        scope.$apply(function(){
+                            scope.$parent.currentIndex = $(elem).index();
                         });
+                    });
+                }
+        }
+
+});
+
+components.directive('slideTabs', function($swipe){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $swipe.bind(elem, {
+                        'start': function(coords){
+
+                        },
+                        'move': function(coords){
+
+                        },
+                        'end': function(coords){
+
+                        },
+                        'cancel': function(coords){
+
+                        }
+                    })
+                }
+        }
+
+});
+
+components.directive('lazyLoad', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $timeout(function(){
+                        $(elem).lazyload();
+                    })
                 }
         }
 
@@ -58,6 +129,19 @@ components.directive('groupClick', function($timeout){
                         $(this).addClass("color-selected");
                         $(".color-option").not(this).removeClass("color-selected");
                     });
+                }
+        }
+
+});
+
+components.directive('fastClick', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    if(scope.$parent.$last)
+                        $timeout(function(){
+                            FastClick.attach(document.body);
+                        }, 100);
                 }
         }
 
@@ -105,22 +189,28 @@ components.directive('logoutClick', function($timeout, $location, profitAppServi
 });
 
 
-components.directive('leftMenuClick', function(){
+components.directive('leftMenuClick', function($timeout){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                   
-                    $(".menu-button").click(function(){
-                            
-                        $(".left-menu").removeClass().addClass("left-menu left-menu-active");
-
+                    $(elem).click(function(){
+                        var status = $(this).attr("data-status");
+                        if(status == "closed" || status == undefined) {
+                            $(this).css("margin-left", "-17px");
+                            $(this).attr("data-status", "opened");
+                            $(".left-menu").addClass("left-menu-active");
+                            $(".black-drop").addClass('active');
+                            $(".profit-feeds").css("display","none");
+                            $timeout(function(){
+                                $(".profit-feeds").css("display","block");
+                            }, 1);
+                        } else {
+                            $(this).css("margin-left", "-22px");
+                            $(this).attr("data-status", "closed");
+                            $(".left-menu").removeClass("left-menu-active");
+                            $(".black-drop").removeClass('active');
+                        }
                     });
-
-                    $(".close-menu").click(function(){
-
-                        $(".left-menu").removeClass().addClass("left-menu");
-
-                    });  
                 }
         }
 
@@ -160,7 +250,7 @@ var resizeHandler = function(elem){
     var c2 = 38;
 
     //var cH = height - bH * 2 - pad * 3 - topPadding - c;
-    var cH = height - pad * 2 - topPadding;
+    var cH = height - pad * 3 - topPadding;
     var url = window.location.hash;
 
     if(url.indexOf('list') > 0) {

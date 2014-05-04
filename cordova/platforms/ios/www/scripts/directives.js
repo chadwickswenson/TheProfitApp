@@ -25,6 +25,78 @@ components.directive('tooltip', function(){
 
 });
 
+components.directive('profitTabs', function(){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(".profit-color").css("background", "#56C754");
+                    var topPadding = 0;
+                    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+                        topPadding = 20;
+                    }
+                    $("body").css("padding-top", topPadding);
+                    $(elem).click(function(){
+                        $(".profit-group-tab").removeClass("active");
+                        $(this).addClass("active");
+                        var target = $(this).attr("data-target");
+                        var color = $(this).attr("data-color").split("none")[0].trim();
+                        $(".profit-items-feed").removeClass("active");
+                        $(".profit-items-feed[data-target='" + target + "']").addClass("active");
+                        $(".profit-color").css("background", color);
+                        $("body").scrollTop(0);
+
+
+                        if(!$(this).visible(false, false, 'horizontal')){
+                            if($(this).index() > scope.$parent.currentIndex){
+                                var scrollLeft = $(this)[0].offsetLeft + $(this).width();
+                                $(".profit-group-navbar").scrollLeft(scrollLeft);
+                            } else {
+                                var scrollRight = $(this)[0].offsetLeft - $(this).width();
+                                $(".profit-group-navbar").scrollLeft(scrollRight);
+                            }
+                        }
+                        scope.$parent.currentIndex = $(this).index();
+                    });
+                }
+        }
+
+});
+
+components.directive('slideTabs', function($swipe){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $swipe.bind(elem, {
+                        'start': function(coords){
+
+                        },
+                        'move': function(coords){
+
+                        },
+                        'end': function(coords){
+
+                        },
+                        'cancel': function(coords){
+
+                        }
+                    })
+                }
+        }
+
+});
+
+components.directive('lazyLoad', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $timeout(function(){
+                        $(elem).lazyload();
+                    })
+                }
+        }
+
+});
+
 components.directive('datepicker', function(){
         return {
                 restrict: 'A',
@@ -63,6 +135,19 @@ components.directive('groupClick', function($timeout){
 
 });
 
+components.directive('fastClick', function($timeout){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    if(scope.$parent.$last)
+                        $timeout(function(){
+                            FastClick.attach(document.body);
+                        }, 100);
+                }
+        }
+
+});
+
 components.directive('swipeActions', function($timeout){
         return {
                 restrict: 'A',
@@ -87,22 +172,42 @@ components.directive('swipeActions', function($timeout){
 
 });
 
+components.directive('logoutClick', function($timeout, $location, profitAppService){
+        return {
+                restrict: 'A',
+                link: function(scope, elem, attrs){
+                    $(elem).click(function(){
+                        $.cookie("current", false, { expires: 14});
+                        profitAppService.clearCache();
+                        Parse.User.logOut();
+
+                        $timeout(function(){
+                            $location.path("/login");
+                        });
+                    })
+                }
+        }
+});
+
+
 components.directive('leftMenuClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                   
-                    $(".menu-button").click(function(){
-                            
-                        $(".left-menu").removeClass().addClass("left-menu left-menu-active");
-
+                    $(elem).click(function(){
+                        var status = $(this).attr("data-status");
+                        if(status == "closed" || status == undefined) {
+                            $(this).css("margin-left", "-17px");
+                            $(this).attr("data-status", "opened");
+                            $(".left-menu").addClass("left-menu-active");
+                            $(".black-drop").addClass('active');
+                        } else {
+                            $(this).css("margin-left", "-22px");
+                            $(this).attr("data-status", "closed");
+                            $(".left-menu").removeClass("left-menu-active");
+                            $(".black-drop").removeClass('active');
+                        }
                     });
-
-                    $(".close-menu").click(function(){
-
-                        $(".left-menu").removeClass().addClass("left-menu");
-
-                    });  
                 }
         }
 
@@ -141,7 +246,8 @@ var resizeHandler = function(elem){
     var c = 35;
     var c2 = 38;
 
-    var cH = height - bH * 2 - pad * 3 - topPadding - c;
+    //var cH = height - bH * 2 - pad * 3 - topPadding - c;
+    var cH = height - pad * 3 - topPadding;
     var url = window.location.hash;
 
     if(url.indexOf('list') > 0) {
@@ -158,9 +264,9 @@ components.directive('sizeViews', function(){
         restrict: 'A',
         link: function(scope, elem, attrs){
             resizeHandler(elem);
-            $(window).resize(function() {
-                resizeHandler($(".view"));
-            });
+            // $(window).resize(function() {
+            //     resizeHandler($(".view"));
+            // });
         }
     }
 

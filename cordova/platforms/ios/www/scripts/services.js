@@ -1,10 +1,27 @@
 'use strict';
 
-var services = angular.module('DatAppProfit.services', ['jmdobry.angular-cache'])
+var services = angular.module('DatAppProfit.services', [])
+
+window.fbAsyncInit = function() {
+    Parse.FacebookUtils.init({
+      appId      : '329527673839218',
+      channelUrl : 'channel.html',
+      cookie     : true,
+      xfbml      : true
+    });
+};
+
+(function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "http://connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+}(document));
 
 services.factory('appVersion', function($rootScope){
 	var versionMgr = {};
-	var version = "2.0 (WAC)";
+	var version = "1.0 (DATAPP)";
 	
 	versionMgr.getVersion = function() {
 		return version;
@@ -63,14 +80,7 @@ services.factory('headerService', function($rootScope){
 	return header;
 });
 
-services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactory', function($resource, $http, $angularCacheFactory){
-	var profitCacheFactory = $angularCacheFactory('profitCache', {
-        capacity: 1000,
-        maxAge: 30000,
-        aggressiveDelete: true,
-        cacheFlushInterval: 60000
-     });
-
+services.factory('profitAppService', ['$resource', '$http', function($resource, $http){
 	var profitAPI = {};
 	profitAPI.items =[];
 	profitAPI.groups = {};
@@ -78,30 +88,6 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	profitAPI.incomeGroup = {};
 	profitAPI.expenseGroup = {};
 
-	Parse.initialize("c6qu6vYBQBR8FMLKKxx8H6aR2I17562koAEQUgXY", "0YRo0iYzzupFk46JcQYWgMNjInQdHKG0bhLXxjDi");
-
-	profitAPI.getCache = function() {
-        return profitCacheFactory;
-    }
-
-	profitAPI.authenticate = function(email, password, callbackSuccess, callbackError) {
-		var jsonData = new Object();
-		jsonData.email = email;
-		jsonData.password = password;
-
-		var innerAPI = $resource(profitAPI.url,
-                         {action: profitAPI.actions["authenticate"]},
-                         {
-                                 authenticate: {
-                                         method: 'POST'
-                                 }
-                         });
-        return innerAPI.authenticate(jsonData, callbackSuccess, callbackError);
-	}
-
-	profitAPI.getItemsList = function() {
-		return costs;
-	}
 
 	profitAPI.getItemById = function(id, callbackSuccess, callbackError) {
 		if(profitAPI.items.length > 0){
@@ -129,7 +115,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 		entry.set("notes", newEntry.notes);
 		entry.set("group", newEntry.group);
 		entry.set("attachment", newEntry.receiptFile);
-		//entry.set("user", user);
+		entry.setACL(new Parse.ACL(Parse.User.current()));
 
 		entry.save(null, {
 			success: function(result){
@@ -155,6 +141,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 				if(hasAttachmentChanged)
 					data.set("attachment", updatedEntry.attachment);
 				data.save();
+				profitAPI.listGroupsItems();
 		    	callbackSuccess(data);
 		  	},
 		  	error: function(object, error) {
@@ -169,6 +156,7 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 
 		group.set("title", g.title);
 		group.set("color", g.color);
+		group.setACL(new Parse.ACL(Parse.User.current()));
 
 		group.save(null, {
 			success: function(result){
@@ -181,26 +169,22 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 	}
 
 	profitAPI.listGroups = function(callbackSuccess, callbackError) {
-		if(profitAPI.groupList.length > 0){
-			callbackSuccess(profitAPI.groupList);
-		} else {
-			var Group = Parse.Object.extend("Group");
-			var query = new Parse.Query(Group);
-			query.ascending("title");
+		var Group = Parse.Object.extend("Group");
+		var query = new Parse.Query(Group);
+		query.ascending("title");
 
-			query.find({
-				success: function(results){
-		 			for(var i=0; i < results.length; i++){
-		 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
-		 			}
-		 			profitAPI.groupList = results;
-					callbackSuccess(results);
-				},
-				error: function(error){
-					callbackError(error);
-				}
-			});
-		}
+		query.find({
+			success: function(results){
+	 			for(var i=0; i < results.length; i++){
+	 				profitAPI.groups[results[i].get("title")] = results[i].get("color").split("none")[0].trim();
+	 			}
+	 			profitAPI.groupList = results;
+				callbackSuccess(results);
+			},
+			error: function(error){
+				callbackError(error);
+			}
+		});
 	}
 
 	profitAPI.listItemsByGroup = function(type, group, callbackSuccess, callbackError) {
@@ -210,6 +194,38 @@ services.factory('profitAppService', ['$resource', '$http', '$angularCacheFactor
 			//query server
 			callbackError("No data");
 		}
+	}
+
+	profitAPI.authenticate = function(userObj, callbackSuccess, callbackError) {
+		Parse.User.logIn(userObj.username, userObj.password, {
+			success: function(user) {
+				//LoginSuccess
+				callbackSuccess(user);
+		  	},
+		  	error: function(user, error) {
+		  		//LoginFailed
+		  		callbackError(user, error);
+		  	}
+		});
+	}
+
+	profitAPI.signUp = function(userObj, callbackSuccess, callbackError) {
+		var user = new Parse.User();
+		user.set("username", userObj.username);
+		user.set("password", userObj.password);
+		user.set("email", userObj.email);
+
+		user.set("firstName", userObj.firstname);
+		user.set("lastName", userObj.lastname);
+
+		user.signUp(null, {
+		  success: function(user) {
+		    callbackSuccess(user);
+		  },
+		  error: function(user, error) {
+		    callbackError(user, error);
+		  }
+		});
 	}
 
 	profitAPI.listGroupsItems = function(callbackSuccess, callbackError) {

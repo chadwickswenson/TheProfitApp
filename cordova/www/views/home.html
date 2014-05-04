@@ -1,72 +1,179 @@
-<div class="years-menu" ng-cloak>
-  <div class="year-menu-controls">
-    <i class="fa fa-chevron-circle-up"></i> Close Menu
-  </div>
-  <div class="year-menu-option">
-    2013
-  </div>
-  <div class="year-menu-option">
-    2012
-  </div>
-  <div class="year-menu-option">
-    2011
-  </div>
-</div>
-
 <div class="left-menu">
-      <div class="left-menu-profile">
-        <div class="profile-pic-bg">
-          <div class="vertically-middle">
-            <div class="name">
-              <div ng-bind="currentUser.get('firstName') + ' ' + currentUser.get('lastName')"></div>
-            </div>
-            <div class="email">
-              <div ng-bind="currentUser.get('email')"></div>
-            </div>
-          </div>
-          <a class="close-menu">
-            <i class="fa fa-chevron-circle-left"></i> Close
-          </a>
+  <div class="left-menu-profile">
+    <div class="profile-pic-bg">
+      <div class="vertically-middle">
+        <div class="name">
+          <div ng-bind="currentUser.get('firstName') + ' ' + currentUser.get('lastName')"></div>
         </div>
-        <div class="profile-pic">
-          <img src="img/profile.png" alt="Profile Picture">
+        <div class="email">
+          <div ng-bind="currentUser.get('email')"></div>
         </div>
-      </div>
-      <div class="left-menu-option"><i class="fa fa-lg fa-file-text"></i><span>Export to PDF</span></div>
-     <!-- <div class="left-menu-option"><i class="fa fa-lg fa-question-circle"></i><span>Help</span></div>
-      <div class="left-menu-option"><i class="fa fa-lg fa-gear"></i><span>Settings</span></div>-->
-      <div class="left-menu-option" logout-click><i class="fa fa-lg fa-sign-out"></i><span>Logout</span></div>
-</div>
-
-<div class="view home" size-views>
-  <div class="top-view inline-view" >
-
-    <div class="nav">
-       <div class="left-action menu-button" left-menu-click>
-          <button class="action-left"><i class="fa fa-bars fa-inline larger-icon"></i></button>
-        </div>
-      <div class="nav-title">
-        <span class="">2014</span>
-        <i class="fa fa-angle-down years-dropdown-icon"></i>
-      </div>
-      <div class="right-action menu-button">
-          <button class="action-right" ng-click="_go('add', true)"><i class="fa fa-plus fa-inline larger-icon"></i></button>
       </div>
     </div>
-    <div class="view-content">
-      <div class="items">
-        <home-item name="Income" amount="{{totalIncome | currency:'$'}}">
-        </home-item>
-        <tag-item ng-repeat="(group, items) in income" type="income" name="{{group}}" amount="{{items | calculateSum}}" click="_go(path, direction)" color="{{items[0].color}}" count="{{items.length}}"></tag-item>
-        <home-item name="Expense" amount="{{totalExpense | currency:'$'}}">
-        </home-item>
-        <tag-item ng-repeat="(group, items) in expense" type="expense" name="{{group}}" amount="{{items | calculateSum}}" click="_go(path, direction)" color="{{items[0].color}}" count="{{items.length}}"></tag-item>
-      </div>
-
+    <div class="profile-pic">
+      <img src="img/profile.png" alt="Profile Picture">
     </div>
-
   </div>
-  <!-- <a href="" ng-click="_go('add', true)" class="bottom-button">
-    <i class="fa fa-plus-circle"></i> New Entry
-  </a> -->
+  <div class="left-menu-option"><i class="fa fa-lg fa-file-text"></i><span>Export to PDF</span></div>
+ <!-- <div class="left-menu-option"><i class="fa fa-lg fa-question-circle"></i><span>Help</span></div>
+  <div class="left-menu-option"><i class="fa fa-lg fa-gear"></i><span>Settings</span></div>-->
+  <div class="left-menu-option" logout-click><i class="fa fa-lg fa-sign-out"></i><span>Logout</span></div>
+</div>
+<div class="profit-navbar profit-color">
+  <div class="profit-navbar-inner">
+    <span class="profit-logo" left-menu-click>
+      <i class="fa fa-bars"></i> Profit
+    </span>
+  </div>
+  <div class="profit-group-navbar">
+    <ul class="profit-groups-tabs">
+      <li class="profit-group-tab active" data-target="All" data-color="#bbb none" profit-tabs>
+          All
+      </li>
+      <li class="profit-group-tab" data-target="{{g.get('title')}}" ng-repeat="g in groups" data-color="{{g.get('color')}}" profit-tabs>
+          {{g.get('title')}}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="profit-feeds" scroll-listener>
+  <!-- All -->
+    <div class="profit-add">
+      <div class="profit-add-bar"></div>
+      <div ng-click="_go('add', true)"><i class="fa fa-plus"></i> New Item</div>
+    </div>
+    <div class="profit-items-feed active" data-target="All" ng-swipe-left="goNext()">
+      <div class="profit-noitem" ng-hide="income || expense">
+        0 items in database.
+      </div>
+      <div class="profit-item profit-short-report">
+        <div class="profit-total row text-success">
+          <div class="col-xs-6 text-left">Total Income</div>
+          <div class="col-xs-6 text-right">{{totalIncome | currency}}</div>
+        </div>
+        <div class="profit-total row text-danger">
+          <div class="col-xs-6 text-left">Total Expense</div>
+          <div class="col-xs-6 text-right">{{totalExpense | currency}}</div>
+        </div>
+        <div class="profit-total row {{totalClass}}">
+          <div class="col-xs-6 text-left">Total Profit</div>
+          <div class="col-xs-6 text-right">{{total | currency}}</div>
+        </div>
+      </div>
+      <div class="profit-all-item" ng-repeat="(group, items) in income">
+        <div class="profit-item" ng-repeat="i in items">
+          <div class="profit-item-title">
+            {{i.title}}
+          </div>
+          <div class="profit-item-attachment" ng-show="{{i.attachment}}" style="background:url('{{i.attachment._url}}');background-size:cover;" class="lazy" data-original="{{i.attachment._url}}" lazy-load>
+          </div>
+          <div class="profit-item-cost income">
+            <span>{{i.value | currency}}</span>
+            <span class="pull-right profit-item-category">income</span>
+          </div>
+          <div class="profit-item-description">
+            <p>
+              {{i.notes | truncateNotes}}
+            </p>
+          </div>
+          <div class="profit-item-timestamp" title="{{i.date}}" time-ago>
+          </div>
+          <div class="profit-item-group" style="background:{{i.color}}" ng-click="switchGroup('{{i.group}}')">{{i.group}}</div>
+          <div class="profit-item-actions">
+            <span class="profit-item-action edit" ng-click="_go('edit/{{i.id}}', true, $event)">
+              Edit
+            </span>
+            <span class="profit-item-action remove">
+              Remove
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="profit-all-item" ng-repeat="(group, items) in expense">
+        <div class="profit-group-title">{{group}}</div>
+        <div class="profit-item" ng-repeat="e in items">
+          <div class="profit-item-title">
+            {{e.title}}
+          </div>
+          <div class="profit-item-attachment" ng-show="{{e.attachment}}" style="background:url('{{e.attachment._url}}');background-size:cover;" class="lazy" data-original="{{e.attachment._url}}" lazy-load>
+          </div>
+          <div class="profit-item-cost expense">
+            <span>{{e.value | currency}}</span>
+            <span class="pull-right profit-item-category">expense</span>
+          </div>
+          <div class="profit-item-description">
+            <p>
+              {{e.notes | truncateNotes}}
+            </p>
+          </div>
+          <div class="profit-item-timestamp" title="{{e.date}}" time-ago>
+          </div>
+          <div class="profit-item-group" style="background:{{e.color}}" ng-click="switchGroup('{{e.group}}')">{{e.group}}</div>
+          <div class="profit-item-actions">
+            <span class="profit-item-action edit" ng-click="_go('edit/{{e.id}}', true, $event)">
+              Edit
+            </span>
+            <span class="profit-item-action remove">
+              Remove
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- All -->
+    <div class="profit-items-feed" data-target="{{g.get('title')}}" ng-repeat="g in groups" ng-swipe-left="goNext()" ng-swipe-right="goPrevious()">
+      <div class="profit-noitem" ng-hide="income[g.get('title')] || expense[g.get('title')]">0 items in <strong>{{g.get('title')}}</strong> category.</div>
+      <div class="profit-item {{i.category}}" ng-repeat="i in income[g.get('title')]" oid="{{i.id}}" set-active>
+        <div class="profit-item-title">
+          {{i.title}}
+        </div>
+        <div class="profit-item-attachment" ng-show="{{i.attachment}}" style="background:url('{{i.attachment._url}}');background-size:cover;" class="lazy" data-original="{{i.attachment._url}}" lazy-load>
+        </div>
+        <div class="profit-item-cost income">
+            <span>{{i.value | currency}}</span>
+            <span class="pull-right profit-item-category">income</span>
+          </div>
+        <div class="profit-item-description">
+          <p>
+            {{i.notes | truncateNotes}}
+          </p>
+        </div>
+        <div class="profit-item-timestamp" title="{{i.date}}" time-ago>
+        </div>
+        <div class="profit-item-actions">
+          <span class="profit-item-action edit" ng-click="_go('edit/{{i.id}}', true, $event)">
+            Edit
+          </span>
+          <span class="profit-item-action remove">
+            Remove
+          </span>
+        </div>
+      </div>
+      <div class="profit-item {{e.category}}" ng-repeat="e in expense[g.get('title')]" oid="{{e.id}}" set-active fast-click>
+        <div class="profit-item-title">
+          {{e.title}}
+        </div>
+        <div class="profit-item-attachment" ng-show="{{e.attachment}}"style="background:url('{{e.attachment._url}}');background-size:cover;">
+        </div>
+        <div class="profit-item-cost expense">
+            <span>{{e.value | currency}}</span>
+            <span class="pull-right profit-item-category">expense</span>
+          </div>
+        <div class="profit-item-description">
+          <p>
+            {{e.notes | truncateNotes}}
+          </p>
+        </div>
+        <div class="profit-item-timestamp" title="{{e.date}}" time-ago>
+        </div>
+        <div class="profit-item-actions">
+          <span class="profit-item-action edit" ng-click="_go('edit/{{e.id}}', true, $event)">
+            Edit
+          </span>
+          <span class="profit-item-action remove">
+            Remove
+          </span>
+        </div>
+      </div>
+    </div>
 </div>

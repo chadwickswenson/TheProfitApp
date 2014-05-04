@@ -1,20 +1,37 @@
-<div class="view" size-views ng-cloak>
-  <div class="top-view inline-view" >
-  	<div class="nav">
-       <div class="left-action">
-          <button class='back-button-wrap' ng-click="_go('list/{{item.category}}/{{item.group}}', false)">
-          <i class="fa fa-chevron-left back-img2"></i> Back</button>
-        </div>
-      <div class="nav-title">
-        <span class="">Detail</span>
-      </div>
+<div class="nav">
+   <div class="left-action">
+      <button class='back-button-wrap' ng-click="_go('home', false)">
+      <i class="fa fa-chevron-left back-img2"></i> Back</button>
     </div>
-    <div class="view-content">
-      <detail-part date="{{item.date}}" notes="{{item.notes}}" name="{{item.title}}" value="{{item.value}}" group="{{item.group}}" color="{{item.color}}" attachment="{{item.attachment._url}}">
-      </detail-part>
-    </div>
+
+  <div class="nav-title">
+    <span class="">View Detail</span>
   </div>
- <a href="" ng-click="_go('edit/{{item.id}}', true)" class="bottom-button">
-      <i class="fa fa-pencil-square-o"></i> Edit This Thing
-  </a>
+</div>
+<div class="profit-item-detail" ng-class="{{item.category}}" style="margin-top:10px">
+  <div class="profit-item-title">
+    {{item.title}}
+  </div>
+  <div class="profit-item-attachment" ng-show="{{item.attachment}}"style="background:url('{{item.attachment._url}}');background-size:cover;">
+  </div>
+  <div class="profit-item-cost {{item.category}}">
+    <span>{{item.value | currency}}</span>
+    <span class="pull-right profit-item-category">{{item.category}}</span>
+  </div>
+  <div class="profit-item-description" style="max-height:none !important;">
+    <p style="max-height:none !important;">
+      {{item.notes}}
+    </p>
+  </div>
+  <div>
+  <div class="profit-item-timestamp" title="{{item.date}}" time-ago>
+  </div>
+  <div class="profit-item-actions">
+    <span class="profit-item-action edit" ng-click="_go('edit/{{item.id}}', true)">
+      Edit
+    </span>
+    <span class="profit-item-action remove">
+      Remove
+    </span>
+  </div>
 </div>

@@ -13,6 +13,9 @@
           Create Group
         </span>
       </div>
+      <div class="right-action">
+          <button class="right-button-wrap" ng-click="createGroup()">Create</button>
+      </div>
     </div>
     <form class="view-content" ng-submit="createGroup()">
       <input ng-model="group.title" class="one-line-input full-width-input basic-input" placeholder="Group Name" required>
@@ -65,7 +68,7 @@
     <br/>
     <br/>
   </div>
-  <a href="" class="bottom-button" ng-click="createGroup()">
+  <!-- <a href="" class="bottom-button" ng-click="createGroup()">
     Submit
-  </a>
+  </a> -->
 </div>

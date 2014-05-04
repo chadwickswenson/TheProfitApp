@@ -1,38 +1,25 @@
 var ctrls = angular.module('DatAppProfit.controllers', []);
 var fadeTime = 200;
 var notifications = [];
-ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', function($scope, $location, $rootScope, ngProgress) {
-	ngProgress.color("#56c754");
+
+ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', '$timeout', function($scope, $location, $rootScope, ngProgress, $timeout) {
+	ngProgress.color("rgba(255,255,255,0.8)");
 	$rootScope.currentUser = Parse.User.current();
-	/* $scope.$on('loadingStarted', function(){
-		$(".loading-panel").show();
-	});
-	$scope.$on('loadingStopped', function(){
-		$(".loading-panel").hide();
-	});*/
-
-	var styles = {
-	    // appear from right
-	    forward: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(100%,0,0)  }  .animate-enter.animate-enter-active {   position:absolute;  -webkit-transform:translate3d(0,0,0)}  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;   -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(-100%,0,0) };',
-	    // appear from left
-	    back: '.animate-enter {   position:absolute;   -webkit-transition: 0.5s ease-out all; -webkit-transform:translate3d(-100%,0,0)}  .animate-enter.animate-enter-active {   position:absolute;   -webkit-transform:translate3d(0,0,0) }  .animate-leave {   position:absolute;   -webkit-transition: 0.5s ease-out all;  -webkit-transform:translate3d(0,0,0)} .animate-leave.animate-leave-active {   position:absolute;  -webkit-transform:translate3d(100%,0,0) };'
-	};
-
 	$scope.direction = function(dir) {
-		// update the animations classes
-		$rootScope.style = styles[dir];
+		$rootScope.style = dir;
 	}
 
 	function alertDismissed() {
         // do something
     }
 
-	$scope._go = function(path, direction) {
-		$(".main-container").css("padding", "5px");
+	$scope._go = function(path, direction, $event) {
+		if($event)
+			$event.stopPropagation();
 		if(direction){
-			$scope.direction('forward');
+			$scope.direction('slide-right');
 		} else {
-			$scope.direction('back');
+			$scope.direction('slide-left');
 		}
 		// window.plugin.notification.local.onclick = function (id, state, json) {
 		// 	console.log(id);
@@ -50,99 +37,54 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		// 	notifications.push(notif);
 		// 	window.plugin.notification.local.add(notif);
 		// }, 5000);
-		$location.path(path);
-	}
-}]);
-
-var fadeAllOut = function(){
-	$(".left-action").fadeOut(fadeTime);
-	$(".add-action").fadeOut(fadeTime);
-	$(".years-dropdown-icon").fadeOut(fadeTime);
-	$(".enter-action").fadeOut(fadeTime);
-	$(".edit-action").fadeOut(fadeTime);
-	$(".menu-button").fadeOut(fadeTime);
-	$(".search-action").fadeOut(fadeTime);
-	$(".back-action").fadeOut(fadeTime);
-}
-
-ctrls.controller('HeaderCtrl', ['$scope', '$location', '$rootScope', 'headerService', '$timeout', function($scope, $location, $rootScope, headerService, $timeout) {
-	$scope.title = "Profit";
-	var _getFutureRoute = function(route) {
-		var _futureRoute = {};
-		_futureRoute.back = null;
-		_futureRoute.forward = null;
-
-		switch(route) {
-			case 'home':
-				_futureRoute.forward = 'add';
-			break;
-			case 'add':
-				_futureRoute.back = 'home';
-				_futureRoute.forward = 'createtag';
-			break;
-			case 'createtag':
-				_futureRoute.back = 'add';
-			break;
-			case 'list':
-				_futureRoute.back = 'home';
-				_futureRoute.forward = 'detail';
-			break;
-			case 'detail':
-				_futureRoute.back = 'list';
-			break;
-			default:
-				_futureRoute.back = null;
-				_futureRoute.forward = null;
-			break;
-		}
-
-		return _futureRoute;
-	}
-
-	$scope.goForward = function() {
-		var route = $location.path().split("/")[1];
-		var path = _getFutureRoute(route).forward;
-		$scope.$parent._go(path, true);
-	}
-
-	$scope.goBack = function() {
-		var route = $location.path().split("/")[1];
-		var path = _getFutureRoute(route).back;
-		$scope.$parent._go(path, false);
-	}
-
-	$scope.$on('handleTitleChange', function(){
-		$scope.title = headerService.title;
 		$timeout(function(){
-
-			fadeAllOut();
-
-			if($scope.title.toLowerCase() == "add"){
-				$(".cancel-action").fadeIn(fadeTime);
-				$(".enter-action").fadeIn(fadeTime);
-			}
-			else if($scope.title.toLowerCase() == "list"){
-				$(".back-action").fadeIn(fadeTime);
-				$(".search-action").fadeIn(fadeTime);
-			} 
-			else if($scope.title.toLowerCase() !== "profit") {
-				$(".cancel-action").fadeIn(fadeTime);
-				$(".enter-action").fadeIn(fadeTime);
-			}
-			else if($scope.title.toLowerCase() == "profit"){
-				$(".add-action").fadeIn(fadeTime);
-				$(".years-dropdown-icon").fadeIn(fadeTime);
-				$(".menu-button").fadeIn(fadeTime);
-			}
-			else {
-				$(".enter-action").fadeIn(fadeTime);
-				$(".years-dropdown-icon").fadeIn(fadeTime);
-			}
-		}, 50);
-	});
+			$location.path(path);
+		})
+	}
 }]);
 
 ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
+	$scope.currentIndex = 0;
+	$scope.switchGroup = function(group) {
+		$scope.currentIndex = $(".profit-items-feed[data-target='" + group + "']").index() - 1;
+	}
+
+	$scope.$watch('currentIndex', function(newVal, oldVal) {
+		$(".profit-add").removeClass("invis");
+		$(".profit-group-tab").removeClass("active");
+		$($(".profit-group-tab")[newVal]).addClass("active");
+
+		if(!$($(".profit-group-tab")[newVal]).visible(false, false, 'horizontal')){
+			if(newVal > oldVal){
+				var scrollLeft = $(".profit-group-tab")[newVal].offsetLeft + $($(".profit-group-tab")[newVal]).width();
+				$(".profit-group-navbar").scrollLeft(scrollLeft);
+			} else {
+				var scrollRight = $(".profit-group-tab")[newVal].offsetLeft - $($(".profit-group-tab")[newVal]).width();
+				$(".profit-group-navbar").scrollLeft(scrollRight);
+			}
+		}
+
+		$(".profit-items-feed").removeClass("active");
+		$($(".profit-items-feed")[newVal]).addClass("active");
+
+		var target = $($(".profit-group-tab")[newVal]).attr("data-target");
+        var color = $($(".profit-group-tab")[newVal]).attr("data-color").split("none")[0].trim();
+        $(".profit-color").css("background", color);
+        $(".profit-add").css("background", color);
+
+        $("body").scrollTop(0);
+        $(".profit-item.active").removeClass('active');
+	});
+
+	$scope.goNext = function() {
+		if($scope.currentIndex == $scope.groups.length) return;
+		$scope.currentIndex++;
+	}
+
+	$scope.goPrevious = function() {
+		$scope.currentIndex--;
+	}
+
 	$scope.getGroupsItems = function(groups) {
 		ngProgress.start();
 		profitAppService.listGroupsItems(function(data){
@@ -153,6 +95,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 					$scope.totalIncome = data.totalIncome;
 					$scope.totalExpense = data.totalExpense;
 					$scope.total = data.totalIncome - data.totalExpense;
+					$scope.totalClass = ($scope.total >= 0) ? "text-success" : "text-danger";
 				});
 			});
 			ngProgress.complete();
@@ -160,24 +103,30 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 			console.log(error);
 		});
 	}
+
 	$scope.getGroups = function(){
  		profitAppService.listGroups(function(data){
- 			//success
+ 			$scope.groups = data;
  			$scope.getGroupsItems();
  		}, function(error){
  			//error
  			console.log(error);
  		})
  	};
+
+ 	$scope.isEmpty = function(list) {
+ 		return list.length == 0;
+ 	}
 	$scope.getGroups();
 }]);
 
-ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout) {
+ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'groups', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, groups) {
 	var pictureSource = navigator.camera.PictureSourceType;
  	var destinationType = navigator.camera.DestinationType;
 
  	$scope.file = null;
  	$scope.picInProgress = false;
+ 	$scope.groups = groups;
 
  	$scope.createEntry = function(){
  		if($scope.picInProgress) return;
@@ -198,16 +147,6 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		}, function(error){
 			console.log(error);
 		})
- 	};
-
- 	$scope.getGroups = function(){
- 		profitAppService.listGroups(function(data){
- 			//success
-			$scope.groups = data;
- 		}, function(error){
- 			//error
- 			console.log(error);
- 		})
  	};
 
  	var handlePhotoUpload = function(imgData) {
@@ -256,8 +195,6 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
     }
-
-    $scope.getGroups();
 }]);
 
 ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingService', 'profitAppService', 'ngProgress', function($scope, $location, $timeout, loadingService, profitAppService, ngProgress) {
@@ -329,12 +266,13 @@ ctrls.controller('SignUpCtrl', ['$scope', '$location', '$rootScope', 'loadingSer
 	}
 }]);
 
-ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'items', function($scope, $location, $rootScope, loadingService, items) {
+// ctrls.controller('ListCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'items', function($scope, $location, $rootScope, loadingService, items) {
 
-	$scope.items = items;
-}]);
+// 	$scope.items = items;
+// }]);
 
 ctrls.controller('DetailCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'item', function($scope, $location, $rootScope, loadingService, item) {
+	console.log(item);
 	$scope.item = item;
 }]);
 
@@ -344,7 +282,7 @@ ctrls.controller('SettingsCtrl', ['$scope', '$location', '$rootScope', 'loadingS
 ctrls.controller('ExportCtrl', ['$scope', '$location', '$rootScope', 'loadingService', function($scope, $location, $rootScope, loadingService) {
 
 }]);
-ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'item', 'profitAppService', function($scope, $location, $rootScope, ngProgress, item, profitAppService) {
+ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'item', 'profitAppService', 'groups', function($scope, $location, $rootScope, ngProgress, item, profitAppService, groups) {
 	var pictureSource = navigator.camera.PictureSourceType;
  	var destinationType = navigator.camera.DestinationType;
 
@@ -353,6 +291,7 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
  	$scope.attachmentChanged = false;
 
 	$scope.entry = item;
+	$scope.groups = groups;
 
 	$scope.updateEntry = function(){
  		if($scope.picInProgress) return;
@@ -364,16 +303,6 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 		}, function(error){
 			console.log(error);
 		})
- 	};
-
- 	$scope.getGroups = function(){
- 		profitAppService.listGroups(function(data){
- 			//success
-			$scope.groups = data;
- 		}, function(error){
- 			//error
- 			console.log(error);
- 		})
  	};
 
  	var handlePhotoUpload = function(imgData) {
@@ -423,6 +352,4 @@ ctrls.controller('EditCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
         	sourceType: pictureSource.PHOTOLIBRARY
     	});
     }
-
-    $scope.getGroups();
 }]);
