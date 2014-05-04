@@ -175,9 +175,8 @@ components.directive('logoutClick', function($timeout, $location, profitAppServi
                 link: function(scope, elem, attrs){
                     $(elem).click(function(){
                         $.cookie("current", false, { expires: 14});
-                        profitAppService.clearCache();
                         Parse.User.logOut();
-
+                        $(".black-drop").removeClass('active');
                         $timeout(function(){
                             $location.path("/login");
                         });

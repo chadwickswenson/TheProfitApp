@@ -225,6 +225,7 @@ ctrls.controller('GroupCtrl', ['$scope', '$location', '$timeout', 'loadingServic
 
 ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingService', 'profitAppService', '$timeout', function($scope, $location, $rootScope, loadingService, profitAppService, $timeout) {
 	$scope.user = {username:"", password:""};
+
 	var signUp = function() {
 	}
 
@@ -245,7 +246,37 @@ ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingServ
 	}
 
 	$scope.connectFacebook = function() {
+		if (Parse.User.current() == null) {
+			Parse.FacebookUtils.logIn("basic_info, email", {
+				success: function(user) {
+				    FB.api("/me",
+				    function (response) {
+				      	if (response && !response.error) {
+				      		console.log(response)				      		;
+					        user.set("email", response.email);
+					        user.set("firstName", response.first_name);
+					        user.set("lastName", response.last_name);
+					        user.set("fid", response.id);
+					        user.save(null, {
+				        		success: function(user){
+					        		$rootScope.currentUser = user;
+									$.cookie("current", true, { expires: 14});
+					        		$timeout(function(){
+					        			$location.path("/home");
+					        		}, 500);
+				        		},
+				        		error: function(user, error){
+				        			console.log(error);
+				        		}
+				        	});
+				    	}
+				    });
+				},
+				error: function(user, error) {
 
+				}
+			});
+		}
 	}
 
 	$scope.connectTwitter = function() {

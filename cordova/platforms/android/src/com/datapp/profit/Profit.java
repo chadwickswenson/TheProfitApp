@@ -23,7 +23,7 @@ import android.os.Bundle;
 import org.apache.cordova.*;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
-import android.os.Build;
+//import android.os.Build;
 
 public class Profit extends CordovaActivity 
 {
@@ -37,7 +37,7 @@ public class Profit extends CordovaActivity
         super.loadUrl(Config.getStartUrl());
         this.appView.setOverScrollMode(appView.OVER_SCROLL_NEVER);
         // if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        WebView.setWebContentsDebuggingEnabled(true);
+        //WebView.setWebContentsDebuggingEnabled(true);
         //super.loadUrl("file:///android_asset/www/index.html")
     }
 }
