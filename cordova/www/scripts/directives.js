@@ -29,6 +29,20 @@ components.directive('scrollListener', function(){
     return {
         restrict: 'A',
         link: function(scope, elem, attrs){
+            var prevTop = 0;
+            $(document).bind("scroll", function() {
+                var curTop = $(this).scrollTop();
+                var diff = curTop - prevTop;
+                if(diff > 20) {
+                    //hide
+                    $(".profit-add").addClass("invis");
+                    prevTop = curTop;
+                } else if(diff < -20){
+                    //show
+                    $(".profit-add").removeClass("invis");
+                    prevTop = curTop;
+                }
+            });
         }
     }
 });
