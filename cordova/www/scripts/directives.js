@@ -194,12 +194,8 @@ components.directive('leftMenuClick', function($timeout){
                         if(status == "closed" || status == undefined) {
                             $("i.logo-icon").css("margin-left", "-23px");
                             $(this).attr("data-status", "opened");
-                            //$(".profit-feeds").css("display", "none");
-                            $(".left-menu").addClass("left-menu-active");
                             $(".black-drop").addClass('active');
-                            // $timeout(function(){
-                            //     $(".profit-feeds").css("display", "inline-block");
-                            // }, 200);
+                            $(".left-menu").addClass("left-menu-active");
                         } else {
                             $(".logo-icon").css("margin-left", "-18px");
                             $(this).attr("data-status", "closed");
@@ -218,13 +214,11 @@ components.directive('imagePreviewClick', function(){
                 link: function(scope, elem, attrs){
                    
                     $(".thumbnail").click(function(){
-                        $(".image-view").removeClass().addClass("image-view image-view-active");
-                        $(".image-view img").css("display","block");
+                        $(".image-view").addClass("image-view-active");
                     });
 
                     $(".close-preview").click(function(){
-                        $(".image-view").removeClass().addClass("image-view");
-                        $(".image-view img").css("display","none");
+                        $(".image-view").removeClass("image-view-active");
                     });  
                 }
         }

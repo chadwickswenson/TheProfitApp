@@ -14,20 +14,25 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
     }
 
     $scope.$on('loadingStarted', function(){
+    	$(".profit-loading").css("display", "inline-block");
 		$(".profit-loading").addClass("active");
 	});
 
 	$scope.$on('loadingStopped', function(){
 		$(".profit-loading").removeClass("active");
+		$timeout(function(){
+			$(".profit-loading").css("display", "none");
+		}, 300);
+
 	});
 
 	$scope._go = function(path, direction, $event) {
 		if($event)
 			$event.stopPropagation();
 		if(direction){
-			$scope.direction('slide-right');
-		} else {
 			$scope.direction('slide-left');
+		} else {
+			$scope.direction('slide-right');
 		}
 		// window.plugin.notification.local.onclick = function (id, state, json) {
 		// 	console.log(id);
@@ -123,7 +128,9 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$scope.getGroups = function(){
  		profitAppService.listGroups(function(data){
  			$scope.groups = data;
- 			$scope.getGroupsItems();
+ 			$timeout(function(){
+ 				$scope.getGroupsItems();
+ 			}, 500);
  		}, function(error){
  			//error
  			console.log(error);
