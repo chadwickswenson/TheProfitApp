@@ -99,6 +99,7 @@ ul {
   z-index: 1001;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(10,10,10,0.9);
   box-shadow: 0px 1px 5px 0px rgba(10,10,10,0.9);
+  background: #fff;
 }
 .profit-navbar-bar {
   height: 2px;
@@ -140,9 +141,9 @@ ul {
   left: 0;
   z-index: 2000;
   color: #000;
+  background: #fff;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
-  background: #bbb;
   -webkit-box-shadow: 0px -1px 5px 0px rgba(10,10,10,0.9);
   box-shadow: 0px -1px 5px 0px rgba(10,10,10,0.9);
   display: inline-block;
@@ -217,8 +218,8 @@ ul {
   background: #f7f7f7;
 }
 .profit-group-tab.active {
-  color: #fff;
-  border-bottom: 6px solid #fff;
+  color: #000;
+  border-bottom: 6px solid #000;
   border-radius: 0;
   font-weight: bold;
 }
@@ -1513,15 +1514,16 @@ form {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 94px;
-  -webkit-transition: right ease-in 0.3s, margin ease-in 0.3s;
-  transition: right ease-in 0.3s, margin ease-in 0.3s;
+  right: 0px;
+  -webkit-transform: translate3d(-94px, 0, 0);
+  -webkit-transition: -webkit-transform ease-in 0.3s;
+  transition: -webkit-transform ease-in 0.3s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
   margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0px;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 a:hover {
   text-decoration: none !important;

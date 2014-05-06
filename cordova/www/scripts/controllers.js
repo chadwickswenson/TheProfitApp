@@ -67,9 +67,12 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$rootScope.$on('handleTabChange', function() {
 		var oldVal = $scope.currentIndex;
 		$scope.currentIndex = tabService.cIndex, newVal = tabService.cIndex;
+
+		var target = $($(".profit-group-tab")[newVal]).attr("data-target");
+        var color = $($(".profit-group-tab")[newVal]).attr("data-color").split("none")[0].trim();
 		$(".profit-add").removeClass("invis");
 		$(".profit-group-tab").removeClass("active");
-		$($(".profit-group-tab")[newVal]).addClass("active");
+		$($(".profit-group-tab")[newVal]).css({"border-color": color}).addClass("active");
 
 		if(!$($(".profit-group-tab")[newVal]).visible(false, false, 'horizontal')){
 			if(newVal > oldVal){
@@ -84,11 +87,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 		$(".profit-items-feed").removeClass("active");
 		$($(".profit-items-feed")[newVal]).addClass("active");
 
-		var target = $($(".profit-group-tab")[newVal]).attr("data-target");
-        var color = $($(".profit-group-tab")[newVal]).attr("data-color").split("none")[0].trim();
         $(".profit-color").css("background", color);
-        $(".profit-add").css("background", color);
-
         $("body").scrollTop(0);
         $(".profit-item.active").removeClass('active');
 	});
