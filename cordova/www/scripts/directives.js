@@ -25,19 +25,30 @@ components.directive('tooltip', function(){
 
 });
 
+components.directive('loadingMargin', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).css("margin-top", $(window).height() * 0.6);
+        }
+    }
+
+});
+
+
 components.directive('scrollListener', function(){
     return {
         restrict: 'A',
         link: function(scope, elem, attrs){
             var prevTop = 0;
-            $(document).bind("scroll", function() {
+            $(window).bind("scroll", function() {
                 var curTop = $(this).scrollTop();
                 var diff = curTop - prevTop;
-                if(diff > 20) {
+                if(diff >= 10) {
                     //hide
                     $(".profit-add").addClass("invis");
                     prevTop = curTop;
-                } else if(diff < -20){
+                } else if(diff <= -10){
                     //show
                     $(".profit-add").removeClass("invis");
                     prevTop = curTop;
@@ -207,12 +218,12 @@ components.directive('leftMenuClick', function($timeout){
                     $(elem).click(function(){
                         var status = $(this).attr("data-status");
                         if(status == "closed" || status == undefined) {
-                            $("i.logo-icon").css("margin-left", "-25px");
+                            $("i.logo-icon").css("margin-left", "-23px");
                             $(this).attr("data-status", "opened");
                             $(".left-menu").addClass("left-menu-active");
                             $(".black-drop").addClass('active');
                         } else {
-                            $(".logo-icon").css("margin-left", "-15px");
+                            $(".logo-icon").css("margin-left", "-18px");
                             $(this).attr("data-status", "closed");
                             $(".left-menu").removeClass("left-menu-active");
                             $(".black-drop").removeClass('active');

@@ -40,8 +40,7 @@
 <div class="profit-feeds" scroll-listener>
   <!-- All -->
     <div class="profit-add">
-      <div class="profit-add-bar"></div>
-      <div ng-click="_go('add', true)"><i class="fa fa-plus"></i> New Item</div>
+      <div ng-click="_go('add', true)" style="z-index:4000"><i class="fa fa-plus"></i> New Item</div>
     </div>
     <div class="profit-items-feed active" data-target="All" ng-swipe-left="goNext()">
       <div class="profit-noitem" ng-hide="income || expense">
@@ -177,4 +176,7 @@
         </div>
       </div>
     </div>
+</div>
+<div class="profit-loading">
+  <div class="profit-loading-logo" loading-margin><i></i><i></i><i></i><i></i></div>
 </div>

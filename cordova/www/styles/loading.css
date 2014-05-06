@@ -1,0 +1,63 @@
+.profit-loading-logo{
+  width: 20px;
+  height: 20px;
+  -webkit-transform-origin: center;
+  -webkit-animation: loading-animation 1s ease-in-out infinite;
+  zoom: 0.33;
+  margin: 100px auto;
+  position: relative;
+}
+.profit-loading-logo i,
+.profit-loading-logo i:before,
+.profit-loading-logo i:after{
+  content: '';
+  position:absolute;
+  width: 20px;
+  height: 20px;
+  display: inline-block;;
+  border-radius: 50%;
+}
+.profit-loading-logo i:before{
+  -webkit-transform:translate(0,-20px) scale(0.75);
+
+}
+.profit-loading-logo i:after{
+  -webkit-transform:translate(0,-35px) scale(0.5);
+}
+.profit-loading-logo i:nth-child(1){
+  -webkit-transform:translate(0,50px);
+}
+.profit-loading-logo i:nth-child(1),
+.profit-loading-logo i:nth-child(1):before,
+.profit-loading-logo i:nth-child(1):after{
+  background: #ffb364;
+}
+.profit-loading-logo i:nth-child(2),
+.profit-loading-logo i:nth-child(2):before,
+.profit-loading-logo i:nth-child(2):after{
+  background: #00a892;
+}
+.profit-loading-logo i:nth-child(2){
+  -webkit-transform:rotate(90deg) translate(0,50px);
+}
+.profit-loading-logo i:nth-child(3),
+.profit-loading-logo i:nth-child(3):before,
+.profit-loading-logo i:nth-child(3):after{
+  background: #1f4c59;
+}
+.profit-loading-logo i:nth-child(3){
+  -webkit-transform:rotate(180deg) translate(0,50px);
+}
+.profit-loading-logo i:nth-child(4),
+.profit-loading-logo i:nth-child(4):before,
+.profit-loading-logo i:nth-child(4):after{
+  background: #ff5954;
+}
+.profit-loading-logo i:nth-child(4){
+  -webkit-transform:rotate(270deg) translate(0,50px);
+}
+@-webkit-keyframes loading-animation{
+  100%{
+    -webkit-transform:rotate(360deg);
+  }
+}

@@ -13,6 +13,14 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
         // do something
     }
 
+    $scope.$on('loadingStarted', function(){
+		$(".profit-loading").addClass("active");
+	});
+
+	$scope.$on('loadingStopped', function(){
+		$(".profit-loading").removeClass("active");
+	});
+
 	$scope._go = function(path, direction, $event) {
 		if($event)
 			$event.stopPropagation();
@@ -43,7 +51,7 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 	}
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService) {
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', 'loadingService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService, loadingService) {
 	$scope.currentIndex = tabService.cIndex;
 
 	$scope.switchGroup = function(group) {
@@ -93,6 +101,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 
 	$scope.getGroupsItems = function(groups) {
 		ngProgress.start();
+		loadingService.show();
 		profitAppService.listGroupsItems(function(data){
 			$scope.$apply(function() {
 				$scope.income = data.income;
@@ -105,6 +114,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 				});
 			});
 			ngProgress.complete();
+			loadingService.hide();
 		}, function(error){
 			console.log(error);
 		});

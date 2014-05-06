@@ -25,10 +25,35 @@ components.directive('tooltip', function(){
 
 });
 
+components.directive('loadingMargin', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).css("margin-top", $(window).height() * 0.6);
+        }
+    }
+
+});
+
+
 components.directive('scrollListener', function(){
     return {
         restrict: 'A',
         link: function(scope, elem, attrs){
+            var prevTop = 0;
+            $(window).bind("scroll", function() {
+                var curTop = $(this).scrollTop();
+                var diff = curTop - prevTop;
+                if(diff > 20) {
+                    //hide
+                    $(".profit-add").addClass("invis");
+                    prevTop = curTop;
+                } else if(diff < -20){
+                    //show
+                    $(".profit-add").removeClass("invis");
+                    prevTop = curTop;
+                }
+            });
         }
     }
 });
