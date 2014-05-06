@@ -44,12 +44,10 @@ components.directive('scrollListener', function(){
             $(window).bind("scroll", function() {
                 var curTop = $(this).scrollTop();
                 var diff = curTop - prevTop;
-                if(diff > 20) {
-                    //hide
+                if(diff >= 10) {
                     $(".profit-add").addClass("invis");
                     prevTop = curTop;
-                } else if(diff < -20){
-                    //show
+                } else if(diff <= -10){
                     $(".profit-add").removeClass("invis");
                     prevTop = curTop;
                 }
@@ -170,30 +168,6 @@ components.directive('fastClick', function($timeout){
 
 });
 
-components.directive('swipeActions', function($timeout){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    new Hammer($(elem).siblings(".list-link")[0]).on("drag swipeleft swiperight", function(ev){
-                        ev.gesture.preventDefault();
-                        $(elem).show();
-                        $(elem).css("opacity", 1);
-                        $(".item-actions").not(elem).css("opacity", 0);
-                        $timeout(function(){
-                            $(".item-actions").not(elem).hide();
-                        }, 200);
-                        ev.gesture.stopDetect();
-                    });
-
-                    $(elem).find(".btn-close").click(function(){
-                        $(this).parent().css("opacity", 0);
-                        $(this).hide();
-                    })
-                }
-        }
-
-});
-
 components.directive('logoutClick', function($timeout, $location, profitAppService){
         return {
                 restrict: 'A',
@@ -218,12 +192,16 @@ components.directive('leftMenuClick', function($timeout){
                     $(elem).click(function(){
                         var status = $(this).attr("data-status");
                         if(status == "closed" || status == undefined) {
-                            $("i.logo-icon").css("margin-left", "-25px");
+                            $("i.logo-icon").css("margin-left", "-23px");
                             $(this).attr("data-status", "opened");
+                            //$(".profit-feeds").css("display", "none");
                             $(".left-menu").addClass("left-menu-active");
                             $(".black-drop").addClass('active');
+                            // $timeout(function(){
+                            //     $(".profit-feeds").css("display", "inline-block");
+                            // }, 200);
                         } else {
-                            $(".logo-icon").css("margin-left", "-15px");
+                            $(".logo-icon").css("margin-left", "-18px");
                             $(this).attr("data-status", "closed");
                             $(".left-menu").removeClass("left-menu-active");
                             $(".black-drop").removeClass('active');

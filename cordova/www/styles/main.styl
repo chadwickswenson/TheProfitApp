@@ -199,6 +199,7 @@ ul
   background: #bbb
   -webkit-box-shadow: 0px -1px 5px 0px rgba(10, 10, 10, 0.9)
   box-shadow: 0px -1px 5px 0px rgba(10, 10, 10, 0.9)
+  display: inline-block
 
 .profit-loading
   position: fixed
@@ -212,8 +213,8 @@ ul
   margin: auto
   -webkit-transition: opacity ease 0.2s
   transition: opacity ease 0.2s
-  z-index: 200
   display: block
+  z-index: -1
 
 .profit-loading.active
   z-index: 202
@@ -298,9 +299,11 @@ ul
 .profit-feeds
   position: relative
   margin-top: 70px
+  width: 100%
   overflow-x: hidden
   overflow-y: auto
   -webkit-overflow-scrolling: touch
+  display: inline-block
 
 .profit-all-item:not(:last-child)
   margin-bottom: 15px
@@ -311,9 +314,8 @@ ul
 .profit-items-feed
   display: none
   opacity: 0
+  width: 100%
   padding:10px 5px 10px 5px
-  -webkit-transition: opacity linear 0.2s
-  transition: opacity linear 0.2s
 
 .profit-noitem
   text-align: center
@@ -329,7 +331,7 @@ ul
 
 .profit-items-feed.active
   opacity: 1
-  display: block
+  display:inline-block
 
 .profit-item, .profit-item-detail
   brad(4px)
@@ -344,17 +346,14 @@ ul
 .profit-item:last-child, .profit-item-detail:last-child
   margin-bottom: 5px
 
-
 .profit-item.attachment
   min-height:350px
 
 .profit-item>div, .profit-item-detail>div
   padding:10px
 
-
 .profit-item>div:not(:first-child), .profit-item-detail>div:not(:first-child)
   padding-top: 0px
-
 
 .profit-item-title
   font-weight: 300
@@ -443,7 +442,7 @@ ul
   position:fixed
   width:100%
   padding-left: 20%
-  z-index:3000
+  z-index:20000
   top: 40px
   left:-100%
   background: #fff
@@ -468,7 +467,7 @@ ul
   left: 0
   width: 100%
   top: 95px
-  padding-left: 60px
+  padding-left: 50px
   color: #fff
   font-size: 1em
   letter-spacing: 0.1px
@@ -509,7 +508,6 @@ ul
   text-align:left
   padding:12px 10px
 
-
 .left-menu-option span
   padding-left: 15px
 
@@ -526,7 +524,7 @@ ul
   height: 40px
   position: relative
   top: 48px
-  left: 10px
+  left: 5px
 
   //OLD
 .top-view

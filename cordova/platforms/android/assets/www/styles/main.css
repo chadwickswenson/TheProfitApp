@@ -120,7 +120,7 @@ ul {
   font-weight: bold;
 }
 .logo-icon {
-  margin-left: -15px;
+  margin-left: -18px;
   transition: margin linear 0.2s;
 }
 .logo-text {
@@ -130,7 +130,6 @@ ul {
   letter-spacing: 0.5px;
 }
 .profit-add {
-  display: inline-block;
   position: fixed;
   width: 100%;
   text-align: center;
@@ -139,15 +138,11 @@ ul {
   left: 0;
   z-index: 2000;
   color: #000;
-  -webkit-transition: all ease-in-out;
-  -webkit-transition-duration: 0.3s;
-  transition: all ease-in-out;
-  transition-duration: 0.3s;
+  -webkit-transition: bottom ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
   background: #bbb;
   -webkit-box-shadow: 0px -1px 5px 0px rgba(10,10,10,0.9);
   box-shadow: 0px -1px 5px 0px rgba(10,10,10,0.9);
-}
-.profit-add>div {
   display: inline-block;
 }
 .profit-loading {
@@ -162,9 +157,11 @@ ul {
   margin: auto;
   -webkit-transition: opacity ease 0.2s;
   transition: opacity ease 0.2s;
+  display: block;
+  z-index: -1;
 }
 .profit-loading.active {
-  z-index: 102;
+  z-index: 202;
   opacity: 1;
 }
 .profit-add:active {
@@ -174,7 +171,6 @@ ul {
 }
 .profit-add.invis {
   bottom: -50px;
-  display: inline-block;
 }
 .profit-group-navbar {
   padding-top: 5px;
@@ -246,9 +242,11 @@ ul {
 .profit-feeds {
   position: relative;
   margin-top: 70px;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: inline-block;
 }
 .profit-all-item:not(:last-child) {
   margin-bottom: 15px;
@@ -259,9 +257,8 @@ ul {
 .profit-items-feed {
   display: none;
   opacity: 0;
+  width: 100%;
   padding: 10px 5px 10px 5px;
-  -webkit-transition: opacity linear 0.2s;
-  transition: opacity linear 0.2s;
 }
 .profit-noitem {
   text-align: center;
@@ -277,7 +274,7 @@ ul {
 }
 .profit-items-feed.active {
   opacity: 1;
-  display: block;
+  display: inline-block;
 }
 .profit-item,
 .profit-item-detail {
@@ -406,12 +403,12 @@ ul {
   position: fixed;
   width: 100%;
   padding-left: 20%;
-  z-index: 3000;
+  z-index: 20000;
   top: 40px;
   left: -100%;
   background: #fff;
-  -webkit-transition: left ease-in-out 0.3s;
-  transition: left ease-in-out 0.3s;
+  -webkit-transition: left ease-in-out 0.4s;
+  transition: left ease-in-out 0.4s;
   display: block;
 }
 .left-menu-active {
@@ -431,7 +428,7 @@ ul {
   left: 0;
   width: 100%;
   top: 95px;
-  padding-left: 60px;
+  padding-left: 50px;
   color: #fff;
   font-size: 1em;
   letter-spacing: 0.1px;
@@ -493,7 +490,7 @@ ul {
   height: 40px;
   position: relative;
   top: 48px;
-  left: 10px;
+  left: 5px;
 }
 .top-view {
   padding: 4px;
