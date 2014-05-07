@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="profile-pic">
-      <img src="img/profile.png" alt="Profile Picture">
+      <img ng-src="http://graph.facebook.com/{{currentUser.get('fid')}}/picture?type=large" alt="Facebook Profile Picture">
     </div>
   </div>
   <div class="left-menu-option"><i class="fa fa-lg fa-file-text"></i><span>Export to PDF</span></div>
@@ -19,15 +19,16 @@
   <div class="left-menu-option"><i class="fa fa-lg fa-gear"></i><span>Settings</span></div>-->
   <div class="left-menu-option" logout-click><i class="fa fa-lg fa-sign-out"></i><span>Logout</span></div>
 </div>
-<div class="profit-navbar profit-color">
-  <div class="profit-navbar-inner">
-    <span class="profit-logo" left-menu-click>
-      <i class="fa fa-bars"></i> Profit
+<div class="profit-navbar">
+  <div class="profit-navbar-inner" left-menu-click>
+    <span class="profit-logo">
+      <i class="logo-icon fa fa-bars"></i>
     </span>
+    <span class="logo-text">Profit</span>
   </div>
   <div class="profit-group-navbar">
     <ul class="profit-groups-tabs">
-      <li class="profit-group-tab active" data-target="All" data-color="#56C754 none" profit-tabs>
+      <li class="profit-group-tab active" data-target="All" data-color="rgb(0, 0, 0) none" profit-tabs>
           All
       </li>
       <li class="profit-group-tab" data-target="{{g.get('title')}}" ng-repeat="g in groups" data-color="{{g.get('color')}}" profit-tabs>
@@ -35,15 +36,13 @@
       </li>
     </ul>
   </div>
-  <div class="profit-navbar-bar">
-  </div>
 </div>
-<div class="profit-feeds">
+<div class="profit-feeds" scroll-listener size-iphone>
   <!-- All -->
+    <div class="profit-add">
+      <div ng-click="_go('add', true)" style="z-index:4000"><i class="fa fa-plus"></i> New Item</div>
+    </div>
     <div class="profit-items-feed active" data-target="All" ng-swipe-left="goNext()">
-      <div class="profit-add">
-        <div ng-click="_go('add', true)"><i class="fa fa-plus"></i> New Item</div>
-      </div>
       <div class="profit-noitem" ng-hide="income || expense">
         0 items in database.
       </div>
@@ -123,11 +122,8 @@
     </div>
     <!-- All -->
     <div class="profit-items-feed" data-target="{{g.get('title')}}" ng-repeat="g in groups" ng-swipe-left="goNext()" ng-swipe-right="goPrevious()">
-      <div class="profit-add">
-        <div ng-click="_go('add', true)"><i class="fa fa-plus"></i> New Item</div>
-      </div>
       <div class="profit-noitem" ng-hide="income[g.get('title')] || expense[g.get('title')]">0 items in <strong>{{g.get('title')}}</strong> category.</div>
-      <div class="profit-item {{i.category}}" ng-repeat="i in income[g.get('title')]" ng-click="_go('detail/{{i.id}}', true, $event)">
+      <div class="profit-item {{i.category}}" ng-repeat="i in income[g.get('title')]" oid="{{i.id}}" set-active>
         <div class="profit-item-title">
           {{i.title}}
         </div>
@@ -153,7 +149,7 @@
           </span>
         </div>
       </div>
-      <div class="profit-item {{e.category}}" ng-repeat="e in expense[g.get('title')]" ng-click="_go('detail/{{e.id}}', true, $event)" fast-click>
+      <div class="profit-item {{e.category}}" ng-repeat="e in expense[g.get('title')]" oid="{{e.id}}" set-active fast-click>
         <div class="profit-item-title">
           {{e.title}}
         </div>
@@ -180,4 +176,7 @@
         </div>
       </div>
     </div>
+</div>
+<div class="profit-loading">
+  <div class="profit-loading-logo" loading-margin><i></i><i></i><i></i><i></i></div>
 </div>

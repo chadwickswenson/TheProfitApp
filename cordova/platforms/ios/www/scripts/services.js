@@ -80,6 +80,22 @@ services.factory('headerService', function($rootScope){
 	return header;
 });
 
+services.factory('tabService', function($rootScope){
+	var tabs = {};
+	tabs.cIndex = 0;
+
+	tabs.prepForBroadcastTabChange = function(index) {
+		this.cIndex = index;
+		this.broadcastTabChange();
+	}
+
+	tabs.broadcastTabChange = function() {
+		$rootScope.$broadcast('handleTabChange');
+	}
+
+	return tabs;
+});
+
 services.factory('profitAppService', ['$resource', '$http', function($resource, $http){
 	var profitAPI = {};
 	profitAPI.items =[];
@@ -130,9 +146,16 @@ services.factory('profitAppService', ['$resource', '$http', function($resource, 
 	profitAPI.updateEntry = function(updatedEntry, hasAttachmentChanged, callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var query = new Parse.Query(Entry);
+		var category;
+		if(typeof updatedEntry.category == "boolean"){
+			category = (updatedEntry.category)? "expense" : "income";
+		}
+		else {
+			category = updatedEntry.category;
+		}
 		query.get(updatedEntry.id, {
 		  	success: function(data) {
-		  		data.set("category", updatedEntry.category);
+		  		data.set("category", category);
 				data.set("title", updatedEntry.title);
 				data.set("date", updatedEntry.date);
 				data.set("value", updatedEntry.value);
@@ -269,7 +292,8 @@ services.factory('profitAppService', ['$resource', '$http', function($resource, 
 				groupedData.expense = _.groupBy(expense, "group");
 				profitAPI.expenseGroup = groupedData.expense;
 
-				callbackSuccess(groupedData);
+				if(callbackSuccess)
+					callbackSuccess(groupedData);
 			},
 			error: function(error){
 				callbackError(error);

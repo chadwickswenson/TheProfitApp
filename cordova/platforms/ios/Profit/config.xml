@@ -26,28 +26,12 @@
     <description>
         DatApp - The Profit App
     </description>
-    <feature name="LocalNotification">
-        <param name="ios-package" value="APPLocalNotification" />
-    </feature>
-    <feature name="Device">
-        <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="Notification">
-        <param name="ios-package" value="CDVNotification" />
-    </feature>
-    <feature name="File">
-        <param name="ios-package" value="CDVFile" />
-    </feature>
-    <feature name="Vibration">
-        <param name="ios-package" value="CDVVibration" />
-    </feature>
-    <name>Profit</name>
-    <description>
-        DatApp - The Profit App
-    </description>
     <author email="dev@theprfitapp.com" href="http://theprfitapp.com">
         DatApp Team
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="LocalNotification">
+        <param name="ios-package" value="APPLocalNotification" />
+    </feature>
 </widget>

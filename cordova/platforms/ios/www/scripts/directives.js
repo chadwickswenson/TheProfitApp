@@ -14,48 +14,57 @@ components.directive('loadingPanel', function(){
 }); 
 
 components.directive('tooltip', function(){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                        $(elem).tooltip({
-                            template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
-                        });
-                }
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).tooltip({
+                template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
+            });
         }
+    }
 
 });
 
-components.directive('profitTabs', function(){
+components.directive('scrollListener', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            var prevTop = 0;
+            $(window).bind("scroll", function() {
+                var curTop = $(this).scrollTop();
+                var diff = curTop - prevTop;
+                if(diff >= 10) {
+                    $(".profit-add").addClass("invis");
+                    prevTop = curTop;
+                } else if(diff <= -10){
+                    $(".profit-add").removeClass("invis");
+                    prevTop = curTop;
+                }
+            });
+        }
+    }
+});
+
+components.directive('setActive', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            $(elem).click(function(){
+                $(elem).addClass("active");
+                var id = attrs.oid;
+                scope._go('detail/' + id, true);
+            })
+        }
+    }
+});
+
+components.directive('profitTabs', function($timeout, tabService){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                    $(".profit-color").css("background", "#56C754");
-                    var topPadding = 0;
-                    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
-                        topPadding = 20;
-                    }
-                    $("body").css("padding-top", topPadding);
+                    $(".profit-color").css("background", "#bbb none");
                     $(elem).click(function(){
-                        $(".profit-group-tab").removeClass("active");
-                        $(this).addClass("active");
-                        var target = $(this).attr("data-target");
-                        var color = $(this).attr("data-color").split("none")[0].trim();
-                        $(".profit-items-feed").removeClass("active");
-                        $(".profit-items-feed[data-target='" + target + "']").addClass("active");
-                        $(".profit-color").css("background", color);
-                        $("body").scrollTop(0);
-
-
-                        if(!$(this).visible(false, false, 'horizontal')){
-                            if($(this).index() > scope.$parent.currentIndex){
-                                var scrollLeft = $(this)[0].offsetLeft + $(this).width();
-                                $(".profit-group-navbar").scrollLeft(scrollLeft);
-                            } else {
-                                var scrollRight = $(this)[0].offsetLeft - $(this).width();
-                                $(".profit-group-navbar").scrollLeft(scrollRight);
-                            }
-                        }
-                        scope.$parent.currentIndex = $(this).index();
+                        tabService.prepForBroadcastTabChange($(elem).index());
                     });
                 }
         }
@@ -148,39 +157,14 @@ components.directive('fastClick', function($timeout){
 
 });
 
-components.directive('swipeActions', function($timeout){
-        return {
-                restrict: 'A',
-                link: function(scope, elem, attrs){
-                    new Hammer($(elem).siblings(".list-link")[0]).on("drag swipeleft swiperight", function(ev){
-                        ev.gesture.preventDefault();
-                        $(elem).show();
-                        $(elem).css("opacity", 1);
-                        $(".item-actions").not(elem).css("opacity", 0);
-                        $timeout(function(){
-                            $(".item-actions").not(elem).hide();
-                        }, 200);
-                        ev.gesture.stopDetect();
-                    });
-
-                    $(elem).find(".btn-close").click(function(){
-                        $(this).parent().css("opacity", 0);
-                        $(this).hide();
-                    })
-                }
-        }
-
-});
-
 components.directive('logoutClick', function($timeout, $location, profitAppService){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     $(elem).click(function(){
                         $.cookie("current", false, { expires: 14});
-                        profitAppService.clearCache();
                         Parse.User.logOut();
-
+                        $(".black-drop").removeClass('active');
                         $timeout(function(){
                             $location.path("/login");
                         });
@@ -190,19 +174,19 @@ components.directive('logoutClick', function($timeout, $location, profitAppServi
 });
 
 
-components.directive('leftMenuClick', function(){
+components.directive('leftMenuClick', function($timeout){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
                     $(elem).click(function(){
                         var status = $(this).attr("data-status");
                         if(status == "closed" || status == undefined) {
-                            $(this).css("margin-left", "-17px");
+                            $("i.logo-icon").css("margin-left", "-23px");
                             $(this).attr("data-status", "opened");
-                            $(".left-menu").addClass("left-menu-active");
                             $(".black-drop").addClass('active');
+                            $(".left-menu").addClass("left-menu-active");
                         } else {
-                            $(this).css("margin-left", "-22px");
+                            $(".logo-icon").css("margin-left", "-18px");
                             $(this).attr("data-status", "closed");
                             $(".left-menu").removeClass("left-menu-active");
                             $(".black-drop").removeClass('active');
@@ -219,13 +203,11 @@ components.directive('imagePreviewClick', function(){
                 link: function(scope, elem, attrs){
                    
                     $(".thumbnail").click(function(){
-                        $(".image-view").removeClass().addClass("image-view image-view-active");
-                        $(".image-view img").css("display","block");
+                        $(".image-view").addClass("image-view-active");
                     });
 
                     $(".close-preview").click(function(){
-                        $(".image-view").removeClass().addClass("image-view");
-                        $(".image-view img").css("display","none");
+                        $(".image-view").removeClass("image-view-active");
                     });  
                 }
         }
@@ -267,6 +249,24 @@ components.directive('sizeViews', function(){
             // $(window).resize(function() {
             //     resizeHandler($(".view"));
             // });
+        }
+    }
+
+});
+
+components.directive('sizeIphone', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            var topPadding = 0;
+            if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+                topPadding = 15;
+            }
+            $(elem).css('padding-top', topPadding);
+            $(".profit-navbar").css('padding-top', topPadding);
+            $(".left-menu").css('top', parseInt($(".left-menu").css('top'),10) + topPadding);
+            $(".black-drop").css('top', parseInt($(".black-drop").css('top'),10) + topPadding);
+            $(".profit-loading-logo").css("margin-top", $(window).height() * 0.6 + topPadding * 1.6);
         }
     }
 

@@ -25,17 +25,6 @@ components.directive('tooltip', function(){
 
 });
 
-components.directive('loadingMargin', function(){
-    return {
-        restrict: 'A',
-        link: function(scope, elem, attrs){
-            $(elem).css("margin-top", $(window).height() * 0.6);
-        }
-    }
-
-});
-
-
 components.directive('scrollListener', function(){
     return {
         restrict: 'A',
@@ -260,6 +249,24 @@ components.directive('sizeViews', function(){
             // $(window).resize(function() {
             //     resizeHandler($(".view"));
             // });
+        }
+    }
+
+});
+
+components.directive('sizeIphone', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            var topPadding = 0;
+            if (navigator.userAgent.match(/(iPod|iPhone|iPad)/)) {
+                topPadding = 15;
+            }
+            $(elem).css('padding-top', topPadding);
+            $(".profit-navbar").css('padding-top', topPadding);
+            $(".left-menu").css('top', parseInt($(".left-menu").css('top'),10) + topPadding);
+            $(".black-drop").css('top', parseInt($(".black-drop").css('top'),10) + topPadding);
+            $(".profit-loading-logo").css("margin-top", $(window).height() * 0.6 + topPadding * 1.6);
         }
     }
 

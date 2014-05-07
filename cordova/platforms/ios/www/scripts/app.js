@@ -45,7 +45,7 @@ var _deviceInfo = function() {
 	return information;
 }
 
-var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngProgress', 'ngRoute', 'ngTouch'],
+var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.services', 'DatAppProfit.directives', 'DatAppProfit.controllers', 'ngResource', 'ngProgress', 'ngRoute', 'ngTouch', 'ngAnimate'],
     function($routeProvider, $locationProvider) {
         $routeProvider.when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl', resolve:
             {
