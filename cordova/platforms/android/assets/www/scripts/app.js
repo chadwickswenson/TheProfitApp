@@ -61,6 +61,18 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     }
 
                     return deferred.promise;
+                }],
+                coverPhoto: ['$q', '$location', 'profitAppService', function($q, $location, profitAppService){
+                    var deferred = $q.defer();
+                    var fid = Parse.User.current().get("fid");
+
+                    profitAppService.getCoverPhoto(fid, function(data){
+                        deferred.resolve(data.cover.source);
+                    }, function(err){
+                        console.log(err);
+                    })
+
+                    return deferred.promise;
                 }]
             }
         });

@@ -56,8 +56,9 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 	}
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', 'loadingService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService, loadingService) {
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', 'loadingService', 'coverPhoto', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService, loadingService, coverPhoto) {
 	$scope.currentIndex = tabService.cIndex;
+	$scope.cover = coverPhoto;
 
 	$scope.switchGroup = function(group) {
 		$scope.currentIndex = $(".profit-items-feed[data-target='" + group + "']").index() - 1;

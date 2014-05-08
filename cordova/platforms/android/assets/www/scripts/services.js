@@ -120,6 +120,15 @@ services.factory('profitAppService', ['$resource', '$http', function($resource, 
 		}
 	}
 
+	profitAPI.getCoverPhoto = function(fid, callbackSuccess, callbackError) {
+		var fb = $resource("https://graph.facebook.com/:id?fields=cover"
+			,{id:fid}
+			,{fetch: {method: "GET"}
+		});
+
+		fb.fetch(callbackSuccess, callbackError);
+	}
+
 	profitAPI.newEntry = function(newEntry, callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var entry = new Entry();
