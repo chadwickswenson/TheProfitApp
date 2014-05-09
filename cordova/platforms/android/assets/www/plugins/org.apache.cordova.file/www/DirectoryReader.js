@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.file.DirectoryReader", function(require, exports, module) {/*
+cordova.define("org.apache.cordova.file.DirectoryReader", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -58,6 +58,7 @@ DirectoryReader.prototype.readEntries = function(successCallback, errorCallback)
             entry.name = result[i].name;
             entry.fullPath = result[i].fullPath;
             entry.filesystem = new (require('./FileSystem'))(result[i].filesystemName);
+            entry.nativeURL = result[i].nativeURL;
             retVal.push(entry);
         }
         reader.hasReadEntries = true;
@@ -70,4 +71,5 @@ DirectoryReader.prototype.readEntries = function(successCallback, errorCallback)
 };
 
 module.exports = DirectoryReader;
+
 });

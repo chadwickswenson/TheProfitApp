@@ -36,9 +36,8 @@ public class Profit extends CordovaActivity
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
         this.appView.setOverScrollMode(appView.OVER_SCROLL_NEVER);
-        //if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-          WebView.setWebContentsDebuggingEnabled(true);
+        // if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        WebView.setWebContentsDebuggingEnabled(true);
         //super.loadUrl("file:///android_asset/www/index.html")
     }
 }
-

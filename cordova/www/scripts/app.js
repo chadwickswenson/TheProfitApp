@@ -69,8 +69,9 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
                     profitAppService.getCoverPhoto(fid, function(data){
                         deferred.resolve(data.cover.source);
                     }, function(err){
+                        deferred.resolve("file://android_asset/www/img/bg.jpg");
                         console.log(err);
-                    })
+                    });
 
                     return deferred.promise;
                 }]
@@ -201,7 +202,9 @@ var app = angular.module('DatAppProfit', ['DatAppProfit.filters', 'DatAppProfit.
         $routeProvider.otherwise({redirectTo:'/login'});
     });
 
-app.run(['$location', '$rootScope', '$templateCache', "headerService", function($location, $rootScope, $templateCache, headerService) {
+app.run(['$location', '$rootScope', '$templateCache', "headerService", "OpenFB", function($location, $rootScope, $templateCache, headerService, OpenFB) {
+    OpenFB.init("329527673839218", "https://www.facebook.com/connect/login_success.html", localStorage);
+
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
 	});
 

@@ -1,4 +1,4 @@
-cordova.define("org.apache.cordova.file.resolveLocalFileSystemURI", function(require, exports, module) {/*
+cordova.define("org.apache.cordova.file.resolveLocalFileSystemURI", function(require, exports, module) { /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -51,7 +51,7 @@ module.exports.resolveLocalFileSystemURL = function(uri, successCallback, errorC
                 // create appropriate Entry object
                 var fsName = entry.filesystemName || (entry.filesystem == window.PERSISTENT ? 'persistent' : 'temporary');
                 var fs = new FileSystem(fsName, {name:"", fullPath:"/"});
-                var result = (entry.isDirectory) ? new DirectoryEntry(entry.name, entry.fullPath, fs) : new FileEntry(entry.name, entry.fullPath, fs);
+                var result = (entry.isDirectory) ? new DirectoryEntry(entry.name, entry.fullPath, fs, entry.nativeURL) : new FileEntry(entry.name, entry.fullPath, fs, entry.nativeURL);
                 successCallback(result);
             }
         }
@@ -67,4 +67,5 @@ module.exports.resolveLocalFileSystemURI = function() {
     console.log("resolveLocalFileSystemURI is deprecated. Please call resolveLocalFileSystemURL instead.");
     module.exports.resolveLocalFileSystemURL.apply(this, arguments);
 };
+
 });

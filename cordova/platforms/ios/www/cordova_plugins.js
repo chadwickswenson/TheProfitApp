@@ -151,13 +151,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.file/www/ios/Entry.js",
-        "id": "org.apache.cordova.file.iosEntry",
-        "merges": [
-            "window.Entry"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.file/www/ios/FileSystem.js",
         "id": "org.apache.cordova.file.iosFileSystem",
         "merges": [
@@ -186,11 +179,30 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.device/www/device.js",
         "id": "org.apache.cordova.device.device",
         "clobbers": [
             "device"
         ]
     }
-]
+];
+module.exports.metadata = 
+// TOP OF METADATA
+{
+    "org.apache.cordova.camera": "0.2.9",
+    "org.apache.cordova.file": "1.1.0",
+    "org.apache.cordova.dialogs": "0.2.7",
+    "org.apache.cordova.vibration": "0.3.8",
+    "de.appplant.cordova.plugin.local-notification": "0.7.2",
+    "org.apache.cordova.inappbrowser": "0.4.0",
+    "org.apache.cordova.device": "0.2.9"
+}
+// BOTTOM OF METADATA
 });

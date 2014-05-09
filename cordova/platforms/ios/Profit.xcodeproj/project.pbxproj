@@ -55,6 +55,7 @@
 		2CF5F22E4C984EFC8B2D0617 /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B92433ACA7147E9A1F8B3B9 /* CDVVibration.m */; };
 		372BA8CA3AA741BA9900CB2C /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC1A486182F4CAEBFC37668 /* CDVDevice.m */; };
 		6BC7EFFA14774BDA89F17356 /* APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDDDB52F8F40E5A0599E8E /* APPLocalNotification.m */; };
+		469D9EEB64944D71A5872470 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5AB791B267430E85DFC545 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,8 @@
 		695A3A54B7E14154BADA9739 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		FADDDDB52F8F40E5A0599E8E /* APPLocalNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "APPLocalNotification.m"; path = "de.appplant.cordova.plugin.local-notification/APPLocalNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		7AEADE8723394ACC85939993 /* APPLocalNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "APPLocalNotification.h"; path = "de.appplant.cordova.plugin.local-notification/APPLocalNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		3F5AB791B267430E85DFC545 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		C0E07AECE41645279DCEE5AB /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +287,8 @@
 				695A3A54B7E14154BADA9739 /* CDVDevice.h */,
 				FADDDDB52F8F40E5A0599E8E /* APPLocalNotification.m */,
 				7AEADE8723394ACC85939993 /* APPLocalNotification.h */,
+				3F5AB791B267430E85DFC545 /* CDVInAppBrowser.m */,
+				C0E07AECE41645279DCEE5AB /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = Profit/Plugins;
@@ -487,6 +492,7 @@
 				2CF5F22E4C984EFC8B2D0617 /* CDVVibration.m in Sources */,
 				372BA8CA3AA741BA9900CB2C /* CDVDevice.m in Sources */,
 				6BC7EFFA14774BDA89F17356 /* APPLocalNotification.m in Sources */,
+				469D9EEB64944D71A5872470 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +572,13 @@
 				);
 				PRODUCT_NAME = Profit;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+				);
 			};
 			name = Debug;
 		};
@@ -597,6 +610,13 @@
 				);
 				PRODUCT_NAME = Profit;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+					"\"Profit/Plugins/com.phonegap.plugins.facebookconnect\"",
+				);
 			};
 			name = Release;
 		};

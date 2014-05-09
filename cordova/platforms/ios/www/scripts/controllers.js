@@ -56,8 +56,9 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 	}
 }]);
 
-ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', 'loadingService', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService, loadingService) {
+ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 'profitAppService', '$timeout', 'tabService', 'loadingService', 'coverPhoto', 'OpenFB', function($scope, $location, $rootScope, ngProgress, profitAppService, $timeout, tabService, loadingService, coverPhoto, OpenFB) {
 	$scope.currentIndex = tabService.cIndex;
+	$scope.cover = coverPhoto;
 
 	$scope.switchGroup = function(group) {
 		$scope.currentIndex = $(".profit-items-feed[data-target='" + group + "']").index() - 1;
@@ -139,6 +140,7 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
  	$scope.isEmpty = function(list) {
  		return list.length == 0;
  	}
+
 	$scope.getGroups();
 }]);
 
@@ -259,40 +261,6 @@ ctrls.controller('LoginCtrl', ['$scope', '$location', '$rootScope', 'loadingServ
 				$location.path("/signup")
 			}, 10);
 		});
-	}
-
-	$scope.connectFacebook = function() {
-		if (Parse.User.current() == null) {
-			Parse.FacebookUtils.logIn("basic_info, email", {
-				success: function(user) {
-				    FB.api("/me",
-				    function (response) {
-				      	if (response && !response.error) {
-				      		console.log(response)				      		;
-					        user.set("email", response.email);
-					        user.set("firstName", response.first_name);
-					        user.set("lastName", response.last_name);
-					        user.set("fid", response.id);
-					        user.save(null, {
-				        		success: function(user){
-					        		$rootScope.currentUser = user;
-									$.cookie("current", true, { expires: 14});
-					        		$timeout(function(){
-					        			$location.path("/home");
-					        		}, 500);
-				        		},
-				        		error: function(user, error){
-				        			console.log(error);
-				        		}
-				        	});
-				    	}
-				    });
-				},
-				error: function(user, error) {
-
-				}
-			});
-		}
 	}
 
 	$scope.connectTwitter = function() {

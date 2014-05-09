@@ -1,5 +1,5 @@
 <div class="left-menu">
-  <div class="left-menu-profile">
+  <div class="left-menu-profile" style="background-image:url('{{cover}}')">
     <div class="profile-pic-bg">
       <div class="vertically-middle">
         <div class="name">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="profile-pic">
-      <img ng-src="http://graph.facebook.com/{{currentUser.get('fid')}}/picture?type=large" alt="Facebook Profile Picture">
+      <img ng-src="http://graph.facebook.com/{{currentUser.get('fid')}}/picture?type=square" alt="Facebook Profile Picture">
     </div>
   </div>
   <div class="left-menu-option"><i class="fa fa-lg fa-file-text"></i><span>Export to PDF</span></div>
