@@ -36,6 +36,7 @@
       </li>
     </ul>
   </div>
+  <div class="active-tab-indicator"></div>
 </div>
 <div class="profit-feeds" scroll-listener size-iphone>
   <!-- All -->
@@ -90,7 +91,6 @@
         </div>
       </div>
       <div class="profit-all-item" ng-repeat="(group, items) in expense">
-        <div class="profit-group-title">{{group}}</div>
         <div class="profit-item" ng-repeat="e in items">
           <div class="profit-item-title">
             {{e.title}}

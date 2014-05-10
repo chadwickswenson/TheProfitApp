@@ -12,7 +12,7 @@ var parseBoolean = function(val) {
 }
 
 $.fn.usedWidth = function() {
-    return $(this).width() + parseInt($(this).css("margin-left"), 10) + parseInt($(this).css("margin-right"), 10);
+    return $(this).width() + parseInt($(this).css("margin-left"), 10) + parseInt($(this).css("margin-right"), 10) + parseInt($(this).css("padding-left"), 10) + parseInt($(this).css("padding-right"), 10);
 };
 
 $.fn.usedHeight = function() {

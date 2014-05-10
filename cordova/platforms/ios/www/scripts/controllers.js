@@ -71,9 +71,13 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 
 		var target = $($(".profit-group-tab")[newVal]).attr("data-target");
         var color = $($(".profit-group-tab")[newVal]).attr("data-color").split("none")[0].trim();
-		$(".profit-add").removeClass("invis");
+        $(".profit-add").removeClass("invis");
+
 		$(".profit-group-tab").removeClass("active");
-		$($(".profit-group-tab")[newVal]).css({"border-color": color}).addClass("active");
+		$($(".profit-group-tab")[newVal]).addClass("active");
+		var width = $(".profit-group-tab.active").usedWidth();
+		var offsetLeft = $(".profit-group-tab.active")[0].offsetLeft - parseInt($(".profit-group-tab.active").css("margin-left"), 10);
+		$(".active-tab-indicator").css({"background": color, "width": width, "-webkit-transform":"translateX(" + offsetLeft + "px)"});
 
 		if(!$($(".profit-group-tab")[newVal]).visible(false, false, 'horizontal')){
 			if(newVal > oldVal){
