@@ -14,9 +14,9 @@
   </div>
   <div class="profit-item-attachment" ng-show="{{item.attachment}}"style="background:url('{{item.attachment._url}}');background-size:cover;">
   </div>
-  <div class="profit-item-cost {{item.category}}">
+  <div class="profit-item-cost {{item.category | categoryConvert}}">
     <span>{{item.value | currency}}</span>
-    <span class="pull-right profit-item-category">{{item.category}}</span>
+    <span class="pull-right profit-item-category">{{item.category | categoryConvert}}</span>
   </div>
   <div class="profit-item-description" style="max-height:none !important;">
     <p style="max-height:none !important;">
@@ -24,10 +24,10 @@
     </p>
   </div>
   <div>
-  <div class="profit-item-timestamp" title="{{item.date}}" time-ago>
-  </div>
+  <div class="profit-item-timestamp"><strong>{{item.date}}</strong></div>
+  <div class="profit-item-timestamp lighter">Created about <span title="{{item.createdAt}}" time-ago></span></div>
   <div class="profit-item-actions">
-    <span class="profit-item-action edit" ng-click="_go('edit/{{item.id}}', true)">
+    <span class="profit-item-action edit" ng-click="_go('edit/{{item.id}}', true, $event)">
       Edit
     </span>
     <span class="profit-item-action remove">

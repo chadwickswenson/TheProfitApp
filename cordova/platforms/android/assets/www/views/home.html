@@ -62,11 +62,12 @@
         </div>
       </div>
       <div class="profit-all-item" ng-repeat="(group, items) in income">
-        <div class="profit-item" ng-repeat="i in items">
+        <div class="profit-item" ng-repeat="i in items" set-active oid="{{i.id}}">
           <div class="profit-item-title">
             {{i.title}}
           </div>
-          <div class="profit-item-attachment" ng-show="{{i.attachment}}" style="background:url('{{i.attachment._url}}');background-size:cover;" class="lazy" data-original="{{i.attachment._url}}" lazy-load>
+          <div class="profit-item-attachment-icon" ng-show="{{i.attachment}}">
+            <i class="fa fa-paperclip fa-2x"></i>
           </div>
           <div class="profit-item-cost income">
             <span>{{i.value | currency}}</span>
@@ -77,8 +78,8 @@
               {{i.notes | truncateNotes}}
             </p>
           </div>
-          <div class="profit-item-timestamp" title="{{i.date}}" time-ago>
-          </div>
+          <div class="profit-item-timestamp"><strong>{{i.date}}</strong></div>
+          <div class="profit-item-timestamp lighter">Created about <span title="{{i.createdAt}}" time-ago></span></div>
           <div class="profit-item-group" style="background:{{i.color}}" ng-click="switchGroup('{{i.group}}')">{{i.group}}</div>
           <div class="profit-item-actions">
             <span class="profit-item-action edit" ng-click="_go('edit/{{i.id}}', true, $event)">
@@ -91,11 +92,12 @@
         </div>
       </div>
       <div class="profit-all-item" ng-repeat="(group, items) in expense">
-        <div class="profit-item" ng-repeat="e in items">
+        <div class="profit-item" ng-repeat="e in items" set-active oid="{{e.id}}">
           <div class="profit-item-title">
             {{e.title}}
           </div>
-          <div class="profit-item-attachment" ng-show="{{e.attachment}}" style="background:url('{{e.attachment._url}}');background-size:cover;" class="lazy" data-original="{{e.attachment._url}}" lazy-load>
+          <div class="profit-item-attachment-icon" ng-show="{{e.attachment}}">
+            <i class="fa fa-paperclip fa-2x"></i>
           </div>
           <div class="profit-item-cost expense">
             <span>{{e.value | currency}}</span>
@@ -106,8 +108,8 @@
               {{e.notes | truncateNotes}}
             </p>
           </div>
-          <div class="profit-item-timestamp" title="{{e.date}}" time-ago>
-          </div>
+          <div class="profit-item-timestamp"><strong>{{e.date}}</strong></div>
+          <div class="profit-item-timestamp lighter">Created about <span title="{{e.createdAt}}" time-ago></span></div>
           <div class="profit-item-group" style="background:{{e.color}}" ng-click="switchGroup('{{e.group}}')">{{e.group}}</div>
           <div class="profit-item-actions">
             <span class="profit-item-action edit" ng-click="_go('edit/{{e.id}}', true, $event)">
@@ -127,7 +129,8 @@
         <div class="profit-item-title">
           {{i.title}}
         </div>
-        <div class="profit-item-attachment" ng-show="{{i.attachment}}" style="background:url('{{i.attachment._url}}');background-size:cover;" class="lazy" data-original="{{i.attachment._url}}" lazy-load>
+        <div class="profit-item-attachment-icon" ng-show="{{i.attachment}}">
+          <i class="fa fa-paperclip fa-2x"></i>
         </div>
         <div class="profit-item-cost income">
             <span>{{i.value | currency}}</span>
@@ -138,8 +141,8 @@
             {{i.notes | truncateNotes}}
           </p>
         </div>
-        <div class="profit-item-timestamp" title="{{i.date}}" time-ago>
-        </div>
+        <div class="profit-item-timestamp"><strong>{{i.date}}</strong></div>
+        <div class="profit-item-timestamp lighter">Created about <span title="{{i.createdAt}}" time-ago></span></div>
         <div class="profit-item-actions">
           <span class="profit-item-action edit" ng-click="_go('edit/{{i.id}}', true, $event)">
             Edit
@@ -153,7 +156,8 @@
         <div class="profit-item-title">
           {{e.title}}
         </div>
-        <div class="profit-item-attachment" ng-show="{{e.attachment}}"style="background:url('{{e.attachment._url}}');background-size:cover;">
+        <div class="profit-item-attachment-icon" ng-show="{{e.attachment}}">
+          <i class="fa fa-paperclip fa-2x"></i>
         </div>
         <div class="profit-item-cost expense">
             <span>{{e.value | currency}}</span>
@@ -164,8 +168,8 @@
             {{e.notes | truncateNotes}}
           </p>
         </div>
-        <div class="profit-item-timestamp" title="{{e.date}}" time-ago>
-        </div>
+        <div class="profit-item-timestamp"><strong>{{e.date}}</strong></div>
+        <div class="profit-item-timestamp lighter">Created about <span title="{{e.createdAt}}" time-ago></span></div>
         <div class="profit-item-actions">
           <span class="profit-item-action edit" ng-click="_go('edit/{{e.id}}', true, $event)">
             Edit

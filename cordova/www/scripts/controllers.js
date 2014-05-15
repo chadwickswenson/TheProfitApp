@@ -26,7 +26,7 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 
 	});
 
-	$scope._go = function(path, direction, $event) {
+	$rootScope._go = function(path, direction, $event) {
 		if($event)
 			$event.stopPropagation();
 		if(direction){
@@ -50,6 +50,9 @@ ctrls.controller('AppCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
 		// 	notifications.push(notif);
 		// 	window.plugin.notification.local.add(notif);
 		// }, 5000);
+		$timeout(function(){
+			$(window).scrollTop(0);
+		}, 400);
 		$timeout(function(){
 			$location.path(path);
 		})
@@ -158,7 +161,7 @@ ctrls.controller('AddCtrl', ['$scope', '$location', '$rootScope', 'ngProgress', 
  	$scope.createEntry = function(){
  		if($scope.picInProgress) return;
  		var newEntry = {};
- 		newEntry.category = (!$scope.entry.type || $scope.entry.type == undefined)? "income" : "expense";
+ 		newEntry.category = ($scope.entry.type == undefined || !$scope.entry.type)? false : true;
 		newEntry.title = $scope.entry.title;
 		newEntry.date = $scope.entry.date;
 		newEntry.value = $scope.entry.value;

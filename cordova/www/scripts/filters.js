@@ -49,5 +49,8 @@ filters.filter('truncateNegative', [function() {
 	}
 }]);
 
-
-
+filters.filter('categoryConvert', [function() {
+	return function(category) {
+		return (category)?"expense":"income";
+	}
+}]);

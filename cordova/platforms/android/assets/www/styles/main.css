@@ -223,7 +223,6 @@ ul {
 }
 .active-tab-indicator {
   height: 5px;
-  border-radius: 3px;
   background: #000;
   left: 0;
   position: absolute;
@@ -245,6 +244,7 @@ ul {
   height: 100%;
   width: 100%;
   opacity: 0;
+  z-index: -1;
   transition: opacity ease-in-out 0.3s;
   -webkit-transition: opacity ease-in-out 0.3s;
 }
@@ -270,7 +270,7 @@ ul {
 .profit-items-feed {
   display: none;
   width: 100%;
-  padding: 10px 5px 10px 5px;
+  padding: 10px 0 10px 0;
 }
 @-webkit-keyframes fadeIn {
   0% {
@@ -320,6 +320,11 @@ ul {
 .profit-item.attachment {
   min-height: 350px;
 }
+.profit-item-attachment-icon {
+  position: absolute;
+  right: 5px;
+  margin-top: -40px;
+}
 .profit-item>div,
 .profit-item-detail>div {
   padding: 10px;
@@ -359,8 +364,10 @@ ul {
   font-size: 80%;
   color: #000;
 }
+.profit-item-timestamp.lighter {
+  color: #1a1a1a;
+}
 .profit-item-cost {
-  margin: 0 -2.5px;
   color: #fff;
   font-weight: 600;
   padding: 5px 10px 5px 10px !important;
@@ -385,10 +392,10 @@ ul {
   font-size: 80%;
   color: #000;
   position: absolute;
-  right: 2.5px;
+  right: 0px;
   float: right;
   padding: 5px !important;
-  margin-top: -25px;
+  margin-top: -30px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   text-transform: uppercase;
@@ -1554,9 +1561,9 @@ a:hover {
   -o-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
   position: absolute;
-  width: 100%;
   left: 0;
   right: 0;
+  padding: 0 5px;
 }
 .slide-left.ng-enter {
   z-index: 100;

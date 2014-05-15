@@ -243,7 +243,7 @@ services.factory('OpenFB', ['$rootScope', '$q', '$window', '$http', function ($r
 services.factory('appVersion', function($rootScope){
 	var versionMgr = {};
 	var version = "1.0 (DATAPP)";
-	
+
 	versionMgr.getVersion = function() {
 		return version;
 	}
@@ -380,16 +380,10 @@ services.factory('profitAppService', ['$resource', '$http', function($resource, 
 	profitAPI.updateEntry = function(updatedEntry, hasAttachmentChanged, callbackSuccess, callbackError) {
 		var Entry = Parse.Object.extend("Entry");
 		var query = new Parse.Query(Entry);
-		var category;
-		if(typeof updatedEntry.category == "boolean"){
-			category = (updatedEntry.category)? "expense" : "income";
-		}
-		else {
-			category = updatedEntry.category;
-		}
+
 		query.get(updatedEntry.id, {
 		  	success: function(data) {
-		  		data.set("category", category);
+		  		data.set("category", updatedEntry.category);
 				data.set("title", updatedEntry.title);
 				data.set("date", updatedEntry.date);
 				data.set("value", updatedEntry.value);
@@ -511,7 +505,7 @@ services.factory('profitAppService', ['$resource', '$http', function($resource, 
 					entry.id = results[i].id;
 					entry.attachment = results[i].get("attachment");
 					profitAPI.items.push(entry);
-					if(entry.category == "income"){
+					if(!entry.category){
 						groupedData.totalIncome += entry.value;
 						income.push(entry);
 					}

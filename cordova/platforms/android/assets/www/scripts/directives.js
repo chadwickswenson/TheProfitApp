@@ -4,26 +4,37 @@ var components = angular.module('DatAppProfit.directives', [])
 var height = 0;
 var width = 0;
 
-components.directive('loadingPanel', function(){	
-	return {		
-		restrict: 'E',		
+components.directive('loadingPanel', function(){
+	return {
+		restrict: 'E',
 		templateUrl: 'views/partials/loadingPanel.html',
-		link: function(scope, elem, attrs) {			
-		}		
+		link: function(scope, elem, attrs) {
+		}
 	};
-}); 
+});
 
 components.directive('tooltip', function(){
     return {
         restrict: 'A',
         link: function(scope, elem, attrs){
-            $(elem).tooltip({
-                template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
-            });
+            $(elem).prop('checked', scope.entry.category);
         }
     }
 
 });
+
+components.directive('setCatValue', function(){
+		return {
+				restrict: 'A',
+				link: function(scope, elem, attrs){
+						$(elem).tooltip({
+								template: '<div class="tooltip"><div class="tooltip-arrow tooltip-arrow-chad"></div><div class="tooltip-inner tooltip-inner-chad"></div></div>'
+						});
+				}
+		}
+
+});
+
 
 components.directive('scrollListener', function(){
     return {
@@ -201,14 +212,14 @@ components.directive('imagePreviewClick', function(){
         return {
                 restrict: 'A',
                 link: function(scope, elem, attrs){
-                   
+
                     $(".thumbnail").click(function(){
                         $(".image-view").addClass("image-view-active");
                     });
 
                     $(".close-preview").click(function(){
                         $(".image-view").removeClass("image-view-active");
-                    });  
+                    });
                 }
         }
 
@@ -278,13 +289,13 @@ components.directive('entryTypeToggle', function(){
                 link: function(scope, elem, attrs){
                     $(elem).click(function(){
                         if($(elem).html() == 'expense'){
-                           $(elem).html('income');    
+                           $(elem).html('income');
                         }
                         else{
-                           $(elem).html('expense');      
+                           $(elem).html('expense');
                         }
                     });
-                        
+
                 }
         }
 });
@@ -304,7 +315,7 @@ components.directive('homeItem', function($timeout) {
                 restrict: 'E',
                 scope:{
                         name: '@',
-                        amount: '@'                       
+                        amount: '@'
                 },
                 templateUrl: 'views/partials/homeItem.html',
                 link: function(scope, elem, attrs) {
@@ -312,9 +323,9 @@ components.directive('homeItem', function($timeout) {
                     //$(".years-bg").hide();
                     $timeout(function(){
                         $(".nav-title").click(function(){
-                            
+
                             $(".years-menu").removeClass().addClass("years-menu years-menu-active");
-                            
+
                         });
 
                          $(".year-menu-controls").click(function(){
@@ -329,7 +340,7 @@ components.directive('homeItem', function($timeout) {
                             threshold: 50
                         });
 
-                       
+
 
                         $.each([$(".left-menu-bg"), $(".left-menu")], function(i, e){
                             e.swipe({
@@ -427,4 +438,3 @@ components.directive('detailPart', function($timeout) {
                 }
         }
 });
-
