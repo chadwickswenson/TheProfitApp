@@ -63,7 +63,10 @@ ctrls.controller('HomeCtrl', ['$scope', '$location', '$rootScope', 'ngProgress',
 	$scope.currentIndex = tabService.cIndex;
 	$scope.cover = coverPhoto;
 
-	$scope.switchGroup = function(group) {
+	$scope.switchGroup = function(group, $event) {
+		if($event)
+			$event.stopPropagation();
+
 		$scope.currentIndex = $(".profit-items-feed[data-target='" + group + "']").index() - 1;
 		tabService.prepForBroadcastTabChange($scope.currentIndex);
 	}
